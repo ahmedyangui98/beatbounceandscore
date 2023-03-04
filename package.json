@@ -1,0 +1,23 @@
+{
+  "name": "beatbounceandscore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"cd backend && npx nodemon server.js\" \"cd frontend && npm start\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.2.2",
+    "react-datetime": "^3.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.8.1",
+    "react-scripts": "^5.0.1",
+    "reactstrap": "^9.1.6",
+    "redux": "^4.2.1",
+    "redux-thunk": "^2.4.2"
+  }
+}
