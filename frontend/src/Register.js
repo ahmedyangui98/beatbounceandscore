@@ -18,7 +18,8 @@ import {
   InputGroupText,
   InputGroup,
   Container,
-  Row
+  Row,
+  Col
 } from "reactstrap";
 import Alerterrors from "./Alerterrors";
 
@@ -50,6 +51,7 @@ const Register = () => {
     >
       <Container>
         <Row>
+         <Col md="4"  >
           <Card className="card-signup" data-background-color="blue">
             <Form action="" className="form" method="">
               <CardHeader className="text-center">
@@ -179,6 +181,7 @@ const Register = () => {
               </CardFooter>
             </Form>
           </Card>
+         </Col> 
         </Row>
         <div className="col text-center">
           <Button

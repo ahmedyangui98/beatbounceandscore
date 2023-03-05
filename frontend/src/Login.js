@@ -6,14 +6,13 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
-  CardTitle,
   Form,
   Input,
   InputGroupAddon,
   InputGroupText,
   InputGroup,
   Container,
-  Row
+  Col
 } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -23,7 +22,7 @@ import Alerterrors from "./Alerterrors";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [firstFocus, setFirstFocus] = useState(false);
+  //const [firstFocus, setFirstFocus] = useState(false); 
   const [lastFocus, setLastFocus] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
   const [email, setEmail] = useState("");
@@ -34,50 +33,27 @@ const Login = () => {
   };
   return (<>
     <div
-      className="section section-signup"
+      className="page-header-image"
       style={{
-        backgroundImage: "url(" + require("./assets/img/bg11.jpg") + ")",
+        backgroundImage: "url(" + require("./assets/img/bg4.jpg") + ")",
         backgroundSize: "cover",
         backgroundPosition: "top center",
         minHeight: "700px"
       }}
     >
+      <div className="content">
       <Container>
-        <Row>
-          <Card className="card-signup" data-background-color="blue">
+        <Col className="ml-auto mr-auto" md="4">
+          <Card className="card-login card-plain" >
             <Form action="" className="form" method="">
-              <CardHeader className="text-center">
-                <CardTitle className="title-up" tag="h3">
-                  Sign Up
-                </CardTitle>
-                <div className="social-line">
-                  <Button
-                    className="btn-neutral btn-icon btn-round"
-                    color="facebook"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <i className="fab fa-facebook-square"></i>
-                  </Button>
-                  <Button
-                    className="btn-neutral btn-icon btn-round"
-                    color="twitter"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                    size="lg"
-                  >
-                    <i className="fab fa-twitter"></i>
-                  </Button>
-                  <Button
-                    className="btn-neutral btn-icon btn-round"
-                    color="google"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <i className="fab fa-google-plus"></i>
-                  </Button>
-                </div>
-              </CardHeader>
+            <CardHeader className="text-center">
+                    <div className="logo-container">
+                      <img
+                        alt="..."
+                        src={require("./assets/img/now-logo.png")}
+                      ></img>
+                    </div>
+                  </CardHeader>
               <CardBody>
                 
             
@@ -133,7 +109,6 @@ const Login = () => {
               </CardFooter>
             </Form>
           </Card>
-        </Row>
         <div className="col text-center">
           <Button
             className="btn-round btn-white"
@@ -146,7 +121,10 @@ const Login = () => {
             View Login Page
           </Button>
         </div>
+        </Col>
       </Container>
+      <Alerterrors/>
+    </div>  
       <Alerterrors/>
     </div>
   </>

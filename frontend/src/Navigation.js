@@ -6,8 +6,7 @@ import Logo from "../src/assets/img/logo.png"
 import { logout } from "./redux/Action/authAction";
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import Card from "reactstrap";
+import { useDispatch/* ,useSelector*/ } from "react-redux";
 // reactstrap components
 import { useNavigate } from "react-router-dom";
 
@@ -15,8 +14,8 @@ import {
   Button,
   Collapse,
   DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
+  /* DropdownMenu,
+  DropdownItem, */
   UncontrolledDropdown,
   NavbarBrand,
   Navbar,
@@ -51,7 +50,7 @@ function Navigation() {
       window.removeEventListener("scroll", updateNavbarColor);
     };
   });
-  const user = useSelector((state) => state.Authreducer.user);
+//  const user = useSelector((state) => state.Authreducer.user);
  
   const token = localStorage.getItem("token");
   console.log("token"+!token)

@@ -17,7 +17,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(get_current());
-  }, []);
+  }/*, []*/);
   return (
     <div className="App">
       <Navigation />

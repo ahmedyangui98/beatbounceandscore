@@ -1,5 +1,4 @@
 import React from "react";
-import Navbars from "./index-sections/Navbars.js";
 import Tabs from "./index-sections/Tabs.js";
 import Pagination from "./index-sections/Pagination.js";
 import Notifications from "./index-sections/Notifications.js";
@@ -11,22 +10,34 @@ import CompleteExamples from "./index-sections/CompleteExamples.js";
 import SignUp from "./index-sections/SignUp.js";
 import Examples from "./index-sections/Examples.js";
 import Download from "./index-sections/Download.js";
-import IndexNavbar from "./Navbars/IndexNavbar.js";
 import IndexHeader from "./Headers/IndexHeader.js";
 import DarkFooter from "./Footers/DarkFooter.js";
 import Images from "./index-sections/Images.js";
 import BasicElements from "./index-sections/BasicElements.js";
+import Navbars from "./index-sections/Navbars.js";
 const Home = () => {
+
+  React.useEffect(() => {
+    document.body.classList.add("index-page");
+    document.body.classList.add("sidebar-collapse");
+    document.documentElement.classList.remove("nav-open");
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0;
+    return function cleanup() {
+      document.body.classList.remove("index-page");
+      document.body.classList.remove("sidebar-collapse");
+    };
+  });
   return (
     <>
-   
+    
     <div className="wrapper">
       <IndexHeader />
       <div className="main">
         <Images />
         <BasicElements />
-       
         <Tabs />
+        <Navbars />
         <Pagination />
         <Notifications />
         <Typography />
