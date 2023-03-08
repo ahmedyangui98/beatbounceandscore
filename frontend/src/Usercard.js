@@ -2,10 +2,6 @@ import React from "react";
 import { Button, Card, ListGroup } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import {deleteusers} from "./redux/Action/authAction"
-<<<<<<< HEAD
-const Usercard = ({ el }) => {
-  const dispatch = useDispatch();
-=======
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { updateusers } from "./redux/Action/authAction";
@@ -28,7 +24,6 @@ const Usercard = ({ el }) => {
       handleClose()
     );
   };
->>>>>>> 0fcb7300e3c1db3b909abb57aab29a0f7277badf
   return (
     <div>
       <div>
@@ -47,11 +42,7 @@ const Usercard = ({ el }) => {
               style={{ display: "flex", justifyContent: "space-between" }}
             >
               <Button variant="danger" onClick={() => dispatch(deleteusers(el._id))}>DELETE</Button>
-<<<<<<< HEAD
-           
-=======
               <Button variant="warning" onClick={handleShow}>edit</Button>
->>>>>>> 0fcb7300e3c1db3b909abb57aab29a0f7277badf
             </ListGroup.Item>
           </ListGroup>
         </Card>

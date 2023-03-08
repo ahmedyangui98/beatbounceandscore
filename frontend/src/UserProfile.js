@@ -18,24 +18,12 @@ const UserProfile = () => {
   return (
     <div>
       <br></br>
-<<<<<<< HEAD
-      <Card style={{
-            width: "20rem",
-            margin: " 4rem auto ",
-            display: "flex",
-          }}>
-=======
       <Card style={{ width: "18rem", margin: "auto", marginTop: "100px" ,float:"center"}}>
->>>>>>> 0fcb7300e3c1db3b909abb57aab29a0f7277badf
     
           
         <Card.Body>
           <Card.Title>Card Title</Card.Title>
-<<<<<<< HEAD
-          <Card.Text style={{ color: "black" }}>Hello {user?.email}</Card.Text>
-=======
           <Card.Text style={{ color: "black" }}>{user?.name}</Card.Text>
->>>>>>> 0fcb7300e3c1db3b909abb57aab29a0f7277badf
         </Card.Body>
       </Card>
       <div
