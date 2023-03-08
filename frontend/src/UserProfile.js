@@ -1,26 +1,29 @@
 import React, { useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getusers } from "./redux/Action/authAction";
+import { getusers,get_current } from "./redux/Action/authAction";
 import Usercard from "./Usercard";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getusers());
+    dispatch(get_current())
   }, []);
+ 
   const user = useSelector((state) => state.Authreducer.user);
   const users = useSelector((state) => state.Authreducer.users);
+  console.log("user"+user.email)
   console.log(users);
   return (
     <div>
       <br></br>
-      <Card style={{ width: "18rem", margin: "auto", marginTop: "50px" }}>
+      <Card style={{ width: "18rem", margin: "auto", marginTop: "100px" ,float:"center"}}>
     
           
         <Card.Body>
           <Card.Title>Card Title</Card.Title>
-          <Card.Text style={{ color: "black" }}>{user?.email}</Card.Text>
+          <Card.Text style={{ color: "black" }}>{user?.name}</Card.Text>
         </Card.Body>
       </Card>
       <div

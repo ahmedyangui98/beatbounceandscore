@@ -5,7 +5,7 @@ import {
   GET_USERS,
   LOGIN,
   LOGOUT,
-  REGISTER,
+  REGISTER,FIND_USER,DELETE_USERS,UPDATE_USERS
 } from "../Types/authTypes";
 import { alert_error } from "./errorActions";
 
@@ -59,4 +59,35 @@ export const getusers = () => async (dispatch) => {
 };
 export const logout = () => {
   return { type: LOGOUT };
+};
+export const deleteusers = (id) => async (dispatch,navigate) => {
+  try {
+    const res = await axios.delete(`/users/delete/${id}`);
+    console.log(res.data);
+    dispatch({ type: DELETE_USERS, payload: res.data });
+    navigate("/profile");
+    window.location.reload();
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const finduserbyid = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/users/find/${id}`);
+    console.log(res.data);
+    dispatch({ type: FIND_USER, payload: res.data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const updateusers = (id,data) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/users/edit/${id}`,data);
+    dispatch({ type:UPDATE_USERS, payload: res.data });
+  
+    window.location.reload();
+  } catch (error) {
+   console.log(error)
+   
+  }
 };

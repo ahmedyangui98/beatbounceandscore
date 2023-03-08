@@ -26,7 +26,7 @@ import Alerterrors from "./Alerterrors";
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [namee, setNamee] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -36,7 +36,7 @@ const Register = () => {
   const [emailFocus, setEmailFocus] = useState(false);
   const handleClick = (e) => {
     e.preventDefault();
-    dispatch(register({ namee, email, password,image }, navigate));
+    dispatch(register({ name, email, password,image }, navigate));
   };
 
   return(    <>
@@ -102,8 +102,8 @@ const Register = () => {
                     type="text"
                     onFocus={() => setFirstFocus(true)}
                     onBlur={() => setFirstFocus(false)}
-                    onChange={(e) => setNamee(e.target.value)}
-                    value={namee}
+                    onChange={(e) => setName(e.target.value)}
+                    value={name}
                   ></Input>
                 </InputGroup>
                 <InputGroup
