@@ -51,3 +51,68 @@ exports.Getusers = async (req, res) => {
     res.status(500).send("couldn't get users");
   }
 };
+exports.Deleteuser= async(req, res) =>{
+  const { name  } = req.body;
+  try
+  {const deleted= await users.findByIdAndDelete(req.params.id)
+     
+  res.status(200).send({msg:"usser deleted",deleted})
+  
+ 
+  }
+  catch (error) {
+      res.status(500).send("couldnt delete user")
+  
+  }}
+exports.Deleteuser= async(req, res) =>{
+  
+  try
+  {const deleted= await users.findByIdAndDelete(req.params.id)
+     
+  res.status(200).send({msg:"usser deleted",deleted})
+  
+ 
+  }
+  catch (error) {
+      res.status(500).send("couldnt delete user")
+  
+  }}
+  exports.EditU=async(req, res) =>{
+    try
+    {const updated= await users.findByIdAndUpdate(req.params.id,{$set:req.body,},{new:true});
+        
+       
+    res.status(200).send({msg:"user updated",updated})
+    
+    
+    }
+    catch (error) {
+        res.status(200).send("couldnt update user")
+    
+    }}
+  exports.EditUser=async(req, res) =>{
+    try
+      {const updated= await users.findByIdAndUpdate(req.params.id,{$set:req.body,},{new:true});
+          
+         
+      res.status(200).send({msg:"user updated",updated})
+      
+      
+      }
+      catch (error) {
+          res.status(200).send("couldnt update user")
+      
+      }}
+      exports.Finduserbyid= async(req, res) =>{
+   
+        try
+        {const fu= await users.findById(req.params.id)
+           
+        res.status(200).send({msg:"user found",fu})
+        
+       
+        }
+        catch (error) {
+            res.status(500).send("couldnt found user")
+        
+        }}

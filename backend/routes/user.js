@@ -1,6 +1,5 @@
 const express = require("express");
-const { Register, Login, Getusers } = require("../controlles/user");
-const { IsAuth } = require("../middlewear/isAuth");
+const { Register, Login, Getusers,Deleteuser,EditUser,EditU, Finduserbyid} = require("../controlles/user");const { IsAuth } = require("../middlewear/isAuth");
 const {
   registervalidation,
   Validation,
@@ -15,5 +14,9 @@ userRoutes.get("/current", IsAuth, (req, res) => {
   res.send({ user: req.user });
 });
 userRoutes.get("/all", Getusers);
+userRoutes.delete("/delete/:id", Deleteuser);
+userRoutes.put("/edit/:id", EditUser);
+userRoutes.get("/find/:id", Finduserbyid);
+userRoutes.put("/editu/:id", EditU);
 
 module.exports = userRoutes;
