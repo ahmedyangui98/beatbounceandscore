@@ -58,11 +58,15 @@ exports.Getusers = async (req, res) => {
     res.status(500).send("couldn't get users");
   }
 };
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0fcb7300e3c1db3b909abb57aab29a0f7277badf
 exports.Deleteuser= async(req, res) =>{
   const { name  } = req.body;
   try
   {const deleted= await users.findByIdAndDelete(req.params.id)
+<<<<<<< HEAD
 
   res.status(200).send({msg:"usser deleted",deleted})
 
@@ -84,10 +88,34 @@ exports.Deleteuser= async(req, res) =>{
   catch (error) {
       res.status(500).send("couldnt delete user")
 
+=======
+     
+  res.status(200).send({msg:"usser deleted",deleted})
+  
+ 
+  }
+  catch (error) {
+      res.status(500).send("couldnt delete user")
+  
+  }}
+exports.Deleteuser= async(req, res) =>{
+  
+  try
+  {const deleted= await users.findByIdAndDelete(req.params.id)
+     
+  res.status(200).send({msg:"usser deleted",deleted})
+  
+ 
+  }
+  catch (error) {
+      res.status(500).send("couldnt delete user")
+  
+>>>>>>> 0fcb7300e3c1db3b909abb57aab29a0f7277badf
   }}
   exports.EditU=async(req, res) =>{
     try
     {const updated= await users.findByIdAndUpdate(req.params.id,{$set:req.body,},{new:true});
+<<<<<<< HEAD
 
 
     res.status(200).send({msg:"user updated",updated})
@@ -97,10 +125,22 @@ exports.Deleteuser= async(req, res) =>{
     catch (error) {
         res.status(200).send("couldnt update user")
 
+=======
+        
+       
+    res.status(200).send({msg:"user updated",updated})
+    
+    
+    }
+    catch (error) {
+        res.status(200).send("couldnt update user")
+    
+>>>>>>> 0fcb7300e3c1db3b909abb57aab29a0f7277badf
     }}
   exports.EditUser=async(req, res) =>{
     try
       {const updated= await users.findByIdAndUpdate(req.params.id,{$set:req.body,},{new:true});
+<<<<<<< HEAD
 
 
       res.status(200).send({msg:"user updated",updated})
@@ -123,4 +163,28 @@ exports.Deleteuser= async(req, res) =>{
         catch (error) {
             res.status(500).send("couldnt found user")
 
+=======
+          
+         
+      res.status(200).send({msg:"user updated",updated})
+      
+      
+      }
+      catch (error) {
+          res.status(200).send("couldnt update user")
+      
+      }}
+      exports.Finduserbyid= async(req, res) =>{
+   
+        try
+        {const fu= await users.findById(req.params.id)
+           
+        res.status(200).send({msg:"user found",fu})
+        
+       
+        }
+        catch (error) {
+            res.status(500).send("couldnt found user")
+        
+>>>>>>> 0fcb7300e3c1db3b909abb57aab29a0f7277badf
         }}

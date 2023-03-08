@@ -39,7 +39,7 @@ const Register = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    dispatch(register({ firstname,lastname, email, password,image,birthdate }, navigate));
+    dispatch(register({ firstname,lastname, email, password,image }, navigate));
   };
 
   return(    <>
@@ -108,7 +108,6 @@ const Register = () => {
                     value={firstname}
                   ></Input>
                 </InputGroup>
-                
                 <InputGroup
                   className={
                     "no-border" + (lastnameFocus ? " input-group-focus" : "")
@@ -120,7 +119,7 @@ const Register = () => {
                     </InputGroupText>
                   </InputGroupAddon>
                   <Input
-                    placeholder="Last name ..."
+                    placeholder="Last Name..."
                     type="text"
                     onFocus={() => setLastnameFocus(true)}
                     onBlur={() => setLastnameFocus(false)}
