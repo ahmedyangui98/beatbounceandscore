@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { register } from "./redux/Action/authAction";
-import { Link } from "react-router-dom";
 // reactstrap components
 import {
   Button,
@@ -19,7 +18,6 @@ import {
   InputGroup,
   Container,
   Row,
-  Col
 } from "reactstrap";
 import Alerterrors from "./Alerterrors";
 
@@ -51,7 +49,6 @@ const Register = () => {
     >
       <Container>
         <Row>
-         <Col md="4"  >
           <Card className="card-signup" data-background-color="blue">
             <Form action="" className="form" method="">
               <CardHeader className="text-center">
@@ -180,21 +177,8 @@ const Register = () => {
                 </Button>
               </CardFooter>
             </Form>
-          </Card>
-         </Col> 
+          </Card> 
         </Row>
-        <div className="col text-center">
-          <Button
-            className="btn-round btn-white"
-            color="default"
-            to="/login-page"
-            outline
-            size="lg"
-            tag={Link}
-          >
-            View Login Page
-          </Button>
-        </div>
       </Container>
       <Alerterrors/>
     </div>

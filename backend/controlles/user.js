@@ -24,21 +24,28 @@ exports.Register = async (req, res) => {
   }
 };
 exports.Login = async (req, res) => {
-  const { email, password, id } = req.body;
+  const { email, password, id,isBanned } = req.body;
   try {
     const foundUser = await users.findOne({ email });
     if (!foundUser) {
-      return res.status(400).send({ errors: [{ msg: "bad credentials" }] });
+      return res.status(400).send({ errors: [{ msg: "bad credentials , Email not found" }] });
     }
     //jwt
 
     const match = await bcrypt.compare(password, foundUser.password);
     if (!match) {
-      return res.status(400).send({ errors: [{ msg: "bad credentials" }] });
+      return res.status(400).send({ errors: [{ msg: "bad credentials , password doesn't match" }] });
     }
+   /* if (isBanned=='true') {
+      return res.status(400).send({ errors: [{ msg: "is banned" }] });
+    } */
     const payload = { id: foundUser._id };
     const token = jwt.sign(payload, process.env.secretorkey);
     res.status(200).send({ msg: "logging with succ", foundUser, token });
+
+    foundUser.isActivated = true;
+    foundUser.lastLogin = new Date();
+    await foundUser.save();
   } catch (error) {
     res.status(500).send({ msg: "couldn't logging" });
   }
@@ -51,3 +58,4 @@ exports.Getusers = async (req, res) => {
     res.status(500).send("couldn't get users");
   }
 };
+

@@ -38,7 +38,7 @@ const Login = () => {
         backgroundImage: "url(" + require("./assets/img/bg4.jpg") + ")",
         backgroundSize: "cover",
         backgroundPosition: "top center",
-        minHeight: "700px"
+        minHeight: "1000px"
       }}
     >
       <div className="content">
