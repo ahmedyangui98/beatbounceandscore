@@ -24,17 +24,22 @@ import Alerterrors from "./Alerterrors";
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [namee, setNamee] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [birthdate, setBirthdate] = useState("");
 
   const [image, setImage] = useState("");
-  const [firstFocus, setFirstFocus] = useState(false);
+  const [firstnameFocus, setFirstnameFocus] = useState(false);
+  const [lastnameFocus, setLastnameFocus] = useState(false);
   const [lastFocus, setLastFocus] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
+  const [birthdateFocus, setBirthdateFocus] = useState(false);
+
   const handleClick = (e) => {
     e.preventDefault();
-    dispatch(register({ namee, email, password,image }, navigate));
+    dispatch(register({ firstname,lastname, email, password,image,birthdate }, navigate));
   };
 
   return(    <>
@@ -86,7 +91,7 @@ const Register = () => {
               <CardBody>
                 <InputGroup
                   className={
-                    "no-border" + (firstFocus ? " input-group-focus" : "")
+                    "no-border" + (firstnameFocus ? " input-group-focus" : "")
                   }
                 >
                   <InputGroupAddon addonType="prepend">
@@ -97,12 +102,33 @@ const Register = () => {
                   <Input
                     placeholder="First Name..."
                     type="text"
-                    onFocus={() => setFirstFocus(true)}
-                    onBlur={() => setFirstFocus(false)}
-                    onChange={(e) => setNamee(e.target.value)}
-                    value={namee}
+                    onFocus={() => setFirstnameFocus(true)}
+                    onBlur={() => setFirstnameFocus(false)}
+                    onChange={(e) => setFirstname(e.target.value)}
+                    value={firstname}
                   ></Input>
                 </InputGroup>
+                
+                <InputGroup
+                  className={
+                    "no-border" + (lastnameFocus ? " input-group-focus" : "")
+                  }
+                >
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <i className="now-ui-icons users_circle-08"></i>
+                    </InputGroupText>
+                  </InputGroupAddon>
+                  <Input
+                    placeholder="Last name ..."
+                    type="text"
+                    onFocus={() => setLastnameFocus(true)}
+                    onBlur={() => setLastnameFocus(false)}
+                    onChange={(e) => setLastname(e.target.value)}
+                    value={lastname}
+                  ></Input>
+                </InputGroup>
+
                 <InputGroup
                   className={
                     "no-border" + (emailFocus ? " input-group-focus" : "")
@@ -164,6 +190,27 @@ const Register = () => {
                  
                   ></Input>
                 </InputGroup>
+
+                <InputGroup
+                  className={
+                    "no-border" + (birthdateFocus ? " input-group-focus" : "")
+                  }
+                >
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <i className="now-ui-icons users_circle-08"></i>
+                    </InputGroupText>
+                  </InputGroupAddon>
+                  <Input
+                    placeholder=""
+                    type="date"
+                    onFocus={() => setBirthdateFocus(true)}
+                    onBlur={() => setBirthdateFocus(false)}
+                    onChange={(e) => setBirthdate(e.target.value)}
+                    value={birthdate}
+                  ></Input>
+                </InputGroup>
+
               </CardBody>
               <CardFooter className="text-center">
                 <Button

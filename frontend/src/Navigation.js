@@ -119,7 +119,7 @@ function Navigation() {
               </UncontrolledDropdown>
               <NavItem>
                   <Button
-                    className="nav-link btn-neutral"
+                    className="nav-link "
                     color="info"
                     onClick={() => {
                       dispatch(logout());
