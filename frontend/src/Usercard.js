@@ -1,7 +1,9 @@
 import React from "react";
 import { Button, Card, ListGroup } from "react-bootstrap";
-
+import { useDispatch } from "react-redux";
+import {deleteusers} from "./redux/Action/authAction"
 const Usercard = ({ el }) => {
+  const dispatch = useDispatch();
   return (
     <div>
       <div>
@@ -19,8 +21,8 @@ const Usercard = ({ el }) => {
             <ListGroup.Item
               style={{ display: "flex", justifyContent: "space-between" }}
             >
-              <Button variant="danger">DELETE</Button>
-              <Button variant="warning">EDIT</Button>
+              <Button variant="danger" onClick={() => dispatch(deleteusers(el._id))}>DELETE</Button>
+           
             </ListGroup.Item>
           </ListGroup>
         </Card>

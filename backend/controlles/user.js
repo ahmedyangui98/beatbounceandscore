@@ -58,4 +58,3 @@ exports.Getusers = async (req, res) => {
     res.status(500).send("couldn't get users");
   }
 };
-
