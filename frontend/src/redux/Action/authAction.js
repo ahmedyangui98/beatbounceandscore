@@ -14,6 +14,7 @@ export const register = (data, navigate) => async (dispatch) => {
     const res = await axios.post("/users/register", data);
     dispatch({ type: REGISTER, payload: res.data });
     navigate("/login");
+    window.location.reload()
   } catch (error) {
     error.response.data.errors.forEach((el) => {
       dispatch(alert_error(el.msg));
@@ -59,6 +60,7 @@ export const getusers = () => async (dispatch) => {
 };
 export const logout = () => {
   return { type: LOGOUT };
+
 };
 export const deleteusers = (id) => async (dispatch,navigate) => {
   try {

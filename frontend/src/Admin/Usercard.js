@@ -1,10 +1,10 @@
 import React from "react";
 import { Button, Card, ListGroup } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import {deleteusers} from "./redux/Action/authAction"
+import {deleteusers} from "../redux/Action/authAction"
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import { updateusers } from "./redux/Action/authAction";
+import { updateusers } from "../redux/Action/authAction"
 import  { useState ,useRef} from "react";
 
 const Usercard = ({ el }) => {
@@ -12,7 +12,7 @@ const Usercard = ({ el }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const [email, setEmail] = useState(el.email);
-  const [name, setName] = useState(el.name);
+  const [firstname, setFirstname] = useState(el.firstname);
   const [role, setRole] = useState(el.role);
   const [image, setImage] = useState("");
   const inputRef = useRef();
@@ -20,7 +20,7 @@ const Usercard = ({ el }) => {
   const handleEdit = (e) => {
     e.preventDefault();
     dispatch(
-      updateusers(el._id, { name,email,role }),
+      updateusers(el._id, { firstname,email,role }),
       handleClose()
     );
   };
@@ -35,7 +35,7 @@ const Usercard = ({ el }) => {
           }}
         >
           <ListGroup variant="flush">
-            <ListGroup.Item>name {el.name}</ListGroup.Item>
+            <ListGroup.Item>name {el.firstname}</ListGroup.Item>
             <ListGroup.Item>email {el.email}</ListGroup.Item>
             <ListGroup.Item>role {el.role}</ListGroup.Item>
             <ListGroup.Item
@@ -57,8 +57,8 @@ const Usercard = ({ el }) => {
                     <Form.Control
                       type="name"
                       placeholder="Enter name"
-                      onChange={(e) => setName(e.target.value)}
-                      value={name}
+                      onChange={(e) => setFirstname(e.target.value)}
+                      value={firstname}
                     />
                    
                   </Form.Group>

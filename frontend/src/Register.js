@@ -20,7 +20,7 @@ import {
   Row,
 } from "reactstrap";
 import Alerterrors from "./Alerterrors";
-
+import { useSelector } from "react-redux";
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -36,10 +36,11 @@ const Register = () => {
   const [lastFocus, setLastFocus] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
   const [birthdateFocus, setBirthdateFocus] = useState(false);
-
+  const user = useSelector((state) => state.Authreducer.user);
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(register({ firstname,lastname, email, password,image }, navigate));
+   
   };
 
   return(    <>

@@ -16,9 +16,11 @@ import {
 } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { login } from "./redux/Action/authAction";
+import { login,updateusers } from "./redux/Action/authAction";
 import Alerterrors from "./Alerterrors";
 
+
+import { useSelector } from "react-redux";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,10 +29,23 @@ const Login = () => {
   const [emailFocus, setEmailFocus] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const[isActivated,setIsActivated]=useState(false)
+  const user = useSelector((state) => state.Authreducer.user);
+  const [firstname, setFirstname] = useState(user.firstname);
+  const [lastname, setLastname] = useState(user.lastname);
+const[role,setRole]=useState(user.role)
   const handleClick = (e) => {
+
     e.preventDefault();
     dispatch(login({ email, password }, navigate));
-  };
+    setIsActivated(true)
+   updateusers(user._id, { email,password,role,firstname,isActivated,lastname})
+  
+ 
+  }
+
+  
   return (<>
     <div
       className="page-header-image"
