@@ -24,6 +24,26 @@ const Usercard = ({ el }) => {
       handleClose()
     );
   };
+
+  const banuser = (e) => {
+    e.preventDefault();
+    el.isBanned="true";
+    dispatch(
+      updateusers(el._id, el),
+    
+    );
+  };
+
+  const unbanuser = (e) => {
+    e.preventDefault();
+    el.isBanned="false";
+    dispatch(
+      updateusers(el._id, el),
+    
+    );
+  };
+  
+
   return (
     <div>
       <div>
@@ -43,6 +63,8 @@ const Usercard = ({ el }) => {
             >
               <Button variant="danger" onClick={() => dispatch(deleteusers(el._id))}>DELETE</Button>
               <Button variant="warning" onClick={handleShow}>edit</Button>
+              <Button variant="danger" onClick={banuser}>Ban</Button>
+              <Button variant="warning" onClick={unbanuser}>Unban</Button>
             </ListGroup.Item>
           </ListGroup>
         </Card>
