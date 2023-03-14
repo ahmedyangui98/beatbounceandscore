@@ -2,7 +2,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import Alerterrors from "./Alerterrors";
 import "./App.css";
 import Home from "./Home";
 import Login from "./Login";
@@ -11,7 +10,6 @@ import PrivateRoutes from "./PrivateRoutes";
 import { get_current } from "./redux/Action/authAction";
 import Register from "./Register";
 import AdminProfile from "./Admin/AdminProfile"
-import Courses from "./Courses"
 import DefaultNavigation from "./DefaultNavigation";
 import { useSelector } from "react-redux";
 import UserNaviguation from "./User/UserNaviguation";
@@ -67,7 +65,6 @@ function App() {
       <>{nav}</>
       
     
-      <Alerterrors />
       <Routes>
         <Route path="/" element={<Home />} />
        <Route path="/login" element={<Login />} />        <Route path="/register" element={<Register />} />

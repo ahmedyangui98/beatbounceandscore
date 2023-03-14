@@ -2,7 +2,6 @@ import React from "react";
 
 import IndexHeader from "./Headers/IndexHeader.js";
 import DarkFooter from "./Footers/DarkFooter.js";
-import Images from "./index-sections/Images.js";
 
 const Home = () => {
 

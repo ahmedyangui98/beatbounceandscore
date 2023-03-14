@@ -3,19 +3,12 @@
 
 
 import Logo from "../src/assets/img/logo.png"
-import { logout } from "./redux/Action/authAction";
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch/* ,useSelector*/ } from "react-redux";
-// reactstrap components
-import { useNavigate } from "react-router-dom";
 
 import {
-  Button,
+ 
   Collapse,
-  DropdownToggle,
-  /* DropdownMenu,
-  DropdownItem, */
   UncontrolledDropdown,
   NavbarBrand,
   Navbar,
@@ -29,8 +22,6 @@ import {
 function DefaultNavigation() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [collapseOpen, setCollapseOpen] = React.useState(false);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   React.useEffect(() => {
     const updateNavbarColor = () => {
       if (
