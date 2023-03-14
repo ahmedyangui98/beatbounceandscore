@@ -11,7 +11,7 @@ import {
   } from "reactstrap";
 
 import {BsFillDashCircleFill} from "react-icons/bs"
-import React, { useEffect,useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { get_current,deleteusers } from "./redux/Action/authAction";
 
@@ -80,6 +80,7 @@ const ProfileU = () => {
                 Edit
               </Button>
           
+          
             
       <Button
               className="btn-round" color="danger" size="lg"
@@ -91,7 +92,7 @@ const ProfileU = () => {
     <Col md="6">
               <h4>Modal</h4>
               <Modal
-                modalClassName="modal-mini modal-info"
+                modalClassName="modal-mini modal-danger"
                 toggle={() => setModal1(false)}
                 isOpen={modal1}
               >
