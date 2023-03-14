@@ -13,7 +13,7 @@ import {
   NavItem,
   NavLink,
   Nav,
-  Container,UncontrolledTooltip,Button
+  Container,UncontrolledTooltip
  
 } from "reactstrap";
 import { logout } from '../redux/Action/authAction';
@@ -74,7 +74,10 @@ export default function ParentNaviguation() {
                     <NavItem>
                       <NavLink
                   
-                        onClick={(e) => e.preventDefault()}
+                  onClick={() => {
+                    navigate("/profile");
+                    window.location.reload()
+                  }} 
                       >
                         <i className="now-ui-icons users_circle-08"></i>
                       </NavLink>

@@ -78,13 +78,17 @@ export const finduserbyid = (id) => async (dispatch) => {
   } catch (error) {
   }
 };
-export const updateusers = (id,data) => async (dispatch) => {
+export const updateusers = (id,data,navigate) => async (dispatch) => {
   try {
     const res = await axios.put(`/users/edit/${id}`,data);
     dispatch({ type:UPDATE_USERS, payload: res.data });
   
+    navigate("/profile");
     window.location.reload();
   } catch (error) {
-   
+    error.response.data.errors.forEach((el) => {
+      dispatch(alert_error(el.msg));
+    });
+    dispatch({ type: FAIL, payload: error.response.data });
   }
 };

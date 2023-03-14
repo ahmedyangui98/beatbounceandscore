@@ -75,8 +75,10 @@ export default function UserNaviguation() {
                       </NavItem>
                       <NavItem>
                         <NavLink
-                          href="#pablo"
-                          onClick={(e) => e.preventDefault()}
+                          onClick={() => {
+                            navigate("/profile");
+                            window.location.reload()
+                          }} 
                         >
                           <i
                             aria-hidden={true}
@@ -89,7 +91,6 @@ export default function UserNaviguation() {
                           aria-haspopup={true}
                           caret
                           color="default"
-                          href="http://example.com?ref=creativetim"
                           nav
                         >
                           <i aria-hidden="true" class="now-ui-icons ui-1_settings-gear-63"></i>

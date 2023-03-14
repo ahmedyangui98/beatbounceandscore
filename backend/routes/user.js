@@ -16,7 +16,7 @@ userRoutes.get("/current", IsAuth, (req, res) => {
 });
 userRoutes.get("/all", Getusers);
 userRoutes.delete("/delete/:id", Deleteuser);
-userRoutes.put("/edit/:id", EditUser);
+userRoutes.put("/edit/:id", validateDate,registervalidation, Validation,EditUser);
 userRoutes.get("/find/:id", Finduserbyid);
 userRoutes.put("/editu/:id", EditU);
 

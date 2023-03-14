@@ -13,7 +13,7 @@ import {
   NavLink,
   Nav,
   Container,UncontrolledTooltip
- ,Button
+ 
 } from "reactstrap";
 import { logout } from "../redux/Action/authAction";
 import { useNavigate } from "react-router-dom";
@@ -75,8 +75,10 @@ export default function CoachNavigation() {
                     </NavItem>
                     <NavItem>
                       <NavLink
-                        href="#pablo"
-                        onClick={(e) => e.preventDefault()}
+                         onClick={() => {
+                          navigate("/profile");
+                          window.location.reload()
+                        }} 
                       >
                         <i className="now-ui-icons users_circle-08"></i>
                       </NavLink>
@@ -87,7 +89,6 @@ export default function CoachNavigation() {
                           aria-haspopup={true}
                           caret
                           color="default"
-                          href="http://example.com?ref=creativetim"
                           nav
                         >
                           <i aria-hidden="true" class="now-ui-icons ui-1_settings-gear-63"></i>
