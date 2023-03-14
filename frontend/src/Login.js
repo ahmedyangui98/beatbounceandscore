@@ -18,6 +18,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login,updateusers } from "./redux/Action/authAction";
 import Alerterrors from "./Alerterrors";
+import DarkFooter from "./Footers/DarkFooter.js";
+
 
 
 import { useSelector } from "react-redux";
@@ -50,28 +52,28 @@ const[role,]=useState(user.role)
     <div
       className="page-header-image"
       style={{
-        backgroundImage: "url(" + require("./assets/img/bg4.jpg") + ")",
+        backgroundImage: "url(" + require("./assets/img/loginpagenew.jpg") + ")",
         backgroundSize: "cover",
         backgroundPosition: "top center",
         minHeight: "1000px"
       }}
+      
     >
       <div className="content">
-      <Container>
-        <Col className="ml-auto mr-auto" md="4">
+      <Container>  
+        <Col className="ml-auto mr-auto" md="4" >
           <Card className="card-login card-plain" >
             <Form action="" className="form" method="">
             <CardHeader className="text-center">
-                    <div className="logo-container">
+                    <div className="photo-container"  >
                       <img
                         alt="..."
-                        src={require("./assets/img/now-logo.png")}
+                        src={require("./assets/img/logoelearning.png")} style={{maxWidth: "200px"}}
                       ></img>
                     </div>
                   </CardHeader>
               <CardBody>
                 
-            
                 <InputGroup
                   className={
                     "no-border" + (emailFocus ? " input-group-focus" : "")
@@ -124,23 +126,14 @@ const[role,]=useState(user.role)
               </CardFooter>
             </Form>
           </Card>
-        <div className="col text-center">
-          <Button
-            className="btn-round btn-white"
-            color="default"
-            to="/login-page"
-            outline
-            size="lg"
-            tag={Link}
-          >
-            View Login Page
-          </Button>
-        </div>
+        
         </Col>
       </Container>
       <Alerterrors/>
     </div>  
     </div>
+    <DarkFooter />
+
   </>
   );
 };

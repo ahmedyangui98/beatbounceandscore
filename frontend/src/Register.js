@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { register } from "./redux/Action/authAction";
 import Datetime from "react-datetime";
+import DarkFooter from "./Footers/DarkFooter.js";
+
 // reactstrap components
 import {
   Button,
@@ -78,10 +80,10 @@ const Register = () => {
     <div
       className="section section-signup"
       style={{
-        backgroundImage: "url(" + require("./assets/img/bg11.jpg") + ")",
+        backgroundImage: "url(" + require("./assets/img/sigupbackground.jpg") + ")",
         backgroundSize: "cover",
         backgroundPosition: "top center",
-        minHeight: "700px"
+        maxHeight: "1920px"
       }}
     >
       <Container>
@@ -261,6 +263,8 @@ const Register = () => {
       </Container>
       <Alerterrors/>
     </div>
+    <DarkFooter />
+
   </>)
 };
 
