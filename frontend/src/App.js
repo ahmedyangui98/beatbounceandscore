@@ -18,6 +18,7 @@ import UserNaviguation from "./User/UserNaviguation";
 import CoachNavigation from "./Coach/CoachNavigation";
 import ParentNaviguation from "./Parent/ParentNaviguation";
 import ProfileU from "./ProfileU"
+import UserManagement from "./Admin/UserManagment";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -76,8 +77,8 @@ function App() {
           element={<PrivateRoutes Children={profile} />}
         />
          <Route
-          path="/courses"
-          element={<PrivateRoutes Children={<Courses />} />}
+          path="/users"
+          element={<PrivateRoutes Children={<UserManagement />} />}
         />
       </Routes>
     </div>

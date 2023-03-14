@@ -104,9 +104,22 @@ function DefaultNavigation() {
               navbar
             >
               <Nav navbar>
+
+              <NavItem>
+                  <NavLink
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("download-section")
+                        .scrollIntoView();
+                    }}
+                   >
+                    <i className="now-ui-icons business_globe"></i>
+                  <Link to ="/">Home</Link>
+                  </NavLink>
+                </NavItem>
                 <NavItem>
                   <NavLink
-                    href="#pablo"
                     onClick={(e) => {
                       e.preventDefault();
                       document
@@ -120,7 +133,7 @@ function DefaultNavigation() {
                 </NavItem>
                 
                 <UncontrolledDropdown nav>
-                  <DropdownToggle
+                  <NavLink
                     caret
                     color="default"
                     href="#pablo"
@@ -129,7 +142,7 @@ function DefaultNavigation() {
                   >
                     <i className="now-ui-icons design_app mr-1"></i>
                     <Link to ="/login">login</Link>
-                  </DropdownToggle>
+                  </NavLink>
                  
               
                 </UncontrolledDropdown>

@@ -17,6 +17,9 @@ import { useNavigate } from 'react-router-dom';
 import { logout } from '../redux/Action/authAction';
 import { useDispatch } from 'react-redux';
 import Logo from "../assets/img/logo.png"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 export default function AdminNaviguation() {
   const navigate=useNavigate()
@@ -63,48 +66,30 @@ export default function AdminNaviguation() {
       </div>
       <Collapse isOpen={collapseOpen} navbar>
         <Nav className="ml-auto" navbar>
-          <NavItem>
-            <NavLink
-              href="#pablo"
-              onClick={(e) => e.preventDefault()}
-            >
-              <i className="fab fa-facebook-square"></i>
-              <p>Share</p>
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              href="#pablo"
-              onClick={(e) => e.preventDefault()}
-            >
-              <i className="fab fa-twitter"></i>
-              <p>Tweet</p>
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              href="#pablo"
-              onClick={(e) => e.preventDefault()}
-            >
-              <i className="fab fa-pinterest"></i>
-              <p>Pin</p>
-            </NavLink>
-          </NavItem>
-          <NavItem>
-                      <NavLink
-                        href="#pablo"
-                        onClick={(e) => e.preventDefault()}
-                      >
-                       
-                      </NavLink>
-                    </NavItem>
 
+        <NavItem>
+          <NavLink
+             to="/profile"
+              onClick={(e) => {e.preventDefault();navigate("/profile")}}
+            >
+              <FontAwesomeIcon icon={faHome} />
+              <p>Home</p>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+             to="/users"
+              onClick={(e) => {e.preventDefault();navigate("/users")}}
+            >
+             <FontAwesomeIcon icon={faUser} />
+              <p>Users</p>
+            </NavLink>
+          </NavItem>
               <UncontrolledDropdown nav>
                         <DropdownToggle
                           aria-haspopup={true}
                           caret
                           color="default"
-                          href="http://example.com?ref=creativetim"
                           nav
                         >
                           <i aria-hidden="true" class="now-ui-icons ui-1_settings-gear-63"></i>

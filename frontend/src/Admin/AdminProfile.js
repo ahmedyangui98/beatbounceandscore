@@ -13,15 +13,25 @@ import {
 } from "react-icons/fa";
 import {Button} from "react-bootstrap";
 import {  useNavigate } from "react-router-dom";
-
+import {FormSelect} from "react-bootstrap";
 import { FaRegEnvelopeOpen } from "react-icons/fa";
+import { useState } from "react";
 const AdminProfile = () => {const navigate = useNavigate();
   const inputRef = useRef();
   const dispatch = useDispatch();
+  const [selectedId, setSelectedId] = useState("user");
+  const handleSelectChange = (e) => {
+    console.log(e.target.value);
+    setSelectedId(e.target.value);
+  };
   useEffect(() => {
     dispatch(getusers());
     dispatch(get_current())
-  }, );
+  }, []);
+  
+  const user = useSelector((state) => state.Authreducer.user);
+ 
+ 
   const editUserProfile = async (e) => {
     const config = {
       headers: {
@@ -37,23 +47,14 @@ const AdminProfile = () => {const navigate = useNavigate();
     
     }
   };
-  const user = useSelector((state) => state.Authreducer.user);
-  const users = useSelector((state) => state.Authreducer.users);
+
 
   return (
     <div>
       <br></br>
       <div className="card_profile p-3 py-4">
         <div className="text-center">
-          <img
-            src={
-              user?.image
-                ? `uploads/${user?.image}`
-                : "https://i.pinimg.com/736x/c9/e3/e8/c9e3e810a8066b885ca4e882460785fa.jpg"
-            }
-            width={100}
-            className="rounded-circle"
-          />
+          
           
           <h3 className="mt-2">{user?.firstname}</h3>
           <span className="mt-1 clearfix">{user?.email}</span>
@@ -83,53 +84,26 @@ const AdminProfile = () => {const navigate = useNavigate();
           <hr className="line" />
 
           <div className="social-buttons mt-5">
-            <button className="neo-button">
+            <Button className="neo-button">
               <FaFacebookF />
-            </button>
-            <button className="neo-button">
+            </Button>
+            <Button className="neo-button">
               <FaFacebookMessenger />
-            </button>
-            <button className="neo-button">
+            </Button>
+            <Button className="neo-button">
               {" "}
               <FaRegEnvelopeOpen />
-            </button>
-            <button className="neo-button">
+            </Button>
+            <Button className="neo-button">
               <FaInstagram />
-            </button>
-            <button className="neo-button">
+            </Button>
+            <Button className="neo-button">
               <FaTwitter />
-            </button>
+            </Button>
           </div>
-          <div className="profile mt-5">
-            <button
-              className="profile_button px-5"
-              onClick={() => inputRef.current.click()}
-            >
-              upload image
-            </button>
-            
-            <input
-              type="file"
-              ref={inputRef}
-              hidden
-              onChange={editUserProfile}
-            />
-          </div>
+        
         </div>
         
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          flexWrap: "wrap",
-        }}
-      >
-        {users?.map((el) => (
-          <div key={el._id}>
-            <Usercard el={el} />
-          </div>
-        ))}
       </div>
     </div>
   );
