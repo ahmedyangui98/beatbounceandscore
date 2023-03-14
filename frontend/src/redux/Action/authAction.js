@@ -46,16 +46,14 @@ export const get_current = () => async (dispatch) => {
     const res = await axios.get("/users/current", config);
     dispatch({ type: GET_CURRENT, payload: res.data });
   } catch (error) {
-    console.log(error);
+   
   }
 };
 export const getusers = () => async (dispatch) => {
   try {
     const res = await axios.get("/users/all");
-    console.log(res.data);
     dispatch({ type: GET_USERS, payload: res.data });
   } catch (error) {
-    console.log(error);
   }
 };
 export const logout = () => {
@@ -70,7 +68,6 @@ export const deleteusers = (id) => async (dispatch,navigate) => {
     navigate("/profile");
     window.location.reload();
   } catch (error) {
-    console.log(error);
   }
 };
 export const finduserbyid = (id) => async (dispatch) => {
@@ -79,7 +76,6 @@ export const finduserbyid = (id) => async (dispatch) => {
     console.log(res.data);
     dispatch({ type: FIND_USER, payload: res.data });
   } catch (error) {
-    console.log(error);
   }
 };
 export const updateusers = (id,data) => async (dispatch) => {
@@ -89,7 +85,6 @@ export const updateusers = (id,data) => async (dispatch) => {
   
     window.location.reload();
   } catch (error) {
-   console.log(error)
    
   }
 };

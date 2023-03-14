@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getusers,get_current } from "../redux/Action/authAction"
 import Usercard from "./Usercard";
@@ -22,7 +21,7 @@ const AdminProfile = () => {const navigate = useNavigate();
   useEffect(() => {
     dispatch(getusers());
     dispatch(get_current())
-  }, []);
+  }, );
   const editUserProfile = async (e) => {
     const config = {
       headers: {
@@ -31,18 +30,16 @@ const AdminProfile = () => {const navigate = useNavigate();
     };
     const data = new FormData();
     data.append("image", e.target.files[0]);
-    console.log("data "+FormData.get("image"+e.target.files[0]))
     try {
       await axios.put("/users/uploadimage", data, config);
       dispatch(get_current());
     } catch (error) {
-      console.log(error);
+    
     }
   };
   const user = useSelector((state) => state.Authreducer.user);
   const users = useSelector((state) => state.Authreducer.users);
-  console.log("user"+user.email)
-  console.log(users);
+
   return (
     <div>
       <br></br>

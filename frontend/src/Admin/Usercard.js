@@ -5,7 +5,7 @@ import {deleteusers} from "../redux/Action/authAction"
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { updateusers } from "../redux/Action/authAction"
-import  { useState ,useRef} from "react";
+import  { useState ,} from "react";
 
 const Usercard = ({ el }) => {
   const dispatch = useDispatch();
@@ -15,7 +15,6 @@ const Usercard = ({ el }) => {
   const [firstname, setFirstname] = useState(el.firstname);
   const [role, setRole] = useState(el.role);
   const [image, setImage] = useState("");
-  const inputRef = useRef();
   const handleShow = () => setShow(true);
   const handleEdit = (e) => {
     e.preventDefault();
