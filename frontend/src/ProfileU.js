@@ -149,7 +149,7 @@ const ProfileU = () => {
           
             
       <Button
-              className="btn-round" color="danger" size="lg"
+              className="btn-round" size="lg" color="danger" 
                 onClick={() => setModal1(true)}
               >
                 Delete

@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { updateusers } from "../redux/Action/authAction"
 import  { useState ,} from "react";
+import { Navigate } from "react-router-dom";
 
 const Usercard = ({ el }) => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const Usercard = ({ el }) => {
       updateusers(el._id, el),
     
     );
+
   };
 
   const unbanuser = (e) => {
@@ -54,16 +56,24 @@ const Usercard = ({ el }) => {
           }}
         >
           <ListGroup variant="flush">
-            <ListGroup.Item>name {el.firstname}</ListGroup.Item>
-            <ListGroup.Item>email {el.email}</ListGroup.Item>
-            <ListGroup.Item>role {el.role}</ListGroup.Item>
+          <div className="photo-container">
+            <img alt=""  src={`https://firebasestorage.googleapis.com/v0/b/beatbounceandscore.appspot.com/o/${el.image}?alt=media&token=894834e1-f47f-4826-b6dc-8801bcae91aa`}></img>
+          </div>
+            <ListGroup.Item>Username :{el.firstname}</ListGroup.Item>
+            <ListGroup.Item>Lastname :{el.lastname}</ListGroup.Item>
+            <ListGroup.Item>Email :{el.email}</ListGroup.Item>
+            <ListGroup.Item>Role :{el.role}</ListGroup.Item>
             <ListGroup.Item
-              style={{ display: "flex", justifyContent: "space-between" }}
+              
             >
-              <Button variant="danger" onClick={() => dispatch(deleteusers(el._id))}>DELETE</Button>
-              <Button variant="warning" onClick={handleShow}>edit</Button>
-              <Button variant="danger" onClick={banuser}>Ban</Button>
-              <Button variant="warning" onClick={unbanuser}>Unban</Button>
+              <Button variant="danger" className="btn-round" size="lg" onClick={() => dispatch(deleteusers(el._id))}>DELETE</Button>
+              <Button variant="warning" className="btn-round" size="lg" onClick={handleShow}>edit</Button>
+              </ListGroup.Item>ListGroup.Item
+              <ListGroup.Item
+             
+            >
+              <Button variant="danger" className="btn-round" size="lg" disabled={(el.isBanned=="true")} onClick={banuser} >Ban</Button>
+              <Button variant="success"  className="btn-round" size="lg" disabled={(el.isBanned=="false")} onClick={unbanuser}>Unban</Button>
             </ListGroup.Item>
           </ListGroup>
         </Card>
