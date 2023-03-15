@@ -17,6 +17,9 @@ import CoachNavigation from "./Coach/CoachNavigation";
 import ParentNaviguation from "./Parent/ParentNaviguation";
 import ProfileU from "./ProfileU"
 import UserManagement from "./Admin/UserManagment";
+import UserGenderChart from "./Admin/UserGenderChart";
+import UserRolesChart from "./Admin/UserRolesChart";
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -76,6 +79,13 @@ function App() {
          <Route
           path="/users"
           element={<PrivateRoutes Children={<UserManagement />} />}
+        />
+        <Route path="/countGender" 
+        element={<UserGenderChart/>}
+        />
+        <Route
+          path="/count"
+          element={<UserRolesChart  />}
         />
       </Routes>
     </div>

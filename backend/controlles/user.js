@@ -162,4 +162,25 @@ exports.verifyEmail = async (req,res) =>{
   res.json({success: true, message: "your email is verified.",user:{name: user.name, email: user.email, id: user._id},
 });
 
-};        
+};   
+
+
+exports.countByGender = async(req, res) => {
+  try {
+    const count = await users.countByGender();
+    res.json(count);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+exports.countByRole = async(req, res) => {
+  try {
+    const count = await users.countByRole();
+    res.json(count);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+

@@ -92,3 +92,18 @@ export const updateusers = (id,data,navigate) => async (dispatch) => {
     dispatch({ type: FAIL, payload: error.response.data });
   }
 };
+
+export const update= (id,data,navigate) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/users/editu/${id}`,data);
+    dispatch({ type:UPDATE_USERS, payload: res.data });
+  
+    navigate("/profile");
+    window.location.reload();
+  } catch (error) {
+    error.response.data.errors.forEach((el) => {
+      dispatch(alert_error(el.msg));
+    });
+    dispatch({ type: FAIL, payload: error.response.data });
+  }
+};

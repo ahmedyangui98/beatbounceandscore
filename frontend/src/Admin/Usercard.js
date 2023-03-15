@@ -6,23 +6,40 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { updateusers } from "../redux/Action/authAction"
 import  { useState ,} from "react";
-import { Navigate } from "react-router-dom";
 
+import { update } from "../redux/Action/authAction";
 const Usercard = ({ el }) => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const [email, setEmail] = useState(el.email);
   const [firstname, setFirstname] = useState(el.firstname);
+  const [lastname, setLastname] = useState(el.lastname);
+  const [password, setPassword] = useState(el.password);
+  const [birthdate, setBirthdate] = useState(el.birthdate);
+
+
   const [role, setRole] = useState(el.role);
-  const [image, setImage] = useState("");
+  const [isBanned, setIsBanned] = useState("false");
+
+  const [image, setImage] = useState(el.image);
   const handleShow = () => setShow(true);
-  const handleEdit = (e) => {
+  const handleEdit = async (e) => {
     e.preventDefault();
-    dispatch(
-      updateusers(el._id, { firstname,email,role }),
-      handleClose()
-    );
+    el.firstname=firstname
+    el.lastname=lastname
+    el.role=role
+    el.isBanned=isBanned
+    el.password=password
+    el.image=image
+    el.birthdate=birthdate
+
+   dispatch(
+      update(el._id, el),  
+      window.location.reload()
+      
+    ); handleClose()
+ 
   };
 
   const banuser = (e) => {
@@ -43,6 +60,7 @@ const Usercard = ({ el }) => {
     
     );
   };
+  
   
 
   return (
@@ -90,6 +108,16 @@ const Usercard = ({ el }) => {
                       placeholder="Enter name"
                       onChange={(e) => setFirstname(e.target.value)}
                       value={firstname}
+                    />
+                   
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control
+                      type="name"
+                      placeholder="Enter name"
+                      onChange={(e) => setLastname(e.target.value)}
+                      value={lastname}
                     />
                    
                   </Form.Group>

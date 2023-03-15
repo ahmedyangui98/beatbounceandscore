@@ -96,6 +96,24 @@ export default function AdminNaviguation() {
                           <p>Settings</p>
                         </DropdownToggle>
                         <DropdownMenu>
+                        <DropdownItem
+                            onClick={() => {
+                              navigate("/count");
+                              window.location.reload()
+                            }} 
+                          >
+                              Count Roles
+                          </DropdownItem>
+
+                          <DropdownItem
+                            onClick={() => {
+                              navigate("/countGender");
+                              window.location.reload()
+                            }} 
+                          >
+                              Count Gender
+                          </DropdownItem>
+
                           <DropdownItem
                             onClick={() => {
                               dispatch(logout());

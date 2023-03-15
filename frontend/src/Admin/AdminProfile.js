@@ -13,9 +13,10 @@ import {
 } from "react-icons/fa";
 import {Button} from "react-bootstrap";
 import {  useNavigate } from "react-router-dom";
-import {FormSelect} from "react-bootstrap";
 import { FaRegEnvelopeOpen } from "react-icons/fa";
 import { useState } from "react";
+
+
 const AdminProfile = () => {const navigate = useNavigate();
   const inputRef = useRef();
   const dispatch = useDispatch();
@@ -103,7 +104,6 @@ const AdminProfile = () => {const navigate = useNavigate();
           </div>
         
         </div>
-        
       </div>
     </div>
   );

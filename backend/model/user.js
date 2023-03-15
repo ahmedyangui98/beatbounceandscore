@@ -38,4 +38,29 @@ const users = new mongoose.Schema({
   }
  
 });
+users.statics.countByRole = async function() {
+  try {
+    const count = await this.aggregate([
+      { $group: { _id: '$role', count: { $sum: 1 } } }
+    ]);
+    return count;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}
+
+users.statics.countByGender = async function() {
+  try {
+    const count = await this.aggregate([
+      { $group: { _id: '$gender', count: { $sum: 1 } } }
+    ]);
+    return count;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}
+
+
 module.exports = mongoose.model("users", users);

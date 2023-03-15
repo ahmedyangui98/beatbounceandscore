@@ -1,5 +1,5 @@
 const express = require("express");
-const { Register, Login, Getusers,Deleteuser,EditUser,EditU, Finduserbyid, verifyEmail} = require("../controlles/user");const { IsAuth } = require("../middlewear/isAuth");
+const { Register, Login, Getusers,Deleteuser,EditUser,EditU, Finduserbyid, verifyEmail,countByGender,countByRole} = require("../controlles/user");const { IsAuth } = require("../middlewear/isAuth");
 const { registervalidation,
   Validation,
   loginvalidation,
@@ -19,5 +19,7 @@ userRoutes.delete("/delete/:id", Deleteuser);
 userRoutes.put("/edit/:id", validateDate,registervalidation, Validation,EditUser);
 userRoutes.get("/find/:id", Finduserbyid);
 userRoutes.put("/editu/:id", EditU);
+userRoutes.get("/countbygender",countByGender);
+userRoutes.get("/countByRole",countByRole);
 
 module.exports = userRoutes;
