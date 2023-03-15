@@ -8,7 +8,7 @@ exports. generateOTP = ()=> {
     }
     return otp;
   }
-  exports.mailTranspot() = ()=>{
+  exports.mailTranspot = ()=>{
     nodemailer.createTransport ({
        
             host: "sandbox.smtp.mailtrap.io",
