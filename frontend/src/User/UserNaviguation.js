@@ -13,11 +13,13 @@ import {
   NavLink,
   Nav,
   Container,
-  UncontrolledTooltip,Button
+  UncontrolledTooltip,
 } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/Action/authAction";
+import Logo from "../assets/img/logo.png"
+
 export default function UserNaviguation() {
   const navigate=useNavigate()
   const dispatch=useDispatch()
@@ -26,12 +28,25 @@ export default function UserNaviguation() {
   return (
     <Navbar className="bg-info" expand="lg">
                 <Container>
-                  <NavbarBrand
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    Icons
-                  </NavbarBrand>
+                <NavbarBrand
+              
+              target="_blank"
+              id="navbar-brand"
+            >
+                <img
+          variant="top" 
+          src={Logo} alt="okk" style={ {height: " 70px ", width: "70px"}}
+        />
+            </NavbarBrand>
+            <UncontrolledTooltip target="#navbar-brand">
+              Designed by Coders Breed
+            </UncontrolledTooltip>
+        <NavbarBrand
+          href="#pablo"
+          onClick={(e) => e.preventDefault()}
+        >
+          <h5>Beat Bounce & Score</h5>
+        </NavbarBrand>
                   <button
                     onClick={() => {
                       document.documentElement.classList.toggle("nav-open");
@@ -60,8 +75,10 @@ export default function UserNaviguation() {
                       </NavItem>
                       <NavItem>
                         <NavLink
-                          href="#pablo"
-                          onClick={(e) => e.preventDefault()}
+                          onClick={() => {
+                            navigate("/profile");
+                            window.location.reload()
+                          }} 
                         >
                           <i
                             aria-hidden={true}
@@ -71,74 +88,29 @@ export default function UserNaviguation() {
                       </NavItem>
                       <UncontrolledDropdown nav>
                         <DropdownToggle
+                          aria-haspopup={true}
                           caret
                           color="default"
-                          href="#pablo"
                           nav
-                          onClick={(e) => e.preventDefault()}
                         >
-                          <i
-                            aria-hidden={true}
-                            className="now-ui-icons ui-1_settings-gear-63"
-                          ></i>
+                          <i aria-hidden="true" class="now-ui-icons ui-1_settings-gear-63"></i>
+                          <p>Settings</p>
                         </DropdownToggle>
-                        <DropdownMenu right>
-                          <DropdownItem header tag="a">
-                            Dropdown header
-                          </DropdownItem>
+                        <DropdownMenu>
                           <DropdownItem
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
+                            onClick={() => {
+                              dispatch(logout());
+                              navigate("/");
+                              window.location.reload()
+                            }} 
                           >
-                            Action
+                            <i className="now-ui-icons arrows-1_share-66 mr-1"></i>
+                              Logout
                           </DropdownItem>
-                          <DropdownItem
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            Another action
-                          </DropdownItem>
-                          <DropdownItem
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            Something else here
-                          </DropdownItem>
-                          <div className="divider"></div>
-                          <DropdownItem
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            Separated link
-                          </DropdownItem>
-                          <div className="divider"></div>
-                          <DropdownItem
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            One more separated link
-                          </DropdownItem>
+                    
+      
                         </DropdownMenu>
-                      </UncontrolledDropdown>
-                      <NavItem>
-                  <Button
-                    className="nav-link "
-                    color="info"
-                    onClick={() => {
-                      dispatch(logout());
-                      navigate("/");
-                      window.location.reload()
-                    }}
-                    id="upgrade-to-pro"
-                    target="_blank"
-                  >
-                    <i className="now-ui-icons arrows-1_share-66 mr-1"></i>
-                   deconnexion
-                  </Button>
-                  <UncontrolledTooltip target="#upgrade-to-pro">
-                    Cooming soon!
-                  </UncontrolledTooltip>
-                </NavItem>
+              </UncontrolledDropdown>
                     </Nav>
                   </Collapse>
                 </Container>

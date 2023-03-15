@@ -3,6 +3,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { register } from "./redux/Action/authAction";
+import Datetime from "react-datetime";
+import DarkFooter from "./Footers/DarkFooter.js";
+
 // reactstrap components
 import {
   Button,
@@ -18,9 +21,19 @@ import {
   InputGroup,
   Container,
   Row,
+  Label,
+  Col,
+
 } from "reactstrap";
 import Alerterrors from "./Alerterrors";
-import { useSelector } from "react-redux";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+} from "firebase/storage";
+import { storage } from "./firebase";
+
+
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -29,28 +42,48 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [birthdate, setBirthdate] = useState("");
-
+  const [gender, setGender] = useState("");
   const [image, setImage] = useState("");
+  const [imagee, setImagee] = useState("");
+
+
   const [firstnameFocus, setFirstnameFocus] = useState(false);
   const [lastnameFocus, setLastnameFocus] = useState(false);
   const [lastFocus, setLastFocus] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
-  const [birthdateFocus, setBirthdateFocus] = useState(false);
-  const user = useSelector((state) => state.Authreducer.user);
+  const [birthdateFocus, ] = useState(false);
+  const [imageFocus, ] = useState(false);
+
+
   const handleClick = (e) => {
     e.preventDefault();
-    dispatch(register({ firstname,lastname, email, password,image }, navigate));
-   
+    dispatch(register({ firstname,lastname, email, password,image,birthdate,gender }, navigate));
+    console.log(image.name);
   };
 
+  const handleGenderChange = (event) => {
+    setGender(event.target.value);
+  };
+
+  const uploadFile = () => {
+    if (imagee == null) return;
+    const imageRef = ref(storage, `${imagee.name}`);
+    uploadBytes(imageRef, imagee).then((snapshot) => {
+      getDownloadURL(snapshot.ref);
+    });
+    alert("Uploaded successfully");
+   // image.setImage(image.name);
+  };  
+
+ 
   return(    <>
     <div
       className="section section-signup"
       style={{
-        backgroundImage: "url(" + require("./assets/img/bg11.jpg") + ")",
+        backgroundImage: "url(" + require("./assets/img/sigupbackground.jpg") + ")",
         backgroundSize: "cover",
         backgroundPosition: "top center",
-        minHeight: "700px"
+        maxHeight: "1920px"
       }}
     >
       <Container>
@@ -61,33 +94,7 @@ const Register = () => {
                 <CardTitle className="title-up" tag="h3">
                   Sign Up
                 </CardTitle>
-                <div className="social-line">
-                  <Button
-                    className="btn-neutral btn-icon btn-round"
-                    color="facebook"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <i className="fab fa-facebook-square"></i>
-                  </Button>
-                  <Button
-                    className="btn-neutral btn-icon btn-round"
-                    color="twitter"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                    size="lg"
-                  >
-                    <i className="fab fa-twitter"></i>
-                  </Button>
-                  <Button
-                    className="btn-neutral btn-icon btn-round"
-                    color="google"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <i className="fab fa-google-plus"></i>
-                  </Button>
-                </div>
+                
               </CardHeader>
               <CardBody>
                 <InputGroup
@@ -97,7 +104,7 @@ const Register = () => {
                 >
                   <InputGroupAddon addonType="prepend">
                     <InputGroupText>
-                      <i className="now-ui-icons users_circle-08"></i>
+                      <i className="now-ui-icons text_caps-small"></i>
                     </InputGroupText>
                   </InputGroupAddon>
                   <Input
@@ -116,7 +123,7 @@ const Register = () => {
                 >
                   <InputGroupAddon addonType="prepend">
                     <InputGroupText>
-                      <i className="now-ui-icons users_circle-08"></i>
+                      <i className="now-ui-icons text_caps-small"></i>
                     </InputGroupText>
                   </InputGroupAddon>
                   <Input
@@ -170,25 +177,26 @@ const Register = () => {
                 </InputGroup>
                 <InputGroup
                   className={
-                    "no-border" + (lastFocus ? " input-group-focus" : "")
+                    "no-border" + (imageFocus ? " input-group-focus" : "")
                   }
                 >
                   <InputGroupAddon addonType="prepend">
-                    <InputGroupText>
-                      <i className="now-ui-icons text_caps-small"></i>
-                    </InputGroupText>
-                  </InputGroupAddon>
-                  <Input
-                    placeholder="img"
-                    type="file" name="img"
-                    onChange={(e) => setImage({...image,image:e.target.files[0].name})}
-                    value={image}
-                    onFocus={() => setLastFocus(true)}
-                    onBlur={() => setLastFocus(false)
-                    }
+                    
+                    
                    
+                  </InputGroupAddon>
                  
-                  ></Input>
+                
+      <Input
+        type="file"
+        onChange={(event) => {
+          setImagee(event.target.files[0]);
+          setImage(event.target.files[0].name);
+        }}
+      />
+      <Button className="btn-round" onClick={uploadFile}>Upload </Button>
+
+
                 </InputGroup>
 
                 <InputGroup
@@ -196,20 +204,46 @@ const Register = () => {
                     "no-border" + (birthdateFocus ? " input-group-focus" : "")
                   }
                 >
-                  <InputGroupAddon addonType="prepend">
-                    <InputGroupText>
-                      <i className="now-ui-icons users_circle-08"></i>
-                    </InputGroupText>
-                  </InputGroupAddon>
-                  <Input
+                  
+                  <div className="datepicker-container">
+                  <Datetime
                     placeholder=""
                     type="date"
-                    onFocus={() => setBirthdateFocus(true)}
-                    onBlur={() => setBirthdateFocus(false)}
-                    onChange={(e) => setBirthdate(e.target.value)}
-                    value={birthdate}
-                  ></Input>
+          
+
+                    selected={birthdate} onChange={birthdate => setBirthdate(birthdate)}
+                    timeFormat={false}
+                    inputProps={{ placeholder: "Birthdate Here" }}
+                  />
+                  </div>
                 </InputGroup>
+                
+              <Col>
+                <InputGroup check className="input-group-focus">
+                <Label>
+                  <Input
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    checked={gender === "male"}
+                    onChange={handleGenderChange}
+                  />
+                  Male
+                </Label>
+              </InputGroup>
+              <InputGroup check className="input-group-focus">
+              <Label>
+                  <Input
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    checked={gender === "female"}
+                    onChange={handleGenderChange}
+                  />
+                  Female
+                </Label>
+              </InputGroup>
+              </Col>
 
               </CardBody>
               <CardFooter className="text-center">
@@ -229,6 +263,8 @@ const Register = () => {
       </Container>
       <Alerterrors/>
     </div>
+    <DarkFooter />
+
   </>)
 };
 

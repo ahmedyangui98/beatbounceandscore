@@ -5,10 +5,14 @@ exports.registervalidation = [
   body("lastname", "lastname at least 3 caractes").isLength({ min: 3 }),
   body("email", "please add a valid email").isEmail(),
   body("password", "at least 6 caractes").isLength({ min: 6 }),
+  body("gender", "please select your gender").not().isEmpty(),
+  body("image", "please select an image").not().isEmpty(),  
 ];
 exports.loginvalidation = [
   body("email", "please add a valid email").isEmail(),
-  body("password", "at least 6 caractes").isLength({ min: 6 }),
+  body("password", "password doesn't match").isLength({ min: 6 }),
+  //body("isBanned", "Cannot login ,Your account is banned").equals("true"),
+
 ];
 exports.Validation = (req, res, next) => {
   const errors = validationResult(req);

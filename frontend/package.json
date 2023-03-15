@@ -8,8 +8,12 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.3",
+<<<<<<< HEAD
     "express-validator": "^6.15.0",
     "nodemon": "^2.0.21",
+=======
+    "mongoose": "^7.0.1",
+>>>>>>> d172939f30fe240bdc40643a203bf6b8cf2f8286
     "nouislider": "^15.7.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",

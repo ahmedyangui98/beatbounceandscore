@@ -3,19 +3,12 @@
 
 
 import Logo from "../src/assets/img/logo.png"
-import { logout } from "./redux/Action/authAction";
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch/* ,useSelector*/ } from "react-redux";
-// reactstrap components
-import { useNavigate } from "react-router-dom";
 
 import {
-  Button,
+ 
   Collapse,
-  DropdownToggle,
-  /* DropdownMenu,
-  DropdownItem, */
   UncontrolledDropdown,
   NavbarBrand,
   Navbar,
@@ -29,8 +22,6 @@ import {
 function DefaultNavigation() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [collapseOpen, setCollapseOpen] = React.useState(false);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   React.useEffect(() => {
     const updateNavbarColor = () => {
       if (
@@ -104,9 +95,22 @@ function DefaultNavigation() {
               navbar
             >
               <Nav navbar>
+
+              <NavItem>
+                  <NavLink
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("download-section")
+                        .scrollIntoView();
+                    }}
+                   >
+                    <i className="now-ui-icons business_globe"></i>
+                  <Link to ="/">Home</Link>
+                  </NavLink>
+                </NavItem>
                 <NavItem>
                   <NavLink
-                    href="#pablo"
                     onClick={(e) => {
                       e.preventDefault();
                       document
@@ -120,7 +124,7 @@ function DefaultNavigation() {
                 </NavItem>
                 
                 <UncontrolledDropdown nav>
-                  <DropdownToggle
+                  <NavLink
                     caret
                     color="default"
                     href="#pablo"
@@ -129,7 +133,7 @@ function DefaultNavigation() {
                   >
                     <i className="now-ui-icons design_app mr-1"></i>
                     <Link to ="/login">login</Link>
-                  </DropdownToggle>
+                  </NavLink>
                  
               
                 </UncontrolledDropdown>

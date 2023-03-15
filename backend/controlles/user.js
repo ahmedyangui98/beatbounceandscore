@@ -44,6 +44,8 @@ exports.Login = async (req, res) => {
   const { email, password, id,isBanned } = req.body;
   try {
     const foundUser = await users.findOne({ email });
+    if (foundUser.isBanned=="true") 
+    { return res.status(400).send({ errors: [{ msg: "your account is banned" }] }); }
     if (!foundUser) {
       return res.status(400).send({ errors: [{ msg: "bad credentials , Email not found" }] });
     }

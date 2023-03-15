@@ -10,12 +10,17 @@ import {
   NavItem,
   NavLink,
   Nav,
-  Container,UncontrolledTooltip
- ,Button
+  Container,
+  UncontrolledTooltip,
 } from "reactstrap";
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../redux/Action/authAction';
 import { useDispatch } from 'react-redux';
+import Logo from "../assets/img/logo.png"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+
 export default function AdminNaviguation() {
   const navigate=useNavigate()
   const dispatch=useDispatch()
@@ -25,11 +30,25 @@ export default function AdminNaviguation() {
     <Navbar className="bg-danger" expand="lg">
     <Container>
       <div className="navbar-translate">
+
+      <NavbarBrand
+              
+              target="_blank"
+              id="navbar-brand"
+            >
+                <img
+          variant="top" 
+          src={Logo} alt="okk" style={ {height: " 70px ", width: "70px"}}
+        />
+            </NavbarBrand>
+            <UncontrolledTooltip target="#navbar-brand">
+              Designed by Coders Breed
+            </UncontrolledTooltip>
         <NavbarBrand
           href="#pablo"
           onClick={(e) => e.preventDefault()}
         >
-          Danger Color
+          <h5>Beat Bounce & Score</h5>
         </NavbarBrand>
         <button
           onClick={() => {
@@ -47,52 +66,51 @@ export default function AdminNaviguation() {
       </div>
       <Collapse isOpen={collapseOpen} navbar>
         <Nav className="ml-auto" navbar>
-          <NavItem>
-            <NavLink
-              href="#pablo"
-              onClick={(e) => e.preventDefault()}
+
+        <NavItem>
+          <NavLink
+             to="/profile"
+              onClick={(e) => {e.preventDefault();navigate("/profile")}}
             >
-              <i className="fab fa-facebook-square"></i>
-              <p>Share</p>
+              <FontAwesomeIcon icon={faHome} />
+              <p>Home</p>
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink
-              href="#pablo"
-              onClick={(e) => e.preventDefault()}
+             to="/users"
+              onClick={(e) => {e.preventDefault();navigate("/users")}}
             >
-              <i className="fab fa-twitter"></i>
-              <p>Tweet</p>
+             <FontAwesomeIcon icon={faUser} />
+              <p>Users</p>
             </NavLink>
           </NavItem>
-          <NavItem>
-            <NavLink
-              href="#pablo"
-              onClick={(e) => e.preventDefault()}
-            >
-              <i className="fab fa-pinterest"></i>
-              <p>Pin</p>
-            </NavLink>
-          </NavItem>
-          <NavItem>
-                  <Button
-                    className="nav-link "
-                    color="info"
-                    onClick={() => {
-                      dispatch(logout());
-                      navigate("/");
-                      window.location.reload()
-                    }}
-                    id="upgrade-to-pro"
-                    target="_blank"
-                  >
-                    <i className="now-ui-icons arrows-1_share-66 mr-1"></i>
-                   deconnexion
-                  </Button>
-                  <UncontrolledTooltip target="#upgrade-to-pro">
-                    Cooming soon!
-                  </UncontrolledTooltip>
-                </NavItem>
+              <UncontrolledDropdown nav>
+                        <DropdownToggle
+                          aria-haspopup={true}
+                          caret
+                          color="default"
+                          nav
+                        >
+                          <i aria-hidden="true" class="now-ui-icons ui-1_settings-gear-63"></i>
+                          <p>Settings</p>
+                        </DropdownToggle>
+                        <DropdownMenu>
+                          <DropdownItem
+                            onClick={() => {
+                              dispatch(logout());
+                              navigate("/");
+                              window.location.reload()
+                            }} 
+                          >
+                            <i className="now-ui-icons arrows-1_share-66 mr-1"></i>
+                              Logout
+                          </DropdownItem>
+                    
+      
+                        </DropdownMenu>
+              </UncontrolledDropdown>
+
         </Nav>
       </Collapse>
     </Container>
