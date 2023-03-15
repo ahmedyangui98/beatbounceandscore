@@ -29,6 +29,12 @@ const users = new mongoose.Schema({
     type: String,
     enum: ["true","false"],
     default: "false",
+  },
+  verified : {
+    type : Boolean,
+    default : false,
+    required: true,
+
   }
  
 });

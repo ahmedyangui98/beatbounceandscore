@@ -1,6 +1,9 @@
 const users = require("../model/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const verificationToken = require("../model/verificationtoken")
+const { generateOTP } = require("../Utils/mail");
+const user = require("../model/user");
 
 exports.Register = async (req, res) => {
   const { email, password } = req.body;
@@ -17,11 +20,25 @@ exports.Register = async (req, res) => {
     //jwt
     const payload = { id: newUser._id };
     const token = jwt.sign(payload, process.env.secretorkey);
+    const OTP = generateOTP()
+    const verificationToken = new verificationToken({
+    owner: newUser._id,
+    token : OTP
+  })
+  await verificationToken.save();
     await newUser.save();
+    mailTransport().sendMail({
+      from : 'emailverification@email.com',
+      to : newUser.email,
+      subject : "verify your email account",
+      htm : generateEmailTemplate (OTP),
+    })
     res.status(200).send({ msg: "registered", newUser, token });
+
   } catch (error) {
     res.status(500).send("could not register");
   }
+  
 };
 exports.Login = async (req, res) => {
   const { email, password, id,isBanned } = req.body;
@@ -124,3 +141,23 @@ exports.Deleteuser= async(req, res) =>{
             res.status(500).send("couldnt found user")
         
         }}
+exports.verifyEmail = async (req,res) =>{
+  const {userId, otp} = req.body
+  if(!userId || !otp.trim()) return sendError(res,'Invalid request, missing parameters!' )
+  const token = await verificationToken.findOne({owner: user._id})
+  if(!token) return sendError(res,'user not found' );
+  const isMatched = await token.compareToken(otp)
+  if(!isMatched) return sendError(res,'Please provide a valid token ' );
+  user.verified = true;
+  await verificationToken.findByIdAndDelete(token._id);
+  await user.save();
+  mailTransport().sendMail({
+    from : 'emailverification@email.com',
+    to : User.email,
+    subject : "verify your email account",
+    htm : generateEmailTemplate (OTP),
+  });
+  res.json({success: true, message: "your email is verified.",user:{name: user.name, email: user.email, id: user._id},
+});
+
+};        

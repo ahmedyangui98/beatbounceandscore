@@ -1,7 +1,6 @@
 const express = require("express");
-const { Register, Login, Getusers,Deleteuser,EditUser,EditU, Finduserbyid} = require("../controlles/user");const { IsAuth } = require("../middlewear/isAuth");
-const {
-  registervalidation,
+const { Register, Login, Getusers,Deleteuser,EditUser,EditU, Finduserbyid, verifyEmail} = require("../controlles/user");const { IsAuth } = require("../middlewear/isAuth");
+const { registervalidation,
   Validation,
   loginvalidation,
   validateDate,
@@ -9,8 +8,9 @@ const {
 
 const userRoutes = express.Router();
 
-userRoutes.post("/register", validateDate,registervalidation, Validation, Register);
+userRoutes.post("/register" ,  validateDate,registervalidation, Validation, Register);
 userRoutes.post("/login", loginvalidation, Validation, Login);
+userRoutes.post("/verifyemail",verifyEmail);
 userRoutes.get("/current", IsAuth, (req, res) => {
   res.send({ user: req.user });
 });
