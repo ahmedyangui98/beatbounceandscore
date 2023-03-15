@@ -17,6 +17,8 @@ const Usercard = ({ el }) => {
   const [lastname, setLastname] = useState(el.lastname);
   const [password, setPassword] = useState(el.password);
   const [birthdate, setBirthdate] = useState(el.birthdate);
+  const [gender, setGender] = useState(el.gender);
+
 
 
   const [role, setRole] = useState(el.role);
@@ -26,16 +28,10 @@ const Usercard = ({ el }) => {
   const handleShow = () => setShow(true);
   const handleEdit = async (e) => {
     e.preventDefault();
-    el.firstname=firstname
-    el.lastname=lastname
-    el.role=role
-    el.isBanned=isBanned
-    el.password=password
-    el.image=image
-    el.birthdate=birthdate
+   
 
    dispatch(
-      update(el._id, el),  
+      update(el._id, {firstname,lastname,email,password,role,gender,birthdate}),  
       window.location.reload()
       
     ); handleClose()
