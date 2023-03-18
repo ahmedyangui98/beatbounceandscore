@@ -20,25 +20,11 @@ exports.Register = async (req, res) => {
     //jwt
     const payload = { id: newUser._id };
     const token = jwt.sign(payload, process.env.secretorkey);
-    const OTP = generateOTP()
-    const verificationToken = new verificationToken({
-    owner: newUser._id,
-    token : OTP
-  })
-  await verificationToken.save();
     await newUser.save();
-    mailTransport().sendMail({
-      from : 'emailverification@email.com',
-      to : newUser.email,
-      subject : "verify your email account",
-      htm : generateEmailTemplate (OTP),
-    })
     res.status(200).send({ msg: "registered", newUser, token });
-
   } catch (error) {
     res.status(500).send("could not register");
   }
-  
 };
 exports.Login = async (req, res) => {
   const { email, password, id,isBanned } = req.body;

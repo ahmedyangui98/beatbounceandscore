@@ -8,6 +8,14 @@ import { updateusers } from "../redux/Action/authAction"
 import  { useState ,} from "react";
 
 import { update } from "../redux/Action/authAction";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+} from "firebase/storage";
+import { storage } from "../firebase";
+import { Navigate } from "react-router-dom";
+
 const Usercard = ({ el }) => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -22,16 +30,16 @@ const Usercard = ({ el }) => {
 
 
   const [role, setRole] = useState(el.role);
-  const [isBanned, setIsBanned] = useState("false");
-
   const [image, setImage] = useState(el.image);
+  const [imagee, setImagee] = useState("");
+
   const handleShow = () => setShow(true);
   const handleEdit = async (e) => {
     e.preventDefault();
    
 
    dispatch(
-      update(el._id, {firstname,lastname,email,password,role,gender,birthdate}),  
+      updateusers(el._id, {firstname,lastname,email,password,image,role,gender,birthdate},Navigate),  
       window.location.reload()
       
     ); handleClose()
@@ -57,7 +65,15 @@ const Usercard = ({ el }) => {
     );
   };
   
-  
+  const uploadFile = () => {
+    if (imagee == null) return;
+    const imageRef = ref(storage, `${imagee.name}`);
+    uploadBytes(imageRef, imagee).then((snapshot) => {
+      getDownloadURL(snapshot.ref);
+    });
+    window.alert("Uploaded successfully");
+   // image.setImage(image.name);
+  }; 
 
   return (
     <div>
@@ -140,12 +156,16 @@ const Usercard = ({ el }) => {
                   <Form.Group className="mb-3">
                     <Form.Label>image</Form.Label>
                     <Form.Control
-                      type="text"
-                      placeholder="image"
-                      onChange={(e) => setImage(e.target.value)}
-                      value={image}
+                      type="file"
+                     
+                      onChange={(event) => {
+                        setImagee(event.target.files[0]);
+                        setImage(event.target.files[0].name);
+                      }}
+                    
                     />
                   </Form.Group>
+                  <Button className="btn-round" onClick={uploadFile}>Upload </Button>
 
                   
                 </Form>
