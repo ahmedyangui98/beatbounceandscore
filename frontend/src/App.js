@@ -9,6 +9,8 @@ import AdminNaviguation from "./Admin/AdminNaviguation";
 import PrivateRoutes from "./PrivateRoutes";
 import { get_current } from "./redux/Action/authAction";
 import Register from "./Register";
+import PasswordReset from "./PasswordReset";
+import ForgotPassword from "./ForgotPassword";
 import AdminProfile from "./Admin/AdminProfile"
 import DefaultNavigation from "./DefaultNavigation";
 import { useSelector } from "react-redux";
@@ -70,7 +72,9 @@ function App() {
     
       <Routes>
         <Route path="/" element={<Home />} />
-       <Route path="/login" element={<Login />} />        <Route path="/register" element={<Register />} />
+       <Route path="/login" element={<Login />} />        <Route path="/register" element={<Register />} /> 
+       <Route path="/password-reset" element={<PasswordReset />} />
+              <Route path="/forgotpassword/:id/:token" element={<ForgotPassword />} />
         {/* <Route path="/profile" element={<UserProfile />} /> */}
          <Route
           path="/profile"

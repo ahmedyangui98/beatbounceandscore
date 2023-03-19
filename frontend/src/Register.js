@@ -247,7 +247,6 @@ const Register = () => {
                 <Button
                   className="btn-neutral btn-round"
                   color="info"
-                  href="#pablo"
                   onClick={handleClick}
                   size="lg"
                 >

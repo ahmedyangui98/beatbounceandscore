@@ -124,6 +124,8 @@ const[role,]=useState(user.role)
                  Login
                 </Button>
               </CardFooter>
+              <p style={{color:"white",fontWeight:"bold"}}>Forgot Password  <Link style={{color:"blue"}} to="/password-reset">Click Here</Link> </p>
+
             </Form>
           </Card>
         

@@ -33,9 +33,21 @@ const users = new mongoose.Schema({
   verified : {
     type : Boolean,
     default : false,
-    required: true,
+    // required: true,
 
   }
+  ,
+    tokens: [
+        {
+            token: {
+                type: String,
+                required: true,
+            }
+        }
+    ],
+    verifytoken:{
+        type: String,
+    }
  
 });
 users.statics.countByRole = async function() {

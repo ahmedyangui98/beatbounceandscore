@@ -5,7 +5,7 @@ import {
   GET_USERS,
   LOGIN,
   LOGOUT,
-  REGISTER,FIND_USER,DELETE_USERS,UPDATE_USERS
+  REGISTER,FIND_USER,DELETE_USERS,UPDATE_USERS, RESET_PASSWORD, FORGOT_PASSWORD, CHANGE_PASSWORD
 } from "../Types/authTypes";
 import { alert_error } from "./errorActions";
 
@@ -108,3 +108,45 @@ export const update= (id,data,navigate) => async (dispatch) => {
     dispatch({ type: FAIL, payload: error.response.data });
   }
 };
+
+
+
+export const sendPasswordLink = (data, navigate) => async (dispatch) => {
+  try {
+    console.log(data);
+    const res = await axios.post("/users/sendpasswordlink", data);
+    dispatch({ type: RESET_PASSWORD, payload: res.data });
+    navigate("/");
+    window.location.reload();
+  } catch (error) {
+     console.log(error);
+    
+  }
+};
+
+
+export const ForgotPass = (id,token,navigate) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/users/forgotpassword/${id}/${token}`);
+   // console.log(res.data);
+    dispatch({ type: FORGOT_PASSWORD, payload: res.data });
+  } catch (error) {
+    console.log(error);
+    navigate("*")
+  }
+};
+
+
+
+export const ChangePasswordWithIdandToken = (id,token,data,navigate) => async (dispatch) => {
+  try {
+    const res = await axios.post(`/users/changepassword/${id}/${token}`,data);
+    dispatch({ type:CHANGE_PASSWORD, payload: res.data });
+    navigate("/login");
+    window.location.reload();
+  } catch (error) {
+   console.log(error)
+   
+  }
+};
+
