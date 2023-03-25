@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../assets/styles/Result.css';
 import { Link } from 'react-router-dom';
 
@@ -12,6 +12,7 @@ import { resetResultAction } from '../redux/reducer/result_reducer';
 import { usePublishResult } from '../hooks/setResult';
 
 const Result = () =>{
+    const [Rs, setRs] = useState("");
 
     const dispatch = useDispatch()
     const { questions : { queue ,answers}, result : { result, userId,types}}  = useSelector(state => state)
@@ -30,8 +31,7 @@ const Result = () =>{
             attempts,
             points: earnPoints,
             achived : flag ? "Passed" : "Failed" ,
-            type : types})
-    ;
+            type : types});
     
 
     function onRestart(){
@@ -44,10 +44,6 @@ const Result = () =>{
         <h1 className='title text-light start'>Quiz Result :</h1>
 
         <div className='result flex-center'>
-            <div className='flex'>
-                <span>Username</span>
-                <span className='bold'>{userId || ""}</span>
-            </div>
             <div className='flex'>
                 <span>Total Quiz Points : </span>
                 <span className='bold'>{totalPoints || 0}</span>
@@ -65,7 +61,7 @@ const Result = () =>{
                 <span className='bold'>{earnPoints || 0}</span>
             </div>
             <div className='flex'>
-                <span>Type</span>
+                <span>Quiz Type :</span>
                 <span className='bold'>{types || ""}</span>
             </div>
             <div className='flex'>
@@ -78,10 +74,6 @@ const Result = () =>{
             <Link className='btn' to={'/main'} onClick={onRestart}>Restart</Link>
         </div>
 
-        <div className="container">
-            {/* result table */}
-            <ResultTable></ResultTable>
-        </div>
     </div>
   )
 }

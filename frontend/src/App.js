@@ -26,6 +26,7 @@ import UserManagement from "./Admin/UserManagment";
 import UserGenderChart from "./Admin/UserGenderChart";
 import UserRolesChart from "./Admin/UserRolesChart";
 import Quiz from "./User/Quiz";
+import ResultTable from "./User/ResultTable";
 
 
 function App() {
@@ -44,6 +45,8 @@ function App() {
   let quiz;
   let main;
   let result;
+  let results;
+
 
 
 
@@ -55,6 +58,8 @@ function App() {
       main=<Main/>
       quiz=<Quiz/>
       result=<Result/>
+      results=<ResultTable/>
+
       break;
     case 'admin':
       if(actif&&token){nav = <AdminNaviguation/>;}
@@ -104,6 +109,10 @@ function App() {
         <Route
           path="/result"
           element={<PrivateRoutes Children={result} />}
+        />
+        <Route
+          path="/results"
+          element={<PrivateRoutes Children={results} />}
         />
 
 

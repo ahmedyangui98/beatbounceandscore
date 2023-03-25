@@ -42,7 +42,6 @@ export default function UserNaviguation() {
               Designed by Coders Breed
             </UncontrolledTooltip>
         <NavbarBrand
-          href="#pablo"
           onClick={(e) => e.preventDefault()}
         >
           <h5>Beat Bounce & Score</h5>
@@ -62,28 +61,47 @@ export default function UserNaviguation() {
                   </button>
                   <Collapse isOpen={collapseOpen} navbar>
                     <Nav className="ml-auto" navbar>
+                    <NavItem>
+                        <NavLink
+                           onClick={() => {
+                            navigate("/results");
+                          }} 
+                        >
+                          <i
+                            aria-hidden={true}
+                            class="now-ui-icons design_app mr-1"
+
+                          ></i>
+                          <p>Quiz Results</p>
+
+                        </NavLink>
+                      </NavItem>
                       <NavItem>
                         <NavLink
-                          href="#pablo"
-                          onClick={(e) => e.preventDefault()}
+                           onClick={() => {
+                            navigate("/main");
+                          }} 
                         >
                           <i
                             aria-hidden={true}
                             className="now-ui-icons ui-1_send"
                           ></i>
+                          <p>Quiz</p>
+
                         </NavLink>
                       </NavItem>
                       <NavItem>
                         <NavLink
                           onClick={() => {
                             navigate("/profile");
-                            window.location.reload()
                           }} 
                         >
                           <i
                             aria-hidden={true}
                             className="now-ui-icons users_single-02"
                           ></i>
+                          <p>Profile</p>
+
                         </NavLink>
                       </NavItem>
                       <UncontrolledDropdown nav>

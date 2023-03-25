@@ -1,5 +1,5 @@
 const express = require("express");
-const { getQuestions,insertQuestions,dropQuestions,getResult,storeResult,dropResult} = require("../controlles/quizcontroller");
+const { getQuestions,insertQuestions,dropQuestions,getResult,storeResult,dropResult, getByTypesQuestions} = require("../controlles/quizcontroller");
 
 
 const quizRoutes = express.Router();
@@ -7,6 +7,9 @@ const quizRoutes = express.Router();
 
 
 quizRoutes.get("/questions" ,  getQuestions );
+quizRoutes.get("/questions/:type" ,  getByTypesQuestions );
+
+
 quizRoutes.post("/questions" ,  insertQuestions );
 quizRoutes.delete("/questions" ,  dropQuestions );
 

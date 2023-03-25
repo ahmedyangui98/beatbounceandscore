@@ -6,10 +6,22 @@ const Results = require("../model/resultSchema");
 
 
 
+
 /** get all questions */
 exports.getQuestions = async (req, res) => {
     try {
         const q = await Questions.find();
+        res.json(q)
+    } catch (error) {
+        res.json({ error })
+    }
+}
+exports.getByTypesQuestions = async (req, res) => {
+    try {
+        console.log(req.params.type)
+      /*  const q = await Questions.find({type: req.body.type});*/ 
+      const q = await Questions.find({type:req.params.type})
+
         res.json(q)
     } catch (error) {
         res.json({ error })
@@ -20,9 +32,8 @@ exports.getQuestions = async (req, res) => {
 exports.insertQuestions = async (req, res) =>{
     const {questions,answers} = req.body;
     try {
-        
         Questions.insertMany(req.body , function(err, data){
-            res.json({ msg: "Data Saved Successfully...!"})
+            res.json({ msg: "Data Saved Successfully...!",data})
         })
     } catch (error) {
         res.json({ error })

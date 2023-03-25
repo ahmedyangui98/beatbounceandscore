@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { getServerData } from "../helper/helper";
 
 /** redux actions */
@@ -9,6 +9,7 @@ import * as Action from '../redux/reducer/question_reducer'
 export const useFetchQestion = () => {
     const dispatch = useDispatch();   
     const [getData, setGetData] = useState({ isLoading : false, apiData : [], serverError: null});
+    const { result : { types}}  = useSelector(state => state)
 
     useEffect(() => {
         setGetData(prev => ({...prev, isLoading : true}));
@@ -16,7 +17,8 @@ export const useFetchQestion = () => {
         /** async function fetch backend data */
         (async () => {
             try {
-                const [{ questions, answers }] = await getServerData("http://localhost:4000/api/users/questions", (data) => data)
+               // console.log(types);
+                const [{ questions, answers }] = await getServerData(`http://localhost:4000/api/users/questions/${types}`, (data) => data)
                 
                 if(questions.length > 0){
                     setGetData(prev => ({...prev, isLoading : false}));

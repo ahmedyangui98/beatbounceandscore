@@ -61,13 +61,13 @@ const Quiz = () =>{
         <div className='start'>
         {/* display questions */}
         <Questions onChecked={onChecked} />
-
-        <div className='grid'>
+        </div>
+        <div className='grid start'>
             { trace > 0 ? <button className='btn prev' onClick={onPrev}>Prev</button> : <div></div>}
             <button className='btn next' onClick={onNext}>Next</button>
         </div>
         
-        </div>
+        
     </div>
   )
 }

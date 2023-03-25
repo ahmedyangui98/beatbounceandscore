@@ -13,25 +13,28 @@ const ResultTable = () => {
     })
 
   return (
+
+    <div className="container">
+         <h1 className='title text-light start'>Quiz Results :</h1>
     <div>
         <table>
             <thead className='table-header'>
                 <tr className='table-row'>
-                    <td>Name</td>
+                    <td>Type</td>
                     <td>Attemps</td>
                     <td>Earn Points</td>
                     <td>Result</td>
                 </tr>
             </thead>
-            <tbody>
-                { !data ?? <div>No Data Found </div>}
+            <tbody className='table-header'>
+                { !data ?? <div><h1>No Data Found</h1> </div>}
                 {
                     data.map((v, i) => (
                         <tr className='table-body' key={i}>
-                            <td>{v?.username || ''}</td>
+                            <td>{v?.type || ''}</td>
                             <td>{v?.attempts || 0}</td>
                             <td>{v?.points || 0}</td>
-                            <td>{v?.achived || ""}</td>
+                            <td style={{ color : `${v?.achived ? "#2aff95" : "#ff2a66" }` }}>{v?.achived || ""}</td>
                         </tr>
                     ))
                 }
@@ -39,6 +42,7 @@ const ResultTable = () => {
             </tbody>
         </table>
     </div>
+    </div> 
   )
 }
 
