@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const verificationTokenSchema = new mongoose.Schema({
     owner : {
         type:mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'users',
         required : true},
         token:{
         type : String,

@@ -47,7 +47,9 @@ const users = new mongoose.Schema({
     ],
     verifytoken:{
         type: String,
-    }
+    },
+    result: [{ type: mongoose.Schema.Types.ObjectId, ref: 'result' }]
+   
  
 });
 users.statics.countByRole = async function() {

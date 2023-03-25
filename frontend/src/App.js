@@ -15,12 +15,18 @@ import AdminProfile from "./Admin/AdminProfile"
 import DefaultNavigation from "./DefaultNavigation";
 import { useSelector } from "react-redux";
 import UserNaviguation from "./User/UserNaviguation";
+import Main from "./User/Main";
+import Result from "./User/Result";
+
+
 import CoachNavigation from "./Coach/CoachNavigation";
 import ParentNaviguation from "./Parent/ParentNaviguation";
 import ProfileU from "./ProfileU"
 import UserManagement from "./Admin/UserManagment";
 import UserGenderChart from "./Admin/UserGenderChart";
 import UserRolesChart from "./Admin/UserRolesChart";
+import Quiz from "./User/Quiz";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -35,11 +41,20 @@ function App() {
 
   let nav;
   let profile;
+  let quiz;
+  let main;
+  let result;
+
+
+
   switch (role) {
     case 'user':
       if(actif&&token){nav = <UserNaviguation/>;}
       else {nav=<DefaultNavigation/>}
       profile=<ProfileU/>
+      main=<Main/>
+      quiz=<Quiz/>
+      result=<Result/>
       break;
     case 'admin':
       if(actif&&token){nav = <AdminNaviguation/>;}
@@ -75,7 +90,25 @@ function App() {
        <Route path="/login" element={<Login />} />        <Route path="/register" element={<Register />} /> 
        <Route path="/password-reset" element={<PasswordReset />} />
               <Route path="/forgotpassword/:id/:token" element={<ForgotPassword />} />
+
         {/* <Route path="/profile" element={<UserProfile />} /> */}
+        {/* User routes */}
+        <Route
+          path="/main"
+          element={<PrivateRoutes Children={main} />}
+        />
+        <Route
+          path="/quiz/:type"
+          element={<PrivateRoutes Children={quiz} />}
+        />
+        <Route
+          path="/result"
+          element={<PrivateRoutes Children={result} />}
+        />
+
+
+
+
          <Route
           path="/profile"
           element={<PrivateRoutes Children={profile} />}
