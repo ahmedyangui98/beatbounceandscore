@@ -25,6 +25,7 @@ const ResultTable = () => {
                     <td>Type</td>
                     <td>Attemps</td>
                     <td>Earn Points</td>
+                    <td>Created At</td>
                     <td>Result</td>
                 </tr>
             </thead>
@@ -36,6 +37,7 @@ const ResultTable = () => {
                             <td>{v?.type || ''}</td>
                             <td>{v?.attempts || 0}</td>
                             <td>{v?.points || 0}</td>
+                            <td>{v?.createdAt || ""}</td>
                             <td style={{ color : `${v?.achived==="Passed" ? "#2aff95" : "#ff2a66" }` }}>{v?.achived || ""}</td>
                         </tr>
                     ))

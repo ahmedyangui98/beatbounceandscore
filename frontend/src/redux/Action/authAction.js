@@ -64,6 +64,7 @@ export const logout = () => {
 };
 export const deleteusers = (id) => async (dispatch,navigate) => {
   try {
+    localStorage.removeItem("token");
     const res = await axios.delete(`/users/delete/${id}`);
     console.log(res.data);
     dispatch({ type: DELETE_USERS, payload: res.data });

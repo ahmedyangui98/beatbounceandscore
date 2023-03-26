@@ -29,6 +29,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { storage } from "./firebase";
+import Switch from "react-bootstrap-switch";
 
 
 const Register = () => {
@@ -42,6 +43,8 @@ const Register = () => {
   const [gender, setGender] = useState("");
   const [image, setImage] = useState("");
   const [imagee, setImagee] = useState("");
+  const [role, setRole] = useState("user");
+
 
 
   const [firstnameFocus, setFirstnameFocus] = useState(false);
@@ -51,10 +54,15 @@ const Register = () => {
   const [birthdateFocus, ] = useState(false);
   const [imageFocus, ] = useState(false);
 
+ 
+  const handleUserTypeChange = (event) => {
+    setRole(event.target.value);
+    //console.log(event.target.value);
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
-    dispatch(register({ firstname,lastname, email, password,image,birthdate,gender }, navigate));
+    dispatch(register({ firstname,lastname, email, password,image,birthdate,gender,role }, navigate));
     console.log(image.name);
   };
 
@@ -94,6 +102,20 @@ const Register = () => {
                 
               </CardHeader>
               <CardBody>
+              
+              <InputGroup className={
+                    "no-border input-group-focus"
+                  }>
+                    <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <i className="now-ui-icons users_single-02"></i>
+                    </InputGroupText>
+                  </InputGroupAddon>
+              <Input type="select" name="role" value={role} onChange={handleUserTypeChange}>
+                  <option value="user">User</option>
+                  <option value="parent">Parent</option>
+                </Input>
+              </InputGroup>
                 <InputGroup
                   className={
                     "no-border" + (firstnameFocus ? " input-group-focus" : "")

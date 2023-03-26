@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Input } from 'reactstrap'
 
 
 /** Custom Hook */
@@ -39,7 +40,7 @@ const Questions = ({ onChecked }) => {
             {
                 questions?.options.map((q, i) => (
                     <li key={i}>
-                        <input 
+                        <Input 
                             type="radio"
                             value={false}
                             name="options"
