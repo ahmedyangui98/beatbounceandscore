@@ -17,6 +17,8 @@ import { useSelector } from "react-redux";
 import UserNaviguation from "./User/UserNaviguation";
 import Main from "./User/Main";
 import Result from "./User/Result";
+import ResultScoreBoard from "./User/ResultScoreBoard";
+
 
 
 import CoachNavigation from "./Coach/CoachNavigation";
@@ -25,6 +27,7 @@ import ProfileU from "./ProfileU"
 import UserManagement from "./Admin/UserManagment";
 import UserGenderChart from "./Admin/UserGenderChart";
 import UserRolesChart from "./Admin/UserRolesChart";
+
 import Quiz from "./User/Quiz";
 import ResultTable from "./User/ResultTable";
 
@@ -45,6 +48,7 @@ function App() {
   let quiz;
   let main;
   let result;
+  let resultscoreboard;
   let results;
 
 
@@ -57,6 +61,7 @@ function App() {
       profile=<ProfileU/>
       main=<Main/>
       quiz=<Quiz/>
+      resultscoreboard=<ResultScoreBoard/>
       result=<Result/>
       results=<ResultTable/>
 
@@ -99,12 +104,17 @@ function App() {
         {/* <Route path="/profile" element={<UserProfile />} /> */}
         {/* User routes */}
         <Route
-          path="/main"
+          path="/quiz"
           element={<PrivateRoutes Children={main} />}
         />
         <Route
           path="/quiz/:type"
           element={<PrivateRoutes Children={quiz} />}
+        />
+
+        <Route
+          path="/score"
+          element={<PrivateRoutes Children={resultscoreboard} />}
         />
         <Route
           path="/result"

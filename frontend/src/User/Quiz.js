@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Questions from './Questions'
 import {  useParams } from 'react-router-dom';
-
 import { MoveNextQuestion, MovePrevQuestion } from '../hooks/FetchQuestion';
 import { PushAnswer } from '../hooks/setResult';
-
-/** redux store import */
 import { useSelector, useDispatch } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { setTypes } from '../redux/reducer/result_reducer';
@@ -21,26 +18,20 @@ const Quiz = () =>{
     const dispatch = useDispatch()
     dispatch(setTypes(type));
 
-    /** next button event handler */
     function onNext(){
         if(trace < queue.length){
-            /** increase the trace value by one using MoveNextAction */
+            
             dispatch(MoveNextQuestion());
 
-            /** insert a new result in the array.  */
             if(result.length <= trace){
                 dispatch(PushAnswer(check))
             }
         }
-     
-        /** reset the value of the checked variable */
-        setChecked(undefined)
+            setChecked(undefined)
     }
 
-    /** Prev button event handler */
     function onPrev(){
         if(trace > 0){
-            /** decrease the trace value by one using MovePrevQuestion */
             dispatch(MovePrevQuestion());
         }
     }
@@ -51,7 +42,7 @@ const Quiz = () =>{
 
     /** finished exam after the last question */
     if(result.length && result.length >= queue.length){
-        return <Navigate to={'/result'} replace={true}></Navigate>
+        return <Navigate to={'/score'} replace={true}></Navigate>
     }
 
   return (

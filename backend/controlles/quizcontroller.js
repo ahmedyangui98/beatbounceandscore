@@ -3,6 +3,8 @@
 //const users = require("../model/user");
 const Questions = require("../model/questionSchema");
 const Results = require("../model/resultSchema");
+const users = require("../model/user");
+
 
 
 
@@ -18,7 +20,6 @@ exports.getQuestions = async (req, res) => {
 }
 exports.getByTypesQuestions = async (req, res) => {
     try {
-        console.log(req.params.type)
       /*  const q = await Questions.find({type: req.body.type});*/ 
       const q = await Questions.find({type:req.params.type})
 
@@ -60,14 +61,28 @@ exports.getResult = async (req, res) => {
     }
 }
 
+exports.getResultByID = async (req, res) => {
+    try {
+        const r = await Results.find({username:req.params.id});
+        res.json(r)
+    } catch (error) {
+        res.json({ error })
+    }
+}
+
 /** post all result */
 exports.storeResult = async (req, res) => {
    try {
         const { username, result, attempts, points, achived ,type } = req.body;
         if(!username && !result) throw new Error('Data Not Provided...!');
-
+        const user = await users.findById(req.body.username);
         Results.create({ username, result, attempts, points, achived ,type}, function(err, data){
+           // console.log(data._id)
+            user.result.push(data._id);
+            user.save();
+
             res.json({ msg : "Result Saved Successfully...!"})
+
         })
 
    } catch (error) {

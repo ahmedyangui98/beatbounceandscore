@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { getServerData } from '../helper/helper'
 
 
 const ResultTable = () => {
+    const user = useSelector((state) => state.Authreducer.user);
 
     const [data, setData] = useState([])
 
     useEffect(() => {
-        getServerData("http://localhost:4000/api/users/result", (res) => {
+        getServerData(`http://localhost:4000/api/users/result/${user._id}`, (res) => {
             setData(res)
         })
     })
@@ -34,7 +36,7 @@ const ResultTable = () => {
                             <td>{v?.type || ''}</td>
                             <td>{v?.attempts || 0}</td>
                             <td>{v?.points || 0}</td>
-                            <td style={{ color : `${v?.achived ? "#2aff95" : "#ff2a66" }` }}>{v?.achived || ""}</td>
+                            <td style={{ color : `${v?.achived==="Passed" ? "#2aff95" : "#ff2a66" }` }}>{v?.achived || ""}</td>
                         </tr>
                     ))
                 }

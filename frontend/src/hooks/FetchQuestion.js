@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react"
 import { useDispatch,useSelector } from "react-redux";
 import { getServerData } from "../helper/helper";
-
-/** redux actions */
 import * as Action from '../redux/reducer/question_reducer'
 
-/** fetch question hook to fetch api data and set value to store */
 export const useFetchQestion = () => {
     const dispatch = useDispatch();   
     const [getData, setGetData] = useState({ isLoading : false, apiData : [], serverError: null});
@@ -14,10 +11,9 @@ export const useFetchQestion = () => {
     useEffect(() => {
         setGetData(prev => ({...prev, isLoading : true}));
 
-        /** async function fetch backend data */
+        /**  fetch backend data */
         (async () => {
             try {
-               // console.log(types);
                 const [{ questions, answers }] = await getServerData(`http://localhost:4000/api/users/questions/${types}`, (data) => data)
                 
                 if(questions.length > 0){

@@ -1,21 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import '../assets/styles/Result.css';
 import { Link } from 'react-router-dom';
-
-import ResultTable from './ResultTable';
 import { useDispatch, useSelector } from 'react-redux';
 import { attempts_Number, earnPoints_Number, flagResult } from '../helper/helper';
-
-/** import actions  */
 import { resetAllAction } from '../redux/reducer/question_reducer';
 import { resetResultAction } from '../redux/reducer/result_reducer';
-import { usePublishResult } from '../hooks/setResult';
 
 const Result = () =>{
-    const [Rs, setRs] = useState("");
-
     const dispatch = useDispatch()
-    const { questions : { queue ,answers}, result : { result, userId,types}}  = useSelector(state => state)
+
+    const { questions : { queue ,answers}, result : { result, types}}  = useSelector(state => state)
 
     const totalPoints = queue.length * 10; 
     const attempts = attempts_Number(result);
@@ -25,19 +19,10 @@ const Result = () =>{
 
     /** store user result */
 
-        usePublishResult({ 
-            result, 
-            username : userId,
-            attempts,
-            points: earnPoints,
-            achived : flag ? "Passed" : "Failed" ,
-            type : types});
-    
-
     function onRestart(){
         dispatch(resetAllAction())
         dispatch(resetResultAction())
-    }
+    }    
 
   return (
     <div className='container'>
@@ -71,7 +56,7 @@ const Result = () =>{
         </div>
 
         <div className="start">
-            <Link className='btn' to={'/main'} onClick={onRestart}>Restart</Link>
+            <Link className='btn' to={'/quiz'} onClick={onRestart} >Restart</Link>
         </div>
 
     </div>

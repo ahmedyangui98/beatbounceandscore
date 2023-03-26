@@ -1,25 +1,19 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { setTypes, setUserId } from '../redux/reducer/result_reducer'
+import { setUserId } from '../redux/reducer/result_reducer'
 import '../assets/styles/Main.css'
-import  { useEffect } from "react";
 import {  useSelector } from "react-redux";
-import { get_current } from "../redux/Action/authAction";
 
 const Main = () => {
 
     const dispatch = useDispatch();
- 
-
     function startQuiz(){
             dispatch(setUserId(user._id))
     }
-    /* useEffect(() => {
-        dispatch(get_current())
-      }, ); */
       const user = useSelector((state) => state.Authreducer.user);
-      //console.log(user._id);
+
+
   return (
     <div className='container'>
         <h1 className='title text-light start'>Quiz Part :</h1>

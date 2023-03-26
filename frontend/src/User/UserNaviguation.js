@@ -79,7 +79,7 @@ export default function UserNaviguation() {
                       <NavItem>
                         <NavLink
                            onClick={() => {
-                            navigate("/main");
+                            navigate("/quiz");
                           }} 
                         >
                           <i
