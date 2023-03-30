@@ -35,6 +35,7 @@ import {
 
 } from "reactstrap";
 import Alerterrors from "./Alerterrors";
+import UserCourses from "./Courses/UserCourses";
 
 const ProfileU = () => {
   const dispatch = useDispatch();
@@ -358,6 +359,7 @@ const ProfileU = () => {
               </Col>
             </Row>
           </Container>
+          <UserCourses/>
         </div>
       </div>
     </div>
