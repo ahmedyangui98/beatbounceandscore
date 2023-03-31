@@ -24,7 +24,8 @@
  * Copyright 2012-2013 Mattia Larentis
  * http://www.apache.org/licenses/LICENSE-2.0
  */
-.bootstrap-switch {
+ 
+ .bootstrap-switch {
   display: inline-block;
   direction: ltr;
   cursor: pointer;
@@ -7997,3 +7998,4 @@ td.rdtYear:hover {
     padding-right: 10px;
   }
 }
+

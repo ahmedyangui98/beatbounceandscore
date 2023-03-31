@@ -320,7 +320,6 @@ const ProfileU = () => {
                     <NavItem>
                       <NavLink
                         className={pills === "1" ? "active" : ""}
-                        href="#pablo"
                         onClick={(e) => {
                           e.preventDefault();
                           setPills("1");
@@ -332,7 +331,6 @@ const ProfileU = () => {
                     <NavItem>
                       <NavLink
                         className={pills === "2" ? "active" : ""}
-                        href="#pablo"
                         onClick={(e) => {
                           e.preventDefault();
                           setPills("2");
@@ -344,7 +342,6 @@ const ProfileU = () => {
                     <NavItem>
                       <NavLink
                         className={pills === "3" ? "active" : ""}
-                        href="#pablo"
                         onClick={(e) => {
                           e.preventDefault();
                           setPills("3");

@@ -31,6 +31,11 @@ import UserRolesChart from "./Admin/UserRolesChart";
 import Quiz from "./User/Quiz";
 import ResultTable from "./User/ResultTable";
 
+import Auth from "./Admin/FaceRecognition/Auth";
+import { Dashboard } from "./Admin/FaceRecognition/backoffice/Dashboard";
+
+
+
 
 function App() {
   const dispatch = useDispatch();
@@ -51,7 +56,7 @@ function App() {
   let resultscoreboard;
   let results;
 
-
+  let dashboard;
 
 
   switch (role) {
@@ -70,6 +75,7 @@ function App() {
       if(actif&&token){nav = <AdminNaviguation/>;}
       else {nav=<DefaultNavigation/>}
       profile=<AdminProfile/>
+      dashboard=<Dashboard/>
       break;
       case 'coach':
         if(actif&&token){nav = <CoachNavigation/>;}
@@ -101,6 +107,9 @@ function App() {
        <Route path="/password-reset" element={<PasswordReset />} />
               <Route path="/forgotpassword/:id/:token" element={<ForgotPassword />} />
 
+              <Route path="/admin" element={<Auth/>} />
+
+
         {/* <Route path="/profile" element={<UserProfile />} /> */}
         {/* User routes */}
         <Route
@@ -131,6 +140,10 @@ function App() {
          <Route
           path="/profile"
           element={<PrivateRoutes Children={profile} />}
+        />
+        <Route
+          path="/dashboard"
+          element={<PrivateRoutes Children={dashboard} />}
         />
          <Route
           path="/users"

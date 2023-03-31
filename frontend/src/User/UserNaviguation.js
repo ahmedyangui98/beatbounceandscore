@@ -62,7 +62,7 @@ export default function UserNaviguation() {
                   <Collapse isOpen={collapseOpen} navbar>
                     <Nav className="ml-auto" navbar>
                     <NavItem>
-                        <NavLink
+                        <NavLink  
                            onClick={() => {
                             navigate("/results");
                           }} 

@@ -5,6 +5,7 @@ const users = new mongoose.Schema({
   lastname: String,
   email: { type: String, require: true, unique: true },
   password: { type: String, require: true },
+  image_src: { type: String, default: null },
   role: {
     type: String,
     enum: ["coach","parent","user","admin"],
@@ -48,7 +49,10 @@ const users = new mongoose.Schema({
     verifytoken:{
         type: String,
     },
-    result: [{ type: mongoose.Schema.Types.ObjectId, ref: 'result' }]
+    result: [{ type: mongoose.Schema.Types.ObjectId, ref: 'result' }],
+    init_vector: { type: String },
+    face_descriptor: { type: String },
+    timestamp: { type: Date, default: new Date() }
    
  
 });
