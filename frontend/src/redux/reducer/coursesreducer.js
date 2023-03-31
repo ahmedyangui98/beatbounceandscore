@@ -1,5 +1,5 @@
 import { GET_COURSES,ADD_COURSE,UPDATE_COURSES,DELETE_COURSES,FIND_COURSE } from "../Types/coursesTypes";
-const initialState = {  users: [],
+const initialState = { 
   
 
    courses:[],

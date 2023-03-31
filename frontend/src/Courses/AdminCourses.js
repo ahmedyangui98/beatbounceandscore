@@ -2,8 +2,8 @@ import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from 'react';
 import { getcourses } from '../redux/Action/coursesAction';
-import CourseCard from './UserCourseCard';
-export default function UserCourses() {
+import CourseCard from './AdminCoursesCard';
+export default function AdminCourses() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getcourses());

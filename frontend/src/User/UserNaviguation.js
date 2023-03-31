@@ -65,11 +65,14 @@ export default function UserNaviguation() {
                       <NavItem>
                         <NavLink
                           href="#pablo"
-                          onClick={(e) => e.preventDefault()}
+                          onClick={() => {
+                            navigate("/usercourses");
+                            window.location.reload()
+                          }} 
                         >
                           <i
                             aria-hidden={true}
-                            className="now-ui-icons ui-1_send"
+                            className="now-ui-icons education_paper"
                           ></i>
                         </NavLink>
                       </NavItem>

@@ -21,6 +21,10 @@ import ProfileU from "./ProfileU"
 import UserManagement from "./Admin/UserManagment";
 import UserGenderChart from "./Admin/UserGenderChart";
 import UserRolesChart from "./Admin/UserRolesChart";
+import Chapters from "./Courses/Chapters";
+import UserCourses from "./Courses/UserCourses";
+import AdminCourses from "./Courses/AdminCourses";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -83,6 +87,22 @@ function App() {
          <Route
           path="/users"
           element={<PrivateRoutes Children={<UserManagement />} />}
+        />
+         <Route
+          path="/chapters/:id"
+          element={<PrivateRoutes Children={<Chapters/>} />}
+        />
+         <Route
+          path="/usercourses"
+          element={<PrivateRoutes Children={<UserCourses />} />}
+        />
+        <Route
+          path="/admincourses"
+          element={<PrivateRoutes Children={<AdminCourses />} />}
+        />
+         <Route
+          path="/videos"
+          element={<PrivateRoutes Children={<video />} />}
         />
         <Route path="/countGender" 
         element={<UserGenderChart/>}

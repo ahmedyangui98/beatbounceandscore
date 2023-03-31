@@ -12,7 +12,7 @@ const courses= new mongoose.Schema({
   creationDate : { type : Date, default : Date.now},
  expirationDate : { type : Date, default : fourMonthsLater},
 
-
+image:String,
 
 
 

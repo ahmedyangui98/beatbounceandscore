@@ -77,6 +77,20 @@ export default function AdminNaviguation() {
             </NavLink>
           </NavItem>
           <NavItem>
+                        <NavLink
+                          href="#pablo"
+                          onClick={() => {
+                            navigate("/admincourses");
+                            window.location.reload()
+                          }} 
+                        >courses
+                          <i
+                            aria-hidden={true}
+                            className="now-ui-icons education_paper"
+                          ></i>
+                        </NavLink>
+                      </NavItem>
+          <NavItem>
             <NavLink
              to="/users"
               onClick={(e) => {e.preventDefault();navigate("/users")}}
