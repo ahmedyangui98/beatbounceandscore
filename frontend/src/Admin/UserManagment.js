@@ -29,7 +29,7 @@ const UserManagement = () => {
 
 
   const handleSelectChange = (e) => {
-    console.log(e.target.value);
+    //console.log(e.target.value);
     setSelectedId(e.target.value);
   };
   useEffect(() => {
@@ -39,8 +39,8 @@ const UserManagement = () => {
  
   const user = useSelector((state) => state.Authreducer.user);
   const users = useSelector((state) => state.Authreducer.users);
-  console.log("user"+user.email)
-  console.log(users);
+  console.log("user: "+user.email)
+  //console.log(users);
   const filtredusers = users.filter((el) => {
     //if no input the return the original
     if (searchInput === '') {

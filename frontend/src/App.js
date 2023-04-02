@@ -44,6 +44,7 @@ function App() {
   }/*, []*/);
   const user = useSelector((state) => state.Authreducer.user);
   const token=localStorage.getItem("token")
+  console.log(localStorage)
 
   const role=user.role
   const actif=user.isActivated

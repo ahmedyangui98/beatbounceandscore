@@ -26,6 +26,7 @@ export const login = (data, navigate) => async (dispatch) => {
   try {
     const res = await axios.post("/users/login", data);
     dispatch({ type: LOGIN, payload: res.data });
+    console.log(res.data);
     navigate("/profile");
     window.location.reload();
   } catch (error) {
@@ -45,6 +46,7 @@ export const get_current = () => async (dispatch) => {
   try {
     const res = await axios.get("/users/current", config);
     dispatch({ type: GET_CURRENT, payload: res.data });
+    console.log(res.data)
   } catch (error) {
     console.log(error);
   }
@@ -52,7 +54,7 @@ export const get_current = () => async (dispatch) => {
 export const getusers = () => async (dispatch) => {
   try {
     const res = await axios.get("/users/all");
-    console.log(res.data);
+    //console.log(res.data);
     dispatch({ type: GET_USERS, payload: res.data });
   } catch (error) {
     console.log(error);
@@ -66,7 +68,7 @@ export const deleteusers = (id) => async (dispatch,navigate) => {
   try {
     localStorage.removeItem("token");
     const res = await axios.delete(`/users/delete/${id}`);
-    console.log(res.data);
+    //console.log(res.data);
     dispatch({ type: DELETE_USERS, payload: res.data });
     navigate("/profile");
     window.location.reload();
@@ -77,7 +79,7 @@ export const deleteusers = (id) => async (dispatch,navigate) => {
 export const finduserbyid = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`/users/find/${id}`);
-    console.log(res.data);
+    //console.log(res.data);
     dispatch({ type: FIND_USER, payload: res.data });
   } catch (error) {
     console.log(error);
@@ -114,7 +116,7 @@ export const update= (id,data,navigate) => async (dispatch) => {
 
 export const sendPasswordLink = (data, navigate) => async (dispatch) => {
   try {
-    console.log(data);
+    //console.log(data);
     const res = await axios.post("/users/sendpasswordlink", data);
     dispatch({ type: RESET_PASSWORD, payload: res.data });
     navigate("/");

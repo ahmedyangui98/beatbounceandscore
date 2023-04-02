@@ -44,6 +44,7 @@ const[role,]=useState(user.role)
     setIsActivated(true)
    updateusers(user._id, { email,password,role,firstname,isActivated,lastname})
   
+
  
   }
 

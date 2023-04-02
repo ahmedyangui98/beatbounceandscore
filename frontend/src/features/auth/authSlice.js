@@ -27,7 +27,9 @@ const initialState = {
             gender: null
         }
     },
-    user: null,
+    user: {},
+    users: [],
+
     error: {
         login: {
             password: null,
@@ -85,9 +87,9 @@ export const loginUser = createAsyncThunk(
         await axios.post(LOGIN_URL,
                 {...credentials}
             ).then(r => {
-                response = {status: r.status, user: r.data.user}
-                console.log(response)
-                localStorage.setItem("token", response.token);
+                response = {status: r.status, data: r.data.user,token:r.data.token}
+                console.log("response login"+JSON.stringify(r.data.token))
+               // localStorage.setItem("token", response.token);
 
             }).catch(e => {
                 response = rejectWithValue(e)
@@ -244,7 +246,9 @@ export const authSlice = createSlice({
             state.request.status = 'fulfilled'
             state.request.code = action.payload.status
             state.user = action.payload.data
-            localStorage.setItem('token', JSON.stringify(action.payload.data))    
+            localStorage.setItem('token', action.payload.token) 
+            console.log("ahawa: "+action.payload.token)
+            console.log(state.user)   
             state.error.login.serverErr = null
         })
         .addCase(loginUser.rejected, (state,action) => {

@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
-import { Navigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { getActiveTab, getAuthError, getRequest, getScreenshot, loginUser, setAuthError, setLoginEmail, setLoginPassword } from "../../features/auth/authSlice"
 import { getFaces } from "../../features/auth/facenetSlice";
 import { PictureControls } from "./PictureControls"
+
 
 export const Login = ({enableInput}) => {
 
@@ -17,6 +18,9 @@ export const Login = ({enableInput}) => {
     const error = useSelector(getAuthError)
     const faces = useSelector(getFaces)
 
+    const navigate = useNavigate();
+    //const user = useSelector((state) => state.Authreducer.user);
+
     const manageForm = (e) => {
         e.preventDefault()
         dispatch(setAuthError({login:{serverErr:null}}))
@@ -30,9 +34,12 @@ export const Login = ({enableInput}) => {
             const user = {email, password, screenshot, descriptor: Object.values(faces[0].descriptor)}
             dispatch(loginUser(user)).then(payload => {
                 if (payload.meta.requestStatus === 'fulfilled') {
-                    <Navigate to="/dashboard" />
+                    navigate("/users");
                 }
-            })
+            }) 
+            //dispatch(login({ email, password }, navigate));
+           
+           
         }
     }
 

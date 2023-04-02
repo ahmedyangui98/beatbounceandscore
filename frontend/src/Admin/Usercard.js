@@ -114,7 +114,7 @@ const Usercard = ({ el }) => {
               <Modal.Body>
                 <Form>
                   <Form.Group className="mb-3">
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label>FirstName :</Form.Label>
                     <Form.Control
                       type="name"
                       placeholder="Enter name"
@@ -124,7 +124,7 @@ const Usercard = ({ el }) => {
                    
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label>Lastname :</Form.Label>
                     <Form.Control
                       type="name"
                       placeholder="Enter name"
@@ -135,21 +135,12 @@ const Usercard = ({ el }) => {
                   </Form.Group>
 
                   <Form.Group className="mb-3">
-                    <Form.Label>email</Form.Label>
+                    <Form.Label>Email :</Form.Label>
                     <Form.Control
                       type="email"
                       placeholder="email"
                       onChange={(e) => setEmail(e.target.value)}
                       value={email}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Role</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="role"
-                      onChange={(e) => setRole(e.target.value)}
-                      value={role}
                     />
                   </Form.Group>
                  
@@ -161,6 +152,8 @@ const Usercard = ({ el }) => {
                       onChange={(event) => {
                         setImagee(event.target.files[0]);
                         setImage(event.target.files[0].name);
+                       // uploadFile();
+                      
                       }}
                     
                     />

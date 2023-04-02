@@ -54,13 +54,14 @@ exports.Register2 = async (req, res) =>  {
             face_descriptor: encryptBiometrics(descriptor, iv),
             gender: gender,
             birthdate: birthdate,
+            image:"1",
             role:"admin"
 
         })
         console.log({user:user.firstname,user:user.lastname, email: user.email})
         const payload = { id: user._id };
         const token = jwt.sign(payload, process.env.secretorkey);
-
+        console.log(token)
         return res.status(200).json({
                 name: user.firstname,
                 name: user.lastname,
@@ -84,7 +85,7 @@ exports.Login2 = async (req, res) =>  {
         const { email, password, screenshot, descriptor } = req.body
 
         if (!(email && password && screenshot && descriptor)) {
-            return res.status(400).send('Dati mancanti.')
+            return res.status(400).send('you need to complet all fields.')
         }
 
         if (!email.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
@@ -136,8 +137,9 @@ exports.Login2 = async (req, res) =>  {
                         registerPic,
                         loginPic: screenshot,
                         user:bestMatchUser,
-                        token
+                        token:token
                     })
+                
                 }
             })
             
