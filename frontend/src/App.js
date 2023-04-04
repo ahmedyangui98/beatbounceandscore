@@ -32,7 +32,7 @@ import Quiz from "./User/Quiz";
 import ResultTable from "./User/ResultTable";
 
 import Auth from "./Admin/FaceRecognition/Auth";
-import { Dashboard } from "./Admin/FaceRecognition/backoffice/Dashboard";
+import { Loader } from "./Admin/FaceRecognition/Loader";
 
 
 
@@ -57,7 +57,6 @@ function App() {
   let resultscoreboard;
   let results;
 
-  let dashboard;
 
 
   switch (role) {
@@ -76,7 +75,6 @@ function App() {
       if(actif&&token){nav = <AdminNaviguation/>;}
       else {nav=<DefaultNavigation/>}
       profile=<AdminProfile/>
-      dashboard=<Dashboard/>
       break;
       case 'coach':
         if(actif&&token){nav = <CoachNavigation/>;}
@@ -98,9 +96,11 @@ function App() {
 
   
   return (
+    <>
+    <Loader/>
     <div className="App">
       <>{nav}</>
-      
+    <div className="limiter">
     
       <Routes>
         <Route path="/" element={<Home />} />
@@ -142,10 +142,6 @@ function App() {
           path="/profile"
           element={<PrivateRoutes Children={profile} />}
         />
-        <Route
-          path="/dashboard"
-          element={<PrivateRoutes Children={dashboard} />}
-        />
          <Route
           path="/users"
           element={<PrivateRoutes Children={<UserManagement />} />}
@@ -158,7 +154,9 @@ function App() {
           element={<UserRolesChart  />}
         />
       </Routes>
+      </div>
     </div>
+    </>
   );
 }
 

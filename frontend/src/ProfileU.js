@@ -134,7 +134,7 @@ const ProfileU = () => {
 
 
 
-          <h3 className="title">{user.firstname}  {user.lastname}</h3>
+          <h3 className="">{user.firstname}  {user.lastname}</h3>
           <p className="category"><h2>{user.role}</h2></p>
           
         </Container>
@@ -302,9 +302,9 @@ const ProfileU = () => {
             <h3 className="title">About me</h3>
             <div className="description">
                <h3>About me:</h3>
-               <h4>Email: {user.email}</h4>
-               <h4>Gender: {user.gender}</h4>
-               <h4>birthdate: {user.birthdate}</h4>
+               <h4>Email : {user.email}</h4>
+               <h4>Gender : {user.gender}</h4>
+               <h4>Birthdate : {user.birthdate.slice(0, -14)}</h4>
             </div>
 
             

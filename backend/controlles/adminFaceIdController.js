@@ -197,7 +197,7 @@ exports.ImageGetProfilePic = async (req, res) => {
             return res.status(409).send('User not found.')
         }
 
-        const image_path = path.join(__dirname, user.image_src)
+        const image_path = path.join("C:\\Users\\ffsga\\OneDrive\\Bureau\\codeTest\\beatbounceandscore\\backend\\", user.image_src)
         fs.readFile(image_path, (e,c) => {
             if (e) {
                 console.log(e)

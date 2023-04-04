@@ -12,6 +12,7 @@ import { Input } from "reactstrap";
 import {FormSelect} from "react-bootstrap";
 
 import { useState } from "react";
+import DarkFooter from "../Footers/DarkFooter";
 const UserManagement = () => {
 
 
@@ -52,6 +53,7 @@ const UserManagement = () => {
     }
 })
     if(!searchInput){return (
+    <>
     <div>
       <br></br>
       
@@ -83,8 +85,11 @@ const UserManagement = () => {
           ))} 
       </div>
     </div>
+    <DarkFooter/>
+    </>
   )}
   else  { return (
+    <>
     <div>
       <br></br>
       
@@ -116,6 +121,8 @@ const UserManagement = () => {
           ))} 
       </div>
     </div>
+    <DarkFooter/>
+    </>
   )}
 };
 

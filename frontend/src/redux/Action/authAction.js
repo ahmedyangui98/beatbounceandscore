@@ -66,11 +66,21 @@ export const logout = () => {
 };
 export const deleteusers = (id) => async (dispatch,navigate) => {
   try {
+    const res = await axios.delete(`/users/delete/${id}`);
+    dispatch({ type: DELETE_USERS, payload: res.data });
+    navigate("/profile");
+    window.location.reload();
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const deleteYourAccount = (id) => async (dispatch,navigate) => {
+  try {
     localStorage.removeItem("token");
     const res = await axios.delete(`/users/delete/${id}`);
     //console.log(res.data);
     dispatch({ type: DELETE_USERS, payload: res.data });
-    navigate("/profile");
+    navigate("/");
     window.location.reload();
   } catch (error) {
     console.log(error);

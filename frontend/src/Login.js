@@ -51,7 +51,7 @@ const[role,]=useState(user.role)
   
   return (<>
     <div
-      className="page-header-image"
+      className="section section-signup"
       style={{
         backgroundImage: "url(" + require("./assets/img/loginpagenew.jpg") + ")",
         backgroundSize: "cover",
@@ -60,6 +60,8 @@ const[role,]=useState(user.role)
       }}
       
     >
+
+      
       <div className="content">
       <Container>  
         <Col className="ml-auto mr-auto" md="4" >

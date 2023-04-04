@@ -11,7 +11,7 @@ export const Loader = () => {
             <div className="loader-dialog" style={ status === 'pending' ? {marginTop: '5rem'} : {marginTop: '-14rem'}}>
                 <div className="loader-content">
                     <div className="loader-body">
-                        <img alt='face scanning animation' src='/images/face_id.gif' />
+                        <img alt='face scanning animation' src="/images/face_id.gif" />
                         <p>Scanning</p>
                     </div>
                 </div>

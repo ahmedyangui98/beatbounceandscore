@@ -29,7 +29,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { storage } from "./firebase";
-import Switch from "react-bootstrap-switch";
+import DarkFooter from "./Footers/DarkFooter";
 
 
 const Register = () => {
@@ -268,7 +268,7 @@ const Register = () => {
               <CardFooter className="text-center">
                 <Button
                   className="btn-neutral btn-round"
-                  color="info"
+                  color=""
                   onClick={handleClick}
                   size="lg"
                 >
@@ -281,6 +281,7 @@ const Register = () => {
       </Container>
       <Alerterrors/>
     </div>
+    <DarkFooter/>
   </>)
 };
 
