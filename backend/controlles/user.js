@@ -44,6 +44,9 @@ exports.Login = async (req, res) => {
     if (!match) {
       return res.status(400).send({ errors: [{ msg: "bad credentials , password doesn't match" }] });
     }
+    if (foundUser.role=="admin") {
+      return res.status(400).send({ errors: [{ msg: "You cannot login with admin account here, pls go to /admin URL" }] });
+    }
    /* if (isBanned=='true') {
       return res.status(400).send({ errors: [{ msg: "is banned" }] });
     } */
