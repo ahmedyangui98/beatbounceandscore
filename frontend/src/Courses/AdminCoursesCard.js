@@ -5,7 +5,7 @@ import {deleteusers} from "../redux/Action/authAction"
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { updateusers } from "../redux/Action/authAction"
-
+import { useNavigate } from "react-router-dom";
 import Select from 'react-select'
 import { update } from "../redux/Action/authAction";
 import {
@@ -18,7 +18,9 @@ import { Navigate } from "react-router-dom";
 import { deletecourses, updatecourses } from "../redux/Action/coursesAction";
 
 const AdminCoursesCard = ({ el }) => {
+    //const chapters = useSelector((state) => state.chaptersreducer?.chapters);
   const dispatch = useDispatch();
+  const navigate=useNavigate();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const [email, setEmail] = useState(el.email);
@@ -89,12 +91,16 @@ const [options,setOptions]=useState([
               
             >
               <Button variant="danger" className="btn-round" size="lg" onClick={() => dispatch(deletecourses(el._id))}>DELETE</Button>
+             
+             
+
               <Button variant="warning" className="btn-round" size="lg" onClick={handleShow}>edit</Button>
               </ListGroup.Item>ListGroup.Item
               <ListGroup.Item
              
             >
-              
+             
+            <Button variant="info" className="btn-round" size="lg" href={`/chaptersadmin/${el._id}`} >MODIFY CHAPTERS</Button> 
             </ListGroup.Item>
           </ListGroup>
         </Card>
@@ -131,7 +137,7 @@ const [options,setOptions]=useState([
                     <Form.Label>expirationDate</Form.Label>
                     <Form.Control
                       type="Date"
-                      placeholder="role"
+                    
                       onChange={(e) => setExpirationDate(e.target.value)}
                       value={expirationDate}
                     />

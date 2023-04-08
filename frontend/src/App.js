@@ -24,6 +24,9 @@ import UserRolesChart from "./Admin/UserRolesChart";
 import Chapters from "./Courses/Chapters";
 import UserCourses from "./Courses/UserCourses";
 import AdminCourses from "./Courses/AdminCourses";
+import AddCourses from "./Courses/AddCourses";
+import AddChapter from "./Courses/AddChapter";
+import ChaptersAdmin from "./Courses/ChaptersAdmin";
 
 
 function App() {
@@ -84,13 +87,26 @@ function App() {
           path="/profile"
           element={<PrivateRoutes Children={profile} />}
         />
+       
          <Route
           path="/users"
           element={<PrivateRoutes Children={<UserManagement />} />}
         />
+        <Route
+          path="/addcourse"
+          element={<PrivateRoutes Children={<AddCourses />} />}
+        />
+        <Route
+          path="/addchapter"
+          element={<PrivateRoutes Children={<AddChapter/>} />}
+        />
          <Route
           path="/chapters/:id"
           element={<PrivateRoutes Children={<Chapters/>} />}
+        />
+        <Route
+          path="/chaptersadmin/:id"
+          element={<PrivateRoutes Children={<ChaptersAdmin/>} />}
         />
          <Route
           path="/usercourses"

@@ -52,8 +52,9 @@ export default function Chapters() {
             onEntered={onEntered}
             onExiting={onExiting}
             onExited={onExited}
+            
           >
-            <Card>
+            <Card >
               <CardBody style={{color:'black'}}>
                 <Video el ={el}/>
               </CardBody>

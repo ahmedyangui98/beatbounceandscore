@@ -44,7 +44,7 @@ export const getchapters = () => async (dispatch) => {
     }
   };
   
-  export const addcourses = (data) => async (dispatch) => {
+  export const addchapter= (data) => async (dispatch) => {
     try {
       const res = await axios.post("/chapters/add",data);
       dispatch({ type:ADD_CHAPTER, payload: res.data });

@@ -76,20 +76,47 @@ export default function AdminNaviguation() {
               <p>Home</p>
             </NavLink>
           </NavItem>
-          <NavItem>
-                        <NavLink
-                          href="#pablo"
-                          onClick={() => {
-                            navigate("/admincourses");
-                            window.location.reload()
-                          }} 
-                        >courses
-                          <i
-                            aria-hidden={true}
-                            className="now-ui-icons education_paper"
-                          ></i>
-                        </NavLink>
-                      </NavItem>
+          <UncontrolledDropdown nav>
+                        <DropdownToggle
+                          aria-haspopup={true}
+                          caret
+                          color="default"
+                          nav
+                        >
+                          <i aria-hidden="true" class="now-ui-icons education_paper"></i>
+                          <p>Courses</p>
+                        </DropdownToggle>
+                        <DropdownMenu>
+                        <DropdownItem
+                            onClick={() => {
+                              navigate("/admincourses");
+                              window.location.reload()
+                            }} 
+                          >
+                              List of courses
+                          </DropdownItem>
+
+                          <DropdownItem
+                            onClick={() => {
+                              navigate("/addcourse");
+                              window.location.reload()
+                            }} 
+                          >
+                              Add course
+                          </DropdownItem>
+
+                          <DropdownItem
+                            onClick={() => {
+                              navigate("/addchapter");
+                              window.location.reload()
+                            }} 
+                          >
+                              Add chapter
+                          </DropdownItem>
+                    
+      
+                        </DropdownMenu>
+              </UncontrolledDropdown>
           <NavItem>
             <NavLink
              to="/users"

@@ -4,7 +4,6 @@ const fourMonthsLater = new Date(now.getFullYear(), now.getMonth() + 4, now.getD
 const courses= new mongoose.Schema({
   
   CourseName: String,
-  progression : { type : Number, default : 0},
   type : { type : String,enum: ["sport","musique","dance"],
   default: "sport" },
   level: { type : String,enum: ["easy","medium","hard"],

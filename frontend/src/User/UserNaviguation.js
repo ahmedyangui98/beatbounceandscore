@@ -69,7 +69,7 @@ export default function UserNaviguation() {
                             navigate("/usercourses");
                             window.location.reload()
                           }} 
-                        >
+                        >courses
                           <i
                             aria-hidden={true}
                             className="now-ui-icons education_paper"
@@ -82,7 +82,7 @@ export default function UserNaviguation() {
                             navigate("/profile");
                             window.location.reload()
                           }} 
-                        >
+                        >profile
                           <i
                             aria-hidden={true}
                             className="now-ui-icons users_single-02"
