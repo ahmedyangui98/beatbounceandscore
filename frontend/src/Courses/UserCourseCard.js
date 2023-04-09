@@ -12,6 +12,7 @@ import {
 } from 'mdb-react-ui-kit';
 
 export default function UserCourseCard({ el }) {
+  
     return (
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <MDBCard style={{ width: '400px' ,marginRight:"20px"}}>
@@ -30,8 +31,9 @@ export default function UserCourseCard({ el }) {
             <MDBListGroupItem>expirationDate : {el.expirationDate}</MDBListGroupItem>
           </MDBListGroup>
           <MDBCardBody>
-            <MDBCardLink href={`/chapters/${el._id}`}>join courses</MDBCardLink>
-            <MDBCardLink href='#'>More details</MDBCardLink>
+          {Date.now() < new Date(el.expirationDate).getTime() && (
+  <MDBCardLink href={`/chapters/${el._id}`} disabled>join courses</MDBCardLink>
+)}            <MDBCardLink href='#'>More details</MDBCardLink>
           </MDBCardBody>
         </MDBCard>
       </div>

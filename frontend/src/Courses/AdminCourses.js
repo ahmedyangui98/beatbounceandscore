@@ -11,11 +11,13 @@ export default function AdminCourses() {
       }, []);
       const courses = useSelector((state) => state.coursesreducer.courses);
       console.log(courses)
-  return (
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>  {courses?.map((el) => (
-        <div key={el._id}>
-          <CourseCard el={el} />
+      return (
+        <div style={{ display: 'flex', flexWrap: 'wrap'}}>
+          {courses?.map((el) => (
+            <div key={el._id} style={{margin: "10px"}}>
+              <CourseCard el={el} />
+            </div>
+          ))}
         </div>
-      ))}</div>
-  )
+      )
 }

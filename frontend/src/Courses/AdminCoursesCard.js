@@ -48,7 +48,7 @@ const [options,setOptions]=useState([
    
 
    dispatch(
-      updatecourses(el._id, {CourseName,progression,level,type,expirationDate,image},Navigate),  
+      updatecourses(el._id, {CourseName,level,type,expirationDate,image},Navigate),  
       window.location.reload()
       
     ); handleClose()
@@ -120,27 +120,18 @@ const [options,setOptions]=useState([
                     />
                    
                   </Form.Group>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Progression</Form.Label>
-                    <Form.Control
-                      type="name"
-                      placeholder="Enter name"
-                      onChange={(e) => setProgression(e.target.value)}
-                      value={progression}
-                    />
-                   
-                  </Form.Group>
+                
 
                 
               
                   <Form.Group className="mb-3">
+                    Expiration date
                     <Form.Label>expirationDate</Form.Label>
                     <Form.Control
-                      type="Date"
-                    
-                      onChange={(e) => setExpirationDate(e.target.value)}
-                      value={expirationDate}
-                    />
+  type="Date"
+  onChange={(e) => setExpirationDate(e.target.value)}
+  value={expirationDate ? expirationDate : Date.now}
+/>
                   </Form.Group>
                   <Form.Group className="mb-3">
                     <Form.Label>level</Form.Label>
