@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { setUserId } from '../redux/reducer/result_reducer'
 import '../assets/styles/Main.css'
 import {  useSelector } from "react-redux";
-import { Card, Col } from 'reactstrap';
+import { Card } from 'reactstrap';
 import SportImg from '../assets/img/sportu-quiz-contest-poster-blue-logo.png';
 import MusicImg from '../assets/img/2898875.png';
 import DanceImg from '../assets/img/png-clipart-blue-trademark.png';

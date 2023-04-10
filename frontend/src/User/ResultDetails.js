@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { GetResultByIdResult } from '../redux/Action/authAction';
@@ -8,16 +8,16 @@ import DarkFooter from '../Footers/DarkFooter';
 
 const ResultDetails=()=> {
 
- 
 
   const { type } = useParams();
+  console.log(type)
   const { id } = useParams();
 
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(GetResultByIdResult(id));
-  }, []);
+  }, /*[]*/);
   const result =  useSelector((state) => state.Authreducer.result) ;
 
 
@@ -127,8 +127,6 @@ answers: [
 ],
 type : "sport"
 }
-
-
 
   return (
   <>  

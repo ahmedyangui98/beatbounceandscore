@@ -7,15 +7,12 @@ import DarkFooter from '../Footers/DarkFooter';
 
 const ResultTable = () => {
     const user = useSelector((state) => state.Authreducer.user);
-
     const [data, setData] = useState([])
-
     useEffect(() => {
         getServerData(`http://localhost:4000/api/users/result/${user._id}`, (res) => {
             setData(res)
         })
     })
-
   return (
 <>
     <div className="container">
@@ -23,7 +20,7 @@ const ResultTable = () => {
       <h1 style={{fontSize:55,color:'black', fontWeight: 'bold' }}>Quiz Result :</h1>
       </div>
         <br/>
-    <div>
+        <div>
         <table >
             <thead className='table-header'>
                 <tr className='table-row'>
@@ -54,7 +51,7 @@ const ResultTable = () => {
                 
             </tbody>
         </table>
-    </div>
+        </div>
     </div> 
     <br/>
     <DarkFooter/>
