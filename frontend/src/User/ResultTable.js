@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { getServerData } from '../helper/helper'
+import { Link } from 'react-router-dom';
+import DarkFooter from '../Footers/DarkFooter';
 
 
 const ResultTable = () => {
@@ -15,11 +17,14 @@ const ResultTable = () => {
     })
 
   return (
-
+<>
     <div className="container">
-         <h1 className='title text-light start'>Quiz Results :</h1>
+      <div className='start'>
+      <h1 style={{fontSize:55,color:'black', fontWeight: 'bold' }}>Quiz Result :</h1>
+      </div>
+        <br/>
     <div>
-        <table>
+        <table >
             <thead className='table-header'>
                 <tr className='table-row'>
                     <td>Type</td>
@@ -27,6 +32,8 @@ const ResultTable = () => {
                     <td>Earn Points</td>
                     <td>Created At</td>
                     <td>Result</td>
+                    <td>Detail</td>
+
                 </tr>
             </thead>
             <tbody className='table-header'>
@@ -37,8 +44,10 @@ const ResultTable = () => {
                             <td>{v?.type || ''}</td>
                             <td>{v?.attempts || 0}</td>
                             <td>{v?.points || 0}</td>
-                            <td>{v?.createdAt || ""}</td>
+                            <td>{v?.createdAt.slice(0, -14) || ""}</td>
                             <td style={{ color : `${v?.achived==="Passed" ? "#2aff95" : "#ff2a66" }` }}>{v?.achived || ""}</td>
+                            <td><Link className='btn btn-info' to={`/resultdetail/${v.type}/${v._id}`}><i className="now-ui-icons location_world mr-1"></i></Link></td>
+
                         </tr>
                     ))
                 }
@@ -47,6 +56,9 @@ const ResultTable = () => {
         </table>
     </div>
     </div> 
+    <br/>
+    <DarkFooter/>
+    </>
   )
 }
 

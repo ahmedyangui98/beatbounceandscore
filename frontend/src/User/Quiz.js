@@ -6,6 +6,7 @@ import { PushAnswer } from '../hooks/setResult';
 import { useSelector, useDispatch } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { setTypes } from '../redux/reducer/result_reducer';
+import { Card } from 'reactstrap';
 
 const Quiz = () =>{
     const { type } = useParams();
@@ -46,8 +47,13 @@ const Quiz = () =>{
     }
 
   return (
+    <>
     <div className='container'>
-        <h1 className='title text-light start'>Quiz of {type}</h1>
+        <div className='start'>
+      <h1 style={{fontSize:55,color:'black', fontWeight: 'bold' }}>Quiz of {type}</h1>
+      </div>
+
+        <Card style={{backgroundColor:'#17a2b8',borderRadius:100}} >
 
         <div className='start'>
         {/* display questions */}
@@ -57,9 +63,10 @@ const Quiz = () =>{
             { trace > 0 ? <button className='btn prev' onClick={onPrev}>Prev</button> : <div></div>}
             <button className='btn next' onClick={onNext}>Next</button>
         </div>
-        
+        </Card>
         
     </div>
+    </>
   )
 }
 

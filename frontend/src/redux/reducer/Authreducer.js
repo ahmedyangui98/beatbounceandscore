@@ -3,14 +3,15 @@ import {
   GET_USERS,
   LOGIN,
   LOGOUT,
-  REGISTER,FIND_USER,UPDATE_USERS,DELETE_USERS,UPDATE, RESET_PASSWORD,FORGOT_PASSWORD,CHANGE_PASSWORD
+  REGISTER,FIND_USER,UPDATE_USERS,DELETE_USERS,UPDATE, RESET_PASSWORD,FORGOT_PASSWORD,CHANGE_PASSWORD,GET_RESULT
 } from "../Types/authTypes";
 
 const initialState = {
   users: [],
   user: {},
   errors: [],
-  fu:[]
+  fu:[],
+  result: [],
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -39,7 +40,10 @@ const reducer = (state = initialState, { type, payload }) => {
     case FORGOT_PASSWORD:
     return { loading: true  };  
     case CHANGE_PASSWORD:
-    return { loading: true  };        
+    return { loading: true  };  
+
+    case GET_RESULT:
+    return { ...state, result: payload };    
 
     case LOGOUT:
       localStorage.removeItem("token");

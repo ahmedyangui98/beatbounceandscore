@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { attempts_Number, earnPoints_Number, flagResult } from '../helper/helper';
 import { resetAllAction } from '../redux/reducer/question_reducer';
 import { resetResultAction } from '../redux/reducer/result_reducer';
+import { Card } from 'reactstrap';
 
 const Result = () =>{
     const dispatch = useDispatch()
@@ -26,34 +27,37 @@ const Result = () =>{
 
   return (
     <div className='container'>
-        <h1 className='title text-light start'>Quiz Result :</h1>
+        <div className='start'>
+      <h1 style={{fontSize:55,color:'black', fontWeight: 'bold' }}>Quiz Result :</h1>
+      </div>
+        <br/>
+        <Card className='result flex-center' style={{backgroundColor:'#17a2b8',borderRadius:10,border:'solid'}}>
 
-        <div className='result flex-center'>
             <div className='flex'>
                 <span>Total Quiz Points : </span>
-                <span className='bold'>{totalPoints || 0}</span>
+                <h3 className='bold'>{totalPoints || 0}</h3>
             </div>
             <div className='flex'>
                 <span>Total Questions : </span>
-                <span className='bold'>{ queue.length || 0}</span>
+                <h3 className='bold'>{ queue.length || 0}</h3>
             </div>
             <div className='flex'>
                 <span>Total Attempts : </span>
-                <span className='bold'>{attempts || 0}</span>
+                <h3 className='bold'>{attempts || 0}</h3>
             </div>
             <div className='flex'>
                 <span>Total Earn Points : </span>
-                <span className='bold'>{earnPoints || 0}</span>
+                <h3 className='bold'>{earnPoints || 0}</h3>
             </div>
             <div className='flex'>
                 <span>Quiz Type :</span>
-                <span className='bold'>{types || ""}</span>
+                <h3 className='bold'>{types || ""}</h3>
             </div>
             <div className='flex'>
                 <span>Quiz Status</span>
-                <span style={{ color : `${flag ? "#2aff95" : "#ff2a66" }` }} className='bold'>{flag ? "Passed" : "Failed"}</span>
+                <h3 style={{ color : `${flag ? "#2aff95" : "#ff2a66" }` }} className='bold'>{flag ? "Passed" : "Failed"}</h3>
             </div>
-        </div>
+        </Card>
 
         <div className="start">
             <Link className='btn' to={'/quiz'} onClick={onRestart} >Restart</Link>

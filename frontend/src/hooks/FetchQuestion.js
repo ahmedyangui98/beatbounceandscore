@@ -54,3 +54,5 @@ export const MovePrevQuestion = () => async (dispatch) => {
         console.log(error)
     }
 }
+
+

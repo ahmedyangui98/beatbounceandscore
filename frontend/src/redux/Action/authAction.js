@@ -5,7 +5,7 @@ import {
   GET_USERS,
   LOGIN,
   LOGOUT,
-  REGISTER,FIND_USER,DELETE_USERS,UPDATE_USERS, RESET_PASSWORD, FORGOT_PASSWORD, CHANGE_PASSWORD
+  REGISTER,FIND_USER,DELETE_USERS,UPDATE_USERS, RESET_PASSWORD, FORGOT_PASSWORD, CHANGE_PASSWORD, GET_RESULT
 } from "../Types/authTypes";
 import { alert_error } from "./errorActions";
 
@@ -46,7 +46,7 @@ export const get_current = () => async (dispatch) => {
   try {
     const res = await axios.get("/users/current", config);
     dispatch({ type: GET_CURRENT, payload: res.data });
-    console.log(res.data)
+   // console.log(res.data)
   } catch (error) {
     console.log(error);
   }
@@ -160,6 +160,18 @@ export const ChangePasswordWithIdandToken = (id,token,data,navigate) => async (d
   } catch (error) {
    console.log(error)
    
+  }
+};
+
+
+export const GetResultByIdResult = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/users/result/try/${id}`);
+    dispatch({ type: GET_RESULT, payload: res.data.result });
+    //console.log(res.data.result)
+
+  } catch (error) {
+    console.log(error);
   }
 };
 

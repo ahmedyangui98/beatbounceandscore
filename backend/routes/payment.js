@@ -2,12 +2,13 @@
 
 
 const express = require("express");
-const {checkoutSession } = require("../controlles/paymentcontroller");
+const {checkoutSession, createPayment } = require("../controlles/paymentcontroller");
 
 
 const paymentRoutes = express.Router();
 
 
+paymentRoutes.post("/createpayment", createPayment );
 
 paymentRoutes.post("/createcheckoutsession", checkoutSession );
 

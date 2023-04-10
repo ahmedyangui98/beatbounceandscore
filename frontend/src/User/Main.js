@@ -23,15 +23,17 @@ const Main = () => {
   return (
     <>
     <div className='container'>
-        <h1 className='title text-light start'>Quiz Part :</h1>
+        <div className='start'>
+      <h1 style={{fontSize:55,color:'black', fontWeight: 'bold' }}>Quiz Part :</h1>
+      </div>
         <div className='start'>
 
         <ol>
-            <li>-You will be asked 10 questions one after another.</li>
-            <li>-10 points is awarded for the correct answer.</li>
-            <li>-Each question has three options. You can choose only one options.</li>
-            <li>-You can review and change answers before the quiz finish.</li>
-            <li>-The result will be declared at the end of the quiz.</li>
+            <li style={{color:'yellow', fontWeight: 'bold' }}>-You will be asked 10 questions one after another.</li>
+            <li style={{color:'yellow', fontWeight: 'bold' }}>-10 points is awarded for the correct answer.</li>
+            <li style={{color:'yellow', fontWeight: 'bold' }}>-Each question has three options. You can choose only one options.</li>
+            <li style={{color:'yellow', fontWeight: 'bold' }}>-You can review and change answers before the quiz finish.</li>
+            <li style={{color:'yellow', fontWeight: 'bold' }}>-The result will be declared at the end of the quiz.</li>
         </ol>
         </div>
     
@@ -41,15 +43,17 @@ const Main = () => {
             width: "12rem",
             margin: " 4rem auto ",
             display: "flex",
-            backgroundColor: "yellow"
+            backgroundColor: "yellow",
+            borderRadius:30
           }}
         >
           <div className="">
             <img alt=""  src={SportImg}></img>
           </div>
+          <br/>
+
         
-        
-            <Link className='btn' to={'/quiz/sport'} onClick={startQuiz}>Start Sport Quiz</Link>
+            <Link className='btn' style={{color:'yellow'}} to={'/quiz/sport'} onClick={startQuiz}>Start Sport Quiz</Link>
             
         </Card>
         <Card
@@ -57,13 +61,14 @@ const Main = () => {
             width: "12rem",
             margin: " 4rem auto ",
             display: "flex",
-            backgroundColor: "yellow"
+            backgroundColor: "yellow",
+            borderRadius:30
           }}
         >
           <div className="">
             <img alt=""  src={MusicImg}></img>
           </div>
-          <Link className='btn' to={'/quiz/musique'} onClick={startQuiz}>Start Music Quiz</Link>
+          <Link className='btn' style={{color:'yellow'}} to={'/quiz/musique'} onClick={startQuiz}>Start Music Quiz</Link>
             
         </Card>
         <Card
@@ -71,13 +76,14 @@ const Main = () => {
             width: "12rem",
             margin: " 4rem auto ",
             display: "flex",
-            backgroundColor: "yellow"
+            backgroundColor: "yellow",
+            borderRadius:30
           }}
         >
           <div className="">
             <img alt=""  src={DanceImg}></img>
           </div>
-          <Link className='btn' to={'/quiz/dance'} onClick={startQuiz}>Start Dance Quiz</Link>
+          <Link className='btn' style={{color:'yellow'}} to={'/quiz/dance'} onClick={startQuiz}>Start Dance Quiz</Link>
         </Card>
         </div>
         

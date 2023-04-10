@@ -16,7 +16,7 @@ const Questions = ({ onChecked }) => {
     const [{ isLoading,  serverError}] = useFetchQestion() 
 
     const questions = useSelector(state => state.questions.queue[state.questions.trace])
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(updateResult({ trace, checked}))
@@ -48,7 +48,7 @@ const Questions = ({ onChecked }) => {
                             onChange={() => onSelect(i)}
                         />
 
-                        <label className='text-primary' htmlFor={`q${i}-option`}>{q}</label>
+                        <label style={{color:'yellow'}} htmlFor={`q${i}-option`}>{q}</label>
                         <div className={`check ${result[trace] === i ? 'checked' : ''}`}></div>
                     </li>
                 ))

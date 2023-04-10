@@ -33,6 +33,7 @@ import ResultTable from "./User/ResultTable";
 
 import Auth from "./Admin/FaceRecognition/Auth";
 import { Loader } from "./Admin/FaceRecognition/Loader";
+import ResultDetails from "./User/ResultDetails";
 
 
 
@@ -44,7 +45,7 @@ function App() {
   }/*, []*/);
   const user = useSelector((state) => state.Authreducer.user);
   const token=localStorage.getItem("token")
-  console.log(localStorage)
+ // console.log(localStorage)
 
   const role=user.role
   const actif=user.isActivated
@@ -56,6 +57,8 @@ function App() {
   let result;
   let resultscoreboard;
   let results;
+  let resultdetail;
+
 
 
 
@@ -69,6 +72,8 @@ function App() {
       resultscoreboard=<ResultScoreBoard/>
       result=<Result/>
       results=<ResultTable/>
+      resultdetail=<ResultDetails/>
+
 
       break;
     case 'admin':
@@ -134,7 +139,10 @@ function App() {
           path="/results"
           element={<PrivateRoutes Children={results} />}
         />
-
+        <Route
+          path="/resultdetail/:type/:id"
+          element={<PrivateRoutes Children={resultdetail} />}
+        />
 
 
 

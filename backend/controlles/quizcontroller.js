@@ -70,6 +70,18 @@ exports.getResultByID = async (req, res) => {
     }
 }
 
+exports.getResultByIdResult = async (req, res) => {
+    try {
+        const result = await Results.findOne({_id:req.params.id});
+        //res.json(r)
+        res.status(200).send({ msg: "result", result });
+
+    } catch (error) {
+        // res.json({ error })
+        console.log(error)
+    }
+}
+
 /** post all result */
 exports.storeResult = async (req, res) => {
    try {

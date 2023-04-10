@@ -25,12 +25,7 @@ export const Login = ({enableInput}) => {
         e.preventDefault()
         dispatch(setAuthError({login:{serverErr:null}}))
         validateInputs() 
-        if(
-            error.login.email == null &&
-            password != null &&
-            screenshot != null &&
-            faces.length !== 0
-        ){
+        
             const user = {email, password, screenshot, descriptor: Object.values(faces[0].descriptor)}
             dispatch(loginUser(user)).then(payload => {
                 if (payload.meta.requestStatus === 'fulfilled') {
@@ -40,7 +35,7 @@ export const Login = ({enableInput}) => {
             //dispatch(login({ email, password }, navigate));
            
            
-        }
+        
     }
 
     const validateInputs = () => {
@@ -66,31 +61,6 @@ export const Login = ({enableInput}) => {
     return(
         <form className={'login100-form ' + (activeTab === 'login' ? 'active' : '')}>
                             
-            <div className="my-wrap-input wrap-input100" onClick={() => enableInput('login-email')}>
-                <input
-                    type="email"
-                    name="login-email"
-                    id="login-email"
-                    className="my-input input100"
-                    placeholder="Email"
-                    disabled={isFirefox ? false : true}
-                    value={email || ''}
-                    onChange={(e) => dispatch(setLoginEmail(e.target.value))}
-                />
-            </div>
-
-            <div className="my-wrap-input wrap-input100" onClick={() => enableInput('login-password')}>
-                <input
-                    type="password"
-                    name="login-password"
-                    id="login-password"
-                    className="my-input input100"
-                    placeholder="Password"
-                    disabled={isFirefox ? false : true}
-                    value={password || ''}
-                    onChange={(e) => dispatch(setLoginPassword(e.target.value))}
-                />
-            </div>
 
             <PictureControls />
 

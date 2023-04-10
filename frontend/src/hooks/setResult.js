@@ -1,4 +1,4 @@
-import { postServerData } from '../helper/helper'
+import {  getServerData, postServerData } from '../helper/helper'
 import * as Action from '../redux/reducer/result_reducer'
 
 export const PushAnswer = (result) => async (dispatch) => {
@@ -29,3 +29,17 @@ export const usePublishResult = (resultData) => {
         }
     })();
 }
+
+
+/** */
+export const GetResultByidRes = (id) => {
+    try {
+      if (id === "") throw new Error("Couldn't get Result");
+      const data = getServerData(`http://localhost:4000/api/users/result/try/${id}`, data => data);
+    //   console.log(data)
+      return { success: true, data };
+    } catch (error) {
+      // console.log(error)
+      return { success: false, error: error.message };
+    }
+  };

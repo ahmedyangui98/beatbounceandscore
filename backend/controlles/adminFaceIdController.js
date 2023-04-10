@@ -83,7 +83,7 @@ exports.Login2 = async (req, res) =>  {
     
     try {
         const { email, password, screenshot, descriptor } = req.body
-
+/*
         if (!(email && password && screenshot && descriptor)) {
             return res.status(400).send('you need to complet all fields.')
         }
@@ -91,7 +91,7 @@ exports.Login2 = async (req, res) =>  {
         if (!email.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
             return res.status(400).send('The EMAIL field is not in the standard form.')
         }
-
+*/
         const users = await User.find({})
         let threshold = 0.5
         let bestMatchUser = {}
@@ -110,12 +110,11 @@ exports.Login2 = async (req, res) =>  {
         if (Object.keys(bestMatchUser).length === 0) {
             return res.status(400).send('It was not possible to associate the IMAGE inserted with the one registered. Insert a new image.')
         }
-        if (email !== bestMatchUser.email) {
+       /* if (email !== bestMatchUser.email) {
             return res.status(400).send('EMAIL or PASSWORD provided are incorrect.')
-        }
+        }*/
 
         const userByEmail = await User.findOne({ email })
-        if ((await bcrypt.compare(password, bestMatchUser.password)) && (await bcrypt.compare(password, userByEmail.password))) {
             const payload = { id: bestMatchUser._id };
             const token = jwt.sign(payload, process.env.secretorkey);
             
@@ -143,9 +142,7 @@ exports.Login2 = async (req, res) =>  {
                 }
             })
             
-        } else {
-            return res.status(400).send('EMAIL or PASSWORD provided are incorrect.')
-        }
+       
     }
     catch (e) {
         console.log(e)
