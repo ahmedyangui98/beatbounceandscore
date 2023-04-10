@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { setUserId } from '../redux/reducer/result_reducer'
 import '../assets/styles/Main.css'
 import {  useSelector } from "react-redux";
-import { Card } from 'reactstrap';
+import { Button, Card } from 'reactstrap';
 import SportImg from '../assets/img/sportu-quiz-contest-poster-blue-logo.png';
 import MusicImg from '../assets/img/2898875.png';
 import DanceImg from '../assets/img/png-clipart-blue-trademark.png';
@@ -43,8 +43,13 @@ const Main = () => {
             margin: " 4rem auto ",
             display: "flex",
             backgroundColor: "yellow",
-            borderRadius:30
+            borderRadius:30,
+            border:'solid',
+            color:'black' ,
           }}
+
+          disabled={true}
+          
         >
           <div className="">
             <img alt=""  src={SportImg}></img>
@@ -52,8 +57,8 @@ const Main = () => {
           <br/>
 
         
-            <Link className='btn' style={{color:'yellow'}} to={'/quiz/sport'} onClick={startQuiz}>Start Sport Quiz</Link>
-            
+            <Link className='btn' style={{color:'yellow'}} to={'/quiz/sport'}  onClick={startQuiz}>Start Sport Quiz</Link>
+
         </Card>
         <Card
           style={{
@@ -61,8 +66,10 @@ const Main = () => {
             margin: " 4rem auto ",
             display: "flex",
             backgroundColor: "yellow",
-            borderRadius:30
-          }}
+            borderRadius:30,
+            border:'solid',
+            color:'black'
+           }}
         >
           <div className="">
             <img alt=""  src={MusicImg}></img>
@@ -76,7 +83,9 @@ const Main = () => {
             margin: " 4rem auto ",
             display: "flex",
             backgroundColor: "yellow",
-            borderRadius:30
+            borderRadius:30,
+            border:'solid',
+            color:'black'
           }}
         >
           <div className="">
