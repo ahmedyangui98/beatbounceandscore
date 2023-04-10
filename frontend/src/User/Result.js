@@ -18,8 +18,6 @@ const Result = () =>{
     const flag = flagResult(totalPoints, earnPoints)
 
 
-    /** store user result */
-
     function onRestart(){
         dispatch(resetAllAction())
         dispatch(resetResultAction())

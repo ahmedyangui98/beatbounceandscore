@@ -19,7 +19,6 @@ const Main = () => {
     }
       const user = useSelector((state) => state.Authreducer.user);
 
-
   return (
     <>
     <div className='container'>

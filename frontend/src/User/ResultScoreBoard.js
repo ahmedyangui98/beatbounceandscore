@@ -17,9 +17,6 @@ const ResultScoreBoard = () =>{
     const earnPoints = earnPoints_Number(result, answers, 10)
     const flag = flagResult(totalPoints, earnPoints)
 
-
-    /** store user result */
-
         usePublishResult({ 
             result, 
             username : userId,
