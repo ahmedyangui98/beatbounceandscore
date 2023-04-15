@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getServerData } from '../helper/helper'
 import { Link } from 'react-router-dom';
 import DarkFooter from '../Footers/DarkFooter';
-import { Col, FormGroup, Input, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import { Button, Col, FormGroup, Input, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import { deleteresult } from '../redux/Action/authAction';
 
 
 const ResultTable = () => {
@@ -18,6 +19,17 @@ const ResultTable = () => {
             setData(res)
         })
     }, [])
+
+    const dispatch = useDispatch();
+
+    const handleDelete = (id) => {
+        if (window.confirm("Are you sure you want to delete this result?")) {
+            // Send DELETE request to the server to delete the data
+            dispatch(deleteresult(id));
+            }
+
+    }
+
 
     // Filter the data based on the search query
     const filteredData = data.filter(item =>
@@ -38,6 +50,7 @@ const ResultTable = () => {
             <td>{v?.createdAt.slice(0, -14) || ""}</td>
             <td style={{ color : `${v?.achived==="Passed" ? "#2aff95" : "#ff2a66" }` }}>{v?.achived || ""}</td>
             <td><Link className='btn btn-info' to={`/resultdetail/${v.type}/${v._id}`}><i className="now-ui-icons location_world mr-1"></i></Link></td>
+            <td><Button className="btn-neutral" color="link" type="button" onClick={() => handleDelete(v._id)}><i className="now-ui-icons location_world mr-1"></i></Button></td>
         </tr>
     ));
 
@@ -68,7 +81,9 @@ const ResultTable = () => {
                                 <td>Earn Points</td>
                                 <td>Created At</td>
                                 <td>Result</td>
-                                <td>Detail</td>
+                                <td>Details</td>
+                                <td>Delete</td>
+
                             </tr>
                         </thead>
                         <tbody className='table-header'>

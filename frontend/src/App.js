@@ -34,6 +34,11 @@ import ResultTable from "./User/ResultTable";
 import Auth from "./Admin/FaceRecognition/Auth";
 import { Loader } from "./Admin/FaceRecognition/Loader";
 import ResultDetails from "./User/ResultDetails";
+import QuizAdmin from "./Admin/QuizAdmin";
+import 'react-notifications/lib/notifications.css';
+import DarkFooter from "./Footers/DarkFooter";
+
+
 
 
 
@@ -59,6 +64,8 @@ function App() {
   let results;
   let resultdetail;
 
+  let quizadmin;
+
 
 
 
@@ -80,6 +87,7 @@ function App() {
       if(actif&&token){nav = <AdminNaviguation/>;}
       else {nav=<DefaultNavigation/>}
       profile=<AdminProfile/>
+
       break;
       case 'coach':
         if(actif&&token){nav = <CoachNavigation/>;}
@@ -154,6 +162,14 @@ function App() {
           path="/users"
           element={<PrivateRoutes Children={<UserManagement />} />}
         />
+        <Route
+          path="/users"
+          element={<PrivateRoutes Children={<UserManagement />} />}
+        />
+        <Route
+          path="/quizAdmin"
+          element={<PrivateRoutes Children={<QuizAdmin />} />}
+        />
         <Route path="/countGender" 
         element={<UserGenderChart/>}
         />
@@ -162,8 +178,10 @@ function App() {
           element={<UserRolesChart  />}
         />
       </Routes>
+
       </div>
     </div>
+
     </>
   );
 }

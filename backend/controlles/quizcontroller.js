@@ -111,3 +111,29 @@ exports.dropResult = async (req, res) => {
         res.json({ error })
     }
 }
+
+exports.Deleteresult= async(req, res) =>{
+    try
+    {const deleted= await Results.findByIdAndDelete(req.params.id)
+       
+    res.status(200).send({msg:"result deleted",deleted})
+    
+   
+    }
+    catch (error) {
+        res.status(500).send("couldnt delete result")
+    
+    }}
+
+    exports.Deletequestion= async(req, res) =>{
+        try
+        {const deleted= await Questions.findByIdAndDelete(req.params.id)
+           
+        res.status(200).send({msg:"QUIZ deleted",deleted})
+        
+       
+        }
+        catch (error) {
+            res.status(500).send("couldnt delete QUIZ")
+        
+        }}    

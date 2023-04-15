@@ -1,97 +1,94 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getusers,get_current } from "../redux/Action/authAction"
-import { deleteYourAccount } from "../redux/Action/authAction"
-import { FaFacebookF,FaFacebookMessenger,FaInstagram,FaTwitter} from "react-icons/fa";
-import { Button} from "react-bootstrap";
+import { getusers, get_current } from "../redux/Action/authAction";
+import { deleteYourAccount } from "../redux/Action/authAction";
+import { FaFacebookF, FaFacebookMessenger, FaInstagram, FaTwitter } from "react-icons/fa";
+import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { FaRegEnvelopeOpen } from "react-icons/fa";
 import { getPicture, getProfilePicture } from "../features/dashboard/userSlice";
 import DarkFooter from "../Footers/DarkFooter";
+
 const AdminProfile = () => {
-  
-  
   const navigate = useNavigate();
-  //const inputRef = useRef();
   const dispatch = useDispatch();
+  
+  // Select profile picture from the store
   const profilePicture = useSelector(getPicture);
 
-  /*const [selectedId, setSelectedId] = useState("user");
-  const handleSelectChange = (e) => {
-    console.log(e.target.value);
-    setSelectedId(e.target.value);
-  }; */
+  // Get user details from the store
+  const user = useSelector((state) => state.Authreducer.user);
 
+  // Fetch user details and current user on component mount
   useEffect(() => {
     dispatch(getusers());
-    dispatch(get_current())
-  }, /*[]*/);
-  
-  const user = useSelector((state) => state.Authreducer.user);
- 
+    dispatch(get_current());
+  }, []);
 
-
+  // Fetch profile picture when user changes
   useEffect(() => {
-    dispatch(getProfilePicture({email:user.email,token:user.token}))
-},[dispatch, user.email, user.token])
+    dispatch(getProfilePicture({ email: user.email, token: user.token }));
+  }, [dispatch, user.email, user.token]);
 
   return (
     <>
-    <div>
-      <br></br>
-      <div
-        className="page-header clear-filter page-header-small"
-        filter-color="blue">
-      <div className="card_profile p-3 py-4">
-        
-        <div className="text-center">
-        <div className="wrapper">
-       
-        <div className="photo-container">
-            <img alt=""  src={profilePicture}></img>
-          </div>
-       
-          
-          <h3 className="mt-2">{user?.firstname}</h3>
-          <span className="mt-1 clearfix">{user?.email}</span>
-          <span className="mt-1 clearfix"><h1>{user?.role}</h1></span>
-        
-         <Button
-                variant="danger"
-                onClick={() => dispatch(deleteYourAccount(user._id),navigate("/"),console.log("clicked"))}
-              >
-                DELETE
-              </Button>
-          <hr className="line" />
+      {/* Page Header */}
+      <div>
+        <br></br>
+        <div className="page-header clear-filter page-header-small">
+          <div className="card_profile p-3 py-4">
+            <div className="text-center">
+              <div className="wrapper">
+                {/* Profile Picture */}
+                <div className="photo-container">
+                  <img alt="" src={profilePicture} style={{ borderRadius: '50%', overflow: 'hidden' }}></img>
+                </div>
 
-          <div className="social-buttons mt-5">
-            <Button className="neo-button">
-              <FaFacebookF />
-            </Button>
-            <Button className="neo-button">
-              <FaFacebookMessenger />
-            </Button>
-            <Button className="neo-button">
-              {" "}
-              <FaRegEnvelopeOpen />
-            </Button>
-            <Button className="neo-button">
-              <FaInstagram />
-            </Button>
-            <Button className="neo-button">
-              <FaTwitter />
-            </Button>
+                {/* User Details */}
+                <h3 className="mt-2">{user?.firstname}</h3>
+                <span className="mt-1 clearfix">{user?.email}</span>
+                <span className="mt-1 clearfix"><h1>{user?.role}</h1></span>
+
+                {/* Delete Account Button */}
+                <Button
+                  variant="danger"
+                  onClick={() => {
+                    dispatch(deleteYourAccount(user._id));
+                    navigate("/");
+                    console.log("clicked");
+                  }}
+                >
+                  DELETE
+                </Button>
+                <hr className="line" />
+
+                {/* Social Media Buttons */}
+                <div className="social-buttons mt-5">
+                  <Button className="neo-button">
+                    <FaFacebookF />
+                  </Button>
+                  <Button className="neo-button">
+                    <FaFacebookMessenger />
+                  </Button>
+                  <Button className="neo-button">
+                    <FaRegEnvelopeOpen />
+                  </Button>
+                  <Button className="neo-button">
+                    <FaInstagram />
+                  </Button>
+                  <Button className="neo-button">
+                    <FaTwitter />
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
-        
-          </div>
-        </div>
         </div>
       </div>
-    </div>
-    <DarkFooter/>
-    </>
-    
 
+      {/* Dark Footer */}
+      <DarkFooter />
+    </>
   );
 };
 

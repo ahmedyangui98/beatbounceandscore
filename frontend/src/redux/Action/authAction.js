@@ -5,7 +5,7 @@ import {
   GET_USERS,
   LOGIN,
   LOGOUT,
-  REGISTER,FIND_USER,DELETE_USERS,UPDATE_USERS, RESET_PASSWORD, FORGOT_PASSWORD, CHANGE_PASSWORD, GET_RESULT
+  REGISTER,FIND_USER,DELETE_USERS,UPDATE_USERS, RESET_PASSWORD, FORGOT_PASSWORD, CHANGE_PASSWORD, GET_RESULT,DELETE_RESULT,ADD_QUIZ
 } from "../Types/authTypes";
 import { alert_error } from "./errorActions";
 
@@ -74,6 +74,17 @@ export const deleteusers = (id) => async (dispatch,navigate) => {
     console.log(error);
   }
 };
+
+export const deleteresult = (id) => async (dispatch) => {
+  try {
+    const res = await axios.delete(`/users/result/${id}`);
+    dispatch({ type: DELETE_RESULT, payload: res.data });
+    window.location.reload();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const deleteYourAccount = (id) => async (dispatch,navigate) => {
   try {
     localStorage.removeItem("token");
@@ -174,4 +185,17 @@ export const GetResultByIdResult = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const add_quiz = (data, navigate) => async (dispatch) => {
+  try {
+    await axios.post("/users/questions", data);
+    dispatch({ type: ADD_QUIZ});
+    navigate("/users");
+    window.location.reload();
+
+  } catch (error) {
+   
+  }
+};
+
 

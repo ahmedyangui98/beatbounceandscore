@@ -19,7 +19,9 @@ import { useDispatch } from 'react-redux';
 import Logo from "../assets/img/logo.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUsersGear } from '@fortawesome/free-solid-svg-icons'; 
+
+import { faPersonChalkboard } from '@fortawesome/free-solid-svg-icons';
 
 export default function AdminNaviguation() {
   const navigate=useNavigate()
@@ -75,13 +77,22 @@ export default function AdminNaviguation() {
               <FontAwesomeIcon icon={faHome} />
               <p>Home</p>
             </NavLink>
-          </NavItem>
+        </NavItem>
+        <NavItem>
+          <NavLink
+             to="/quizAdmin"
+              onClick={(e) => {e.preventDefault();navigate("/quizAdmin")}}
+            >
+              <FontAwesomeIcon icon={faPersonChalkboard} />
+              <p>Quiz</p>
+            </NavLink>
+        </NavItem>
           <NavItem>
             <NavLink
              to="/users"
               onClick={(e) => {e.preventDefault();navigate("/users")}}
             >
-             <FontAwesomeIcon icon={faUser} />
+             <FontAwesomeIcon icon={faUsersGear} />
               <p>Users</p>
             </NavLink>
           </NavItem>

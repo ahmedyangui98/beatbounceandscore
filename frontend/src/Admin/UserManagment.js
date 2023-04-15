@@ -40,7 +40,7 @@ const UserManagement = () => {
  
   const user = useSelector((state) => state.Authreducer.user);
   const users = useSelector((state) => state.Authreducer.users);
-  console.log("user: "+user.email)
+  //console.log("user: "+user.email)
   //console.log(users);
   const filtredusers = users.filter((el) => {
     //if no input the return the original

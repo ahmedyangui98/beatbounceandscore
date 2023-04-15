@@ -82,10 +82,7 @@ export default function UserNaviguation() {
                             navigate("/quiz");
                           }} 
                         >
-                          <i
-                            aria-hidden={true}
-                            className="now-ui-icons ui-1_send"
-                          ></i>
+                          <i aria-hidden={true} className="now-ui-icons ui-1_send"></i>
                           <p>Quiz</p>
 
                         </NavLink>

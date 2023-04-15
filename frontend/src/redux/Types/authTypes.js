@@ -12,4 +12,7 @@ export const RESET_PASSWORD = "RESET_PASSWORD";
 export const FORGOT_PASSWORD = "FORGOT_PASSWORD";
 export const CHANGE_PASSWORD = "CHANGE_PASSWORD";
 export const GET_RESULT = "GET_RESULT";
+export const DELETE_RESULT="DELETE_RESULT";
+export const ADD_QUIZ="ADD_QUIZ";
+
 

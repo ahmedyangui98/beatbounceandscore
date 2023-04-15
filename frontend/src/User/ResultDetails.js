@@ -159,9 +159,14 @@ type : "sport"
                  {result?.result?.[index] !== quiz.answers?.[index] ?(
                     <>
                       <span style={{ color: 'orange' }}> The correct one is {question.options[quiz.answers?.[index]]} !</span>
+                      <span style={{fontSize:15, fontWeight: 'bold' }} > 0/10 Points</span>
+
                     </>
                     ) : (
+                      <>
                       <span style={{ color: 'green' }}>-Your response is True !</span>
+                      <span  style={{fontSize:15, fontWeight: 'bold' }} >10/10 Points</span>
+                      </>
                     )}
               </ul>
             </li>
