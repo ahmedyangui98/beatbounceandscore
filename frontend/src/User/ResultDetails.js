@@ -27,7 +27,7 @@ const ResultDetails=()=> {
     <div >
     <div className='container'>
       <div className='start'>
-      <h1 style={{fontSize:55,color:'black', fontWeight: 'bold' }}>Your {quiz.type} Quiz Try :</h1>
+      <h1 style={{fontSize:55,color:'black', fontWeight: 'bold' }}>{quiz.type } Quiz Try :</h1>
       </div>
 
       <br />

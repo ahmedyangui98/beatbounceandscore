@@ -15,7 +15,6 @@ export const useFetchQestion = () => {
         (async () => {
             try {
                 const [{ questions, answers }] = await getServerData(`http://localhost:4000/api/users/questions/${types}`, (data) => data)
-                
                 if(questions.length > 0){
                     setGetData(prev => ({...prev, isLoading : false}));
                     setGetData(prev => ({...prev, apiData : questions}));

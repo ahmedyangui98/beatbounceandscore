@@ -28,11 +28,13 @@ const Main = () => {
         <div className='start'>
 
         <ol>
+            <li style={{color:'blue', fontWeight: 'bold' }}>-The quiz will take 1 minute and 40 seconds and then it will end automatically.</li>
             <li style={{color:'blue', fontWeight: 'bold' }}>-You will be asked 10 questions one after another.</li>
             <li style={{color:'blue', fontWeight: 'bold' }}>-10 points is awarded for the correct answer.</li>
             <li style={{color:'blue', fontWeight: 'bold' }}>-Each question has three options. You can choose only one options.</li>
             <li style={{color:'blue', fontWeight: 'bold' }}>-You can review and change answers before the quiz finish.</li>
             <li style={{color:'blue', fontWeight: 'bold' }}>-The result will be declared at the end of the quiz.</li>
+            
         </ol>
         </div>
     

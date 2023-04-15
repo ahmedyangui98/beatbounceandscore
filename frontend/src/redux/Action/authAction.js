@@ -188,7 +188,7 @@ export const GetResultByIdResult = (id) => async (dispatch) => {
 
 export const GetQuizByType = (type) => async (dispatch) => {
   try {
-    const res = await axios.get(`/users/questions/${type}`);
+    const res = await axios.get(`/users/question/${type}`);
     dispatch({ type: GET_QUIZ, payload: res.data.quiz });
   } catch (error) {
     console.log(error);

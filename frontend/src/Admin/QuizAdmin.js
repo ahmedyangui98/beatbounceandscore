@@ -182,6 +182,7 @@ const QuizAdmin = () => {
 
     </div>
     <br/>
+    <NotificationContainer/>
     <DarkFooter/>
     </>
 

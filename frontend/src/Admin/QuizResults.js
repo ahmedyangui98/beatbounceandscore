@@ -94,7 +94,7 @@ const QuizResults = () => {
             <td>{v?.points || 0}</td>
             <td>{v?.createdAt.slice(0, -14) || ""}</td>
             <td style={{ color : `${v?.achived==="Passed" ? "#2aff95" : "#ff2a66" }` }}>{v?.achived || ""}</td>
-            <td><Link className='btn btn-info' to={`/resultdetail/${v.type}/${v._id}`}><i class="fas fa-info-circle"></i></Link></td>
+            <td><Link className='btn btn-info' to={`/resultdetails/${v.type}/${v._id}`}><i class="fas fa-info-circle"></i></Link></td>
             <td><Button className="btn btn-danger"  type="button" onClick={() => handleDelete(v._id)}><i class="fas fa-trash"></i></Button></td>
         </tr>
     ));

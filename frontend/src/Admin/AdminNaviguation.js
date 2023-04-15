@@ -68,7 +68,7 @@ export default function AdminNaviguation() {
       </div>
       <Collapse isOpen={collapseOpen} navbar>
         <Nav className="ml-auto" navbar>
-
+       
         <NavItem>
           <NavLink
              to="/profile"
@@ -77,6 +77,12 @@ export default function AdminNaviguation() {
               <FontAwesomeIcon icon={faHome} />
               <p>Home</p>
             </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink   onClick={() => {  navigate("/quizResults");}} >
+                          <i aria-hidden={true} class="now-ui-icons design_app mr-1"></i>
+                          <p>Quiz Results</p>
+          </NavLink>
         </NavItem>
         <NavItem>
           <NavLink

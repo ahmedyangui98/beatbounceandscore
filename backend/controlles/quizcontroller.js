@@ -20,9 +20,24 @@ exports.getQuestions = async (req, res) => {
 }
 exports.getByTypesQuestions = async (req, res) => {
     try {
-      /*  const q = await Questions.find({type: req.body.type});*/ 
+        const q = await Questions.find({type:req.params.type})
+        //const q = await Questions.findOne({type:req.params.type})
+       // res.status(200).send({ msg: "quiz", quiz });
+        res.json(q);
+
+
+    } catch (error) {
+         res.json({ error })
+        //console.log(error)
+
+    }
+    
+}
+exports.getByTypeQuestion = async (req, res) => {
+    try {
       const quiz = await Questions.findOne({type:req.params.type})
-        res.status(200).send({ msg: "quiz", quiz });
+       res.status(200).send({ msg: "quiz", quiz });
+
 
     } catch (error) {
         // res.json({ error })

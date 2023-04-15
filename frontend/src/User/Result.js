@@ -6,6 +6,7 @@ import { attempts_Number, earnPoints_Number, flagResult } from '../helper/helper
 import { resetAllAction } from '../redux/reducer/question_reducer';
 import { resetResultAction } from '../redux/reducer/result_reducer';
 import { Card } from 'reactstrap';
+import DarkFooter from '../Footers/DarkFooter';
 
 const Result = () =>{
     const dispatch = useDispatch()
@@ -24,6 +25,7 @@ const Result = () =>{
     }    
 
   return (
+    <>
     <div className='container'>
         <div className='start'>
       <h1 style={{fontSize:55,color:'black', fontWeight: 'bold' }}>Quiz Result :</h1>
@@ -55,13 +57,15 @@ const Result = () =>{
                 <span>Quiz Status</span>
                 <h3 style={{ color : `${flag ? "#2aff95" : "#ff2a66" }` }} className='bold'>{flag ? "Passed" : "Failed"}</h3>
             </div>
-        </Card>
-
-        <div className="start">
+            <div className="start">
             <Link className='btn' to={'/quiz'} onClick={onRestart} >Restart</Link>
         </div>
+        </Card>
 
     </div>
+    <DarkFooter/>
+    </>
+
   )
 }
 

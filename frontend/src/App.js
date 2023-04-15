@@ -64,7 +64,6 @@ function App() {
   let results;
   let resultdetail;
 
-  let quizadmin;
 
 
 
@@ -174,6 +173,11 @@ function App() {
           path="/quizResults"
           element={<PrivateRoutes Children={<QuizResults />} />}
         />
+        <Route
+          path="/resultdetails/:type/:id"
+          element={<PrivateRoutes Children={<ResultDetails/>} />}
+        />
+        
         <Route path="/countGender" 
         element={<UserGenderChart/>}
         />
