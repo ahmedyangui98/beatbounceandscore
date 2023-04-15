@@ -119,15 +119,13 @@ const ProfileU = () => {
 
       <div className="wrapper">
         <div
-        className="page-header clear-filter page-header-small"
-        filter-color="blue">
+        className="page-header clear-filter page-header-small">
         <div
           className="page-header-image"
           style={{
             backgroundImage: "url(" + require("./assets/img/bg5.jpg") + ")"
           }}
         ></div>
-        <Container>
           <div className="photo-container">
             <img alt=""  src={`https://firebasestorage.googleapis.com/v0/b/beatbounceandscore.appspot.com/o/${user.image}?alt=media&token=894834e1-f47f-4826-b6dc-8801bcae91aa`}></img>
           </div>
@@ -137,7 +135,6 @@ const ProfileU = () => {
           <h3 className="">{user.firstname}  {user.lastname}</h3>
           <p className="category"><h2>{user.role}</h2></p>
           
-        </Container>
       </div>
         <div className="section">
           <Container>

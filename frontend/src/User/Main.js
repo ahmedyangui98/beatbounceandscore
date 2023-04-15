@@ -57,7 +57,7 @@ const Main = () => {
           <br/>
 
         
-            <Link className='btn' style={{color:'yellow'}} to={'/quiz/sport'}  onClick={startQuiz}>Start Sport Quiz</Link>
+            <Link className='btn btn-round' style={{color:'yellow'}} to={'/quiz/sport'}  onClick={startQuiz}>Start Sport Quiz</Link>
 
         </Card>
         <Card
@@ -74,7 +74,7 @@ const Main = () => {
           <div className="">
             <img alt=""  src={MusicImg}></img>
           </div>
-          <Link className='btn' style={{color:'yellow'}} to={'/quiz/musique'} onClick={startQuiz}>Start Music Quiz</Link>
+          <Link  style={{color:'yellow'}}  className='btn btn-round' to={'/quiz/musique'} onClick={startQuiz}>Start Music Quiz</Link>
             
         </Card>
         <Card
@@ -91,7 +91,7 @@ const Main = () => {
           <div className="">
             <img alt=""  src={DanceImg}></img>
           </div>
-          <Link className='btn' style={{color:'yellow'}} to={'/quiz/dance'} onClick={startQuiz}>Start Dance Quiz</Link>
+          <Link  style={{color:'yellow'}} className='btn btn-round' to={'/quiz/dance'} onClick={startQuiz}>Start Dance Quiz</Link>
         </Card>
         </div>
         

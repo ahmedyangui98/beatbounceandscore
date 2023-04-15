@@ -42,7 +42,7 @@ table {
     font-size: 1.1em;
     text-align: center;
     /* color: #cecece; */
-    background: #808385;
+    background: hsl(211, 24%, 49%);
     padding: 18px 0;
 }
 

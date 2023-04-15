@@ -36,7 +36,7 @@ import { Loader } from "./Admin/FaceRecognition/Loader";
 import ResultDetails from "./User/ResultDetails";
 import QuizAdmin from "./Admin/QuizAdmin";
 import 'react-notifications/lib/notifications.css';
-import DarkFooter from "./Footers/DarkFooter";
+import QuizResults from "./Admin/QuizResults";
 
 
 
@@ -169,6 +169,10 @@ function App() {
         <Route
           path="/quizAdmin"
           element={<PrivateRoutes Children={<QuizAdmin />} />}
+        />
+        <Route
+          path="/quizResults"
+          element={<PrivateRoutes Children={<QuizResults />} />}
         />
         <Route path="/countGender" 
         element={<UserGenderChart/>}

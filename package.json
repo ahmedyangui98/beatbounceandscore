@@ -29,6 +29,7 @@
     "react-bootstrap": "^2.7.2",
     "react-bootstrap-switch": "^15.5.3",
     "react-chartjs-2": "^5.2.0",
+    "react-confirm-alert": "^3.0.6",
     "react-datetime": "^3.2.0",
     "react-icons": "^4.8.0",
     "react-notifications": "^1.7.4",

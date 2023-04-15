@@ -3,7 +3,7 @@ import {
   GET_USERS,
   LOGIN,
   LOGOUT,
-  REGISTER,FIND_USER,UPDATE_USERS,DELETE_USERS,UPDATE, RESET_PASSWORD,FORGOT_PASSWORD,CHANGE_PASSWORD,GET_RESULT,DELETE_RESULT,ADD_QUIZ
+  REGISTER,FIND_USER,UPDATE_USERS,DELETE_USERS,UPDATE, RESET_PASSWORD,FORGOT_PASSWORD,CHANGE_PASSWORD,GET_RESULT,DELETE_RESULT,ADD_QUIZ, GET_QUIZ
 } from "../Types/authTypes";
 
 const initialState = {
@@ -12,6 +12,7 @@ const initialState = {
   errors: [],
   fu:[],
   result: [],
+  quiz:{}
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -44,6 +45,9 @@ const reducer = (state = initialState, { type, payload }) => {
 
     case GET_RESULT:
     return { ...state, result: payload }; 
+    case GET_QUIZ:
+    return { ...state, quiz: payload }; 
+    
     case DELETE_RESULT:
       return { loading: true };
 

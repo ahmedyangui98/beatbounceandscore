@@ -179,7 +179,6 @@ const QuizAdmin = () => {
       </form>
     </div>
     </Card>
-    <NotificationContainer/>
 
     </div>
     <br/>

@@ -5,7 +5,7 @@ import {
   GET_USERS,
   LOGIN,
   LOGOUT,
-  REGISTER,FIND_USER,DELETE_USERS,UPDATE_USERS, RESET_PASSWORD, FORGOT_PASSWORD, CHANGE_PASSWORD, GET_RESULT,DELETE_RESULT,ADD_QUIZ
+  REGISTER,FIND_USER,DELETE_USERS,UPDATE_USERS, RESET_PASSWORD, FORGOT_PASSWORD, CHANGE_PASSWORD, GET_RESULT,DELETE_RESULT,ADD_QUIZ,GET_QUIZ
 } from "../Types/authTypes";
 import { alert_error } from "./errorActions";
 
@@ -181,6 +181,15 @@ export const GetResultByIdResult = (id) => async (dispatch) => {
     dispatch({ type: GET_RESULT, payload: res.data.result });
     //console.log(res.data.result)
 
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const GetQuizByType = (type) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/users/questions/${type}`);
+    dispatch({ type: GET_QUIZ, payload: res.data.quiz });
   } catch (error) {
     console.log(error);
   }
