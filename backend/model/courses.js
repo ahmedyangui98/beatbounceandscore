@@ -12,7 +12,7 @@ const courses= new mongoose.Schema({
  expirationDate : { type : Date, default : fourMonthsLater},
 
 image:String,
-
+coach: {type: mongoose.Schema.Types.ObjectId, ref: 'users',default:null},
 
 
 });

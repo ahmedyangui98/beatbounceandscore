@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { Button, Card, ListGroup } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import {deleteusers} from "../redux/Action/authAction"
+import {deleteusers, finduserbyid} from "../redux/Action/authAction"
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { updateusers } from "../redux/Action/authAction"
 import { useNavigate } from "react-router-dom";
 import Select from 'react-select'
 import { update } from "../redux/Action/authAction";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { get_current } from "../redux/Action/authAction";
 import {
   ref,
   uploadBytes,
@@ -28,7 +31,7 @@ const AdminCoursesCard = ({ el }) => {
   const [progression, setProgression] = useState(el.progression);
   const [type, setType] = useState(el.type);
   const [ level, setLevel] = useState(el?.level);
-  const [creationDate , setCreationDate ] = useState(el.creationDate);
+
   const [selectedOption, setSelectedOption] = useState(null);
 const [options,setOptions]=useState([
     { value: 'easy', label: 'easy' },
@@ -65,8 +68,16 @@ const [options,setOptions]=useState([
     window.alert("Uploaded successfully");
    // image.setImage(image.name);
   }; 
-
-  return (
+  useEffect(() => {
+    dispatch(get_current())
+     dispatch(finduserbyid(el?.coach))
+   
+  
+  }/*, []*/);
+  const user = useSelector((state) => state.Authreducer.user);
+  
+      const c = useSelector((state) => state.Authreducer.fu);
+  if ((user.role==="admin")||(user._id===el.coach)){return (
     <div>
       <div>
         <Card
@@ -86,15 +97,16 @@ const [options,setOptions]=useState([
             <ListGroup.Item>level :{el.level}</ListGroup.Item>
             <ListGroup.Item>creationDate :{el.creationDate}</ListGroup.Item>
             <ListGroup.Item>expirationDate :{el.expirationDate}</ListGroup.Item>
+    {  el.coach!=null&&     <ListGroup.Item>Coach :{c.firstname}</ListGroup.Item>} 
 
             <ListGroup.Item
               
             >
-              <Button variant="danger" className="btn-round" size="lg" onClick={() => dispatch(deletecourses(el._id))}>DELETE</Button>
+             {user.role=="admin" &&<Button variant="danger" className="btn-round" size="lg" onClick={() => dispatch(deletecourses(el._id))}>DELETE</Button>
              
-             
+        }
 
-              <Button variant="warning" className="btn-round" size="lg" onClick={handleShow}>edit</Button>
+{user.role=="admin"&& <Button variant="warning" className="btn-round" size="lg" onClick={handleShow}>edit</Button>        }
               </ListGroup.Item>ListGroup.Item
               <ListGroup.Item
              
@@ -179,7 +191,8 @@ const [options,setOptions]=useState([
             </Modal>
       </div>
     </div>
-  );
+  );} else return(<></>)
+  
 };
 
 export default AdminCoursesCard;

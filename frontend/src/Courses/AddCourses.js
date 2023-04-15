@@ -10,24 +10,44 @@ import {
   import { useDispatch } from 'react-redux';
   import { addcourses } from '../redux/Action/coursesAction';
   import { Navigate } from 'react-router-dom';
-export default function AddCourses() {
-
-
-
+import { useEffect } from 'react';
+import { get_current, getusers } from '../redux/Action/authAction';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+export default function AddCourses() {const navigate=useNavigate();
+const [coach ,setCoach]=useState("")
+useEffect(() => {
+  dispatch(getusers());
+dispatch(get_current())
+}, []);
+const users = useSelector((state) => state.Authreducer.users);
+const user = useSelector((state) => state.Authreducer.user);
     const handleadd = async (e) => {
         e.preventDefault();
        
     
        dispatch(
-          addcourses( {CourseName,progression,level,type,image}),  
-         
-        );  window.location.reload();
- 
+          addcourses( {CourseName,progression,level,type,image,coach}),  
         
-     
+        );  
+ 
+        navigate("/admincourses")
+        window.location.reload();
       };
 
-
+      const handleChange = (event) => {
+        const { options } = event.target;
+        let selectedValue = null;
+      
+        for (let i = 0, l = options.length; i < l; i++) {
+          if (options[i].selected) {
+            selectedValue = options[i].value;
+            break;
+          }
+        }
+      
+        setCoach(selectedValue);
+      };
     const [image, setImage] = useState("");
     const [imagee, setImagee] = useState("");
     const dispatch = useDispatch();
@@ -64,6 +84,16 @@ export default function AddCourses() {
         />
       </Col>
     </FormGroup>
+    coach
+    <Input type="select" multiple onChange={handleChange} style={{color:"black"}}>
+      {users.map((option) => (
+        option.role == "coach" ? (
+          <option key={option._id} value={option._id}>
+            {option.lastname}
+          </option>
+        ) : null
+      ))}
+    </Input>
     <FormGroup row>
       <Label
       

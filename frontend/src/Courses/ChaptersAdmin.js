@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { findcoursebyid } from '../redux/Action/coursesAction';
 import { Collapse, Button, CardBody, Card ,CardTitle,CardSubtitle,Form,Modal,Input} from 'reactstrap';
 import Video from './Video';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 export default function ChaptersAdmin() {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -16,7 +16,7 @@ export default function ChaptersAdmin() {
   const [chapterName, setChapterName] = useState("");
   const [coursess, setCoursess] = useState("");
   const [identifiant, setIdentfiant] = useState("");
-
+const navigate=useNavigate()
   useEffect(() => {
     dispatch(getchapters());
   }, [dispatch]);
@@ -61,8 +61,8 @@ export default function ChaptersAdmin() {
             <CardTitle tag="h5">
               Card title
             </CardTitle>{show? <CardSubtitle className="mb-2 text-muted" tag="h6" onClick={setShow(true)}>
-              {el.chapterName}
-            </CardSubtitle>:<Input placeholder={el.chapterName} onChange={(event) => {
+              {setChapterName(el.chapterName)}
+            </CardSubtitle>:<Input placeholder={el.chapterName} value={chapterName} onChange={(event) => {
                         setChapterName(event.target.value)
                       }}></Input>}
             {show? <CardSubtitle className="mb-2 text-muted" tag="h6" onClick={setShow(true)}>
@@ -72,9 +72,9 @@ export default function ChaptersAdmin() {
                       }}
                     ></Input>}
             <Button variant="danger" onClick={() =>  dispatch(
-      updatechapters(el._id, {content,course,chapterName},Navigate),  
-      window.location.reload()
-      
+      updatechapters(el._id, {content,course,chapterName},navigate),  
+      window.location.reload(),
+      navigate("/admincourses")
     )}>
               Edit
             </Button>

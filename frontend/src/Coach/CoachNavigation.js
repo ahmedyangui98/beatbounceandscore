@@ -65,14 +65,57 @@ export default function CoachNavigation() {
                 </div>
                 <Collapse isOpen={collapseOpen} navbar>
                   <Nav className="ml-auto" navbar>
-                    <NavItem >
+                  <NavItem>
                       <NavLink
-                        href="#pablo"
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        <i className="now-ui-icons objects_globe"></i>
+                         onClick={() => {
+                          navigate("/meet");
+                          window.location.reload()
+                        }} 
+                      >join a meet
+                        <i className="now-ui-icons tech_tv"></i>
                       </NavLink>
                     </NavItem>
+                  <UncontrolledDropdown nav>
+                        <DropdownToggle
+                          aria-haspopup={true}
+                          caret
+                          color="default"
+                          nav
+                        >
+                          <i aria-hidden="true" class="now-ui-icons education_paper"></i>
+                          <p>Courses</p>
+                        </DropdownToggle>
+                        <DropdownMenu>
+                        <DropdownItem
+                            onClick={() => {
+                              navigate("/admincourses");
+                              window.location.reload()
+                            }} 
+                          >
+                              List of courses
+                          </DropdownItem>
+
+                          <DropdownItem
+                            onClick={() => {
+                              navigate("/addcourse");
+                              window.location.reload()
+                            }} 
+                          >
+                              Add course
+                          </DropdownItem>
+
+                          <DropdownItem
+                            onClick={() => {
+                              navigate("/addchapter");
+                              window.location.reload()
+                            }} 
+                          >
+                              Add chapter
+                          </DropdownItem>
+                    
+      
+                        </DropdownMenu>
+              </UncontrolledDropdown>
                     <NavItem>
                       <NavLink
                          onClick={() => {

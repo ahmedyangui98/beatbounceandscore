@@ -13,15 +13,11 @@ import {
   import { useSelector } from 'react-redux';
   import { getcourses } from '../redux/Action/coursesAction';
 import { addchapter } from '../redux/Action/chapterAction';
-
+import { useNavigate } from 'react-router-dom';
 export default function AddChapter() {
-
+const navigate=useNavigate()
     const [course, setCourse] = useState(null);
-    const options = [
-        { value: 'value1', label: 'Value 1' },
-        { value: 'value2', label: 'Value 2' },
-        { value: 'value3', label: 'Value 3' },
-      ];
+   
  
       
 
@@ -31,6 +27,7 @@ export default function AddChapter() {
     
        dispatch(
         addchapter({content,chapterName,course}),
+        navigate("/admincourses"),
           window.location.reload()
           
         ); 
