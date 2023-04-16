@@ -37,6 +37,7 @@ import ResultDetails from "./User/ResultDetails";
 import QuizAdmin from "./Admin/QuizAdmin";
 import 'react-notifications/lib/notifications.css';
 import QuizResults from "./Admin/QuizResults";
+import QuizManagment from "./Admin/QuizManagment";
 
 
 
@@ -164,6 +165,10 @@ function App() {
         <Route
           path="/users"
           element={<PrivateRoutes Children={<UserManagement />} />}
+        />
+        <Route
+          path="/quizManagment"
+          element={<PrivateRoutes Children={<QuizManagment />} />}
         />
         <Route
           path="/quizAdmin"

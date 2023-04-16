@@ -199,7 +199,7 @@ export const add_quiz = (data, navigate) => async (dispatch) => {
   try {
     await axios.post("/users/questions", data);
     dispatch({ type: ADD_QUIZ});
-    navigate("/users");
+    navigate("/quizManagment");
     window.location.reload();
 
   } catch (error) {

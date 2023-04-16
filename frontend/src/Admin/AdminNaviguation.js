@@ -86,8 +86,8 @@ export default function AdminNaviguation() {
         </NavItem>
         <NavItem>
           <NavLink
-             to="/quizAdmin"
-              onClick={(e) => {e.preventDefault();navigate("/quizAdmin")}}
+             to="/quizManagment"
+              onClick={(e) => {e.preventDefault();navigate("/quizManagment")}}
             >
               <FontAwesomeIcon icon={faPersonChalkboard} />
               <p>Quiz</p>

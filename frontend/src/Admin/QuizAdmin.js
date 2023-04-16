@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Card, Input, Label } from 'reactstrap';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import { FormSelect } from 'react-bootstrap';
@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { add_quiz } from '../redux/Action/authAction';
 import DarkFooter from '../Footers/DarkFooter';
+import { getServerData } from '../helper/helper';
 
 const QuizAdmin = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,8 @@ const QuizAdmin = () => {
     type: ''
   });
   const [quizType, setQuizType] = useState('');
+  const [data, setData] = useState([])
+
 
   const handleQuestionChange = (questionIndex, field, value) => {
     const updatedQuestions = [...quiz.questions];
@@ -93,7 +96,7 @@ const QuizAdmin = () => {
     } else if (hasEmptyType) {
       NotificationManager.warning('Warning message', 'Quiz Type must be filled!', 2500);
       return;
-    }
+    } 
     NotificationManager.success('Success', 'Quiz added successfully');
 
     dispatch(add_quiz(quiz, navigate));
@@ -103,6 +106,7 @@ const QuizAdmin = () => {
       type: ''
     });
   };
+
 
   return (
     <>

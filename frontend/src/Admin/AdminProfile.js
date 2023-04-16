@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getusers, get_current } from "../redux/Action/authAction";
 import { deleteYourAccount } from "../redux/Action/authAction";
 import { FaFacebookF, FaFacebookMessenger, FaInstagram, FaTwitter } from "react-icons/fa";
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { FaRegEnvelopeOpen } from "react-icons/fa";
 import { getPicture, getProfilePicture } from "../features/dashboard/userSlice";
@@ -34,12 +34,14 @@ const AdminProfile = () => {
     <>
       {/* Page Header */}
       <div>
-        <br></br>
         <div className="page-header clear-filter page-header-small">
+        <div className="page-header-image" style={{ backgroundImage: "url(" + require("../assets/img/bg5.jpg") + ")"
+                  }}></div>
           <div className="card_profile p-3 py-4">
             <div className="text-center">
               <div className="wrapper">
                 {/* Profile Picture */}
+                
                 <div className="photo-container">
                   <img alt="" src={profilePicture} style={{ borderRadius: '50%', overflow: 'hidden' }}></img>
                 </div>
@@ -86,8 +88,8 @@ const AdminProfile = () => {
         </div>
       </div>
 
-      {/* Dark Footer */}
       <DarkFooter />
+
     </>
   );
 };

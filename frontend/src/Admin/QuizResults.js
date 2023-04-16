@@ -13,7 +13,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
 
 const QuizResults = () => {
-    const user = useSelector((state) => state.Authreducer.user);
+    //const user = useSelector((state) => state.Authreducer.user);
     const [data, setData] = useState([])
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);

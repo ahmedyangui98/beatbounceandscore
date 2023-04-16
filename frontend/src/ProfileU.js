@@ -132,7 +132,7 @@ const ProfileU = () => {
 
 
 
-          <h3 className="">{user.firstname}  {user.lastname}</h3>
+          <h3 className="category" >{user.firstname}  {user.lastname}</h3>
           <p className="category"><h2>{user.role}</h2></p>
           
       </div>
