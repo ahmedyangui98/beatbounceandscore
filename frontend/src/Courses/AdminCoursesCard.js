@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Card, ListGroup } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import {deleteusers, finduserbyid} from "../redux/Action/authAction"
+import {deleteusers, finduserbyid, getusers} from "../redux/Action/authAction"
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { updateusers } from "../redux/Action/authAction"
@@ -31,6 +31,7 @@ const AdminCoursesCard = ({ el }) => {
   const [progression, setProgression] = useState(el.progression);
   const [type, setType] = useState(el.type);
   const [ level, setLevel] = useState(el?.level);
+ 
 
   const [selectedOption, setSelectedOption] = useState(null);
 const [options,setOptions]=useState([
@@ -71,12 +72,15 @@ const [options,setOptions]=useState([
   useEffect(() => {
     dispatch(get_current())
      dispatch(finduserbyid(el?.coach))
-   
+   dispatch(getusers())
   
   }/*, []*/);
   const user = useSelector((state) => state.Authreducer.user);
-  
+  const users = useSelector((state) => state.Authreducer.users);
+
       const c = useSelector((state) => state.Authreducer.fu);
+      const filteredUsers = users.filter((user) => user._id === el.coach);
+
   if ((user.role==="admin")||(user._id===el.coach)){return (
     <div>
       <div>
@@ -97,7 +101,7 @@ const [options,setOptions]=useState([
             <ListGroup.Item>level :{el.level}</ListGroup.Item>
             <ListGroup.Item>creationDate :{el.creationDate}</ListGroup.Item>
             <ListGroup.Item>expirationDate :{el.expirationDate}</ListGroup.Item>
-    {  el.coach!=null&&     <ListGroup.Item>Coach :{c.firstname}</ListGroup.Item>} 
+    {  el.coach!=null&&     <ListGroup.Item>Coach :{filteredUsers[0]?.firstname}</ListGroup.Item>} 
 
             <ListGroup.Item
               
