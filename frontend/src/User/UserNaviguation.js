@@ -14,8 +14,9 @@ import {
   Nav,
   Container,
   UncontrolledTooltip,
+  
 } from "reactstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/Action/authAction";
 import Logo from "../assets/img/logo.png"
@@ -84,6 +85,20 @@ export default function UserNaviguation() {
                             aria-hidden={true}
                             className="now-ui-icons users_single-02"
                           ></i>
+                        </NavLink>
+                      </NavItem>
+                      <NavItem>
+                        <NavLink
+                           onClick={() => {
+                            navigate("/financialaid");
+                          }} 
+                        >
+                          <i
+                            aria-hidden={true}
+                            className="now-ui-icons ui-1_send"
+                          ></i>
+                          <p>Financial aid</p>
+
                         </NavLink>
                       </NavItem>
                       <UncontrolledDropdown nav>

@@ -21,7 +21,7 @@ import ProfileU from "./ProfileU"
 import UserManagement from "./Admin/UserManagment";
 import UserGenderChart from "./Admin/UserGenderChart";
 import UserRolesChart from "./Admin/UserRolesChart";
-
+import Financialaid from "./User/Financialaid"
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -35,11 +35,14 @@ function App() {
 
   let nav;
   let profile;
+  let financialaid;
   switch (role) {
     case 'user':
-      if(actif&&token){nav = <UserNaviguation/>;}
+      if(actif&&token){nav = <UserNaviguation/>; }
       else {nav=<DefaultNavigation/>}
       profile=<ProfileU/>
+      financialaid=<Financialaid/>
+      
       break;
     case 'admin':
       if(actif&&token){nav = <AdminNaviguation/>;}
@@ -76,10 +79,18 @@ function App() {
        <Route path="/password-reset" element={<PasswordReset />} />
               <Route path="/forgotpassword/:id/:token" element={<ForgotPassword />} />
         {/* <Route path="/profile" element={<UserProfile />} /> */}
+        <Route
+          path="/financialaid"
+          element={<PrivateRoutes Children={financialaid} />}
+        />
+
          <Route
           path="/profile"
           element={<PrivateRoutes Children={profile} />}
         />
+                <Route path="/financialaid" exact></Route>
+
+       
          <Route
           path="/users"
           element={<PrivateRoutes Children={<UserManagement />} />}
