@@ -14,7 +14,7 @@ const ResultTable = () => {
     const [data, setData] = useState([])
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(5);
+    const [itemsPerPage, setItemsPerPage] = useState(4);
 
     useEffect(() => {
         getServerData(`http://localhost:4000/api/users/result/${user._id}`, (res) => {
@@ -35,17 +35,16 @@ const ResultTable = () => {
           buttons: [
             {
               label: 'Yes',
-              
+              className: 'btn btn-success', 
               onClick: () => {
-                // Send DELETE request to the server to delete the data
                 dispatch(deleteresult(id));
               },
             },
             {
               label: 'No',
+              className: 'btn btn-danger',
               onClick: () => {
-                // code to execute if user cancels the deletion
-                console.log('Deletion canceled.');
+    
               },
             },
           ],
@@ -67,39 +66,60 @@ const ResultTable = () => {
 
     // Render the table rows
     const cardElements = paginatedData.map((v, i) => (
-        <Card
-        style={{
-            width: "24rem",
-            height: "auto",
-            margin: "0.8rem",
-            scrollMarginRight:10,
+      <Card
+  style={{
+    width: "24rem",
+    height: "auto",
+    margin: "0.8rem",
+    scrollMarginRight: 10,
+    display: "flex",
+    backgroundColor: "#17a2b8",
+    borderRadius: 25,
+    border: "solid",
+    color: "black",
+    position: "relative", // added to enable hover effect
+    overflow: "hidden", // added to enable hover effect
+  }}
+  key={i}
+>
+  <div
+    className="card-body"
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      textAlign: "center",
+    }}
+  >
+    <h5 className="card-title">
+      <h2 style={{ textTransform: "capitalize" }}>
+        {v?.type.charAt(0).toUpperCase() + v?.type.substring(1) || ""}
+      </h2>
+    </h5>
+    Attempts : <h6 className="card-text">{v?.attempts || 0}</h6>
+    Earn Points :<h6 className="card-text"> {v?.points || 0}</h6>
+    Created At : <h6 className="card-text">{v?.createdAt.slice(0, -14) || ""}</h6>
+    Result :{" "}
+    <h5
+      className="card-text"
+      style={{ color: `${v?.achived === "Passed" ? "#2aff95" : "#ff2a66"}` }}
+    >
+      {v?.achived || ""}
+    </h5>
+    
+  </div>
+  <div style={{ display: "flex", justifyContent: "center", marginTop: "1rem" }}>
+      <Link className="btn btn-outline-warning btn-round" to={`/resultdetail/${v.type}/${v._id}`}>
+        <i className="fas fa-info-circle"> detail</i>
+      </Link>
+      <Button className="btn btn-outline-danger btn-round" onClick={() => handleDelete(v._id)}>
+        <i className="fas fa-trash"> delete</i>
+      </Button>
+    </div>
+</Card>
 
-            display: "flex",
-            backgroundColor: '#17a2b8',
-            borderRadius: 25,
-            border: 'solid',
-            color: 'black'
-          }}
-        key={i}
-      >
-        <div className="card-body">
-          <h5 className="card-title">
-            <h2>{v?.type.charAt(0).toUpperCase() + v?.type.substring(1) || ''}</h2>
-          </h5>
-          <h6 className="card-text">Attempts: {v?.attempts || 0}</h6>
-          <h6 className="card-text">Earn Points: {v?.points || 0}</h6>
-          <h6 className="card-text">Created At: {v?.createdAt.slice(0, -14) || ""}</h6>
-          <h6 className="card-text" style={{ color: `${v?.achived==="Passed" ? "#2aff95" : "#ff2a66"}` }}>
-            Result: {v?.achived || ""}
-          </h6>
-          <Link className='btn btn-info' to={`/resultdetail/${v.type}/${v._id}`}>
-            <i className="fas fa-info-circle"></i>
-          </Link>
-          <Button className='btn btn-danger' onClick={() => handleDelete(v._id)}>
-            <i className="fas fa-trash"></i>
-          </Button>
-        </div>
-      </Card>
+    
       ));
       
       // Render the cards

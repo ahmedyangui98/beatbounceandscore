@@ -19,6 +19,9 @@ import { logout } from "../redux/Action/authAction";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Logo from "../assets/img/logo.png"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faPersonChalkboard } from '@fortawesome/free-solid-svg-icons';
 
 export default function CoachNavigation() {
   const navigate=useNavigate()
@@ -65,24 +68,30 @@ export default function CoachNavigation() {
                 </div>
                 <Collapse isOpen={collapseOpen} navbar>
                   <Nav className="ml-auto" navbar>
-                    <NavItem >
-                      <NavLink
-                        href="#pablo"
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        <i className="now-ui-icons objects_globe"></i>
-                      </NavLink>
-                    </NavItem>
-                    <NavItem>
-                      <NavLink
-                         onClick={() => {
-                          navigate("/profile");
-                          window.location.reload()
-                        }} 
-                      >
-                        <i className="now-ui-icons users_circle-08"></i>
-                      </NavLink>
-                    </NavItem>
+                  <NavItem>
+          <NavLink
+             to="/profile"
+              onClick={(e) => {e.preventDefault();navigate("/profile")}}
+            >
+              <FontAwesomeIcon icon={faHome} />
+              <p>Home</p>
+            </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink   onClick={() => {  navigate("/quizResults");}} >
+                          <i aria-hidden={true} class="now-ui-icons design_app mr-1"></i>
+                          <p>Quiz Results</p>
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+             to="/quizManagment"
+              onClick={(e) => {e.preventDefault();navigate("/quizManagment")}}
+            >
+              <FontAwesomeIcon icon={faPersonChalkboard} />
+              <p>Quiz</p>
+            </NavLink>
+        </NavItem>
 
                     <UncontrolledDropdown nav>
                         <DropdownToggle

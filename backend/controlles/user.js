@@ -292,4 +292,43 @@ exports.ChangePasswordWithIdandToken =async(req,res)=>{
   }
 }
 
+exports.changePassword = async (req, res) => {
+  const { oldPassword, newPassword, confirmPassword } = req.body;
+
+  if (!oldPassword || !newPassword || !confirmPassword) {
+    return res.status(400).send("All fields are required");
+  }
+
+  if (newPassword !== confirmPassword) {
+    return res.status(400).send("New password and confirm password do not match");
+  }
+
+  try {
+    const user = await users.findById(req.params.id);
+
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    const passwordMatches = bcrypt.compareSync(oldPassword, user.password);
+
+    if (!passwordMatches) {
+      return res.status(400).send("Old password is incorrect");
+    }
+
+    const hashedPassword = bcrypt.hashSync(newPassword, 10);
+
+    const updatedUser = await users.findByIdAndUpdate(
+      req.params.id,
+      { password: hashedPassword },
+      { new: true }
+    );
+
+    return res.status(200).send({ message: "Password updated successfully", user: updatedUser });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send("An error occurred while updating the password");
+  }
+};
+
 

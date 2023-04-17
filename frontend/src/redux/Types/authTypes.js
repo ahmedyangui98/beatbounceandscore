@@ -15,5 +15,8 @@ export const GET_RESULT = "GET_RESULT";
 export const DELETE_RESULT="DELETE_RESULT";
 export const ADD_QUIZ="ADD_QUIZ";
 export const GET_QUIZ="GET_QUIZ";
+export const CHANGE_PASSWORD_SUCCESS="CHANGE_PASSWORD_SUCCESS";
+
+
 
 

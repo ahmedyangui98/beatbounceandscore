@@ -93,6 +93,8 @@ function App() {
         if(actif&&token){nav = <CoachNavigation/>;}
       else {nav=<DefaultNavigation/>}
         profile=<ProfileU/>
+        
+
         break;
     case 'parent':
       if(actif&&token){nav = <ParentNaviguation/>;}
@@ -114,7 +116,7 @@ function App() {
     <div className="App">
       <>{nav}</>
     <div className="limiter">
-    
+
       <Routes>
         <Route path="/" element={<Home />} />
        <Route path="/login" element={<Login />} />        <Route path="/register" element={<Register />} /> 

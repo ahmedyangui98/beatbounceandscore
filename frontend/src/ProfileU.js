@@ -8,12 +8,17 @@ import {
     Col,
     Modal,
     ModalBody,
+    ModalHeader,
+    Form,
+    FormGroup,
+    Label,
+    ModalFooter,
   } from "reactstrap";
 
 import {BsFillDashCircleFill} from "react-icons/bs"
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { get_current,deleteusers } from "./redux/Action/authAction";
+import { get_current,deleteusers, changePassword } from "./redux/Action/authAction";
 
 /* ///////////////////////////////////////////////////////*/
 import { useState } from "react";
@@ -35,6 +40,8 @@ import {
 
 } from "reactstrap";
 import Alerterrors from "./Alerterrors";
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+
 
 const ProfileU = () => {
   const dispatch = useDispatch();
@@ -86,8 +93,27 @@ const ProfileU = () => {
   const [birthdateFocus, ] = useState(false);
   const [imageFocus, ] = useState(false);
 
+  const [modal, setModal] = useState(false);
+  const toggleModal = () => setModal(!modal);
+  const [oldPassword, setOldPassword] = useState("");  
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [id, setId] = useState(user._id);
 
+  const handleChangePassword = (e) => {
+    e.preventDefault();
 
+    if (!oldPassword || !newPassword || !confirmPassword) {
+      return NotificationManager.error('All fields are required','error',3000);
+    } else 
+    if (newPassword !== confirmPassword) {
+      return NotificationManager.error('New password and confirm password do not match','error',3000);
+    } else  if (newPassword.length < 6) {
+      return NotificationManager.error('New password must be at least 6 characters long','error',3000);
+    } 
+    dispatch(changePassword(id , {oldPassword, newPassword, confirmPassword }, navigate));
+    console.log(oldPassword,newPassword,confirmPassword)
+  };
 
 
   const handleClick = (e) => {
@@ -302,6 +328,62 @@ const ProfileU = () => {
                <h4>Email : {user.email}</h4>
                <h4>Gender : {user.gender}</h4>
                <h4>Birthdate : {user.birthdate.slice(0, -14)}</h4>
+
+               {/* ////////////////////////////////////////////////////////////////////////////////////////////////////// */}
+
+               <Button color="primary" className="btn-round" onClick={toggleModal}>
+        Change Your Password
+      </Button>
+      <Modal isOpen={modal} toggle={toggleModal}>
+        <ModalHeader toggle={toggleModal}>Change Password</ModalHeader>
+        <ModalBody>
+        <FormGroup>
+    <Label for="oldPassword">Old Password</Label>
+    <Input
+      type="password"
+      name="oldPassword"
+      placeholder="Old Password Here"
+      id="oldPassword"
+      value={oldPassword}
+      onChange={(e) => setOldPassword(e.target.value)}
+    />
+  </FormGroup>
+          <FormGroup>
+    <Label for="newPassword">New Password</Label>
+    <Input
+      type="password"
+      name="newPassword"
+      placeholder="New Password Here"
+      id="newPassword"
+      value={newPassword}
+      onChange={(e) => setNewPassword(e.target.value)}
+    />
+  </FormGroup>
+
+  <FormGroup>
+    <Label for="confirmPassword">Confirm New Password</Label>
+    <Input
+      type="password"
+      name="confirmPassword"
+      placeholder="Confirm New Password Here"
+      id="confirmPassword"
+      value={confirmPassword}
+      onChange={(e) => setConfirmPassword(e.target.value)}
+    />
+  </FormGroup>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={handleChangePassword}>
+            Save
+          </Button>{" "}
+          <Button color="secondary" onClick={toggleModal}>
+            Cancel
+          </Button>
+        </ModalFooter>
+      </Modal>
+
+     {/* ////////////////////////////////////////////////////////////////////////////////////////////////////// */}
+
             </div>
 
             
@@ -354,8 +436,8 @@ const ProfileU = () => {
           </Container>
         </div>
       </div>
+      <NotificationContainer/>
     </div>
-
 
 
   );

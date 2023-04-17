@@ -5,9 +5,10 @@ import {
   GET_USERS,
   LOGIN,
   LOGOUT,
-  REGISTER,FIND_USER,DELETE_USERS,UPDATE_USERS, RESET_PASSWORD, FORGOT_PASSWORD, CHANGE_PASSWORD, GET_RESULT,DELETE_RESULT,ADD_QUIZ,GET_QUIZ
+  REGISTER,FIND_USER,DELETE_USERS,UPDATE_USERS, RESET_PASSWORD, FORGOT_PASSWORD, CHANGE_PASSWORD, GET_RESULT,DELETE_RESULT,ADD_QUIZ,GET_QUIZ, CHANGE_PASSWORD_SUCCESS
 } from "../Types/authTypes";
 import { alert_error } from "./errorActions";
+
 
 export const register = (data, navigate) => async (dispatch) => {
   try {
@@ -48,7 +49,7 @@ export const get_current = () => async (dispatch) => {
     dispatch({ type: GET_CURRENT, payload: res.data });
    // console.log(res.data)
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 };
 export const getusers = () => async (dispatch) => {
@@ -104,6 +105,20 @@ export const finduserbyid = (id) => async (dispatch) => {
     dispatch({ type: FIND_USER, payload: res.data });
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const changePassword = (id, data, navigate) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/users/changePassword/${id}`, data);
+    dispatch({ type: CHANGE_PASSWORD_SUCCESS, payload: res.data });
+    navigate("/profile");
+   // window.location.reload();
+  } catch (error) {
+    error.response.data.errors.forEach((el) => {
+      dispatch(alert_error(el.msg));
+    });
+    dispatch({ type: FAIL, payload: error.response.data });
   }
 };
 export const updateusers = (id,data) => async (dispatch) => {

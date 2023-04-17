@@ -3,7 +3,7 @@ import {
   GET_USERS,
   LOGIN,
   LOGOUT,
-  REGISTER,FIND_USER,UPDATE_USERS,DELETE_USERS,UPDATE, RESET_PASSWORD,FORGOT_PASSWORD,CHANGE_PASSWORD,GET_RESULT,DELETE_RESULT,ADD_QUIZ, GET_QUIZ
+  REGISTER,FIND_USER,UPDATE_USERS,DELETE_USERS,UPDATE, RESET_PASSWORD,FORGOT_PASSWORD,CHANGE_PASSWORD,GET_RESULT,DELETE_RESULT,ADD_QUIZ, GET_QUIZ, CHANGE_PASSWORD_SUCCESS
 } from "../Types/authTypes";
 
 const initialState = {
@@ -42,6 +42,8 @@ const reducer = (state = initialState, { type, payload }) => {
     return { loading: true  };  
     case CHANGE_PASSWORD:
     return { loading: true  };  
+    case CHANGE_PASSWORD_SUCCESS: 
+    return { ...state, user: payload };
 
     case GET_RESULT:
     return { ...state, result: payload }; 

@@ -1,5 +1,5 @@
 const express = require("express");
-const { Register, Login, Getusers,Deleteuser,EditUser,EditU, Finduserbyid, verifyEmail,countByGender,countByRole, sendPasswordLink, ForgotPassword,ChangePasswordWithIdandToken} = require("../controlles/user");const { IsAuth } = require("../middlewear/isAuth");
+const { Register, Login, Getusers,Deleteuser,EditUser,EditU, Finduserbyid, verifyEmail,countByGender,countByRole, sendPasswordLink, ForgotPassword,ChangePasswordWithIdandToken, changePassword} = require("../controlles/user");const { IsAuth } = require("../middlewear/isAuth");
 const { registervalidation,
   Validation,
   loginvalidation,
@@ -25,6 +25,7 @@ userRoutes.get("/countByRole",countByRole);
 userRoutes.post("/sendpasswordlink",sendPasswordLink);
 userRoutes.get("/forgotpassword/:id/:token",ForgotPassword);
 userRoutes.post("/changepassword/:id/:token",ChangePasswordWithIdandToken);
+userRoutes.put("/changePassword/:id", changePassword);
 
 
 
