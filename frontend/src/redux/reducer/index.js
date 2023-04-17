@@ -8,8 +8,11 @@ import authReducer from '../../features/auth/authSlice'
 import facenetReducer from '../../features/auth/facenetSlice'
 import userReducer from '../../features/dashboard/userSlice'
 import detectReducer from '../../features/dashboard/detectSlice'
-
+import coursesreducer from "./coursesreducer";
+import chaptersreducer from "./chaptersreducer";
 const rootReducer = combineReducers({
+  coursesreducer
+  ,chaptersreducer,
   Authreducer,
   errorreducer,
   questions : questionReducer,

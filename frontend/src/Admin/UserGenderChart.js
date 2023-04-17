@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Bar } from 'react-chartjs-2';
+
 import axios from 'axios';
 import CanvasJSReact from '../canvasjs.react';
 //var CanvasJSReact = require('./canvasjs.react');
-var CanvasJS = CanvasJSReact.CanvasJS;
+
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const UserGenderChart = () => {

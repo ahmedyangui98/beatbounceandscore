@@ -38,7 +38,12 @@ import QuizAdmin from "./Admin/QuizAdmin";
 import 'react-notifications/lib/notifications.css';
 import QuizResults from "./Admin/QuizResults";
 import QuizManagment from "./Admin/QuizManagment";
-
+import Chapters from "./Courses/Chapters";
+import UserCourses from "./Courses/UserCourses";
+import AdminCourses from "./Courses/AdminCourses";
+import AddCourses from "./Courses/AddCourses";
+import AddChapter from "./Courses/AddChapter";
+import ChaptersAdmin from "./Courses/ChaptersAdmin";
 
 
 
@@ -154,7 +159,30 @@ function App() {
           element={<PrivateRoutes Children={resultdetail} />}
         />
 
-
+<Route
+          path="/addcourse"
+          element={<PrivateRoutes Children={<AddCourses />} />}
+        />
+        <Route
+          path="/addchapter"
+          element={<PrivateRoutes Children={<AddChapter/>} />}
+        />
+         <Route
+          path="/chapters/:id"
+          element={<PrivateRoutes Children={<Chapters/>} />}
+        />
+        <Route
+          path="/chaptersadmin/:id"
+          element={<PrivateRoutes Children={<ChaptersAdmin/>} />}
+        />
+         <Route
+          path="/usercourses"
+          element={<PrivateRoutes Children={<UserCourses />} />}
+        />
+        <Route
+          path="/admincourses"
+          element={<PrivateRoutes Children={<AdminCourses />} />}
+        />
 
          <Route
           path="/profile"

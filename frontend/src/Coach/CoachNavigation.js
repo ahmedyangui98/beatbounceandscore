@@ -92,7 +92,47 @@ export default function CoachNavigation() {
               <p>Quiz</p>
             </NavLink>
         </NavItem>
+        <UncontrolledDropdown nav>
+                        <DropdownToggle
+                          aria-haspopup={true}
+                          caret
+                          color="default"
+                          nav
+                        >
+                          <i aria-hidden="true" class="now-ui-icons education_paper"></i>
+                          <p>Courses</p>
+                        </DropdownToggle>
+                        <DropdownMenu>
+                        <DropdownItem
+                            onClick={() => {
+                              navigate("/admincourses");
+                              window.location.reload()
+                            }} 
+                          >
+                              List of courses
+                          </DropdownItem>
 
+                          <DropdownItem
+                            onClick={() => {
+                              navigate("/addcourse");
+                              window.location.reload()
+                            }} 
+                          >
+                              Add course
+                          </DropdownItem>
+
+                          <DropdownItem
+                            onClick={() => {
+                              navigate("/addchapter");
+                              window.location.reload()
+                            }} 
+                          >
+                              Add chapter
+                          </DropdownItem>
+                    
+      
+                        </DropdownMenu>
+              </UncontrolledDropdown>
                     <UncontrolledDropdown nav>
                         <DropdownToggle
                           aria-haspopup={true}
