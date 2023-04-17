@@ -15,7 +15,7 @@ export default function UserCourseCard({ el }) {
   
     return (
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <MDBCard style={{ width: '400px' ,marginRight:"20px"}}>
+        <MDBCard style={{ width: '350px' ,marginRight:"20px"}}>
           <MDBCardImage position='top' alt='...' src={`https://firebasestorage.googleapis.com/v0/b/beatbounceandscore.appspot.com/o/${el.image}?alt=media&token=894834e1-f47f-4826-b6dc-8801bcae91aa`} />
           <MDBCardBody>
             <MDBCardTitle>{el.CourseName}</MDBCardTitle>

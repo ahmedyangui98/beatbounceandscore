@@ -35,17 +35,10 @@ const navigate=useNavigate()
       };
 
 
-   
-    
     const dispatch = useDispatch();
-   
- 
-  
     const [  chapterName, setChapterName] = useState("");
     const [content, setContent] = useState("");
-   
- 
-
+  
     useEffect(() => {
         dispatch(getcourses());
     
@@ -65,14 +58,37 @@ const navigate=useNavigate()
       
         setCourse(selectedValue);
       };
-      console.log("sv"+course)
-    return(<div style={{height:"300px",width:"500px",color:"white"}}><Form>
+     // console.log("sv"+course)
+    return(
+    
+      <>
+      <div className="container">
+      <div className='start'>
+            <h1 style={{fontSize:55,color:'black', fontWeight: 'bold' }}>Add Chapter :</h1>
+          </div>
+        <div className="start">
+    
+    <div style={{
+              height: "500px",
+              width: "600px",
+              color: "white",
+              textAlign: "center",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              border: "2px solid white",
+              borderRadius: "10px",
+              padding: "20px",
+              margin: "20px auto",
+            }}>
+    <Form>
     <FormGroup row>
       <Label
         for="exampleEmail"
-        sm={2}
+        sm={3}
       >
-        Chapter
+        Chapter :
       </Label>
       <Col sm={10}>
         <Input
@@ -85,9 +101,9 @@ const navigate=useNavigate()
     <FormGroup row>
       <Label
       
-        sm={2}
+        sm={3}
       >
-        Content
+        Content :
       </Label>
       <Col sm={10}>
         <Input
@@ -122,6 +138,12 @@ const navigate=useNavigate()
       </Button>
     </Col>
   </FormGroup>
-  </Form></div>)
+  </Form></div>
+  
+  </div>
+  </div>
+  </>
+  
+  )
   
 }

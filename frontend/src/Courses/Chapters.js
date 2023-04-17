@@ -26,7 +26,7 @@ export default function Chapters() {
   const chapters = useSelector((state) => state.chaptersreducer?.chapters);
   const course = useSelector((state) => state.coursesreducer?.fc);
 
-  console.log("course"+course._id);
+ // console.log("course"+course._id);
   const [collapse, setCollapse] = useState(false);
   const [status, setStatus] = useState('Closed');
 

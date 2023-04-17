@@ -104,7 +104,7 @@ export const finduserbyid = (id) => async (dispatch) => {
     //console.log(res.data);
     dispatch({ type: FIND_USER, payload: res.data });
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 };
 

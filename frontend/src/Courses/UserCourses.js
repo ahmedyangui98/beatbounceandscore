@@ -10,12 +10,19 @@ export default function UserCourses() {
     
       }, []);
       const courses = useSelector((state) => state.coursesreducer.courses);
-      console.log(courses)
   return (
+
+    <>
+      <div className="container">
+      <div className='start'>
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>  {courses?.map((el) => (
         <div key={el._id}>
           <CourseCard el={el} />
         </div>
       ))}</div>
+  </div>
+  </div>
+  </>
+
   )
 }

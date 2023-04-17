@@ -107,7 +107,6 @@ export default function AdminNaviguation() {
                         <DropdownItem
                             onClick={() => {
                               navigate("/admincourses");
-                              window.location.reload()
                             }} 
                           >
                               List of courses
@@ -125,7 +124,6 @@ export default function AdminNaviguation() {
                           <DropdownItem
                             onClick={() => {
                               navigate("/addchapter");
-                              window.location.reload()
                             }} 
                           >
                               Add chapter
@@ -157,7 +155,6 @@ export default function AdminNaviguation() {
                         <DropdownItem
                             onClick={() => {
                               navigate("/count");
-                              window.location.reload()
                             }} 
                           >
                               Count Roles
@@ -166,7 +163,6 @@ export default function AdminNaviguation() {
                           <DropdownItem
                             onClick={() => {
                               navigate("/countGender");
-                              window.location.reload()
                             }} 
                           >
                               Count Gender
