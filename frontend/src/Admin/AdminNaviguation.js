@@ -79,6 +79,15 @@ export default function AdminNaviguation() {
             </NavLink>
         </NavItem>
         <NavItem>
+          <NavLink
+             to="/profile"
+              onClick={(e) => {e.preventDefault();navigate("/profile")}}
+            >
+             <i aria-hidden="true" class="now-ui-icons users_single-02"></i>
+              <p>Profile</p>
+            </NavLink>
+        </NavItem>
+        <NavItem>
           <NavLink   onClick={() => {  navigate("/quizResults");}} >
                           <i aria-hidden={true} class="now-ui-icons design_app mr-1"></i>
                           <p>Quiz Results</p>

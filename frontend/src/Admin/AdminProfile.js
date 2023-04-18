@@ -88,7 +88,6 @@ const AdminProfile = () => {
         </div>
       </div>
 
-      <DarkFooter />
 
     </>
   );

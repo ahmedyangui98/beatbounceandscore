@@ -13,7 +13,7 @@ export default function AdminCourses() {
 
   useEffect(() => {
     dispatch(getcourses());
-    dispatch(get_current());
+   // dispatch(get_current());
   }, []);
 
   const courses = useSelector((state) => state.coursesreducer.courses);

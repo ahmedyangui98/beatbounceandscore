@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getServerData } from "../helper/helper";
 import { Col, FormGroup } from "react-bootstrap";
-import { Button, Input } from "reactstrap";
+import { Button, Input, Row } from "reactstrap";
 import { Link } from "react-router-dom";
 import DarkFooter from "../Footers/DarkFooter";
 import { confirmAlert } from "react-confirm-alert";
@@ -87,21 +87,24 @@ const QuizManagment = () => {
       return (
         <>
         <div className="container">
-         <Link className='btn btn-info' to={`/quizAdmin`}><i class="fas fa-info-circle"></i>Add Quiz</Link>
 
           <div className='start'>
             <h1 style={{fontSize:55,color:'black', fontWeight: 'bold' }}>Quiz Management :</h1>
           </div>
           <br/>
-
-          <div >
-          <Col lg="3" sm="6" >
-            <FormGroup>
-              <Input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
+          <Row className='align-items-center'>
+                <Col className='text-left' lg="3" sm="6">
+                    <FormGroup>
+                <Input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
                  style={{borderRadius:80}} placeholder="Search for a question"/>
-            </FormGroup>
-          </Col>
-          </div>
+                    </FormGroup>
+
+                </Col>
+                <Col className='text-right'>
+                    <Link className='btn btn-info' to={`/quizAdmin`}><i class="fas fa-info-circle"></i>Add Quiz</Link>
+                </Col>
+            </Row>
+          
           <br/>
 
           {Object.entries(filteredQuestions).map(([type, questions]) => (

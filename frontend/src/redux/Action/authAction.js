@@ -72,7 +72,7 @@ export const deleteusers = (id) => async (dispatch,navigate) => {
     navigate("/profile");
     window.location.reload();
   } catch (error) {
-    console.log(error);
+   // console.log(error);
   }
 };
 
@@ -82,7 +82,7 @@ export const deleteresult = (id) => async (dispatch) => {
     dispatch({ type: DELETE_RESULT, payload: res.data });
     window.location.reload();
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 };
 
