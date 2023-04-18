@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { setUserId } from '../redux/reducer/result_reducer'
 import '../assets/styles/Main.css'
 import {  useSelector } from "react-redux";
-import { Button, Card } from 'reactstrap';
+import { Button, Card, Label } from 'reactstrap';
 import SportImg from '../assets/img/sportu-quiz-contest-poster-blue-logo.png';
 import MusicImg from '../assets/img/2898875.png';
 import DanceImg from '../assets/img/png-clipart-blue-trademark.png';
@@ -53,14 +53,15 @@ const Main = () => {
           disabled={true}
           
         >
+         
           <div className="">
             <img alt=""  src={SportImg}></img>
           </div>
           <br/>
-
-        
+         
             <Link className='btn btn-round' style={{color:'yellow'}} to={'/quiz/sport'}  onClick={startQuiz}>Start Sport Quiz</Link>
-
+            <Link className='btn btn-round' style={{color:'yellow'}} to={'/pay/sport'} >Pay</Link>
+          <br/>
         </Card>
         <Card
           style={{
@@ -77,7 +78,8 @@ const Main = () => {
             <img alt=""  src={MusicImg}></img>
           </div>
           <Link  style={{color:'yellow'}}  className='btn btn-round' to={'/quiz/musique'} onClick={startQuiz}>Start Music Quiz</Link>
-            
+          <Link className='btn btn-round' style={{color:'yellow'}} to={'/pay/musique'} >Pay</Link>
+          <br/>
         </Card>
         <Card
           style={{
@@ -94,6 +96,8 @@ const Main = () => {
             <img alt=""  src={DanceImg}></img>
           </div>
           <Link  style={{color:'yellow'}} className='btn btn-round' to={'/quiz/dance'} onClick={startQuiz}>Start Dance Quiz</Link>
+          <Link className='btn btn-round' style={{color:'yellow'}} to={'/pay/dance'} >Pay</Link>
+          <br/>
         </Card>
         </div>
         
