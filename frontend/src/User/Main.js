@@ -9,7 +9,7 @@ import SportImg from '../assets/img/sportu-quiz-contest-poster-blue-logo.png';
 import MusicImg from '../assets/img/2898875.png';
 import DanceImg from '../assets/img/png-clipart-blue-trademark.png';
 import DarkFooter from '../Footers/DarkFooter'
-import { getServerData, getServerData1, getServerData2 } from '../helper/helper'
+import { getServerData } from '../helper/helper'
 
 const Main = () => {
 
