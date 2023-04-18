@@ -22,29 +22,6 @@ userRoutes.get("/countbygender",countByGender);
 userRoutes.get("/countByRole",countByRole);
 
 
-const bodyParser = require('body-parser');
-
-
-// Middleware to parse JSON request bodies
-userRoutes.use(bodyParser.json());
-
-// Endpoint for submitting the financial aid form
-userRoutes.post('/submit', (req, res) => {
-  // Extract form data from request body
-  const { firstName, lastName, income, expenses } = req.body;
-
-  // Perform calculations to determine financial aid eligibility
-  const netIncome = income - expenses;
-  let eligibility = 'Not eligible';
-  if (netIncome <= 20000) {
-    eligibility = 'Full aid';
-  } else if (netIncome <= 40000) {
-    eligibility = 'Partial aid';
-  }
-
-  // Return the result as JSON response
-  res.json({ eligibility });
-});
 
 
 
