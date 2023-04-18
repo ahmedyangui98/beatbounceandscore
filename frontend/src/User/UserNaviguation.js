@@ -97,7 +97,20 @@ export default function UserNaviguation() {
                             aria-hidden={true}
                             className="now-ui-icons education_paper"
                           ></i>
-                          <p>courses</p>
+                          <p>Courses</p>
+                        </NavLink>
+                      </NavItem>
+                      <NavItem>
+                        <NavLink
+                          onClick={() => {
+                            navigate("/offers");
+                          }} 
+                        >
+                          <i
+                            aria-hidden={true}
+                            className="fa fa-suitcase" style={{fontSize:15}}
+                          ></i>
+                          <p> Jobs</p>
                         </NavLink>
                       </NavItem>
                       <NavItem>

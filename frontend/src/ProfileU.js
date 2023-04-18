@@ -179,7 +179,6 @@ const ProfileU = () => {
               </Button>  
 
     <Col md="6">
-              <h4>Modal</h4>
               <Modal
                 modalClassName="modal-mini modal-danger"
                 toggle={() => setModal1(false)}
@@ -324,7 +323,6 @@ const ProfileU = () => {
             </div>
             <h3 className="title">About me</h3>
             <div className="description">
-               <h3>About me:</h3>
                <h4>Email : {user.email}</h4>
                <h4>Gender : {user.gender}</h4>
                <h4>Birthdate : {user.birthdate.slice(0, -14)}</h4>

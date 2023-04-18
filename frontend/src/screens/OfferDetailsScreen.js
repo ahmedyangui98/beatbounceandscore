@@ -8,7 +8,7 @@ import Loader from '../components/Loader'
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
 import { listOfferDetails } from '../redux/Action/offerAction'
-import Offer from '../components/Offer'
+import "../assets/css/jobs.css";
 
 const OfferDetailsScreen = ({ history }) => {
 
@@ -31,7 +31,9 @@ const OfferDetailsScreen = ({ history }) => {
 
   return (
     <>
-    
+
+    <div className='container'>
+      <div className='start'>
    
       {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
 
@@ -75,7 +77,7 @@ const OfferDetailsScreen = ({ history }) => {
               </ListGroup>
             </Card>
             </ListGroup>
-            <Link className='btn btn-light my-3' to='/home'>
+            <Link className='btn btn-light my-3' to='/offers'>
             go back
              </Link>
           </Col>
@@ -84,7 +86,8 @@ const OfferDetailsScreen = ({ history }) => {
           </Col>
         </Row>
       )}
-
+</div>
+</div>
     </>
 
 

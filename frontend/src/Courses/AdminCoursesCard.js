@@ -111,7 +111,7 @@ const [options,setOptions]=useState([
         }
 
 {user.role=="admin"&& <Button variant="warning" className="btn-round" size="lg" onClick={handleShow}>edit</Button>        }
-              </ListGroup.Item>ListGroup.Item
+              </ListGroup.Item>
               <ListGroup.Item
              
             >
@@ -141,7 +141,6 @@ const [options,setOptions]=useState([
                 
               
                   <Form.Group className="mb-3">
-                    Expiration date
                     <Form.Label>expirationDate</Form.Label>
                     <Form.Control
   type="Date"

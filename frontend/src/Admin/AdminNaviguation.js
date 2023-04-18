@@ -107,7 +107,9 @@ export default function AdminNaviguation() {
                         <DropdownItem
                             onClick={() => {
                               navigate("/admincourses");
+
                             }} 
+                            
                           >
                               List of courses
                           </DropdownItem>
@@ -124,6 +126,8 @@ export default function AdminNaviguation() {
                           <DropdownItem
                             onClick={() => {
                               navigate("/addchapter");
+                              window.location.reload()
+
                             }} 
                           >
                               Add chapter
@@ -132,6 +136,18 @@ export default function AdminNaviguation() {
       
                         </DropdownMenu>
               </UncontrolledDropdown>
+        <NavItem>
+          <NavLink
+             to="/quizManagment"
+              onClick={(e) => {e.preventDefault();navigate("/admin/offerlist")}}
+            >
+              <i
+                            aria-hidden={true}
+                            className="fa fa-suitcase" style={{fontSize:15}}
+                          ></i>
+              <p>Jobs</p>
+            </NavLink>
+        </NavItem>
           <NavItem>
             <NavLink
              to="/users"

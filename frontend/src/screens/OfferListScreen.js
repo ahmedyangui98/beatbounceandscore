@@ -7,6 +7,8 @@ import Loader from '../components/Loader'
 import { listOffers, deleteOffer, createOffer } from '../redux/Action/offerAction'
 import { Navigate } from 'react-router-dom'
 import { OFFER_CREATE_RESET } from '../redux/constants/offerConstants'
+import "../assets/css/jobs.css";
+
 
 const OfferListScreen = ({ match }) => {
     const dispatch = useDispatch()
@@ -47,10 +49,12 @@ const OfferListScreen = ({ match }) => {
     }
     return (
         <>
+
+            <div className="container">
+                <div className='start'>
+                    <h1 style={{fontSize:55,color:'black', fontWeight: 'bold' }}>Offers List :</h1>
+                </div>
             <Row className='align-items-center'>
-                <Col>
-                    <h1>Offers</h1>
-                </Col>
                 <Col className='text-right'>
                     <Button className='my-3' onClick={createProductHandler}>
                         <i className='fas fa-plus'></i> Create offer
@@ -68,19 +72,21 @@ const OfferListScreen = ({ match }) => {
             ) : error ? (
                 <Message variant='danger'>{error}</Message>
             ) : (
-                <Table striped bordered hover responsive className='table-sm'>
-                    <thead>
-                        <tr>
+                <table striped bordered hover responsive className='table-sm'>
+                    <thead className='table-header'>
+                        <tr className='table-row'>
                             <th>ID</th>
                             <th>location</th>
                             <th>Postname</th>
                             <th>Postdescription</th>
                             <th>Companyname</th>
+                            <th>Action</th>
+
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='table-header'>
                         {offers.map((offer) => (
-                            <tr key={offer._id}>
+                            <tr className='table-body' key={offer._id}>
                                 <td>{offer._id}</td>
                                 <td>{offer.location}</td>
                                 <td>
@@ -110,8 +116,9 @@ const OfferListScreen = ({ match }) => {
                             </tr>
                         ))}
                     </tbody>
-                </Table>
+                </table>
             )}
+            </div>
         </>
     )
 }
