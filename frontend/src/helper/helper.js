@@ -25,6 +25,14 @@ export async function getServerData(url, callback){
     const data =  (await axios.get(url))?.data;
     return callback ? callback(data) : data;
 }
+export async function getServerData1(url, callback){
+    const data =  (await axios.get(url))?.data;
+    return callback ? callback(data) : data;
+}
+export async function getServerData2(url, callback){
+    const data =  (await axios.get(url))?.data;
+    return callback ? callback(data) : data;
+}
 
 
 /** post server data */

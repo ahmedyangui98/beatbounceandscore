@@ -2,23 +2,39 @@
 // Watch this video to get started: https://youtu.be/rPR2aJ6XnAc.
 
 const stripe = require('stripe')('sk_test_51MuFezE4ZELlhZxQ6LjSdJFOcQHEUYibATE8GNAdQOvhZnUGcIKb6QQaCeHt8McxvO0wTFvcdtWbVNGJO2oUCQgk00URF7YO5I')
+const users = require("../model/user");
+const payment = require("../model/paymentSchema");
+
 
 
 
 exports.createPayment = async (req, res) => {
-  const { amount,description,payment_method_types,payment_method_data,confirmation_method,payment_user_agent } = req.body;
+  const { amount,quizType,payment_method_types,payment_method_data,userId,description } = req.body;
  
   try {
-    await stripe.charges.create({
+    const stripePayment = await stripe.charges.create({
       customer: "cus_NfcWty189MHz5r",
-      amount: amount*100,
+      amount: amount ,
       currency: "usd",
-      payment_method_types:payment_method_types,
-      description:description,
-      payment_method_data:payment_method_data,
-
+      payment_method_types: payment_method_types,
+      description: quizType,
+      payment_method_data: payment_method_data,
     });
-    res.json({ msg : "payment success !!"});
+
+    const newPayment = new payment({
+      amount: amount/100 ,
+      quizType: quizType,
+      userId: userId,
+    });
+
+    await newPayment.save();
+
+    // const user = await users.findById(newPayment.userId);
+    // console.log(userId)
+    // user.payments.push(newPayment._id);
+    // await user.save();
+
+    res.json({ msg: "Payment Saved Successfully...!" });
 
   } catch (error) {
     console.log(error);
@@ -27,6 +43,16 @@ exports.createPayment = async (req, res) => {
 
 }
 
+exports.getPaymentsByType = async (req,res) => {
+  try {
+    const payments = await payment.findOne({ quizType: req.params.type });
+    // const result = await Results.findOne({_id:req.params.id});
+    res.json(payments);
+
+  } catch (err) {
+    // console.error(err);
+  }
+};
 
 exports.checkoutSession = async (req, res) => {
   const session = await stripe.checkout.sessions.create({

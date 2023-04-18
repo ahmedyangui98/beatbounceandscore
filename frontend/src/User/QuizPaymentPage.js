@@ -1,14 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
+import { useDispatch, useSelector } from 'react-redux';
+import { get_current } from '../redux/Action/authAction';
+
 
 const QuizPaymentPage = ({ quizType, quizPrice }) => {
   const [paymentError, setPaymentError] = useState(null);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [showPaymentError, setShowPaymentError] = useState(false);
   const [showPaymentSuccess, setShowPaymentSuccess] = useState(false);
+
+
   const stripe = useStripe();
   const elements = useElements();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(get_current())
+  },);
+  
+
+
+  const user = useSelector((state) => state.Authreducer.user);
+
+  const [userId, setUserId] = useState(user._id);
+
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -29,6 +48,7 @@ const QuizPaymentPage = ({ quizType, quizPrice }) => {
           id,
           amount: quizPrice * 100,
           quizType,
+          userId:userId
         });
       } catch (error) {
         // payment error
