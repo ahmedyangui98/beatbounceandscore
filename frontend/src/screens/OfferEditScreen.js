@@ -8,6 +8,9 @@ import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { listOfferDetails, updateOffer } from '../redux/Action/offerAction'
 import { OFFER_UPDATE_RESET } from '../redux/constants/offerConstants'
+import "../assets/css/jobs.css";
+
+
 const OfferEditScreen = () => {
     const { id } = useParams();
     const navigate = useNavigate('');

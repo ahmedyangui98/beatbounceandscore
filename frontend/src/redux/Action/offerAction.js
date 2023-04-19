@@ -26,12 +26,12 @@ import {
             dispatch({ type: OFFER_LIST_REQUEST })
         
             const { data } = await  axios.get('http://localhost:4000/api/offers/allOffers')
-        console.log(data)
+       // console.log(data)
             dispatch({
                type: OFFER_LIST_SUCCESS,
                payload: data,
             })
-            console.log(data)
+           // console.log(data)
 
         } catch (error) { 
             dispatch({
@@ -156,7 +156,7 @@ import {
                   }
               
                   const { data } = await axios.put(`http://localhost:4000/api/offers/updateOffer/${id}`, offerData,config)
-              console.log(data)
+             // console.log(data)
                   dispatch({ type: OFFER_UPDATE_SUCCESS, payload: data })
                   navigate("/admin/offerlist");
                   window.location.reload()
@@ -170,8 +170,9 @@ import {
                   })
                 }
               
-                console.log("id:"+id)
-                console.log("offerData:"+offerData)
+               // console.log("id:"+id)
+               
+               //console.log("offerData:"+offerData)
               }
                          
               export const createOfferReview = (offerId, review) => async (

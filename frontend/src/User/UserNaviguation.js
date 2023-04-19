@@ -35,11 +35,10 @@ export default function UserNaviguation() {
             >
                 <img
           variant="top" 
-          src={Logo} alt="okk" style={ {height: " 70px ", width: "70px"}}
+          src={Logo} alt="okk" style={ {height: " 60px ", width: "60px"}}
         />
             </NavbarBrand>
             <UncontrolledTooltip target="#navbar-brand">
-              Designed by Coders Breed
             </UncontrolledTooltip>
         <NavbarBrand
           onClick={(e) => e.preventDefault()}
@@ -97,7 +96,34 @@ export default function UserNaviguation() {
                             aria-hidden={true}
                             className="now-ui-icons education_paper"
                           ></i>
-                          <p>courses</p>
+                          <p>Courses</p>
+                        </NavLink>
+                      </NavItem>
+                      <NavItem>
+                        <NavLink
+                           onClick={() => {
+                            navigate("/financialaid");
+                          }} 
+                        >
+                          <i
+                            aria-hidden={true}
+                            className="now-ui-icons objects_umbrella-13"
+                          ></i>
+                          <p>Financial aid</p>
+
+                        </NavLink>
+                      </NavItem>
+                      <NavItem>
+                        <NavLink
+                          onClick={() => {
+                            navigate("/offers");
+                          }} 
+                        >
+                          <i
+                            aria-hidden={true}
+                            className="fa fa-suitcase" style={{fontSize:15}}
+                          ></i>
+                          <p> Jobs</p>
                         </NavLink>
                       </NavItem>
                       <NavItem>

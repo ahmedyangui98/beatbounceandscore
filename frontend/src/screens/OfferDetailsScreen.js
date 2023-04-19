@@ -7,9 +7,14 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
+<<<<<<< HEAD
 import { listOfferDetails,createOfferReview } from '../redux/Action/offerAction'
 import Offer from '../components/Offer'
 import { OFFER_CREATE_REVIEW_RESET } from '../redux/constants/offerConstants'
+=======
+import { listOfferDetails } from '../redux/Action/offerAction'
+import "../assets/css/jobs.css";
+>>>>>>> 7c6b6d4e51eb7acec347624568f7e44b9f9a1245
 
 const OfferDetailsScreen = ({ history }) => {
 
@@ -59,7 +64,9 @@ const OfferDetailsScreen = ({ history }) => {
 
   return (
     <>
-    
+
+    <div className='container'>
+      <div className='start'>
    
       {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
 
@@ -103,7 +110,7 @@ const OfferDetailsScreen = ({ history }) => {
               </ListGroup>
             </Card>
             </ListGroup>
-            <Link className='btn btn-light my-3' to='/home'>
+            <Link className='btn btn-light my-3' to='/offers'>
             go back
              </Link>
           </Col>
@@ -112,6 +119,7 @@ const OfferDetailsScreen = ({ history }) => {
           </Col>
         </Row>
       )}
+<<<<<<< HEAD
  <Row>
 
           <Col>
@@ -177,6 +185,10 @@ const OfferDetailsScreen = ({ history }) => {
           </Col>
         
         </Row>
+=======
+</div>
+</div>
+>>>>>>> 7c6b6d4e51eb7acec347624568f7e44b9f9a1245
     </>
 
     

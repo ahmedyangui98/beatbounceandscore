@@ -5,6 +5,8 @@ import Offer from '../components/Offer'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listOffers } from '../redux/Action/offerAction'
+import "../assets/css/jobs.css";
+
 
 const HomeScreen = () => {
   const dispatch = useDispatch()
@@ -22,7 +24,11 @@ const HomeScreen = () => {
   return (
 
     <>
+
+<div className='container'>
+      <div className='start'>
       <h1 >Latest Offers</h1>
+      </div>
       {loading ? (
         <h2>loading .. </h2>
       ) : error ? (
@@ -37,6 +43,7 @@ const HomeScreen = () => {
           ))}
         </Row>
       )}
+      </div>
     </>
 
   )

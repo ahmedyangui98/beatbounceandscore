@@ -27,7 +27,7 @@ export const login = (data, navigate) => async (dispatch) => {
   try {
     const res = await axios.post("/users/login", data);
     dispatch({ type: LOGIN, payload: res.data });
-    console.log(res.data);
+    //console.log(res.data);
     navigate("/profile");
     window.location.reload();
   } catch (error) {
@@ -58,7 +58,7 @@ export const getusers = () => async (dispatch) => {
     //console.log(res.data);
     dispatch({ type: GET_USERS, payload: res.data });
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 };
 export const logout = () => {
@@ -72,7 +72,7 @@ export const deleteusers = (id) => async (dispatch,navigate) => {
     navigate("/profile");
     window.location.reload();
   } catch (error) {
-    console.log(error);
+   // console.log(error);
   }
 };
 
@@ -82,7 +82,7 @@ export const deleteresult = (id) => async (dispatch) => {
     dispatch({ type: DELETE_RESULT, payload: res.data });
     window.location.reload();
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 };
 
@@ -95,7 +95,7 @@ export const deleteYourAccount = (id) => async (dispatch,navigate) => {
     navigate("/");
     window.location.reload();
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 };
 export const finduserbyid = (id) => async (dispatch) => {
@@ -128,7 +128,7 @@ export const updateusers = (id,data) => async (dispatch) => {
   
     window.location.reload();
   } catch (error) {
-   console.log(error)
+   //console.log(error)
    
   }
 };
@@ -158,7 +158,7 @@ export const sendPasswordLink = (data, navigate) => async (dispatch) => {
     navigate("/");
     window.location.reload();
   } catch (error) {
-     console.log(error);
+     //console.log(error);
     
   }
 };
@@ -170,7 +170,7 @@ export const ForgotPass = (id,token,navigate) => async (dispatch) => {
    // console.log(res.data);
     dispatch({ type: FORGOT_PASSWORD, payload: res.data });
   } catch (error) {
-    console.log(error);
+   // console.log(error);
     navigate("*")
   }
 };
@@ -184,7 +184,7 @@ export const ChangePasswordWithIdandToken = (id,token,data,navigate) => async (d
     navigate("/login");
     window.location.reload();
   } catch (error) {
-   console.log(error)
+   //console.log(error)
    
   }
 };
@@ -197,7 +197,7 @@ export const GetResultByIdResult = (id) => async (dispatch) => {
     //console.log(res.data.result)
 
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 };
 
@@ -206,7 +206,7 @@ export const GetQuizByType = (type) => async (dispatch) => {
     const res = await axios.get(`/users/question/${type}`);
     dispatch({ type: GET_QUIZ, payload: res.data.quiz });
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 };
 
@@ -221,5 +221,4 @@ export const add_quiz = (data, navigate) => async (dispatch) => {
    
   }
 };
-
 
