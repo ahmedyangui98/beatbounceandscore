@@ -35,11 +35,10 @@ export default function UserNaviguation() {
             >
                 <img
           variant="top" 
-          src={Logo} alt="okk" style={ {height: " 70px ", width: "70px"}}
+          src={Logo} alt="okk" style={ {height: " 60px ", width: "60px"}}
         />
             </NavbarBrand>
             <UncontrolledTooltip target="#navbar-brand">
-              Designed by Coders Breed
             </UncontrolledTooltip>
         <NavbarBrand
           onClick={(e) => e.preventDefault()}
@@ -108,7 +107,7 @@ export default function UserNaviguation() {
                         >
                           <i
                             aria-hidden={true}
-                            className="now-ui-icons ui-1_send"
+                            className="now-ui-icons objects_umbrella-13"
                           ></i>
                           <p>Financial aid</p>
 

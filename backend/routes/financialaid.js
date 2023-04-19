@@ -1,7 +1,7 @@
 // routes/financialAidRoutes.js
 
 const express = require('express');
-const financialaid = require('../controlles/Financialaid');
+const financialaid = require('../controlles/financialaid');
 
 const Router= express.Router();
 
