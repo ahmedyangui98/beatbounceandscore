@@ -7,14 +7,10 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
-<<<<<<< HEAD
-import { listOfferDetails,createOfferReview } from '../redux/Action/offerAction'
+import { listOfferDetails, createOfferReview } from '../redux/Action/offerAction'
 import Offer from '../components/Offer'
 import { OFFER_CREATE_REVIEW_RESET } from '../redux/constants/offerConstants'
-=======
-import { listOfferDetails } from '../redux/Action/offerAction'
-import "../assets/css/jobs.css";
->>>>>>> 7c6b6d4e51eb7acec347624568f7e44b9f9a1245
+
 
 const OfferDetailsScreen = ({ history }) => {
 
@@ -39,19 +35,19 @@ const OfferDetailsScreen = ({ history }) => {
 
 
   useEffect(() => {
-    if(successOfferReview) {
+    if (successOfferReview) {
       alert('Review Submitted !')
       setRating(0)
       setComment('')
-      dispatch({type: OFFER_CREATE_REVIEW_RESET})
+      dispatch({ type: OFFER_CREATE_REVIEW_RESET })
     }
     dispatch(listOfferDetails(id))
 
-  }, [dispatch, id,successOfferReview])
+  }, [dispatch, id, successOfferReview])
 
   const navigate = useNavigate();
 
-  
+
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(
@@ -65,65 +61,67 @@ const OfferDetailsScreen = ({ history }) => {
   return (
     <>
 
-    <div className='container'>
-      <div className='start'>
-   
-      {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
+      <div className='container'>
+        <div className='start'>
 
-        <Row>
-          <Col md={6}>
-            <Image src={offer.image} alt={offer.name} fluid />
-          </Col>
-          <Col md={3}>
-            <ListGroup variant='flush'>
-              <ListGroup.Item>
-                <h3>{offer.name}</h3>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <Rating value={offer.rating} text={`${offer.numReviews} reviews`}
-                />
-              </ListGroup.Item>
-              <ListGroup.Item>
-                Location :{offer.location}
-              </ListGroup.Item>
-              <ListGroup.Item>
-              Postdescription :{offer.Postdescription}
-              </ListGroup.Item>
-              <Card>
-              <ListGroup variant='flush'>
-                <ListGroup.Item>
-                  <Row>
-                    <Col>
-                    Companyname:
-                    </Col>
-                    <Col>
-                      <strong>{offer.Companyname}</strong>
-                    </Col>
-                    <Col>PostName :</Col>
-                    <Col>
-                      <strong>{offer.Postname}</strong>
-                    </Col>
-                  </Row>
-                  
-                </ListGroup.Item>
-              
-              </ListGroup>
-            </Card>
-            </ListGroup>
-            <Link className='btn btn-light my-3' to='/offers'>
-            go back
-             </Link>
-          </Col>
-          <Col md={3}>
-          
-          </Col>
-        </Row>
-      )}
-<<<<<<< HEAD
- <Row>
+          {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
 
-          <Col>
-          <h2>Reviews</h2>
+            <Row>
+              <Col md={6}>
+                <Image src={offer.image} alt={offer.name} fluid />
+              </Col>
+              <Col md={3}>
+                <ListGroup variant='flush'>
+                  <ListGroup.Item>
+                    <h3>{offer.name}</h3>
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <Rating value={offer.rating} text={`${offer.numReviews} reviews`}
+                    />
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    Location :{offer.location}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    Postdescription :{offer.Postdescription}
+                  </ListGroup.Item>
+                  <Card>
+                    <ListGroup variant='flush'>
+                      <ListGroup.Item>
+                        <Row>
+                          <Col>
+                            Companyname:
+                          </Col>
+                          <Col>
+                            <strong>{offer.Companyname}</strong>
+                          </Col>
+                          <Col>PostName :</Col>
+                          <Col>
+                            <strong>{offer.Postname}</strong>
+                          </Col>
+                        </Row>
+
+                      </ListGroup.Item>
+
+                    </ListGroup>
+                  </Card>
+                </ListGroup>
+                <Link className='btn btn-light my-3' to='/offers'>
+                  go back
+                </Link>
+              </Col>
+              <Col md={3}>
+
+              </Col>
+            </Row>
+          )}
+        </div>
+
+
+          <Row>
+
+            <Col>
+              <h2>Reviews</h2>
               {offer.reviews.length === 0 && <Message>No Reviews</Message>}
               <ListGroup variant='flush'>
                 {offer.reviews.map((review) => (
@@ -132,9 +130,9 @@ const OfferDetailsScreen = ({ history }) => {
                     <Rating value={review.rating} />
                     <p>{review.createdAt.substring(0, 10)}</p>
                     <p>{review.comment}</p>
-                  </ListGroup.Item>  
-                  ))}
-                   <ListGroup.Item>
+                  </ListGroup.Item>
+                ))}
+                <ListGroup.Item>
                   <h2>Write an Offer Review</h2>
                   {successOfferReview && (
                     <Message variant='success'>
@@ -179,19 +177,17 @@ const OfferDetailsScreen = ({ history }) => {
                         Submit
                       </Button>
                     </Form>
-                   }
+                  }
                 </ListGroup.Item>
-                   </ListGroup>
-          </Col>
-        
-        </Row>
-=======
-</div>
-</div>
->>>>>>> 7c6b6d4e51eb7acec347624568f7e44b9f9a1245
+              </ListGroup>
+            </Col>
+
+          </Row>
+        </div>
+
     </>
 
-    
+
 
 
   )
