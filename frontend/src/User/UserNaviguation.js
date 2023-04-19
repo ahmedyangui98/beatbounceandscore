@@ -102,6 +102,20 @@ export default function UserNaviguation() {
                       </NavItem>
                       <NavItem>
                         <NavLink
+                           onClick={() => {
+                            navigate("/financialaid");
+                          }} 
+                        >
+                          <i
+                            aria-hidden={true}
+                            className="now-ui-icons ui-1_send"
+                          ></i>
+                          <p>Financial aid</p>
+
+                        </NavLink>
+                      </NavItem>
+                      <NavItem>
+                        <NavLink
                           onClick={() => {
                             navigate("/offers");
                           }} 

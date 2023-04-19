@@ -50,6 +50,7 @@ import OfferListScreen from "./screens/OfferListScreen"
 import OfferEditScreen from "./screens/OfferEditScreen";
 import QuizPaymentPage from "./User/QuizPaymentPage";
 import QuizPay from "./User/QuizPay";
+import Financialaid from "./User/Financialaid"
 
 
 
@@ -78,6 +79,7 @@ function App() {
   let offerdetails;
   let quizpaymentpage;
   let quizpay;
+  let financialaid;
 
 
 
@@ -99,6 +101,9 @@ function App() {
       offerdetails = <OfferDetailsScreen />
       quizpaymentpage=<QuizPaymentPage/>
       quizpay=<QuizPay/>
+      financialaid=<Financialaid/>
+
+
 
       break;
     case 'admin':
@@ -188,8 +193,11 @@ function App() {
             />
             <Route
               path="/resultdetail/:type/:id"
-              element={<PrivateRoutes Children={resultdetail} />}
-            />
+              element={<PrivateRoutes Children={resultdetail} />}/>
+              <Route
+          path="/financialaid"
+          element={<PrivateRoutes Children={financialaid} />}
+        />
 
             <Route path='/admin/offerlist' element={<OfferListScreen />} />
             <Route path='/admin/offer/:id/edit' element={<OfferEditScreen />} />
