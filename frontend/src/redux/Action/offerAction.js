@@ -13,7 +13,10 @@ import {
     OFFER_CREATE_FAIL,
     OFFER_UPDATE_REQUEST,
     OFFER_UPDATE_SUCCESS,
-    OFFER_UPDATE_FAIL,   
+    OFFER_UPDATE_FAIL,
+    OFFER_CREATE_REVIEW_REQUEST,
+    OFFER_CREATE_REVIEW_SUCCESS,
+    OFFER_CREATE_REVIEW_FAIL,   
     } from '../constants/offerConstants'
     import axios from 'axios'
 
@@ -171,3 +174,42 @@ import {
                 console.log("offerData:"+offerData)
               }
                          
+              export const createOfferReview = (offerId, review) => async (
+                dispatch,
+                getState
+              ) => {
+                try {
+                  dispatch({
+                    type: OFFER_CREATE_REVIEW_REQUEST,
+                  })
+              
+                  const {
+                  } = getState()
+              
+                  const config = {
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                  }
+              
+                  await axios.post(`http://localhost:4000/api/offers/${offerId}/reviews`, review, config)
+              
+                  dispatch({
+                    type: OFFER_CREATE_REVIEW_SUCCESS,
+                  })
+                } catch (error) {
+                  const message =
+                    error.response && error.response.data.message
+                      ? error.response.data.message
+                      : error.message
+                  if (message === 'Not authorized, token failed') {
+                    //dispatch(logout())
+                  }
+                  dispatch({
+                    type: OFFER_CREATE_REVIEW_FAIL,
+                    payload: message,
+                  })
+                }
+              }
+                    
+                               

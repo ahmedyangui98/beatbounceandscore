@@ -10,7 +10,7 @@ import userReducer from '../../features/dashboard/userSlice'
 import detectReducer from '../../features/dashboard/detectSlice'
 import coursesreducer from "./coursesreducer";
 import chaptersreducer from "./chaptersreducer";
-import { offerListReducer,offerDetailsReducer,offerDeleteReducer,offerCreateReducer,offerUpdateReducer } from "./offerReducers";
+import { offerListReducer,offerDetailsReducer,offerDeleteReducer,offerCreateReducer,offerUpdateReducer,offerReviewCreateReducer  } from "./offerReducers";
 
 const rootReducer = combineReducers({
   coursesreducer
@@ -29,6 +29,7 @@ const rootReducer = combineReducers({
   offerDetails:offerDetailsReducer,
   offreDelete: offerDeleteReducer,
   offreCreate: offerCreateReducer,
-  offerUpdate:offerUpdateReducer
+  offerUpdate:offerUpdateReducer,
+  offerReviewCreate:offerReviewCreateReducer 
 });
 export default rootReducer;

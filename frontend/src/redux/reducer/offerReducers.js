@@ -16,6 +16,10 @@ import {
     OFFER_UPDATE_SUCCESS,
     OFFER_UPDATE_FAIL,
     OFFER_UPDATE_RESET,
+    OFFER_CREATE_REVIEW_REQUEST,
+    OFFER_CREATE_REVIEW_SUCCESS,
+    OFFER_CREATE_REVIEW_FAIL,
+    OFFER_CREATE_REVIEW_RESET,
 
 
 } from '../constants/offerConstants'
@@ -102,4 +106,20 @@ export const offerCreateReducer = (state = {}, action) => {
         return state
     }
   }
+
+
+  export const offerReviewCreateReducer = (state = {}, action) => {
+    switch (action.type) {
+      case OFFER_CREATE_REVIEW_REQUEST:
+        return { loading: true }
+      case OFFER_CREATE_REVIEW_SUCCESS:
+        return { loading: false, success: true }
+      case OFFER_CREATE_REVIEW_FAIL:
+        return { loading: false, error: action.payload }
+      case OFFER_CREATE_REVIEW_RESET:
+        return {}
+      default:
+        return state
+    }
+  }   
   

@@ -12,7 +12,7 @@ exports.getOffers  = asyncHandler(async(req,res) => {
    res.json(offerss)
 })
 
-
+ 
 
 // @description   Fetch single Product
 // @route     GET /api/products/:id
@@ -100,4 +100,35 @@ exports.createOffer = asyncHandler(async(req, res) => {
     }
   })
   
-   
+exports.createOfferReview = asyncHandler(async (req, res) => {
+  const { rating, comment } = req.body
+
+  const offer = await offers.findById(req.params.id)
+
+  if (offer) {
+    const offer = await offers.findById(req.params.id)
+    
+
+  
+
+    const review = {
+      rating: Number(rating),
+      comment,
+    }
+
+    offer.reviews.push(review)
+
+    offer.numReviews = offer.reviews.length
+
+    offer.rating =
+    offer.reviews.reduce((acc, item) => item.rating + acc, 0) /
+    offer.reviews.length
+
+    await offer.save()
+    res.status(201).json({ message: 'Review added' })
+  } else {
+    res.status(404)
+    throw new Error('Offer not found')
+  }
+})
+  
