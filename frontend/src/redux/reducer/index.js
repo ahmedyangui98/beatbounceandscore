@@ -10,9 +10,10 @@ import userReducer from '../../features/dashboard/userSlice'
 import detectReducer from '../../features/dashboard/detectSlice'
 import coursesreducer from "./coursesreducer";
 import chaptersreducer from "./chaptersreducer";
+import userreducer from "./reducer"
 const rootReducer = combineReducers({
   coursesreducer
-  ,chaptersreducer,
+  ,chaptersreducer,userreducer,
   Authreducer,
   errorreducer,
   questions : questionReducer,

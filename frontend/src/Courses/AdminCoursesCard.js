@@ -52,11 +52,11 @@ const [options,setOptions]=useState([
    
 
    dispatch(
-      updatecourses(el._id, {CourseName,level,type,expirationDate,image},Navigate),  
-      window.location.reload()
+      updatecourses(el._id, {CourseName,type,level,expirationDate,image},navigate),  
+     
       
-    ); handleClose()
- 
+    ); 
+    window.location.reload()
   };
 
  

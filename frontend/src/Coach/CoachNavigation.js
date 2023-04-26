@@ -1,4 +1,8 @@
+
+// Initialize Firebase
+
 import React from "react";
+import firepadRef from '../server/firebase';
 
 // reactstrap components
 import {
@@ -26,8 +30,19 @@ import { faPersonChalkboard } from '@fortawesome/free-solid-svg-icons';
 export default function CoachNavigation() {
   const navigate=useNavigate()
   const dispatch=useDispatch()
+  const urlParams = new URLSearchParams(window.location.search);
+const roomId = urlParams.get("id");
   const [collapseOpen, setCollapseOpen] = React.useState(false);
-
+  const handleButtonClick = () => {
+    let newRoomId;
+    if (roomId) {
+      newRoomId = roomId;
+    } else {
+      newRoomId = firepadRef.push().key;
+      window.history.replaceState(null, "Meet", `?id=${newRoomId}`);
+    }
+    navigate(`/room?id=${newRoomId}`);
+  }
   return (
     <Navbar className="bg-primary" expand="lg">
     <Container>
@@ -77,6 +92,7 @@ export default function CoachNavigation() {
               <p>Home</p>
             </NavLink>
         </NavItem>
+        
         <NavItem>
           <NavLink   onClick={() => {  navigate("/quizResults");}} >
                           <i aria-hidden={true} class="now-ui-icons design_app mr-1"></i>
@@ -92,6 +108,15 @@ export default function CoachNavigation() {
               <p>Quiz</p>
             </NavLink>
         </NavItem>
+
+        <NavItem>
+          <NavLink to="/room"  onClick={handleButtonClick} >
+                          <i aria-hidden={true} class="now-ui-icons design_app mr-1"></i>
+                          <p>meet</p>
+          </NavLink>
+        </NavItem>
+      
+
         <UncontrolledDropdown nav>
                         <DropdownToggle
                           aria-haspopup={true}

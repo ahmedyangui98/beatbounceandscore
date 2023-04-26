@@ -44,6 +44,8 @@ import AdminCourses from "./Courses/AdminCourses";
 import AddCourses from "./Courses/AddCourses";
 import AddChapter from "./Courses/AddChapter";
 import ChaptersAdmin from "./Courses/ChaptersAdmin";
+import Room from "./videoroom/Room"
+import Join from "./videoroom/Join";
 
 
 
@@ -171,6 +173,13 @@ function App() {
           path="/chapters/:id"
           element={<PrivateRoutes Children={<Chapters/>} />}
         />
+          <Route
+          path="/join"
+          element={<Join/>}
+        /> <Route
+        path="/room"
+        element={<PrivateRoutes Children={<Room  u={user}/>} />}
+      />
         <Route
           path="/chaptersadmin/:id"
           element={<PrivateRoutes Children={<ChaptersAdmin/>} />}
