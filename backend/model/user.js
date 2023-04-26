@@ -52,7 +52,16 @@ const users = new mongoose.Schema({
     result: [{ type: mongoose.Schema.Types.ObjectId, ref: 'result' }],
     init_vector: { type: String },
     face_descriptor: { type: String },
-    timestamp: { type: Date, default: new Date() }
+    timestamp: { type: Date, default: new Date() 
+    
+      ,
+      payments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Payment',
+      }],  
+    
+    }
+    
    
  
 });

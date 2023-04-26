@@ -79,6 +79,15 @@ export default function AdminNaviguation() {
             </NavLink>
         </NavItem>
         <NavItem>
+          <NavLink
+             to="/profile"
+              onClick={(e) => {e.preventDefault();navigate("/profile")}}
+            >
+             <i aria-hidden="true" class="now-ui-icons users_single-02"></i>
+              <p>Profile</p>
+            </NavLink>
+        </NavItem>
+        <NavItem>
           <NavLink   onClick={() => {  navigate("/quizResults");}} >
                           <i aria-hidden={true} class="now-ui-icons design_app mr-1"></i>
                           <p>Quiz Results</p>
@@ -107,7 +116,9 @@ export default function AdminNaviguation() {
                         <DropdownItem
                             onClick={() => {
                               navigate("/admincourses");
+
                             }} 
+                            
                           >
                               List of courses
                           </DropdownItem>
@@ -124,7 +135,12 @@ export default function AdminNaviguation() {
                           <DropdownItem
                             onClick={() => {
                               navigate("/addchapter");
+<<<<<<< HEAD
                               window.location.reload();
+=======
+                              window.location.reload()
+
+>>>>>>> e9c0ccc27343459ecc9079dc5a437f3ee7b9614b
                             }} 
                           >
                               Add chapter
@@ -133,6 +149,18 @@ export default function AdminNaviguation() {
       
                         </DropdownMenu>
               </UncontrolledDropdown>
+        <NavItem>
+          <NavLink
+             to="/quizManagment"
+              onClick={(e) => {e.preventDefault();navigate("/admin/offerlist")}}
+            >
+              <i
+                            aria-hidden={true}
+                            className="fa fa-suitcase" style={{fontSize:15}}
+                          ></i>
+              <p>Jobs</p>
+            </NavLink>
+        </NavItem>
           <NavItem>
             <NavLink
              to="/users"

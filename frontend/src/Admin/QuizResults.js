@@ -56,17 +56,16 @@ const QuizResults = () => {
           buttons: [
             {
               label: 'Yes',
-              
+              className: 'btn btn-success', 
               onClick: () => {
-                // Send DELETE request to the server to delete the data
                 dispatch(deleteresult(id));
               },
             },
             {
               label: 'No',
+              className: 'btn btn-danger', 
               onClick: () => {
-                // code to execute if user cancels the deletion
-                console.log('Deletion canceled.');
+                
               },
             },
           ],

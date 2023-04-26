@@ -82,12 +82,12 @@ const Usercard = ({ el }) => {
           style={{
             width: "20rem",
             margin: " 4rem auto ",
-            display: "flex",
+            display: "flex", backgroundColor: '#f5f5f5' 
           }}
         >
           <ListGroup variant="flush">
           <div className="photo-container">
-            <img alt=""  src={`https://firebasestorage.googleapis.com/v0/b/beatbounceandscore.appspot.com/o/${el.image}?alt=media&token=894834e1-f47f-4826-b6dc-8801bcae91aa`}></img>
+            <img alt="image" width="550" height="300"  src={`https://firebasestorage.googleapis.com/v0/b/beatbounceandscore.appspot.com/o/${el.image}?alt=media&token=894834e1-f47f-4826-b6dc-8801bcae91aa`}></img>
           </div>
             <ListGroup.Item>Username :{el.firstname}</ListGroup.Item>
             <ListGroup.Item>Lastname :{el.lastname}</ListGroup.Item>
@@ -98,7 +98,7 @@ const Usercard = ({ el }) => {
             >
               <Button variant="danger" className="btn-round" size="lg" onClick={() => dispatch(deleteusers(el._id))}>DELETE</Button>
               <Button variant="warning" className="btn-round" size="lg" onClick={handleShow}>edit</Button>
-              </ListGroup.Item>ListGroup.Item
+              </ListGroup.Item>
               <ListGroup.Item
              
             >

@@ -44,9 +44,19 @@ import AdminCourses from "./Courses/AdminCourses";
 import AddCourses from "./Courses/AddCourses";
 import AddChapter from "./Courses/AddChapter";
 import ChaptersAdmin from "./Courses/ChaptersAdmin";
+<<<<<<< HEAD
 import Room from "./videoroom/Room"
 import Join from "./videoroom/Join";
 
+=======
+import HomeScreen from "./screens/HomeScreen";
+import OfferDetailsScreen from "./screens/OfferDetailsScreen";
+import OfferListScreen from "./screens/OfferListScreen"
+import OfferEditScreen from "./screens/OfferEditScreen";
+import QuizPaymentPage from "./User/QuizPaymentPage";
+import QuizPay from "./User/QuizPay";
+import Financialaid from "./User/Financialaid"
+>>>>>>> e9c0ccc27343459ecc9079dc5a437f3ee7b9614b
 
 
 
@@ -57,11 +67,11 @@ function App() {
     dispatch(get_current());
   }/*, []*/);
   const user = useSelector((state) => state.Authreducer.user);
-  const token=localStorage.getItem("token")
- // console.log(localStorage)
+  const token = localStorage.getItem("token")
+  // console.log(localStorage)
 
-  const role=user.role
-  const actif=user.isActivated
+  const role = user.role
+  const actif = user.isActivated
 
   let nav;
   let profile;
@@ -71,6 +81,12 @@ function App() {
   let resultscoreboard;
   let results;
   let resultdetail;
+  let homescreen;
+  let offerdetails;
+  let quizpaymentpage;
+  let quizpay;
+  let financialaid;
+
 
 
 
@@ -78,47 +94,54 @@ function App() {
 
   switch (role) {
     case 'user':
-      if(actif&&token){nav = <UserNaviguation/>;}
-      else {nav=<DefaultNavigation/>}
-      profile=<ProfileU/>
-      main=<Main/>
-      quiz=<Quiz/>
-      resultscoreboard=<ResultScoreBoard/>
-      result=<Result/>
-      results=<ResultTable/>
-      resultdetail=<ResultDetails/>
+      if (actif && token) { nav = <UserNaviguation />; }
+      else { nav = <DefaultNavigation /> }
+      profile = <ProfileU />
+      main = <Main />
+      quiz = <Quiz />
+      resultscoreboard = <ResultScoreBoard />
+      result = <Result />
+      results = <ResultTable />
+      resultdetail = <ResultDetails />
+      homescreen = <HomeScreen />
+      offerdetails = <OfferDetailsScreen />
+      quizpaymentpage=<QuizPaymentPage/>
+      quizpay=<QuizPay/>
+      financialaid=<Financialaid/>
+
 
 
       break;
     case 'admin':
-      if(actif&&token){nav = <AdminNaviguation/>;}
-      else {nav=<DefaultNavigation/>}
-      profile=<AdminProfile/>
+      if (actif && token) { nav = <AdminNaviguation />; }
+      else { nav = <DefaultNavigation /> }
+      profile = <AdminProfile />
 
       break;
-      case 'coach':
-        if(actif&&token){nav = <CoachNavigation/>;}
-      else {nav=<DefaultNavigation/>}
-        profile=<ProfileU/>
-        
+    case 'coach':
+      if (actif && token) { nav = <CoachNavigation />; }
+      else { nav = <DefaultNavigation /> }
+      profile = <ProfileU />
 
-        break;
+
+      break;
     case 'parent':
-      if(actif&&token){nav = <ParentNaviguation/>;}
-      else {nav=<DefaultNavigation/>}
-      profile=<ProfileU/>
+      if (actif && token) { nav = <ParentNaviguation />; }
+      else { nav = <DefaultNavigation /> }
+      profile = <ProfileU />
       break;
-      
+
     default:
-      nav = <DefaultNavigation/>;
-      profile=<Home/>
-    
+      nav = <DefaultNavigation />;
+      profile = <Home />
+
       break;
   }
 
-  
+
   return (
     <>
+<<<<<<< HEAD
     <Loader/>
     <div className="App">
       <>{nav}</>
@@ -228,11 +251,143 @@ function App() {
         <Route
           path="/count"
           element={<UserRolesChart  />}
-        />
-      </Routes>
+=======
+      <Loader />
+      <div className="App">
+        <>{nav}</>
+        <div className="limiter">
 
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />        <Route path="/register" element={<Register />} />
+            <Route path="/password-reset" element={<PasswordReset />} />
+            <Route path="/forgotpassword/:id/:token" element={<ForgotPassword />} />
+
+            <Route path="/admin" element={<Auth />} />
+
+
+            {/* <Route path="/profile" element={<UserProfile />} /> */}
+            {/* User routes */}
+            <Route
+              path="/quiz"
+              element={<PrivateRoutes Children={main} />}
+            />
+            <Route
+              path="/quiz/:type"
+              element={<PrivateRoutes Children={quiz} />}
+            />
+            
+            <Route
+              path="/payment"
+              element={<PrivateRoutes Children={quizpaymentpage} />}
+            />quizpay
+            <Route
+              path="/pay/:type"
+              element={<PrivateRoutes Children={quizpay} />}
+            />
+
+            <Route
+              path="/offers"
+              element={<PrivateRoutes Children={homescreen} />}
+            />
+            <Route
+              path="/offer/:id"
+              element={<PrivateRoutes Children={offerdetails} />}
+            />
+
+
+            <Route
+              path="/score"
+              element={<PrivateRoutes Children={resultscoreboard} />}
+            />
+            <Route
+              path="/result"
+              element={<PrivateRoutes Children={result} />}
+            />
+            <Route
+              path="/results"
+              element={<PrivateRoutes Children={results} />}
+            />
+            <Route
+              path="/resultdetail/:type/:id"
+              element={<PrivateRoutes Children={resultdetail} />}/>
+              <Route
+          path="/financialaid"
+          element={<PrivateRoutes Children={financialaid} />}
+>>>>>>> e9c0ccc27343459ecc9079dc5a437f3ee7b9614b
+        />
+
+            <Route path='/admin/offerlist' element={<OfferListScreen />} />
+            <Route path='/admin/offer/:id/edit' element={<OfferEditScreen />} />
+
+
+
+
+            <Route
+              path="/addcourse"
+              element={<PrivateRoutes Children={<AddCourses />} />}
+            />
+            <Route
+              path="/addchapter"
+              element={<PrivateRoutes Children={<AddChapter />} />}
+            />
+            <Route
+              path="/chapters/:id"
+              element={<PrivateRoutes Children={<Chapters />} />}
+            />
+            <Route
+              path="/chaptersadmin/:id"
+              element={<PrivateRoutes Children={<ChaptersAdmin />} />}
+            />
+            <Route
+              path="/usercourses"
+              element={<PrivateRoutes Children={<UserCourses />} />}
+            />
+            <Route
+              path="/admincourses"
+              element={<PrivateRoutes Children={<AdminCourses />} />}
+            />
+
+            <Route
+              path="/profile"
+              element={<PrivateRoutes Children={profile} />}
+            />
+            <Route
+              path="/users"
+              element={<PrivateRoutes Children={<UserManagement />} />}
+            />
+            <Route
+              path="/users"
+              element={<PrivateRoutes Children={<UserManagement />} />}
+            />
+            <Route
+              path="/quizManagment"
+              element={<PrivateRoutes Children={<QuizManagment />} />}
+            />
+            <Route
+              path="/quizAdmin"
+              element={<PrivateRoutes Children={<QuizAdmin />} />}
+            />
+            <Route
+              path="/quizResults"
+              element={<PrivateRoutes Children={<QuizResults />} />}
+            />
+            <Route
+              path="/resultdetails/:type/:id"
+              element={<PrivateRoutes Children={<ResultDetails />} />}
+            />
+
+            <Route path="/countGender"
+              element={<UserGenderChart />}
+            />
+            <Route
+              path="/count"
+              element={<UserRolesChart />}
+            />
+          </Routes>
+
+        </div>
       </div>
-    </div>
 
     </>
   );

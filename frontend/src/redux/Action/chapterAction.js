@@ -5,31 +5,31 @@ import { GET_CHAPTERS,UPDATE_CHAPTERS,DELETE_CHAPTERS, ADD_CHAPTER, FIND_CHAPTER
 export const getchapters = () => async (dispatch) => {
     try {
       const res = await axios.get("/chapters/all");
-      console.log(res.data);
+      //console.log(res.data);
       dispatch({ type: GET_CHAPTERS, payload: res.data });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
  
   export const deletechapters = (id) => async (dispatch,navigate) => {
     try {
       const res = await axios.delete(`/chapters/delete/${id}`);
-      console.log(res.data);
+      //console.log(res.data);
       dispatch({ type: DELETE_CHAPTERS, payload: res.data });
       navigate("/profile");
       window.location.reload();
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
   export const findchapterbyid = (id) => async (dispatch) => {
     try {
       const res = await axios.get(`/chapters/find/${id}`);
-      console.log(res.data);
+      //console.log(res.data);
       dispatch({ type: FIND_CHAPTER, payload: res.data });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
   export const updatechapters = (id,data) => async (dispatch) => {
@@ -39,7 +39,7 @@ export const getchapters = () => async (dispatch) => {
     
       window.location.reload();
     } catch (error) {
-     console.log(error)
+     //console.log(error)
      
     }
   };
@@ -50,9 +50,9 @@ export const getchapters = () => async (dispatch) => {
       dispatch({ type:ADD_CHAPTER, payload: res.data });
     
       window.location.reload();
-      console.log("added"+res)
+      //console.log("added"+res)
     } catch (error) {
-     console.log(error)
+     //console.log(error)
      
     }
   };
