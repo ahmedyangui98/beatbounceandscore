@@ -47,12 +47,12 @@ const Main = () => {
         <div className='start'>
 
           <ol>
-            <li style={{ color: 'blue', fontWeight: 'bold' }}>-The quiz will take 1 minute and 40 seconds and then it will end automatically.</li>
-            <li style={{ color: 'blue', fontWeight: 'bold' }}>-You will be asked 10 questions one after another.</li>
-            <li style={{ color: 'blue', fontWeight: 'bold' }}>-10 points is awarded for the correct answer.</li>
-            <li style={{ color: 'blue', fontWeight: 'bold' }}>-Each question has three options. You can choose only one options.</li>
-            <li style={{ color: 'blue', fontWeight: 'bold' }}>-You can review and change answers before the quiz finish.</li>
-            <li style={{ color: 'blue', fontWeight: 'bold' }}>-The result will be declared at the end of the quiz.</li>
+            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-The quiz will take 1 minute and 40 seconds and then it will end automatically.</li>
+            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-You will be asked 10 questions one after another.</li>
+            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-10 points is awarded for the correct answer.</li>
+            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-Each question has three options. You can choose only one options.</li>
+            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-You can review and change answers before the quiz finish.</li>
+            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-The result will be declared at the end of the quiz.</li>
 
           </ol>
         </div>
@@ -64,7 +64,7 @@ const Main = () => {
       width: "12rem",
       margin: " 4rem auto ",
       display: "flex",
-      backgroundColor: "yellow",
+      backgroundColor: "#17a2b8",
       borderRadius: 30,
       border: "solid",
       color: "black"
@@ -76,7 +76,7 @@ const Main = () => {
     <br />
     <Link
       className="btn btn-round"
-      style={{ color: "yellow" }}
+      style={{ color: "white" }}
       to={"/quiz/sport"}
       onClick={startQuiz}
     >
@@ -90,7 +90,7 @@ const Main = () => {
       width: "12rem",
       margin: " 4rem auto ",
       display: "flex",
-      backgroundColor: "yellow",
+      backgroundColor: "#17a2b8",
       borderRadius: 30,
       border: "solid",
       color: "black"
@@ -98,13 +98,13 @@ const Main = () => {
   >
     <div className="">
       <img alt="" src={SportImg} />
-      <h3 style={{color:"yellow"}} className='btn-danger btn-round' >Not Payed</h3>
+      <h3 style={{color:"white"}} className='btn-danger btn-round' >Not Payed</h3>
 
     </div>
     <br />
     <Link
       className="btn btn-round"
-      style={{ color: "yellow" }}
+      style={{ color: "white" }}
       to={"/pay/sport"}
 
     >
@@ -120,7 +120,7 @@ const Main = () => {
       width: "12rem",
       margin: " 4rem auto ",
       display: "flex",
-      backgroundColor: "yellow",
+      backgroundColor: "#17a2b8",
       borderRadius: 30,
       border: "solid",
       color: "black"
@@ -132,7 +132,7 @@ const Main = () => {
     <br />
     <Link
       className="btn btn-round"
-      style={{ color: "yellow" }}
+      style={{ color: "white" }}
       to={"/quiz/musique"}
       onClick={startQuiz}
 
@@ -147,21 +147,21 @@ const Main = () => {
       width: "12rem",
       margin: " 4rem auto ",
       display: "flex",
-      backgroundColor: "yellow",
+      backgroundColor: "#17a2b8",
       borderRadius: 30,
       border: "solid",
       color: "black"
     }}
   >
     <div className="">
-      <img alt="" src={SportImg} />
-      <h3 style={{color:"yellow"}} className='btn-danger btn-round' >Not Payed</h3>
+      <img alt="" src={MusicImg} />
+      <h3 style={{color:"white"}} className='btn-danger btn-round' >Not Payed</h3>
 
     </div>
     <br />
     <Link
       className="btn btn-round"
-      style={{ color: "yellow" }}
+      style={{ color: "white" }}
       to={"/pay/musique"}
 
     >
@@ -177,19 +177,19 @@ const Main = () => {
       width: "12rem",
       margin: " 4rem auto ",
       display: "flex",
-      backgroundColor: "yellow",
+      backgroundColor: "#17a2b8",
       borderRadius: 30,
       border: "solid",
       color: "black"
     }}
   >
     <div className="">
-      <img alt="" src={MusicImg} />
+      <img alt="" src={DanceImg} />
     </div>
     <br />
     <Link
       className="btn btn-round"
-      style={{ color: "yellow" }}
+      style={{ color: "white" }}
       to={"/quiz/dance"}
       onClick={startQuiz}
       // Disable the card if the payment for sport quiz has not been made
@@ -205,7 +205,7 @@ const Main = () => {
       width: "12rem",
       margin: " 4rem auto ",
       display: "flex",
-      backgroundColor: "yellow",
+      backgroundColor: "#17a2b8",
       borderRadius: 30,
       border: "solid",
       color: "black"
@@ -213,13 +213,13 @@ const Main = () => {
   >
     <div className="">
       <img alt="" src={DanceImg} />
-      <h3 style={{color:"yellow"}} className='btn-danger btn-round' >Not Payed</h3>
+      <h3 style={{color:"white"}} className='btn-danger btn-round' >Not Payed</h3>
 
     </div>
     <br />
     <Link
       className="btn btn-round"
-      style={{ color: "yellow" }}
+      style={{ color: "white" }}
       to={"/pay/dance"}
     >
       Pay Now For Dance
