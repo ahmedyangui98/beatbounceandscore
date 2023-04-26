@@ -44,11 +44,10 @@ import AdminCourses from "./Courses/AdminCourses";
 import AddCourses from "./Courses/AddCourses";
 import AddChapter from "./Courses/AddChapter";
 import ChaptersAdmin from "./Courses/ChaptersAdmin";
-<<<<<<< HEAD
+
 import Room from "./videoroom/Room"
 import Join from "./videoroom/Join";
 
-=======
 import HomeScreen from "./screens/HomeScreen";
 import OfferDetailsScreen from "./screens/OfferDetailsScreen";
 import OfferListScreen from "./screens/OfferListScreen"
@@ -56,7 +55,6 @@ import OfferEditScreen from "./screens/OfferEditScreen";
 import QuizPaymentPage from "./User/QuizPaymentPage";
 import QuizPay from "./User/QuizPay";
 import Financialaid from "./User/Financialaid"
->>>>>>> e9c0ccc27343459ecc9079dc5a437f3ee7b9614b
 
 
 
@@ -141,7 +139,6 @@ function App() {
 
   return (
     <>
-<<<<<<< HEAD
     <Loader/>
     <div className="App">
       <>{nav}</>
@@ -250,140 +247,9 @@ function App() {
         />
         <Route
           path="/count"
-          element={<UserRolesChart  />}
-=======
-      <Loader />
-      <div className="App">
-        <>{nav}</>
-        <div className="limiter">
+          element={<UserRolesChart  />} />
 
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />        <Route path="/register" element={<Register />} />
-            <Route path="/password-reset" element={<PasswordReset />} />
-            <Route path="/forgotpassword/:id/:token" element={<ForgotPassword />} />
-
-            <Route path="/admin" element={<Auth />} />
-
-
-            {/* <Route path="/profile" element={<UserProfile />} /> */}
-            {/* User routes */}
-            <Route
-              path="/quiz"
-              element={<PrivateRoutes Children={main} />}
-            />
-            <Route
-              path="/quiz/:type"
-              element={<PrivateRoutes Children={quiz} />}
-            />
-            
-            <Route
-              path="/payment"
-              element={<PrivateRoutes Children={quizpaymentpage} />}
-            />quizpay
-            <Route
-              path="/pay/:type"
-              element={<PrivateRoutes Children={quizpay} />}
-            />
-
-            <Route
-              path="/offers"
-              element={<PrivateRoutes Children={homescreen} />}
-            />
-            <Route
-              path="/offer/:id"
-              element={<PrivateRoutes Children={offerdetails} />}
-            />
-
-
-            <Route
-              path="/score"
-              element={<PrivateRoutes Children={resultscoreboard} />}
-            />
-            <Route
-              path="/result"
-              element={<PrivateRoutes Children={result} />}
-            />
-            <Route
-              path="/results"
-              element={<PrivateRoutes Children={results} />}
-            />
-            <Route
-              path="/resultdetail/:type/:id"
-              element={<PrivateRoutes Children={resultdetail} />}/>
-              <Route
-          path="/financialaid"
-          element={<PrivateRoutes Children={financialaid} />}
->>>>>>> e9c0ccc27343459ecc9079dc5a437f3ee7b9614b
-        />
-
-            <Route path='/admin/offerlist' element={<OfferListScreen />} />
-            <Route path='/admin/offer/:id/edit' element={<OfferEditScreen />} />
-
-
-
-
-            <Route
-              path="/addcourse"
-              element={<PrivateRoutes Children={<AddCourses />} />}
-            />
-            <Route
-              path="/addchapter"
-              element={<PrivateRoutes Children={<AddChapter />} />}
-            />
-            <Route
-              path="/chapters/:id"
-              element={<PrivateRoutes Children={<Chapters />} />}
-            />
-            <Route
-              path="/chaptersadmin/:id"
-              element={<PrivateRoutes Children={<ChaptersAdmin />} />}
-            />
-            <Route
-              path="/usercourses"
-              element={<PrivateRoutes Children={<UserCourses />} />}
-            />
-            <Route
-              path="/admincourses"
-              element={<PrivateRoutes Children={<AdminCourses />} />}
-            />
-
-            <Route
-              path="/profile"
-              element={<PrivateRoutes Children={profile} />}
-            />
-            <Route
-              path="/users"
-              element={<PrivateRoutes Children={<UserManagement />} />}
-            />
-            <Route
-              path="/users"
-              element={<PrivateRoutes Children={<UserManagement />} />}
-            />
-            <Route
-              path="/quizManagment"
-              element={<PrivateRoutes Children={<QuizManagment />} />}
-            />
-            <Route
-              path="/quizAdmin"
-              element={<PrivateRoutes Children={<QuizAdmin />} />}
-            />
-            <Route
-              path="/quizResults"
-              element={<PrivateRoutes Children={<QuizResults />} />}
-            />
-            <Route
-              path="/resultdetails/:type/:id"
-              element={<PrivateRoutes Children={<ResultDetails />} />}
-            />
-
-            <Route path="/countGender"
-              element={<UserGenderChart />}
-            />
-            <Route
-              path="/count"
-              element={<UserRolesChart />}
-            />
+     
           </Routes>
 
         </div>

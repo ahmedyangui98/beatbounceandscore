@@ -135,12 +135,8 @@ export default function AdminNaviguation() {
                           <DropdownItem
                             onClick={() => {
                               navigate("/addchapter");
-<<<<<<< HEAD
                               window.location.reload();
-=======
-                              window.location.reload()
 
->>>>>>> e9c0ccc27343459ecc9079dc5a437f3ee7b9614b
                             }} 
                           >
                               Add chapter
