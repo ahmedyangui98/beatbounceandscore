@@ -178,8 +178,29 @@ function App() {
         />
         <Route
           path="/resultdetail/:type/:id"
-          element={<PrivateRoutes Children={resultdetail} />}
+          element={<PrivateRoutes Children={resultdetail} />}/>
+          <Route
+              path="/payment"
+              element={<PrivateRoutes Children={quizpaymentpage} />}
+            />quizpay
+            <Route
+              path="/pay/:type"
+              element={<PrivateRoutes Children={quizpay} />}
+            />
+
+        <Route
+          path="/financialaid"
+          element={<PrivateRoutes Children={financialaid} />}
         />
+ <Route
+              path="/offers"
+              element={<PrivateRoutes Children={homescreen} />}
+            />
+            <Route
+              path="/offer/:id"
+              element={<PrivateRoutes Children={offerdetails} />}
+            />
+
 
 <Route
           path="/addcourse"
