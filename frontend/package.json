@@ -54,6 +54,7 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.52.1",
+    "chart.js": "^4.3.0",
     "mdb-react-ui-kit": "^6.0.0",
     "react-chartjs-2": "^5.2.0",
     "react-router-bootstrap": "^0.26.2",

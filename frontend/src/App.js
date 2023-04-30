@@ -55,6 +55,8 @@ import OfferEditScreen from "./screens/OfferEditScreen";
 import QuizPaymentPage from "./User/QuizPaymentPage";
 import QuizPay from "./User/QuizPay";
 import Financialaid from "./User/Financialaid"
+import PaymentDashboard from "./Admin/PaymentDashboard";
+import UserBarChart from "./Admin/UserBarChart";
 
 
 
@@ -269,8 +271,20 @@ function App() {
         <Route
           path="/count"
           element={<UserRolesChart  />} />
+          <Route
+          path="/dashboard"
+          element={<PaymentDashboard  />} />
 
-     
+          <Route
+          path="/admin/offerlist"
+          element={<PrivateRoutes Children={<OfferListScreen/>} />}/>
+          <Route
+          path="/admin/offer/:id/edit"
+          element={<PrivateRoutes Children={<OfferEditScreen/>} />}/>
+
+<Route
+          path="/UserBarChart"
+          element={<UserBarChart  />} />
           </Routes>
 
         </div>

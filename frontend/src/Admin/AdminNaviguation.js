@@ -71,11 +71,11 @@ export default function AdminNaviguation() {
        
         <NavItem>
           <NavLink
-             to="/profile"
-              onClick={(e) => {e.preventDefault();navigate("/profile")}}
+             to="/dashboard"
+              onClick={(e) => {e.preventDefault();navigate("/dashboard")}}
             >
               <FontAwesomeIcon icon={faHome} />
-              <p>Home</p>
+              <p>Dashboard</p>
             </NavLink>
         </NavItem>
         <NavItem>

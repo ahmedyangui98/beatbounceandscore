@@ -24,16 +24,15 @@ const Main = () => {
   const [danceIsExist, setDanceIsExist] = useState();
 
   useEffect(() => {
-    getServerData(`http://localhost:4000/api/users/getPayment/sport`, (res) => {
+    getServerData(`http://localhost:4000/api/users/getPayment/sport/${user._id}`, (res) => {
         setSportIsExist(res)
     });
-    getServerData(`http://localhost:4000/api/users/getPayment/musique`, (res) => {
-      setMusiqueIsExist(res)
-      getServerData(`http://localhost:4000/api/users/getPayment/dance`, (res) => {
+    getServerData(`http://localhost:4000/api/users/getPayment/musique/${user._id}`, (res) => {
+      setMusiqueIsExist(res)    });
+
+      getServerData(`http://localhost:4000/api/users/getPayment/dance/${user._id}`, (res) => {
         setDanceIsExist(res)
     });
-  });
-   
   }, [])
  
 
@@ -58,7 +57,7 @@ const Main = () => {
         </div>
 
         <div className="d-flex justify-content-between">
-        {sportIsExist && sportIsExist.quizType === "sport" ? (
+        {sportIsExist?.userId===user._id && sportIsExist?.quizType === "sport" ? (
   <Card
     style={{
       width: "12rem",
@@ -108,13 +107,13 @@ const Main = () => {
       to={"/pay/sport"}
 
     >
-      Pay Now
+      Pay Now For Sport 
     </Link>
     <br />
   </Card>
 ) }
 
-{musiqueIsExist && musiqueIsExist.quizType === "musique" ? (
+{musiqueIsExist?.userId===user._id && musiqueIsExist?.quizType === "musique" ? (
   <Card
     style={{
       width: "12rem",
@@ -171,7 +170,7 @@ const Main = () => {
   </Card>
 ) }
 
-{danceIsExist && danceIsExist.quizType === "dance" ? (
+{danceIsExist?.userId===user._id && danceIsExist?.quizType === "dance" ? (
   <Card
     style={{
       width: "12rem",
