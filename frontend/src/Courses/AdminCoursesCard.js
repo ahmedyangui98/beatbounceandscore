@@ -50,11 +50,13 @@ const AdminCoursesCard = ({ el }) => {
   const handleEdit = async (e) => {
     e.preventDefault();
 
-    dispatch(
-      updatecourses(el._id, { CourseName, level, type, expirationDate, image }, Navigate),
-      window.location.reload()
-
-    ); handleClose()
+   dispatch(
+      updatecourses(el._id, {CourseName,type,level,expirationDate,image},navigate),  
+     
+      
+    ); 
+    handleClose();
+    window.location.reload()
 
   };
 

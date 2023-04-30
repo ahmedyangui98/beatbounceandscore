@@ -39,18 +39,18 @@ export const Login = ({enableInput}) => {
     }
 
     const validateInputs = () => {
-        if(email == null){
-            dispatch(setAuthError({login:{email: 'The EMAIL field is required.'}}))
-        } else if (!email.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-            dispatch(setAuthError({login:{email: 'The EMAIL field is not in the standard form.'}}))
-        } else {
-            dispatch(setAuthError({login:{email:null}}))
-        }
-        if(password == null){
-            dispatch(setAuthError({login:{password: 'The PASSWORD field is required.'}}))
-        } else {
-            dispatch(setAuthError({login:{password:null}}))
-        }
+        // if(email == null){
+        //     dispatch(setAuthError({login:{email: 'The EMAIL field is required.'}}))
+        // } else if (!email.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+        //     dispatch(setAuthError({login:{email: 'The EMAIL field is not in the standard form.'}}))
+        // } else {
+        //     dispatch(setAuthError({login:{email:null}}))
+        // }
+        // if(password == null){
+        //     dispatch(setAuthError({login:{password: 'The PASSWORD field is required.'}}))
+        // } else {
+        //     dispatch(setAuthError({login:{password:null}}))
+        // }
         if(screenshot == null){
             dispatch(setAuthError({login:{screenshot: 'A face IMAGE is required.'}}))
         } else {

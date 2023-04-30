@@ -15,6 +15,8 @@ import {
 } from "firebase/storage";
 import { storage } from "../firebase";
 import { Navigate } from "react-router-dom";
+import NoImage from '../assets/img/placeholder.jpg';
+
 
 const Usercard = ({ el }) => {
   const dispatch = useDispatch();
@@ -76,18 +78,22 @@ const Usercard = ({ el }) => {
   }; 
 
   return (
-    <div>
       <div>
         <Card
           style={{
             width: "20rem",
             margin: " 4rem auto ",
-            display: "flex", backgroundColor: '#f5f5f5' 
+            display: "flex", backgroundColor: '#f5f5f5' ,
+            borderRadius:40,
+            border: "solid",
+            color: "black",
+            
           }}
         >
           <ListGroup variant="flush">
           <div className="photo-container">
-            <img alt="image" width="550" height="300"  src={`https://firebasestorage.googleapis.com/v0/b/beatbounceandscore.appspot.com/o/${el.image}?alt=media&token=894834e1-f47f-4826-b6dc-8801bcae91aa`}></img>
+          <img alt="image" width="550" height="300" style={{borderRadius:200}}  src={`https://firebasestorage.googleapis.com/v0/b/beatbounceandscore.appspot.com/o/${el.image}?alt=media&token=894834e1-f47f-4826-b6dc-8801bcae91aa`}></img>
+
           </div>
             <ListGroup.Item>Username :{el.firstname}</ListGroup.Item>
             <ListGroup.Item>Lastname :{el.lastname}</ListGroup.Item>
@@ -106,7 +112,7 @@ const Usercard = ({ el }) => {
               <Button variant="success"  className="btn-round" size="lg" disabled={(el.isBanned=="false")} onClick={unbanuser}>Unban</Button>
             </ListGroup.Item>
           </ListGroup>
-        </Card>
+  {/*</Card>*/}
         <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
                 <Modal.Title>Edit</Modal.Title>
@@ -172,8 +178,8 @@ const Usercard = ({ el }) => {
                 </Button>
               </Modal.Footer>
             </Modal>
+            </Card>
       </div>
-    </div>
   );
 };
 

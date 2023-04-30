@@ -10,11 +10,13 @@ import userReducer from '../../features/dashboard/userSlice'
 import detectReducer from '../../features/dashboard/detectSlice'
 import coursesreducer from "./coursesreducer";
 import chaptersreducer from "./chaptersreducer";
+
+import userreducer from "./reducer"
 import { offerListReducer,offerDetailsReducer,offerDeleteReducer,offerCreateReducer,offerUpdateReducer,offerReviewCreateReducer  } from "./offerReducers";
 
 const rootReducer = combineReducers({
   coursesreducer
-  ,chaptersreducer,
+  ,chaptersreducer,userreducer,
   Authreducer,
   errorreducer,
   questions : questionReducer,

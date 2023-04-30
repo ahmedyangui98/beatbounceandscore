@@ -39,6 +39,7 @@ export default function UserNaviguation() {
         />
             </NavbarBrand>
             <UncontrolledTooltip target="#navbar-brand">
+              Beat Bounce & Score
             </UncontrolledTooltip>
         <NavbarBrand
           onClick={(e) => e.preventDefault()}
