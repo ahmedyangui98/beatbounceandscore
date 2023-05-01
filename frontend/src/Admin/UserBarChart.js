@@ -71,12 +71,9 @@ const UserBarChart = () => {
   };
 
   return (
-    <div>
-      <h1>Number of Users Logged In Last Day / Week / Month / Year</h1>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Bar data={data} options={{}} />
       </div>
-    </div>
   );
 };
 

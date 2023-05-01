@@ -157,8 +157,6 @@ const ProfileU = () => {
           </div>
 
 
-
-
         </div>
         <div className="section">
           <Container>

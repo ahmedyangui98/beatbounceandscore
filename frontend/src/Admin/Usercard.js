@@ -16,6 +16,7 @@ import {
 import { storage } from "../firebase";
 import { Navigate } from "react-router-dom";
 import NoImage from '../assets/img/placeholder.jpg';
+import { confirmAlert } from "react-confirm-alert";
 
 
 const Usercard = ({ el }) => {
@@ -46,6 +47,24 @@ const Usercard = ({ el }) => {
       
     ); handleClose()
  
+  };
+  const handleDeleteClick = (el) => {
+    confirmAlert({
+      title: "Confirm deletion",
+      message: `Are you sure you want to delete ${el.firstname}?`,
+      buttons: [
+        {
+          label: "Yes",
+          className: 'btn btn-success', 
+          onClick: () => dispatch(deleteusers(el._id)),
+        },
+        {
+          label: "No",
+          className: 'btn btn-danger', 
+          onClick: () => {},
+        },
+      ],
+    });
   };
 
   const banuser = (e) => {
@@ -102,7 +121,7 @@ const Usercard = ({ el }) => {
             <ListGroup.Item
               
             >
-              <Button variant="danger" className="btn-round" size="lg" onClick={() => dispatch(deleteusers(el._id))}>DELETE</Button>
+              <Button variant="danger" className="btn-round" size="lg" onClick={() => handleDeleteClick(el)}>DELETE</Button>
               <Button variant="warning" className="btn-round" size="lg" onClick={handleShow}>edit</Button>
               </ListGroup.Item>
               <ListGroup.Item

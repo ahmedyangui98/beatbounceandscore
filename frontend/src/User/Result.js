@@ -54,7 +54,7 @@ const Result = () =>{
                 <h3 className='bold'>{types || ""}</h3>
             </div>
             <div className='flex'>
-                <span>Quiz Status</span>
+                <span>Quiz Status :</span>
                 <h3 style={{ color : `${flag ? "#2aff95" : "#ff2a66" }` }} className='bold'>{flag ? "Passed" : "Failed"}</h3>
             </div>
             <div className="start">

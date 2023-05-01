@@ -3,11 +3,28 @@ import axios from 'axios';
 import Chart from 'chart.js/auto';
 import { Button, Col, Row } from 'reactstrap';
 import UserBarChart from './UserBarChart';
+import { useDispatch, useSelector } from 'react-redux';
+import { getusers } from '../redux/Action/authAction';
+import DarkFooter from '../Footers/DarkFooter';
 
 
 const PaymentDashboard = () => {
   const [paymentData, setPaymentData] = useState([]);
-  const [total, setTotal] = useState([]);
+  const [totals, setTotals] = useState([]);
+ // const [usersNumber, setUsersNumber] = useState([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getusers());
+  }, []);
+
+  const allUsers = useSelector((state) => state.Authreducer.users);
+  const userCount = allUsers.filter((user) => user.role === "user").length;
+  const coachCount = allUsers.filter((user) => user.role === "coach").length;
+  const AdminCount = allUsers.filter((user) => user.role === "admin").length;
+
+
+  
 
   useEffect(() => {
     axios.get('http://localhost:4000/api/users/getPayments')
@@ -20,22 +37,24 @@ const PaymentDashboard = () => {
   useEffect(() => {
     if (paymentData.length > 0 && chartRef.current) {
       const quizTypes = ['sport', 'musique', 'dance'];
-      const quizTotals = quizTypes.map(type => {
+      const quizTypeTotals = quizTypes.map(type => {
         const total = paymentData.reduce((acc, payment) => {
           if (payment.quizType === type) {
             acc += parseFloat(payment.amount.$numberDecimal);
           }
           return acc;
         }, 0);
-        return total;
+        return { quizType: type, total };
       });
+
+      setTotals(quizTypeTotals);
 
       const chartData = {
         labels: quizTypes,
         datasets: [
           {
             label: 'Payment Amount',
-            data: quizTotals,
+            data: quizTypeTotals.map(t => t.total),
             backgroundColor: ['#5b9bd5', '#ed7d31', '#a5a5a5'],
             borderWidth: 1,
           },
@@ -63,30 +82,19 @@ const PaymentDashboard = () => {
 
   return (
     <>
+    <div>
       <Row>
         <Col md="6">
           <div>
             <Row className="justify-content-center align-items-center">
               <Col md="10">
-              <h1>Total Quiz income :</h1>
+              <h1>Quiz income :</h1>
 
-                <Button class="primary" disabled={true}>
-                  <h1>Primary</h1>
+                <Button color="success" >
+                  <h1>Total :💰 {totals.reduce((acc, t) => acc + t.total, 0)} 💰</h1>
                 </Button>
-                <Button color="info" disabled={true}>
-                  <h1>Info</h1>
-                </Button>
-                <Button color="success" disabled={true}>
-                  <h1>Success</h1>
-                </Button>
-                <Button color="warning" disabled={true}>
-                  <h1>Warning</h1>
-                </Button>
-                <Button color="danger" disabled={true}>
-                  <h1>Danger</h1>
-                </Button>
-                <Button className="btn-neutral" color="default" disabled={true}>
-                  <h1>Neutral</h1>
+                <Button color="primary" >
+                <h1>Total gross:💰 {(totals.reduce((acc, t) => acc + t.total, 0) * 0.83).toFixed(2)} 💰</h1>
                 </Button>
               </Col>
             </Row>
@@ -99,31 +107,28 @@ const PaymentDashboard = () => {
           <div>
             <Row className="justify-content-center align-items-center">
               <Col md="10">
-              <h1>Payment Dashboard - Column 2</h1>
-                <Button color="primary" disabled={true}>
-                  <h1>Primary</h1>
+              <h1>Number of Users Logged In :</h1>
+                <Button color="primary" >
+                  <h1>Users :{userCount}</h1>
                 </Button>
-                <Button color="info" disabled={true}>
-                  <h1>Info</h1>
+                <Button color="info" >
+                  <h1>Coachs :{coachCount}</h1>
                 </Button>
-                <Button color="success" disabled={true}>
-                  <h1>Success</h1>
-                </Button>
-                <Button color="warning" disabled={true}>
-                  <h1>Warning</h1>
-                </Button>
-                <Button color="danger" disabled={true}>
-                  <h1>Danger</h1>
-                </Button>
-                <Button className="btn-neutral" color="default" disabled={true}>
-                  <h1>Neutral</h1>
+                <Button color="warning" >
+                  <h1>Admins :{AdminCount}</h1>
                 </Button>
               </Col>
+              <UserBarChart/>
+
             </Row>
-            <UserBarChart/>
           </div>
         </Col>
       </Row>
+      <br/>
+      <br/>
+
+      </div>
+      <DarkFooter/>
     </>
   );
 };
