@@ -41,6 +41,7 @@ import {
 } from "reactstrap";
 import Alerterrors from "./Alerterrors";
 import { NotificationContainer, NotificationManager } from 'react-notifications';
+import Chat from "./User/chat";
 
 
 const ProfileU = () => {
@@ -430,6 +431,7 @@ const ProfileU = () => {
           </Container>
         </div>
       </div>
+      <Chat/>
       <NotificationContainer />
     </div>
 

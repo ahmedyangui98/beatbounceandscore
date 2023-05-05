@@ -1,0 +1,77 @@
+{
+    "greetings": [
+      {
+        "message": "Hello",
+        "response": "Hi there!"
+      },
+      {
+        "message": "Hi",
+        "response": "Hey, how's it going?"
+      },
+      {
+        "message": "Hey",
+        "response": "Hi there! How can I help you today?"
+      }
+    ],
+    "farewells": [
+      {
+        "message": "Bye",
+        "response": "Goodbye! Have a great day!"
+      },
+      {
+        "message": "See you later",
+        "response": "Take care, see you soon!"
+      },
+      {
+        "message": "Goodbye",
+        "response": "Goodbye! It was nice chatting with you."
+      }
+    ],
+    "responses": [
+        {
+          "message": "Hi there! we are a restaurant that sells it's products online and we make reductions for almost expired products :)",
+          "questions": [
+            "What services do you offer",
+            "What does this site offer",
+            "introduce",
+            "introduce yourself"
+          ]
+        },
+        {
+          "message": "reduction percents can go up to 80%",
+          "questions": [
+            "how much reduction can I get",
+            "how low the price can get"
+          ]
+        },
+        {
+          "message": "We are doing this for the purpose of keeping our nature safe from polution in the context of SDGs",
+          "questions": [
+            "What is the purpose of this",
+            "What is the purpose of your site",
+            "Why are you doing this"
+          ]
+        },
+        {
+            "message": "You can search products by categories from the mega menu or the Allcategories menu. You also have products recommended in the home page. You can modify your account. you can scroll through all the products available <3",
+            "questions": [
+              "Guide me",
+              "Guide me through the site",
+              "What can i do here",
+              "how can i see the products",
+              "how can i search for products",
+              "what can i do here"
+            ]
+        },
+        {
+            "message": "Thank you, I like to hear that, recommend our site to your loved ones",
+            "questions": [
+              "This is interesting",
+              "I liked this project alot",
+              "Thank you for this idea"
+            ]
+        }
+        
+        
+      ]
+}
