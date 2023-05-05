@@ -141,7 +141,6 @@ function App() {
 
   return (
     <>
-    <Loader/>
     <div className="App">
       <>{nav}</>
     <div className="limiter">

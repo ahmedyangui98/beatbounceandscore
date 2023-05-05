@@ -2,6 +2,7 @@ import DarkFooter from '../../Footers/DarkFooter'
 import '.././../assets/css/Auth.css'
 import { Camera } from './Camera'
 import { FormTabs } from './FormTabs'
+import { Loader } from './Loader'
 
  const Auth = () => {
 
@@ -17,6 +18,8 @@ import { FormTabs } from './FormTabs'
         }}
       >
         <div className="container wrap-login100">
+        <Loader/>
+
             <div className="row">
                 <div className="col-lg-6 col-md-12 l-side">
                     <Camera />                        

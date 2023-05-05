@@ -118,25 +118,27 @@ export default function AddCourses() {
                 </Col>
               </FormGroup>
               <FormGroup row>
-                <Label sm={3}>Type</Label>
-                <Col sm={10}>
-                  <Input
-                    placeholder="type"
-                    type="text"
-                    onChange={(e) => setType(e.target.value)}
-                  />
-                </Col>
-              </FormGroup>
-              <FormGroup row>
-                <Label sm={3}>Level</Label>
-                <Col sm={10}>
-                  <Input
-                    placeholder="level"
-                    type="text"
-                    onChange={(e) => setLevel(e.target.value)}
-                  />
-                </Col>
-              </FormGroup>
+  <Label sm={3}>Type</Label>
+  <Col sm={10}>
+    <Input type="select" onChange={(e) => setType(e.target.value)}>
+      <option value="">Select Type</option>
+      <option value="sport">Sport</option>
+      <option value="dance">Dance</option>
+      <option value="musique">Musique</option>
+    </Input>
+  </Col>
+</FormGroup>
+<FormGroup row>
+  <Label sm={3}>Level</Label>
+  <Col sm={10}>
+    <Input type="select" onChange={(e) => setLevel(e.target.value)}>
+      <option value="">Select Level</option>
+      <option value="hard">Hard</option>
+      <option value="easy">Easy</option>
+      <option value="medium">Medium</option>
+    </Input>
+  </Col>
+</FormGroup>
               
               <Input
                 type="file"
