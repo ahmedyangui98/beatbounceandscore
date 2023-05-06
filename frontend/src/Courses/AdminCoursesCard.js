@@ -109,9 +109,14 @@ const AdminCoursesCard = ({ el }) => {
             }}
           >
             <ListGroup variant="flush">
-              <div className="photo-container">
-                <img alt="" src={`https://firebasestorage.googleapis.com/v0/b/beatbounceandscore.appspot.com/o/${el.image}?alt=media&token=894834e1-f47f-4826-b6dc-8801bcae91aa`}></img>
-              </div>
+            <div className="photo-container">
+  <img
+    alt=""
+    src={`https://firebasestorage.googleapis.com/v0/b/beatbounceandscore.appspot.com/o/${el.image}?alt=media&token=894834e1-f47f-4826-b6dc-8801bcae91aa`}
+    style={{ width: "100%" }}
+  />
+</div>
+
               <ListGroup.Item>Coursename :{el.CourseName}</ListGroup.Item>
 
               <ListGroup.Item>type :{el.type}</ListGroup.Item>

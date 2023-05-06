@@ -14,21 +14,37 @@ import { useNavigate } from 'react-router-dom';
 export default function AddCourses() {
   const navigate = useNavigate();
   const [coach, setCoach] = useState("");
+  const [image, setImage] = useState("");
+  const [imagee, setImagee] = useState("");
+  const [email, setEmail] = useState("");
+  const [CourseName, setCourseName] = useState("");
+  const [progression, setProgression] = useState(0);
+  const [type, setType] = useState("");
+  const [level, setLevel] = useState("");
+  const users = useSelector((state) => state.Authreducer.users);
+  const user = useSelector((state) => state.Authreducer.user);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getusers());
     dispatch(get_current());
   }, []);
-  const users = useSelector((state) => state.Authreducer.users);
-  const user = useSelector((state) => state.Authreducer.user);
-  const dispatch = useDispatch();
+
   const handleadd = async (e) => {
     e.preventDefault();
 
-    dispatch(
-      addcourses({ CourseName, progression, level, type, image, coach }),
-    );
+    const newCourse = {
+      CourseName: CourseName,
+      progression: progression,
+      level: level,
+      type: type,
+      image: image,
+      coach: coach,
+    };
 
-    navigate("/admincourses")
+    dispatch(addcourses(newCourse));
+
+    navigate("/admincourses");
     window.location.reload();
   };
 
@@ -45,15 +61,6 @@ export default function AddCourses() {
 
     setCoach(selectedValue);
   };
-  const [image, setImage] = useState("");
-  const [imagee, setImagee] = useState("");
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const [email, setEmail] = useState("");
-  const [CourseName, setCourseName] = useState("");
-  const [progression, setProgression] = useState(0);
-  const [type, setType] = useState("");
-  const [level, setLevel] = useState("");
 
   const uploadFile = () => {
     if (imagee == null) return;
