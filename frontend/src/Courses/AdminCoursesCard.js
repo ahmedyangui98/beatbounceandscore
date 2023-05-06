@@ -51,12 +51,12 @@ const AdminCoursesCard = ({ el }) => {
     e.preventDefault();
 
    dispatch(
-      updatecourses(el._id, {CourseName,type,level,expirationDate,image},navigate),  
+      updatecourses(el._id, {CourseName,type,level,expirationDate,image}),  
      
       
     ); 
     handleClose();
-    window.location.reload()
+  
 
   };
 
@@ -76,6 +76,20 @@ const AdminCoursesCard = ({ el }) => {
     dispatch(getusers())
 
   }/*, []*/);
+  useEffect(() => {
+    setCourseName(el.CourseName);
+    setType(el.type);
+    setLevel(el.level);
+    setExpirationDate(el.expirationDate);
+    setImage(el.image);
+    setSelectedOption(options.find((option) => option.value === el.level));
+  }, [el, options]);
+ 
+  
+  
+  
+  
+  
   const user = useSelector((state) => state.Authreducer.user);
   const users = useSelector((state) => state.Authreducer.users);
 
