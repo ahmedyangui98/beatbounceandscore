@@ -39,8 +39,8 @@ const MainScreen = (props) => {
 
   const onScreenShareEnd = async () => {
     const localStream = await navigator.mediaDevices.getUserMedia({
-      audio: true,
-      video: true,
+      audio: false,
+      video: false,
     });
 
     localStream.getVideoTracks()[0].enabled = Object.values(
@@ -91,9 +91,9 @@ const MainScreen = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    stream: state.mainStream,
-    participants: state.participants,
-    currentUser: state.currentUser,
+    stream: state.userMeetReducer.mainStream,
+    participants: state.userMeetReducer.participants,
+    currentUser: state.userMeetReducer.currentUser,
   };
 };
 
@@ -104,4 +104,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
+export default connect(mapStateToProps
+  , mapDispatchToProps
+  )(MainScreen);

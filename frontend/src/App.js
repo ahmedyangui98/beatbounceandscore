@@ -19,7 +19,7 @@ import Main from "./User/Main";
 import Result from "./User/Result";
 import ResultScoreBoard from "./User/ResultScoreBoard";
 
-
+import CompareSounds from "./videoroom/Sound";
 
 import CoachNavigation from "./Coach/CoachNavigation";
 import ParentNaviguation from "./Parent/ParentNaviguation";
@@ -55,6 +55,8 @@ import OfferEditScreen from "./screens/OfferEditScreen";
 import QuizPaymentPage from "./User/QuizPaymentPage";
 import QuizPay from "./User/QuizPay";
 import Financialaid from "./User/Financialaid"
+import PaymentDashboard from "./Admin/PaymentDashboard";
+import UserBarChart from "./Admin/UserBarChart";
 
 
 
@@ -178,8 +180,29 @@ function App() {
         />
         <Route
           path="/resultdetail/:type/:id"
-          element={<PrivateRoutes Children={resultdetail} />}
+          element={<PrivateRoutes Children={resultdetail} />}/>
+          <Route
+              path="/payment"
+              element={<PrivateRoutes Children={quizpaymentpage} />}
+            />quizpay
+            <Route
+              path="/pay/:type"
+              element={<PrivateRoutes Children={quizpay} />}
+            />
+
+        <Route
+          path="/financialaid"
+          element={<PrivateRoutes Children={financialaid} />}
         />
+ <Route
+              path="/offers"
+              element={<PrivateRoutes Children={homescreen} />}
+            />
+            <Route
+              path="/offer/:id"
+              element={<PrivateRoutes Children={offerdetails} />}
+            />
+
 
 <Route
           path="/addcourse"
@@ -193,13 +216,7 @@ function App() {
           path="/chapters/:id"
           element={<PrivateRoutes Children={<Chapters/>} />}
         />
-          <Route
-          path="/join"
-          element={<Join/>}
-        /> <Route
-        path="/room"
-        element={<PrivateRoutes Children={<Room  u={user}/>} />}
-      />
+        
         <Route
           path="/chaptersadmin/:id"
           element={<PrivateRoutes Children={<ChaptersAdmin/>} />}
@@ -248,8 +265,29 @@ function App() {
         <Route
           path="/count"
           element={<UserRolesChart  />} />
+          <Route
+          path="/dashboard"
+          element={<PaymentDashboard  />} />
 
-     
+          <Route
+          path="/admin/offerlist"
+          element={<PrivateRoutes Children={<OfferListScreen/>} />}/>
+          <Route
+          path="/admin/offer/:id/edit"
+          element={<PrivateRoutes Children={<OfferEditScreen/>} />}/>
+ <Route
+          path="/join"
+          element={<Join/>}
+        /> <Route
+        path="/room"
+        element={<PrivateRoutes Children={<Room  u={user}/>} />}
+      />
+<Route
+          path="/UserBarChart"
+          element={<UserBarChart  />} />
+          <Route
+          path="/sound"
+          element={<PrivateRoutes Children={<CompareSounds/>} />} />
           </Routes>
 
         </div>

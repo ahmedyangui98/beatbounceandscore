@@ -84,13 +84,14 @@ const AdminCoursesCard = ({ el }) => {
 
   if ((user.role === "admin") || (user._id === el.coach)) {
     return (
-      <div>
+      <div style={{ backgroundColor: 'lightblue' }}>
         <div>
           <Card
             style={{
               width: "20rem",
               margin: " 4rem auto ",
               display: "flex",
+              backgroundColor:"lightblue"
             }}
           >
             <ListGroup variant="flush">

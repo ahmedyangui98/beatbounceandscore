@@ -92,10 +92,11 @@ const Participants = (props) => {
 };
 
 const mapStateToProps = (state) => {
+  console.log(" state "+JSON.stringify(state))
   return {
-    participants: state.participants,
-    currentUser: state.currentUser,
-    stream: state.mainStream,
+    participants: state.userMeetReducer.participants,
+    currentUser: state.userMeetReducer.currentUser,
+    stream: state.userMeetReducer.mainStream,
   };
 };
 

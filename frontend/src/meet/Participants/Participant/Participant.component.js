@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Participant.css";
 
 export const Participant = (props) => {
-  const {
+ const {
     curentIndex,
     currentParticipant,
     hideVideo,
