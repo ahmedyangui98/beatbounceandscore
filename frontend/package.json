@@ -58,14 +58,9 @@
     "@reduxjs/toolkit": "^1.9.3",
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.52.1",
-
-
-    "fft.js": "^4.0.4",
-   
-
     "chart.js": "^4.2.1",
+    "fft.js": "^4.0.4",
     "firebase": "^9.17.2",
-
     "mdb-react-ui-kit": "^6.0.0",
     "mdbreact": "^5.2.0",
     "react-chartjs-2": "^5.2.0",

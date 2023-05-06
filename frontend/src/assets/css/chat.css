@@ -1,4 +1,4 @@
-/*.chat-bar-collapsible {
+.chat-bar-collapsible {
     position: fixed;
     bottom: 0;
     right: 50px;
@@ -10,8 +10,8 @@
     background-color: #17a2b8;
     color: white;
     cursor: pointer;
-    /*padding: 18px;*/
-  /*  width: 350px;
+    padding: 18px;
+    width: 350px;
     text-align: center;
     outline: none;
     font-size: 16px;
@@ -83,8 +83,7 @@
     opacity: .7;
 }
 
-/* Chat bubbles */
-/*
+
 #userInput {
     width: 75%;
 }
@@ -141,9 +140,9 @@
     max-width: 80%;
     margin-left: 10px;
     animation: floatup .5s forwards
-}
+} 
 
-@keyframes floatup {
+ @keyframes floatup {
     from {
         transform: translateY(14px);
         opacity: .0;
@@ -152,9 +151,9 @@
         transform: translateY(0px);
         opacity: 1;
     }
-}
+} 
 
-@media screen and (max-width:600px) {
+ @media screen and (max-width:600px) {
     .full-chat-block {
         width: 100%;
         border-radius: 0px;
@@ -171,4 +170,4 @@
         border-top: 3px solid white;
         border-radius: 0px;
     }
-}*/
+}
