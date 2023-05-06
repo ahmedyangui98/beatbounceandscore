@@ -6,31 +6,40 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listOffers } from '../redux/Action/offerAction'
 import "../assets/css/jobs.css";
-
-
+import { Route, Routes,useParams } from "react-router-dom";
+import SearchBox from '../components/SearchBox'
 const HomeScreen = () => {
+  const {keyword} = useParams()
   const dispatch = useDispatch()
-
   const offerslist = useSelector(state => state.offerslist)
 
   const { loading, error, offers } = offerslist
 
   useEffect(() => {
-    dispatch(listOffers())
+    dispatch(listOffers(keyword))
 
-  }, [dispatch])
+  }, [dispatch,keyword])
 
-
+ 
   return (
 
     <>
 
 <div className='container'>
-      <div className='start'>
+      <div className='start'> 
+   
       <h1 >Latest Offers</h1>
       </div>
+   
+  
+        <SearchBox />
+  
+  
+
       {loading ? (
+        
         <h2>loading .. </h2>
+        
       ) : error ? (
         <Message variant='danger'>{error}</Message>
       ) : (
@@ -43,6 +52,7 @@ const HomeScreen = () => {
           ))}
         </Row>
       )}
+      
       </div>
     </>
 

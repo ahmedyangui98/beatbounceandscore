@@ -1,5 +1,5 @@
 const express = require("express");
-const { createOffer,getOffers,getOffersById,deleteOffer,updateOffer,createOfferReview} = require("../controlles/offerController")
+const { createOffer,getOffers,getOffersById,deleteOffer,updateOffer,createOfferReview,getJobDetails} = require("../controlles/offerController")
 const offerRoutes = express.Router();
 
 
@@ -9,5 +9,5 @@ offerRoutes.get("/allOffers",getOffers);
 offerRoutes.put("/updateOffer/:id",updateOffer)
 offerRoutes.post("/:id/reviews",createOfferReview);
 offerRoutes.get("/getById/:id",getOffersById);
-
+offerRoutes.get("/getJobDetails",getJobDetails)
 module.exports = offerRoutes; 

@@ -1681,7 +1681,7 @@
   dependencies:
     "prop-types" "^15.7.2"
 
-"@stripe/stripe-js@^1.44.1":
+"@stripe/stripe-js@^1.44.1", "@stripe/stripe-js@^1.52.1":
   "integrity" "sha512-fza40OPSpGQlFxc5TZWiYC/6Lk89Sep1fLuv9ss33YS6lCAF8UZbfA1E6W+lwO4c7WRKZIZumHIEbPJfP/O9uw=="
   "resolved" "https://registry.npmjs.org/@stripe/stripe-js/-/stripe-js-1.52.1.tgz"
   "version" "1.52.1"
@@ -1907,7 +1907,7 @@
 "@types/mime@*":
   "version" "3.0.1"
 
-"@types/node@*", "@types/node@>=12.12.47", "@types/node@>=13.7.0":
+"@types/node@*", "@types/node@>=12.12.47", "@types/node@>=13.7.0", "@types/node@>=8.1.0":
   "version" "18.14.6"
 
 "@types/parse-json@^4.0.0":
@@ -6236,7 +6236,7 @@
 "q@^1.1.2":
   "version" "1.5.1"
 
-"qs@6.11.0":
+"qs@^6.11.0", "qs@6.11.0":
   "version" "6.11.0"
   dependencies:
     "side-channel" "^1.0.4"
@@ -6464,12 +6464,17 @@
   optionalDependencies:
     "fsevents" "^2.3.2"
 
-"react-tooltip@^4.2.21":
-  "integrity" "sha512-zSLprMymBDowknr0KVDiJ05IjZn9mQhhg4PRsqln0OZtURAJ1snt1xi5daZfagsh6vfsziZrc9pErPTDY1ACig=="
-  "resolved" "https://registry.npmjs.org/react-tooltip/-/react-tooltip-4.2.21.tgz"
-  "version" "4.2.21"
+"react-speech-recognition@^3.10.0":
+  "integrity" "sha512-EVSr4Ik8l9urwdPiK2r0+ADrLyDDrjB0qBRdUWO+w2MfwEBrj6NuRmy1GD3x7BU/V6/hab0pl8Lupen0zwlJyw=="
+  "resolved" "https://registry.npmjs.org/react-speech-recognition/-/react-speech-recognition-3.10.0.tgz"
+  "version" "3.10.0"
+
+"react-tooltip@^4.5.1":
+  "integrity" "sha512-Zo+CSFUGXar1uV+bgXFFDe7VeS2iByeIp5rTgTcc2HqtuOS5D76QapejNNfx320MCY91TlhTQat36KGFTqgcvw=="
+  "resolved" "https://registry.npmjs.org/react-tooltip/-/react-tooltip-4.5.1.tgz"
+  "version" "4.5.1"
   dependencies:
-    "prop-types" "^15.7.2"
+    "prop-types" "^15.8.1"
     "uuid" "^7.0.3"
 
 "react-transition-group@^2.3.1":
@@ -7094,6 +7099,14 @@
 
 "strip-json-comments@^3.1.0", "strip-json-comments@^3.1.1":
   "version" "3.1.1"
+
+"stripe@^12.1.1":
+  "integrity" "sha512-vn74vXtZeJx18oGzA0AhL818euhLF/juCgkKrJfAS1Y0bp5/EzQKPuc/75qQUvY43nNGIkgOVb3kUBuyoeqEkA=="
+  "resolved" "https://registry.npmjs.org/stripe/-/stripe-12.1.1.tgz"
+  "version" "12.1.1"
+  dependencies:
+    "@types/node" ">=8.1.0"
+    "qs" "^6.11.0"
 
 "style-loader@^3.3.1":
   "version" "3.3.1"

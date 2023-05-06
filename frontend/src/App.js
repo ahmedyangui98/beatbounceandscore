@@ -49,6 +49,9 @@ import Room from "./videoroom/Room"
 import Join from "./videoroom/Join";
 
 import HomeScreen from "./screens/HomeScreen";
+
+import JobDetails from "./screens/JobDetails";
+
 import OfferDetailsScreen from "./screens/OfferDetailsScreen";
 import OfferListScreen from "./screens/OfferListScreen"
 import OfferEditScreen from "./screens/OfferEditScreen";
@@ -196,11 +199,21 @@ function App() {
               path="/offers"
               element={<PrivateRoutes Children={homescreen} />}
             />
+
+
+
+<Route
+              path="/search/:keyword"
+              element={<PrivateRoutes Children={homescreen} />}
+            />
             <Route
               path="/offer/:id"
               element={<PrivateRoutes Children={offerdetails} />}
             />
-
+<Route
+              path="/jobs"
+              element={<PrivateRoutes Children={<JobDetails/>} />}
+            />
 
 <Route
           path="/addcourse"

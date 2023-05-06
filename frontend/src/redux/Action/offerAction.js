@@ -20,12 +20,12 @@ import {
     } from '../constants/offerConstants'
     import axios from 'axios'
 
-    export const listOffers = () => async(dispatch) => {
+    export const listOffers = (keyword = '') => async(dispatch) => {
  
         try {
             dispatch({ type: OFFER_LIST_REQUEST })
         
-            const { data } = await  axios.get('http://localhost:4000/api/offers/allOffers')
+            const { data } = await  axios.get(`http://localhost:4000/api/offers/allOffers?keyword=${keyword}`)
        // console.log(data)
             dispatch({
                type: OFFER_LIST_SUCCESS,

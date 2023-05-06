@@ -9,6 +9,10 @@ const offerRoutes = require("./routes/offer");
 const uploadRoutes = require("./routes/uploadRoutes")
 const path = require("path")
 
+
+
+
+
 const courseRoutes = require("./routes/courses");
 const chapterRoutes = require("./routes/chapter");
 
@@ -34,7 +38,6 @@ app.use("/api/", AdminFaceIdRoutes);
 app.use("/api/offers", offerRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use('/api/financialaid', financialAidRoutes);
-
 
 
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))

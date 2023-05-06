@@ -109,6 +109,8 @@ const OfferDetailsScreen = ({ history }) => {
                 <Link className='btn btn-light my-3' to='/offers'>
                   go back
                 </Link>
+                <Button variant="primary">Apply</Button>
+
               </Col>
               <Col md={3}>
 
