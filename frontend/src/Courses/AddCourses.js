@@ -14,21 +14,37 @@ import { useNavigate } from 'react-router-dom';
 export default function AddCourses() {
   const navigate = useNavigate();
   const [coach, setCoach] = useState("");
+  const [image, setImage] = useState("");
+  const [imagee, setImagee] = useState("");
+  const [email, setEmail] = useState("");
+  const [CourseName, setCourseName] = useState("");
+  const [progression, setProgression] = useState(0);
+  const [type, setType] = useState("");
+  const [level, setLevel] = useState("");
+  const users = useSelector((state) => state.Authreducer.users);
+  const user = useSelector((state) => state.Authreducer.user);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getusers());
     dispatch(get_current());
   }, []);
-  const users = useSelector((state) => state.Authreducer.users);
-  const user = useSelector((state) => state.Authreducer.user);
-  const dispatch = useDispatch();
+
   const handleadd = async (e) => {
     e.preventDefault();
 
-    dispatch(
-      addcourses({ CourseName, progression, level, type, image, coach }),
-    );
+    const newCourse = {
+      CourseName: CourseName,
+      progression: progression,
+      level: level,
+      type: type,
+      image: image,
+      coach: coach,
+    };
 
-    navigate("/admincourses")
+    dispatch(addcourses(newCourse));
+
+    navigate("/admincourses");
     window.location.reload();
   };
 
@@ -45,15 +61,6 @@ export default function AddCourses() {
 
     setCoach(selectedValue);
   };
-  const [image, setImage] = useState("");
-  const [imagee, setImagee] = useState("");
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const [email, setEmail] = useState("");
-  const [CourseName, setCourseName] = useState("");
-  const [progression, setProgression] = useState(0);
-  const [type, setType] = useState("");
-  const [level, setLevel] = useState("");
 
   const uploadFile = () => {
     if (imagee == null) return;
@@ -118,25 +125,27 @@ export default function AddCourses() {
                 </Col>
               </FormGroup>
               <FormGroup row>
-                <Label sm={3}>Type</Label>
-                <Col sm={10}>
-                  <Input
-                    placeholder="type"
-                    type="text"
-                    onChange={(e) => setType(e.target.value)}
-                  />
-                </Col>
-              </FormGroup>
-              <FormGroup row>
-                <Label sm={3}>Level</Label>
-                <Col sm={10}>
-                  <Input
-                    placeholder="level"
-                    type="text"
-                    onChange={(e) => setLevel(e.target.value)}
-                  />
-                </Col>
-              </FormGroup>
+  <Label sm={3}>Type</Label>
+  <Col sm={10}>
+    <Input type="select" onChange={(e) => setType(e.target.value)}>
+      <option value="">Select Type</option>
+      <option value="sport">Sport</option>
+      <option value="dance">Dance</option>
+      <option value="musique">Musique</option>
+    </Input>
+  </Col>
+</FormGroup>
+<FormGroup row>
+  <Label sm={3}>Level</Label>
+  <Col sm={10}>
+    <Input type="select" onChange={(e) => setLevel(e.target.value)}>
+      <option value="">Select Level</option>
+      <option value="hard">Hard</option>
+      <option value="easy">Easy</option>
+      <option value="medium">Medium</option>
+    </Input>
+  </Col>
+</FormGroup>
               
               <Input
                 type="file"

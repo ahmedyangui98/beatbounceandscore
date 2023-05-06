@@ -3336,6 +3336,11 @@
 "dotenv@^10.0.0":
   "version" "10.0.0"
 
+"dsp.js@^1.0.1":
+  "integrity" "sha512-5ols1j2i2tdbtd38DMR6xGSmE8dE/qFWgqrNN1ZNnIZnOEAFjzoVq5hM57nbQS9u0VmxqCUw8YccgsS9+zhtNg=="
+  "resolved" "https://registry.npmjs.org/dsp.js/-/dsp.js-1.0.1.tgz"
+  "version" "1.0.1"
+
 "duplexer@^0.1.2":
   "version" "0.1.2"
 

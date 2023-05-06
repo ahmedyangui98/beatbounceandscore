@@ -168,7 +168,7 @@ const QuizAdmin = () => {
   <FormSelect value={quizType} onChange={(event) => setQuizType(event.target.value)}>
     <option value="">--Select type--</option>
     <option value="sport">Sport</option>
-    <option value="musique">Musique</option>
+    <option value="musique">Music</option>
     <option value="dance">Dance</option>
 
   </FormSelect>

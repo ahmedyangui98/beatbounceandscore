@@ -15,8 +15,12 @@ import {
 
 let initialState = {
   mainStream: null,
-  participants: {},
-  currentUser: null,
+  participants: 
+  [
+  {"-NUSmMotAKG6tsf0j-d8":{"name":"skander","audio":true,"screen":false,"video":false,"currentUser":false,"avatarColor":"#c43c2"}}
+  ],
+  currentUser: 
+  {"-NUMkbEj-QLmAOGekjoN":{"name":"emna","audio":true,"screen":false,"video":false,"currentUser":true,"avatarColor":"#c43c2a"}}
 };
 
 const servers = {
@@ -38,7 +42,7 @@ const servers = {
 const generateColor = () =>
   "#" + Math.floor(Math.random() * 16777215).toString(16);
 
-  const userReducer = (state = initialState, action) => {
+  const userMeetReducer = (state = initialState, action) => {
     switch (action.type) {
       case SET_MAIN_STREAM:
         return { ...state, mainStream: action.payload };
@@ -126,4 +130,4 @@ const generateColor = () =>
       createOffer(peerConnection, offerIds[0], offerIds[1]);}
   return newUser;
 };
-export default userReducer;
+export default userMeetReducer;

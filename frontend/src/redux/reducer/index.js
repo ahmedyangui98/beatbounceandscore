@@ -11,12 +11,12 @@ import detectReducer from '../../features/dashboard/detectSlice'
 import coursesreducer from "./coursesreducer";
 import chaptersreducer from "./chaptersreducer";
 
-import userreducer from "./reducer"
+import userMeetReducer from "./reducer"
 import { offerListReducer,offerDetailsReducer,offerDeleteReducer,offerCreateReducer,offerUpdateReducer,offerReviewCreateReducer  } from "./offerReducers";
 
 const rootReducer = combineReducers({
   coursesreducer
-  ,chaptersreducer,userreducer,
+  ,chaptersreducer,userMeetReducer,
   Authreducer,
   errorreducer,
   questions : questionReducer,

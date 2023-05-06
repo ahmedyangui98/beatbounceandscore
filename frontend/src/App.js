@@ -58,6 +58,9 @@ import OfferEditScreen from "./screens/OfferEditScreen";
 import QuizPaymentPage from "./User/QuizPaymentPage";
 import QuizPay from "./User/QuizPay";
 import Financialaid from "./User/Financialaid"
+import PaymentDashboard from "./Admin/PaymentDashboard";
+import UserBarChart from "./Admin/UserBarChart";
+import SoundComparison from "./videoroom/Sound";
 
 
 
@@ -142,14 +145,13 @@ function App() {
 
   return (
     <>
-    <Loader/>
     <div className="App">
       <>{nav}</>
     <div className="limiter">
 
-      <Routes>
+      <Routes>   <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
-       <Route path="/login" element={<Login />} />        <Route path="/register" element={<Register />} /> 
+            <Route path="/register" element={<Register />} /> 
        <Route path="/password-reset" element={<PasswordReset />} />
               <Route path="/forgotpassword/:id/:token" element={<ForgotPassword />} />
 
@@ -282,8 +284,23 @@ function App() {
         <Route
           path="/count"
           element={<UserRolesChart  />} />
+          <Route
+          path="/dashboard"
+          element={<PaymentDashboard  />} />
 
-     
+          <Route
+          path="/admin/offerlist"
+          element={<PrivateRoutes Children={<OfferListScreen/>} />}/>
+          <Route
+          path="/admin/offer/:id/edit"
+          element={<PrivateRoutes Children={<OfferEditScreen/>} />}/>
+
+<Route
+          path="/UserBarChart"
+          element={<UserBarChart  />} />
+          <Route
+          path="/sound"
+          element={<SoundComparison  />} />
           </Routes>
 
         </div>

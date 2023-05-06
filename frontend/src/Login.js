@@ -62,7 +62,6 @@ const[role,]=useState(user.role)
     >
 
       
-      <div className="content">
       <Container>  
         <Col className="ml-auto mr-auto" md="4" >
           <Card className="card-login card-plain" >
@@ -136,7 +135,6 @@ const[role,]=useState(user.role)
       </Container>
       <Alerterrors/>
     </div>  
-    </div>
     <DarkFooter />
 
   </>
