@@ -1,4 +1,4 @@
-.chat-bar-collapsible {
+/*.chat-bar-collapsible {
     position: fixed;
     bottom: 0;
     right: 50px;
@@ -11,7 +11,7 @@
     color: white;
     cursor: pointer;
     /*padding: 18px;*/
-    width: 350px;
+  /*  width: 350px;
     text-align: center;
     outline: none;
     font-size: 16px;
@@ -84,7 +84,7 @@
 }
 
 /* Chat bubbles */
-
+/*
 #userInput {
     width: 75%;
 }
@@ -171,4 +171,4 @@
         border-top: 3px solid white;
         border-radius: 0px;
     }
-}
+}*/
