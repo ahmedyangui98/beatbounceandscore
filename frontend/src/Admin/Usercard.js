@@ -29,24 +29,36 @@ const Usercard = ({ el }) => {
   const [password, setPassword] = useState(el.password);
   const [birthdate, setBirthdate] = useState(el.birthdate);
   const [gender, setGender] = useState(el.gender);
-
-
-
   const [role, setRole] = useState(el.role);
   const [image, setImage] = useState(el.image);
-  const [imagee, setImagee] = useState("");
+  const [imageFile, setImageFile] = useState(null);
 
   const handleShow = () => setShow(true);
   const handleEdit = async (e) => {
     e.preventDefault();
-   
 
-   dispatch(
-      updateusers(el._id, {firstname,lastname,email,password,image,role,gender,birthdate},Navigate),  
-      window.location.reload()
-      
-    ); handleClose()
- 
+    // Upload the image file to Firebase Storage and get the image URL
+    let imageURL = el.image;
+    if (imageFile != null) {
+      const imageRef = ref(storage, `${imageFile.name}`);
+      await uploadBytes(imageRef, imageFile);
+      imageURL = await getDownloadURL(imageRef);
+    }
+
+    dispatch(
+      updateusers(el._id, {
+        firstname,
+        lastname,
+        email,
+        password,
+        image: image,
+        role,
+        gender,
+        birthdate,
+      }, Navigate),
+    );
+    window.location.reload();
+    handleClose();
   };
   const handleDeleteClick = (el) => {
     confirmAlert({
@@ -55,12 +67,12 @@ const Usercard = ({ el }) => {
       buttons: [
         {
           label: "Yes",
-          className: 'btn btn-success', 
+          className: 'btn btn-success',
           onClick: () => dispatch(deleteusers(el._id)),
         },
         {
           label: "No",
-          className: 'btn btn-danger', 
+          className: 'btn btn-danger',
           onClick: () => {},
         },
       ],
@@ -69,27 +81,26 @@ const Usercard = ({ el }) => {
 
   const banuser = (e) => {
     e.preventDefault();
-    el.isBanned="true";
-    dispatch(
-      updateusers(el._id, el),
-    
-    );
-
+    el.isBanned = "true";
+    dispatch(updateusers(el._id, el));
   };
 
   const unbanuser = (e) => {
     e.preventDefault();
-    el.isBanned="false";
-    dispatch(
-      updateusers(el._id, el),
-    
-    );
+    el.isBanned = "false";
+    dispatch(updateusers(el._id, el));
+  };
+
+  const handleImageChange = (e) => {
+    const selectedImage = e.target.files[0];
+    setImageFile(selectedImage);
+    setImage(selectedImage.name);
   };
   
   const uploadFile = () => {
-    if (imagee == null) return;
-    const imageRef = ref(storage, `${imagee.name}`);
-    uploadBytes(imageRef, imagee).then((snapshot) => {
+    if (image == null) return;
+    const imageRef = ref(storage, `${image.name}`);
+    uploadBytes(imageRef, image).then((snapshot) => {
       getDownloadURL(snapshot.ref);
     });
     window.alert("Uploaded successfully");
@@ -175,7 +186,7 @@ const Usercard = ({ el }) => {
                       type="file"
                      
                       onChange={(event) => {
-                        setImagee(event.target.files[0]);
+                      
                         setImage(event.target.files[0].name);
                        // uploadFile();
                       
