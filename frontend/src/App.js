@@ -202,8 +202,6 @@ function App() {
               element={<PrivateRoutes Children={homescreen} />}
             />
 
-
-
 <Route
               path="/search/:keyword"
               element={<PrivateRoutes Children={homescreen} />}
