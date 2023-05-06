@@ -25,7 +25,7 @@ import {
         try {
             dispatch({ type: OFFER_LIST_REQUEST })
         
-            const { data } = await  axios.get(`http://localhost:4000/api/offers/allOffers?keyword=${keyword}`)
+            const { data } = await  axios.get(`https://beat-bounce-and-score-server.onrender.com/api/offers/allOffers?keyword=${keyword}`)
        // console.log(data)
             dispatch({
                type: OFFER_LIST_SUCCESS,
@@ -50,7 +50,7 @@ import {
             try {
                 dispatch({ type: OFFER_DETAILS_REQUEST })
             
-                const { data } = await  axios.get(`http://localhost:4000/api/offers/getById/${id}`)
+                const { data } = await  axios.get(`https://beat-bounce-and-score-server.onrender.com/api/offers/getById/${id}`)
             
                 dispatch({
                    type: OFFER_DETAILS_SUCCESS,
@@ -85,7 +85,7 @@ import {
                     },
                   }
               
-                  await axios.delete(`http://localhost:4000/api/offers/delete/${id}`, config)
+                  await axios.delete(`https://beat-bounce-and-score-server.onrender.com/api/offers/delete/${id}`, config)
               
                   dispatch({
                     type: OFFER_DELETE_SUCCESS,
@@ -121,7 +121,7 @@ import {
                     },
                   }
               
-                  const { data } = await axios.post(`http://localhost:4000/api/offers/create`, {}, config)
+                  const { data } = await axios.post(`https://beat-bounce-and-score-server.onrender.com/api/offers/create`, {}, config)
               
                   dispatch({
                     type: OFFER_CREATE_SUCCESS,
@@ -155,7 +155,7 @@ import {
                     }
                   }
               
-                  const { data } = await axios.put(`http://localhost:4000/api/offers/updateOffer/${id}`, offerData,config)
+                  const { data } = await axios.put(`https://beat-bounce-and-score-server.onrender.com/api/offers/updateOffer/${id}`, offerData,config)
              // console.log(data)
                   dispatch({ type: OFFER_UPDATE_SUCCESS, payload: data })
                   navigate("/admin/offerlist");
@@ -193,7 +193,7 @@ import {
                     },
                   }
               
-                  await axios.post(`http://localhost:4000/api/offers/${offerId}/reviews`, review, config)
+                  await axios.post(`https://beat-bounce-and-score-server.onrender.com/api/offers/${offerId}/reviews`, review, config)
               
                   dispatch({
                     type: OFFER_CREATE_REVIEW_SUCCESS,

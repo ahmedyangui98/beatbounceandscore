@@ -24,13 +24,13 @@ const Main = () => {
   const [danceIsExist, setDanceIsExist] = useState();
 
   useEffect(() => {
-    getServerData(`http://localhost:4000/api/users/getPayment/sport/${user._id}`, (res) => {
+    getServerData(`https://beat-bounce-and-score-server.onrender.com/api/users/getPayment/sport/${user._id}`, (res) => {
         setSportIsExist(res)
     });
-    getServerData(`http://localhost:4000/api/users/getPayment/musique/${user._id}`, (res) => {
+    getServerData(`https://beat-bounce-and-score-server.onrender.com/api/users/getPayment/musique/${user._id}`, (res) => {
       setMusiqueIsExist(res)    });
 
-      getServerData(`http://localhost:4000/api/users/getPayment/dance/${user._id}`, (res) => {
+      getServerData(`https://beat-bounce-and-score-server.onrender.com/api/users/getPayment/dance/${user._id}`, (res) => {
         setDanceIsExist(res)
     });
   }, [])

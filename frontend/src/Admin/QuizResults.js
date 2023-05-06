@@ -20,7 +20,7 @@ const QuizResults = () => {
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
   useEffect(() => {
-    getServerData(`http://localhost:4000/api/users/result`, (res) => {
+    getServerData(`https://beat-bounce-and-score-server.onrender.com/api/users/result`, (res) => {
       setData(res)
     })
   }, [])

@@ -17,7 +17,7 @@ const ResultTable = () => {
   const [itemsPerPage, setItemsPerPage] = useState(4);
 
   useEffect(() => {
-    getServerData(`http://localhost:4000/api/users/result/${user._id}`, (res) => {
+    getServerData(`https://beat-bounce-and-score-server.onrender.com/api/users/result/${user._id}`, (res) => {
       setData(res)
     })
   }, [])

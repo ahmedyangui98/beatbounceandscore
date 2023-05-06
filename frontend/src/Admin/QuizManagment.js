@@ -12,7 +12,7 @@ const QuizManagment = () => {
 
 
   useEffect(() => {
-    getServerData(`http://localhost:4000/api/users/questions`, (res) => {
+    getServerData(`https://beat-bounce-and-score-server.onrender.com/api/users/questions`, (res) => {
       setData(res)
     })
   }, [])
@@ -31,7 +31,7 @@ const QuizManagment = () => {
 
           onClick: () => {
             // Send DELETE request to the server to delete the data
-            fetch(`http://localhost:4000/api/users/questions/${quizId}`, {
+            fetch(`https://beat-bounce-and-score-server.onrender.com/api/users/questions/${quizId}`, {
               method: 'DELETE',
             })
               .then(() => {

@@ -44,7 +44,7 @@ const QuizPaymentPage = ({ quizType, quizPrice }) => {
 
       const { id } = paymentMethod;
       try {
-        const { data } = await axios.post('http://localhost:4000/api/users/createpayment', {
+        const { data } = await axios.post('https://beat-bounce-and-score-server.onrender.com/api/users/createpayment', {
           id,
           amount: quizPrice * 100,
           quizType,

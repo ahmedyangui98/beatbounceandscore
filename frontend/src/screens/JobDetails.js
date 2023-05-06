@@ -8,7 +8,7 @@ const JobDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/api/offers/getJobDetails')
+    axios.get('https://beat-bounce-and-score-server.onrender.com/api/offers/getJobDetails')
       .then(response => {
         setJobDetails(response.data);
       })

@@ -10,7 +10,7 @@ const UserGenderChart = () => {
   
     const [chartData, setChartData] = useState([]);
     const fetchChartData = async () => {
-      const response = await axios.get('http://localhost:4000/api/users/countByGender');
+      const response = await axios.get('https://beat-bounce-and-score-server.onrender.com/api/users/countByGender');
       
       console.log(response)
       setChartData(response.data);

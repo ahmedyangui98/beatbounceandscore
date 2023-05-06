@@ -27,7 +27,7 @@ const PaymentDashboard = () => {
   
 
   useEffect(() => {
-    axios.get('http://localhost:4000/api/users/getPayments')
+    axios.get('https://beat-bounce-and-score-server.onrender.com/api/users/getPayments')
       .then(res => setPaymentData(res.data))
       .catch(err => console.log(err));
   }, []);

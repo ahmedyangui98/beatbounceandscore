@@ -22,7 +22,7 @@ export const usePublishResult = (resultData) => {
     ( () => {
         try {
             if(result !== [] && !username) throw new Error("Couldn't get Result");
-             postServerData("http://localhost:4000/api/users/result", resultData, data => data)
+             postServerData("https://beat-bounce-and-score-server.onrender.com/api/users/result", resultData, data => data)
             // window.location.reload()
         } catch (error) {
            // console.log(error)
@@ -35,7 +35,7 @@ export const usePublishResult = (resultData) => {
 export const GetResultByidRes = (id) => {
     try {
       if (id === "") throw new Error("Couldn't get Result");
-      const data = getServerData(`http://localhost:4000/api/users/result/try/${id}`, data => data);
+      const data = getServerData(`https://beat-bounce-and-score-server.onrender.com/api/users/result/try/${id}`, data => data);
     //   console.log(data)
       return { success: true, data };
     } catch (error) {
