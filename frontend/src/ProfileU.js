@@ -41,6 +41,7 @@ import {
 } from "reactstrap";
 import Alerterrors from "./Alerterrors";
 import { NotificationContainer, NotificationManager } from 'react-notifications';
+import Chat from "./User/chat";
 
 
 const ProfileU = () => {
@@ -155,8 +156,6 @@ const ProfileU = () => {
           <div className="photo-container">
             <img alt="" src={`https://firebasestorage.googleapis.com/v0/b/beatbounceandscore.appspot.com/o/${user.image}?alt=media&token=894834e1-f47f-4826-b6dc-8801bcae91aa`}></img>
           </div>
-
-
 
 
         </div>
@@ -432,6 +431,7 @@ const ProfileU = () => {
           </Container>
         </div>
       </div>
+      <Chat/>
       <NotificationContainer />
     </div>
 

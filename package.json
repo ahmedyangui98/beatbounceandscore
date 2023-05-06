@@ -21,6 +21,7 @@
     "bootstrap": "^5.2.3",
     "chart.js": "^4.2.1",
     "concurrently": "^7.2.2",
+    "dsp.js": "^1.0.1",
     "express-async-handler": "^1.2.0",
     "express-validator": "^6.15.0",
     "firebase": "^9.17.2",

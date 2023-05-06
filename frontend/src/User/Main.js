@@ -24,16 +24,15 @@ const Main = () => {
   const [danceIsExist, setDanceIsExist] = useState();
 
   useEffect(() => {
-    getServerData(`http://localhost:4000/api/users/getPayment/sport`, (res) => {
+    getServerData(`http://localhost:4000/api/users/getPayment/sport/${user._id}`, (res) => {
         setSportIsExist(res)
     });
-    getServerData(`http://localhost:4000/api/users/getPayment/musique`, (res) => {
-      setMusiqueIsExist(res)
-      getServerData(`http://localhost:4000/api/users/getPayment/dance`, (res) => {
+    getServerData(`http://localhost:4000/api/users/getPayment/musique/${user._id}`, (res) => {
+      setMusiqueIsExist(res)    });
+
+      getServerData(`http://localhost:4000/api/users/getPayment/dance/${user._id}`, (res) => {
         setDanceIsExist(res)
     });
-  });
-   
   }, [])
  
 
@@ -47,18 +46,18 @@ const Main = () => {
         <div className='start'>
 
           <ol>
-            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-The quiz will take 1 minute and 40 seconds and then it will end automatically.</li>
-            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-You will be asked 10 questions one after another.</li>
-            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-10 points is awarded for the correct answer.</li>
-            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-Each question has three options. You can choose only one options.</li>
-            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-You can review and change answers before the quiz finish.</li>
-            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-The result will be declared at the end of the quiz.</li>
+            <li style={{ color: 'black', fontWeight: 'bold' }}>-The quiz will take 1 minute and 40 seconds and then it will end automatically.</li>
+            <li style={{ color: 'black', fontWeight: 'bold' }}>-You will be asked 10 questions one after another.</li>
+            <li style={{ color: 'black', fontWeight: 'bold' }}>-10 points is awarded for the correct answer.</li>
+            <li style={{ color: 'black', fontWeight: 'bold' }}>-Each question has three options. You can choose only one options.</li>
+            <li style={{ color: 'black', fontWeight: 'bold' }}>-You can review and change answers before the quiz finish.</li>
+            <li style={{ color: 'black', fontWeight: 'bold' }}>-The result will be declared at the end of the quiz.</li>
 
           </ol>
         </div>
 
         <div className="d-flex justify-content-between">
-        {sportIsExist && sportIsExist.quizType === "sport" ? (
+        {sportIsExist?.userId===user._id && sportIsExist?.quizType === "sport" ? (
   <Card
     style={{
       width: "12rem",
@@ -88,7 +87,7 @@ const Main = () => {
   <Card
     style={{
       width: "12rem",
-      margin: " 4rem auto ",
+      margin: " 4rem  ",
       display: "flex",
       backgroundColor: "#17a2b8",
       borderRadius: 30,
@@ -98,7 +97,7 @@ const Main = () => {
   >
     <div className="">
       <img alt="" src={SportImg} />
-      <h3 style={{color:"white"}} className='btn-danger btn-round' >Not Payed</h3>
+      <Label style={{color:"white"}} className='btn-danger btn-round' >Not Payed</Label>
 
     </div>
     <br />
@@ -108,17 +107,17 @@ const Main = () => {
       to={"/pay/sport"}
 
     >
-      Pay Now
+      Pay Now For Sport 
     </Link>
     <br />
   </Card>
 ) }
 
-{musiqueIsExist && musiqueIsExist.quizType === "musique" ? (
+{musiqueIsExist?.userId===user._id && musiqueIsExist?.quizType === "musique" ? (
   <Card
     style={{
       width: "12rem",
-      margin: " 4rem auto ",
+      margin: " 4rem  ",
       display: "flex",
       backgroundColor: "#17a2b8",
       borderRadius: 30,
@@ -137,7 +136,7 @@ const Main = () => {
       onClick={startQuiz}
 
     >
-      Start Musique Quiz
+      Start Music Quiz
     </Link>
     <br />
   </Card>
@@ -145,7 +144,7 @@ const Main = () => {
   <Card
     style={{
       width: "12rem",
-      margin: " 4rem auto ",
+      margin: " 4rem  ",
       display: "flex",
       backgroundColor: "#17a2b8",
       borderRadius: 30,
@@ -155,7 +154,7 @@ const Main = () => {
   >
     <div className="">
       <img alt="" src={MusicImg} />
-      <h3 style={{color:"white"}} className='btn-danger btn-round' >Not Payed</h3>
+      <Label style={{color:"white"}} className='btn-danger btn-round' >Not Payed</Label>
 
     </div>
     <br />
@@ -165,17 +164,17 @@ const Main = () => {
       to={"/pay/musique"}
 
     >
-      Pay Now For musique
+      Pay Now For music
     </Link>
     <br />
   </Card>
 ) }
 
-{danceIsExist && danceIsExist.quizType === "dance" ? (
+{danceIsExist?.userId===user._id && danceIsExist?.quizType === "dance" ? (
   <Card
     style={{
       width: "12rem",
-      margin: " 4rem auto ",
+      margin: " 4rem  ",
       display: "flex",
       backgroundColor: "#17a2b8",
       borderRadius: 30,
@@ -203,7 +202,7 @@ const Main = () => {
   <Card
     style={{
       width: "12rem",
-      margin: " 4rem auto ",
+      margin: " 4rem  ",
       display: "flex",
       backgroundColor: "#17a2b8",
       borderRadius: 30,
@@ -213,7 +212,7 @@ const Main = () => {
   >
     <div className="">
       <img alt="" src={DanceImg} />
-      <h3 style={{color:"white"}} className='btn-danger btn-round' >Not Payed</h3>
+      <Label style={{color:"white"}} className='btn-danger btn-round' >Not Payed</Label>
 
     </div>
     <br />

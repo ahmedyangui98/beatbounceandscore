@@ -19,7 +19,7 @@ import Main from "./User/Main";
 import Result from "./User/Result";
 import ResultScoreBoard from "./User/ResultScoreBoard";
 
-import CompareSounds from "./videoroom/Sound";
+
 
 import CoachNavigation from "./Coach/CoachNavigation";
 import ParentNaviguation from "./Parent/ParentNaviguation";
@@ -57,6 +57,7 @@ import QuizPay from "./User/QuizPay";
 import Financialaid from "./User/Financialaid"
 import PaymentDashboard from "./Admin/PaymentDashboard";
 import UserBarChart from "./Admin/UserBarChart";
+import SoundComparison from "./videoroom/Sound";
 
 
 
@@ -141,14 +142,13 @@ function App() {
 
   return (
     <>
-    <Loader/>
     <div className="App">
       <>{nav}</>
     <div className="limiter">
 
-      <Routes>
+      <Routes>   <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
-       <Route path="/login" element={<Login />} />        <Route path="/register" element={<Register />} /> 
+            <Route path="/register" element={<Register />} /> 
        <Route path="/password-reset" element={<PasswordReset />} />
               <Route path="/forgotpassword/:id/:token" element={<ForgotPassword />} />
 
@@ -216,7 +216,13 @@ function App() {
           path="/chapters/:id"
           element={<PrivateRoutes Children={<Chapters/>} />}
         />
-        
+          <Route
+          path="/join"
+          element={<Join/>}
+        /> <Route
+        path="/room"
+        element={<PrivateRoutes Children={<Room  u={user}/>} />}
+      />
         <Route
           path="/chaptersadmin/:id"
           element={<PrivateRoutes Children={<ChaptersAdmin/>} />}
@@ -275,19 +281,13 @@ function App() {
           <Route
           path="/admin/offer/:id/edit"
           element={<PrivateRoutes Children={<OfferEditScreen/>} />}/>
- <Route
-          path="/join"
-          element={<Join/>}
-        /> <Route
-        path="/room"
-        element={<PrivateRoutes Children={<Room  u={user}/>} />}
-      />
+
 <Route
           path="/UserBarChart"
           element={<UserBarChart  />} />
           <Route
           path="/sound"
-          element={<PrivateRoutes Children={<CompareSounds/>} />} />
+          element={<SoundComparison  />} />
           </Routes>
 
         </div>
