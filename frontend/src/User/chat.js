@@ -189,12 +189,12 @@ function Chat() {
                         className='fa fa-heart'
                         onClick={() => buttonSendText("Heart clicked!")}
                       ></i>
-                      <Button
+                      <i
                         id='chat-icon'
                         style={{ color: "#333" }}
-                        className='bi bi-send'
+                        class="now-ui-icons ui-1_send"
                         onClick={() => getResponse()}
-                      ></Button>
+                      ></i>
                     </div>
                   </div>
                   <div id='chat-bar-bottom'>

@@ -46,12 +46,12 @@ const Main = () => {
         <div className='start'>
 
           <ol>
-            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-The quiz will take 1 minute and 40 seconds and then it will end automatically.</li>
-            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-You will be asked 10 questions one after another.</li>
-            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-10 points is awarded for the correct answer.</li>
-            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-Each question has three options. You can choose only one options.</li>
-            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-You can review and change answers before the quiz finish.</li>
-            <li style={{ color: '#17a2b8', fontWeight: 'bold' }}>-The result will be declared at the end of the quiz.</li>
+            <li style={{ color: 'black', fontWeight: 'bold' }}>-The quiz will take 1 minute and 40 seconds and then it will end automatically.</li>
+            <li style={{ color: 'black', fontWeight: 'bold' }}>-You will be asked 10 questions one after another.</li>
+            <li style={{ color: 'black', fontWeight: 'bold' }}>-10 points is awarded for the correct answer.</li>
+            <li style={{ color: 'black', fontWeight: 'bold' }}>-Each question has three options. You can choose only one options.</li>
+            <li style={{ color: 'black', fontWeight: 'bold' }}>-You can review and change answers before the quiz finish.</li>
+            <li style={{ color: 'black', fontWeight: 'bold' }}>-The result will be declared at the end of the quiz.</li>
 
           </ol>
         </div>
@@ -87,7 +87,7 @@ const Main = () => {
   <Card
     style={{
       width: "12rem",
-      margin: " 4rem auto ",
+      margin: " 4rem  ",
       display: "flex",
       backgroundColor: "#17a2b8",
       borderRadius: 30,
@@ -97,7 +97,7 @@ const Main = () => {
   >
     <div className="">
       <img alt="" src={SportImg} />
-      <h3 style={{color:"white"}} className='btn-danger btn-round' >Not Payed</h3>
+      <Label style={{color:"white"}} className='btn-danger btn-round' >Not Payed</Label>
 
     </div>
     <br />
@@ -117,7 +117,7 @@ const Main = () => {
   <Card
     style={{
       width: "12rem",
-      margin: " 4rem auto ",
+      margin: " 4rem  ",
       display: "flex",
       backgroundColor: "#17a2b8",
       borderRadius: 30,
@@ -136,7 +136,7 @@ const Main = () => {
       onClick={startQuiz}
 
     >
-      Start Musique Quiz
+      Start Music Quiz
     </Link>
     <br />
   </Card>
@@ -144,7 +144,7 @@ const Main = () => {
   <Card
     style={{
       width: "12rem",
-      margin: " 4rem auto ",
+      margin: " 4rem  ",
       display: "flex",
       backgroundColor: "#17a2b8",
       borderRadius: 30,
@@ -154,7 +154,7 @@ const Main = () => {
   >
     <div className="">
       <img alt="" src={MusicImg} />
-      <h3 style={{color:"white"}} className='btn-danger btn-round' >Not Payed</h3>
+      <Label style={{color:"white"}} className='btn-danger btn-round' >Not Payed</Label>
 
     </div>
     <br />
@@ -164,7 +164,7 @@ const Main = () => {
       to={"/pay/musique"}
 
     >
-      Pay Now For musique
+      Pay Now For music
     </Link>
     <br />
   </Card>
@@ -174,7 +174,7 @@ const Main = () => {
   <Card
     style={{
       width: "12rem",
-      margin: " 4rem auto ",
+      margin: " 4rem  ",
       display: "flex",
       backgroundColor: "#17a2b8",
       borderRadius: 30,
@@ -202,7 +202,7 @@ const Main = () => {
   <Card
     style={{
       width: "12rem",
-      margin: " 4rem auto ",
+      margin: " 4rem  ",
       display: "flex",
       backgroundColor: "#17a2b8",
       borderRadius: 30,
@@ -212,7 +212,7 @@ const Main = () => {
   >
     <div className="">
       <img alt="" src={DanceImg} />
-      <h3 style={{color:"white"}} className='btn-danger btn-round' >Not Payed</h3>
+      <Label style={{color:"white"}} className='btn-danger btn-round' >Not Payed</Label>
 
     </div>
     <br />

@@ -94,8 +94,13 @@ const ResultTable = () => {
       >
         <h3 className="card-title">
           <h1 style={{ textTransform: "capitalize" }}>
-            {v?.type.charAt(0).toUpperCase() + v?.type.substring(1) || ""}
+            {v?.type === "musique" ? (
+              "Music"
+            ) : (
+              v?.type.charAt(0).toUpperCase() + v?.type.substring(1) || ""
+            )}
           </h1>
+
         </h3>
         <h6>Attempts :</h6>  <h6 className="card-text">{v?.attempts || 0}</h6>
         <h6>Earn Points :</h6><h6 className="card-text"> {v?.points || 0}</h6>
