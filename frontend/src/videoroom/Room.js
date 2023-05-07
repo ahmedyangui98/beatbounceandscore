@@ -11,112 +11,108 @@ import {
   updateParticipant,
 } from "../redux/Action/useraction";
 import { useSelector } from "react-redux";
-function Room(props) {
-  const user = useSelector((state) => state.Authreducer.user);
-  const cuser = useSelector((state) => state.userreducer.currentUser);
-  console.log("cuser"+cuser)
+function Room(props) {  //const [userName, setUserName] = useState('');
 
-  console.log("u room"+user.firstname)
-  const [Name, setName] = useState(user.firstname ?? '');
-  const { setMainStream, addParticipant, setUser, removeParticipant, updateParticipant } = props;
+/*
+useEffect(() => {
+  setUserName(props.userName);
+}, [props.userName]);*/
+  //console.log(userName)
+ const participants=useSelector((state)=>state.userMeetReducer.participants)
+ console.log("participant"+JSON.stringify(participants))
+ const userName = useSelector((state) => state.Authreducer.user.firstname);
+   const cu= useSelector((state) => state.userMeetReducer.mainStream);
+ const participantRef = firepadRef.child('participants');
+    console.log("pr"+participantRef)
 
-  const connectedRef = db.database().ref('.info/connected');
-  const participantRef = firepadRef.child('participants');
-
+    // change on pc 
   const getUserStream = async () => {
     const localStream = await navigator.mediaDevices.getUserMedia({
-      audio: true,
-      video: true,
+      audio: false,
+      video: false,
     });
 
     return localStream;
   };
 
   useEffect(() => {
-    const setupParticipant = (userStatusRef) => {
-      if (userStatusRef) {
+    const connectedRef = db.database().ref('.info/connected');
+    const participantRef = firepadRef.child('participants');
+
+    const getUserMediaAndSetMainStream = async () => {
+      const stream = await getUserStream();
+      stream.getVideoTracks()[0].enabled = false;
+      props.setMainStream(stream);
+      props.setUser(userName)
+    };
+
+    getUserMediaAndSetMainStream();
+
+    connectedRef.on('value', (snap) => {
+      if (snap.val()) {
         const defaultPreference = {
-          audio: true,
+          audio: false,
           video: false,
           screen: false,
         };
-        const participantRef = firepadRef.child('participants').push();
-        participantRef.set({
-          name: Name,
+        const userStatusRef = participantRef.push({
+          userName: props.userName,
           preferences: defaultPreference,
+        });
+        props.setUser({
+          [userStatusRef.key]: { name: props.userName, ...defaultPreference },
         });
         userStatusRef.onDisconnect().remove();
       }
-    };
+    });
     
-
-    const handleConnectedRef = (snap) => {
-      if (snap.val()) {
-        getUserStream().then((stream) => {
-          stream.getVideoTracks()[0].enabled = false;
-          setMainStream(stream);
-          const userStatusRef = participantRef.push({
-            name: Name,
-            uid: user.uid,
-            preferences: {
-              audio: true,
-              video: false,
-              screen: false,
-            },
-          });
-          setupParticipant(userStatusRef);
-          setUser(userStatusRef.key);
-        });
-      }
-    };
-    
-    
-    connectedRef.on('value', handleConnectedRef);
 
     return () => {
-      connectedRef.off('value', handleConnectedRef);
+      connectedRef.off();
+      participantRef.off();
     };
-  }, [setMainStream, setUser, Name]); // added Name as a dependency
-
-
-  const isUserSet = !!props.user;
-  const isStreamSet = !!props.stream;
+  }, []);
 
   useEffect(() => {
-    const handleChildAdded = (snap) => {
-      const preferenceUpdateEvent = participantRef.child(snap.key).child('preferences');
-      preferenceUpdateEvent.on('child_changed', (preferenceSnap) => {
-        updateParticipant({
-          [snap.key]: {
-            [preferenceSnap.key]: preferenceSnap.val(),
-          },
-        });
-      });
-      const { userName: name, preferences = {} } = snap.val();
-      addParticipant({
-        [snap.key]: {
-          name,
-          ...preferences,
-        },
-      });
-    };
+    const participantRef = firepadRef.child('participants');
+    console.log("pr"+participantRef)
 
-    const handleChildRemoved = (snap) => {
-      removeParticipant(snap.key);
-    };
+    const isUserSet = !!props.user;
+    const isStreamSet = !!props.stream;
 
     if (isStreamSet && isUserSet) {
-      participantRef.on('child_added', handleChildAdded);
-      participantRef.on('child_removed', handleChildRemoved);
-    }
+      const handleParticipantAdded = (snap) => {
+        const preferenceUpdateEvent = participantRef
+          .child(snap.key)
+          .child('preferences');
+        preferenceUpdateEvent.on('child_changed', (preferenceSnap) => {
+          props.updateParticipant({
+            [snap.key]: {
+              [preferenceSnap.key]: preferenceSnap.val(),
+            },
+          });
+        });
+        const { userName: name,preferences = {} } = snap.val();
+        props.addParticipant({
+          [snap.key]: {
+            name,
+            ...preferences,
+          },
+        });
+      };
+      participantRef.on('child_added', handleParticipantAdded);
 
-    return () => {
-      if (isStreamSet && isUserSet) {
-        participantRef.off('child_added', handleChildAdded);
-        participantRef.off('child_removed', handleChildRemoved);
-      }
-    };
-  }, [isStreamSet, isUserSet, addParticipant, removeParticipant, updateParticipant]);
+      const handleParticipantRemoved = (snap) => {
+        props.removeParticipant(snap.key);
+      };
+      participantRef.on('child_removed', handleParticipantRemoved);
+
+      return () => {
+        participantRef.off('child_added', handleParticipantAdded);
+        participantRef.off('child_removed', handleParticipantRemoved);
+      };
+    }
+  }, [props.stream, props.user]);
 
   return (
     <div className="Room">
@@ -125,19 +121,36 @@ function Room(props) {
   );
 }
 
+const generateColor = () =>
+  "#" + Math.floor(Math.random() * 16777215).toString(16);
+
 const mapStateToProps = (state) => {
+  
+  var urlParams = new URLSearchParams(window.location.search);
+  var roomId = urlParams.get("id");
+  var obj ={"name":state.Authreducer.user.firstname,"audio":false,"screen":false,"video":false,"currentUser":true,"avatarColor":generateColor()}
+  var obj2 ={"name":state.Authreducer.user.firstname,"audio":false,"screen":false,"video":false,"avatarColor":generateColor()}
   return {
-    stream: state.mainStream,
-    currentUser: state.userreducer.currentUser,
+    participants: {...state.userMeetReducer.participants.push(
+      {[roomId]:obj}
+      )}
+    ,
+    stream: state.userMeetReducer.mainStream,
+    currentUser:       
+    `{${roomId}:${obj2}}`
+    ,
   };
 };
 
-
-export default connect(mapStateToProps, {
-  setMainStream,
-  addParticipant,
-  setUser,
-  removeParticipant,
-  updateParticipant,
-})(Room);
-
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setMainStream: (stream) => dispatch(setMainStream(stream)),
+    addParticipant: (user) => dispatch(addParticipant(user)),
+    setUser: (user) => dispatch(setUser(user)),
+    removeParticipant: (userId) => dispatch(removeParticipant(userId)),
+    updateParticipant: (user) => dispatch(updateParticipant(user)),
+  };
+};
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps)(Room);

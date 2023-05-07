@@ -51,12 +51,12 @@ const AdminCoursesCard = ({ el }) => {
     e.preventDefault();
 
    dispatch(
-      updatecourses(el._id, {CourseName,type,level,expirationDate,image},navigate),  
+      updatecourses(el._id, {CourseName,type,level,expirationDate,image}),  
      
       
     ); 
     handleClose();
-    window.location.reload()
+  
 
   };
 
@@ -76,6 +76,20 @@ const AdminCoursesCard = ({ el }) => {
     dispatch(getusers())
 
   }/*, []*/);
+  useEffect(() => {
+    setCourseName(el.CourseName);
+    setType(el.type);
+    setLevel(el.level);
+    setExpirationDate(el.expirationDate);
+    setImage(el.image);
+    setSelectedOption(options.find((option) => option.value === el.level));
+  }, [el, options]);
+ 
+  
+  
+  
+  
+  
   const user = useSelector((state) => state.Authreducer.user);
   const users = useSelector((state) => state.Authreducer.users);
 
@@ -84,19 +98,25 @@ const AdminCoursesCard = ({ el }) => {
 
   if ((user.role === "admin") || (user._id === el.coach)) {
     return (
-      <div>
+      <div style={{ backgroundColor: 'lightblue' }}>
         <div>
           <Card
             style={{
               width: "20rem",
               margin: " 4rem auto ",
               display: "flex",
+              backgroundColor:"lightblue"
             }}
           >
             <ListGroup variant="flush">
-              <div className="photo-container">
-                <img alt="" src={`https://firebasestorage.googleapis.com/v0/b/beatbounceandscore.appspot.com/o/${el.image}?alt=media&token=894834e1-f47f-4826-b6dc-8801bcae91aa`}></img>
-              </div>
+            <div className="photo-container">
+  <img
+    alt=""
+    src={`https://firebasestorage.googleapis.com/v0/b/beatbounceandscore.appspot.com/o/${el.image}?alt=media&token=894834e1-f47f-4826-b6dc-8801bcae91aa`}
+    style={{ width: "100%" }}
+  />
+</div>
+
               <ListGroup.Item>Coursename :{el.CourseName}</ListGroup.Item>
 
               <ListGroup.Item>type :{el.type}</ListGroup.Item>

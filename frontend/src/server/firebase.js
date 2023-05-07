@@ -17,6 +17,7 @@ firebase.initializeApp(firebaseConfig);
 export const db = firebase;
 
 var firepadRef = firebase.database().ref();
+export const userName = "iheb";
 /*
 export const userName = prompt("What's your name?");*/
 /*const urlparams = new URLSearchParams(window.location.search);

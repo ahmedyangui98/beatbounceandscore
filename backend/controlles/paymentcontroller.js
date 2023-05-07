@@ -45,7 +45,7 @@ exports.createPayment = async (req, res) => {
 
 exports.getPaymentsByType = async (req,res) => {
   try {
-    const payments = await payment.findOne({ quizType: req.params.type });
+    const payments = await payment.findOne({ quizType: req.params.type, userId: req.params.id });
     // const result = await Results.findOne({_id:req.params.id});
     res.json(payments);
 
@@ -77,7 +77,22 @@ exports.checkoutSession = async (req, res) => {
 
 }
 
-
+exports.GetPayments = async (req, res) => {
+//   try {
+//     const payments = await payment.find();
+//     res.status(200).send({ msg: "list of payments", payments });
+//   } catch (error) {
+//     res.status(500).send("couldn't get payments");
+//   }
+// };
+  try {
+    const payments = await payment.find();
+    res.json(payments);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+}
 
 
 

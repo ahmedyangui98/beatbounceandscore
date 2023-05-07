@@ -3835,10 +3835,8 @@ body {
   background-color: #18ce0f;
 }
 .navbar {
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
+
   min-height: 53px;
-  margin-bottom: 20px;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
 }
 .navbar a {

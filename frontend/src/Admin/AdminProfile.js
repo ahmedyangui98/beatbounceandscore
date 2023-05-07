@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { FaRegEnvelopeOpen } from "react-icons/fa";
 import { getPicture, getProfilePicture } from "../features/dashboard/userSlice";
 import DarkFooter from "../Footers/DarkFooter";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const AdminProfile = () => {
   const navigate = useNavigate();
@@ -30,20 +32,44 @@ const AdminProfile = () => {
     dispatch(getProfilePicture({ email: user.email, token: user.token }));
   }, [dispatch, user.email, user.token]);
 
+  const handleDeleteAccount = () => {
+    confirmAlert({
+      title: "Confirm",
+      message: "Are you sure you want to delete your account?",
+      buttons: [
+        {
+          label: "Yes",
+          className: 'btn btn-success', 
+          onClick: () => {
+            dispatch(deleteYourAccount(user._id));
+            navigate("/");
+            console.log("Account deleted");
+          },
+        },
+        {
+          label: "No",
+          className: 'btn btn-danger', 
+          onClick: () => {
+            console.log("Account deletion canceled");
+          },
+        },
+      ],
+    });
+  };
+
   return (
     <>
-      {/* Page Header */}
-      <div>
+
         <div className="page-header clear-filter page-header-small">
         <div className="page-header-image" style={{ backgroundImage: "url(" + require("../assets/img/bg5.jpg") + ")"
                   }}></div>
-          <div className="card_profile p-3 py-4">
+          <div className="card_profile">
             <div className="text-center">
               <div className="wrapper">
                 {/* Profile Picture */}
                 
                 <div className="photo-container">
-                  <img alt="" src={profilePicture} style={{ borderRadius: '50%', overflow: 'hidden' }}></img>
+                  <img alt="" src={profilePicture} style={{ borderRadius: '75%', overflow: 'hidden', border: "solid", }}></img>
                 </div>
 
                 {/* User Details */}
@@ -52,41 +78,15 @@ const AdminProfile = () => {
                 <span className="mt-1 clearfix"><h1>{user?.role}</h1></span>
 
                 {/* Delete Account Button */}
-                <Button
-                  variant="danger"
-                  onClick={() => {
-                    dispatch(deleteYourAccount(user._id));
-                    navigate("/");
-                    console.log("clicked");
-                  }}
-                >
+                <Button variant="danger" onClick={handleDeleteAccount}>
                   DELETE
                 </Button>
-                <hr className="line" />
-
-                {/* Social Media Buttons */}
-                <div className="social-buttons mt-5">
-                  <Button className="neo-button">
-                    <FaFacebookF />
-                  </Button>
-                  <Button className="neo-button">
-                    <FaFacebookMessenger />
-                  </Button>
-                  <Button className="neo-button">
-                    <FaRegEnvelopeOpen />
-                  </Button>
-                  <Button className="neo-button">
-                    <FaInstagram />
-                  </Button>
-                  <Button className="neo-button">
-                    <FaTwitter />
-                  </Button>
-                </div>
+                
               </div>
             </div>
           </div>
         </div>
-      </div>
+      <DarkFooter/>
 
 
     </>

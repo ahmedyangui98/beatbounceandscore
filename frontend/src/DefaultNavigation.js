@@ -98,12 +98,7 @@ function DefaultNavigation() {
 
               <NavItem>
                   <NavLink
-                    onClick={(e) => {
-                      e.preventDefault();
-                      document
-                        .getElementById("download-section")
-                        .scrollIntoView();
-                    }}
+                  
                    >
                     <i className="now-ui-icons business_globe"></i>
                   <Link to ="/">Home</Link>
@@ -111,12 +106,7 @@ function DefaultNavigation() {
                 </NavItem>
                 <NavItem>
                   <NavLink
-                    onClick={(e) => {
-                      e.preventDefault();
-                      document
-                        .getElementById("download-section")
-                        .scrollIntoView();
-                    }}
+                  
                    >
                     <i className="now-ui-icons arrows-1_cloud-download-93"></i>
                   <Link to ="/register">register</Link>

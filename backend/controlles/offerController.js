@@ -1,18 +1,25 @@
 const asyncHandler = require ('express-async-handler')
-
+const request = require('request');
+const cheerio = require('cheerio');
 const offers = require('../model/offer')
+const axios = require('axios');
 
 
 // @description   Fetch All Products 
 // @route     GET /api/products 
 // @access   Public
 exports.getOffers  = asyncHandler(async(req,res) => { 
-
-    const offerss =  await offers.find({})
+const keyword = req.query.keyword ? {
+  Postname:{
+    $regex: req.query.keyword,
+    $options: 'i'
+  }
+} : {}
+    const offerss =  await offers.find({...keyword})
    res.json(offerss)
 })
 
- 
+   
 
 // @description   Fetch single Product
 // @route     GET /api/products/:id
@@ -132,3 +139,22 @@ exports.createOfferReview = asyncHandler(async (req, res) => {
   }
 })
   
+
+
+exports.getJobDetails = (req, res) => {
+  const url = 'https://www.rekrute.com/en/sport-loisirs-california-gym-emploi-recrutement-318430.html';
+
+  axios.get(url)
+    .then(response => {
+      const $ = cheerio.load(response.data);
+      const company = $('div.col-md-9 p:first-child').text().trim().replace('Company:', '');
+      const secteur = $('div.col-md-9 p:nth-child(2)').text().trim().replace('Secteur:', '');
+      const description = $('div.col-md-9 div#moreinforecruteurS').text().trim();
+
+      res.json({ company, secteur, description });
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).json({ error: 'Failed to fetch job details' });
+    });
+};

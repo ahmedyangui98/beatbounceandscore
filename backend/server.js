@@ -10,6 +10,10 @@ const offerRoutes = require("./routes/offer");
 const uploadRoutes = require("./routes/uploadRoutes")
 const path = require("path")
 
+
+
+
+
 const courseRoutes = require("./routes/courses");
 const chapterRoutes = require("./routes/chapter");
 
@@ -42,6 +46,10 @@ app.use(express.json());
 
 app.use('/api/financialaid', financialAidRoutes);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 630ff6bf47fd1a015d5c27df280c7aef3b56d854
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 app.listen(process.env.port, () =>
   console.log(`app is runnig on port ${process.env.port}`)

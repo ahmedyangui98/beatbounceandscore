@@ -35,12 +35,11 @@ export default function AdminNaviguation() {
 
       <NavbarBrand
               
-              target="_blank"
               id="navbar-brand"
             >
                 <img
           variant="top" 
-          src={Logo} alt="okk" style={ {height: " 70px ", width: "70px"}}
+          src={Logo} alt="okk" style={ {height: " 60px ", width: "60px"}}
         />
             </NavbarBrand>
             <UncontrolledTooltip target="#navbar-brand">
@@ -71,11 +70,11 @@ export default function AdminNaviguation() {
        
         <NavItem>
           <NavLink
-             to="/profile"
-              onClick={(e) => {e.preventDefault();navigate("/profile")}}
+             to="/dashboard"
+              onClick={(e) => {e.preventDefault();navigate("/dashboard")}}
             >
               <FontAwesomeIcon icon={faHome} />
-              <p>Home</p>
+              <p>Dashboard</p>
             </NavLink>
         </NavItem>
         <NavItem>
@@ -83,13 +82,13 @@ export default function AdminNaviguation() {
              to="/profile"
               onClick={(e) => {e.preventDefault();navigate("/profile")}}
             >
-             <i aria-hidden="true" class="now-ui-icons users_single-02"></i>
+             <i aria-hidden="true" className="now-ui-icons users_single-02"></i>
               <p>Profile</p>
             </NavLink>
         </NavItem>
         <NavItem>
           <NavLink   onClick={() => {  navigate("/quizResults");}} >
-                          <i aria-hidden={true} class="now-ui-icons design_app mr-1"></i>
+                          <i aria-hidden={true} className="now-ui-icons design_app mr-1"></i>
                           <p>Quiz Results</p>
           </NavLink>
         </NavItem>
@@ -109,7 +108,7 @@ export default function AdminNaviguation() {
                           color="default"
                           nav
                         >
-                          <i aria-hidden="true" class="now-ui-icons education_paper"></i>
+                          <i aria-hidden="true" className="now-ui-icons education_paper"></i>
                           <p>Courses</p>
                         </DropdownToggle>
                         <DropdownMenu>
@@ -154,7 +153,7 @@ export default function AdminNaviguation() {
         <NavItem>
           <NavLink
              to="/quizManagment"
-              onClick={(e) => {e.preventDefault();navigate("/admin/offerlist")}}
+              onClick={(e) => {e.preventDefault();navigate("/admin/offerlist")}} 
             >
               <i
                             aria-hidden={true}
@@ -179,7 +178,7 @@ export default function AdminNaviguation() {
                           color="default"
                           nav
                         >
-                          <i aria-hidden="true" class="now-ui-icons ui-1_settings-gear-63"></i>
+                          <i aria-hidden="true" className="now-ui-icons ui-1_settings-gear-63"></i>
                           <p>Settings</p>
                         </DropdownToggle>
                         <DropdownMenu>

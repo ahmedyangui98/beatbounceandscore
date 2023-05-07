@@ -10,7 +10,7 @@ const UserRolesChart = () => {
   
     const [chartData, setChartData] = useState([]);
     const fetchChartData = async () => {
-      const response = await axios.get('http://localhost:4000/api/users/countByRole');
+      const response = await axios.get('https://beat-bounce-and-score-server.onrender.com/api/users/countByRole');
       
       console.log(response)
       setChartData(response.data);

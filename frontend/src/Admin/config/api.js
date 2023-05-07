@@ -1,4 +1,4 @@
-const BACKEND_URL = 'http://localhost:4000'
+const BACKEND_URL = 'https://beat-bounce-and-score-server.onrender.com'
 
 // BASE AUTH
 const AUTH_URL = '/api/auth'

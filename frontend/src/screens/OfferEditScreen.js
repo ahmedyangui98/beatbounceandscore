@@ -74,7 +74,7 @@ const OfferEditScreen = () => {
                     'Content-Type': 'multipart/form-data',
                 },
             }
-            const { data } = await axios.post('http://localhost:4000/api/upload', formData, config)
+            const { data } = await axios.post('https://beat-bounce-and-score-server.onrender.com/api/upload', formData, config)
 
             setImage(data)
             setUploading(false)

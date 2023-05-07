@@ -49,14 +49,24 @@ import Room from "./videoroom/Room"
 import Join from "./videoroom/Join";
 
 import HomeScreen from "./screens/HomeScreen";
+
+import JobDetails from "./screens/JobDetails";
+
 import OfferDetailsScreen from "./screens/OfferDetailsScreen";
 import OfferListScreen from "./screens/OfferListScreen"
 import OfferEditScreen from "./screens/OfferEditScreen";
 import QuizPaymentPage from "./User/QuizPaymentPage";
 import QuizPay from "./User/QuizPay";
 import Financialaid from "./User/Financialaid"
+<<<<<<< HEAD
 import FinancialaidManagement from "./Admin/financialaidManagement";
 import Resultstatus from "./User/Resultstatus";
+=======
+import PaymentDashboard from "./Admin/PaymentDashboard";
+import UserBarChart from "./Admin/UserBarChart";
+import SoundComparison from "./videoroom/Sound";
+
+>>>>>>> 630ff6bf47fd1a015d5c27df280c7aef3b56d854
 
 
 
@@ -139,14 +149,13 @@ function App() {
 
   return (
     <>
-    <Loader/>
     <div className="App">
       <>{nav}</>
     <div className="limiter">
 
-      <Routes>
+      <Routes>   <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
-       <Route path="/login" element={<Login />} />        <Route path="/register" element={<Register />} /> 
+            <Route path="/register" element={<Register />} /> 
        <Route path="/password-reset" element={<PasswordReset />} />
               <Route path="/forgotpassword/:id/:token" element={<ForgotPassword />} />
 
@@ -201,11 +210,19 @@ function App() {
               path="/offers"
               element={<PrivateRoutes Children={homescreen} />}
             />
+
+<Route
+              path="/search/:keyword"
+              element={<PrivateRoutes Children={homescreen} />}
+            />
             <Route
               path="/offer/:id"
               element={<PrivateRoutes Children={offerdetails} />}
             />
-
+<Route
+              path="/jobs"
+              element={<PrivateRoutes Children={<JobDetails/>} />}
+            />
 
 <Route
           path="/addcourse"
@@ -279,8 +296,23 @@ function App() {
         <Route
           path="/count"
           element={<UserRolesChart  />} />
+          <Route
+          path="/dashboard"
+          element={<PaymentDashboard  />} />
 
-     
+          <Route
+          path="/admin/offerlist"
+          element={<PrivateRoutes Children={<OfferListScreen/>} />}/>
+          <Route
+          path="/admin/offer/:id/edit"
+          element={<PrivateRoutes Children={<OfferEditScreen/>} />}/>
+
+<Route
+          path="/UserBarChart"
+          element={<UserBarChart  />} />
+          <Route
+          path="/sound"
+          element={<SoundComparison  />} />
           </Routes>
 
         </div>

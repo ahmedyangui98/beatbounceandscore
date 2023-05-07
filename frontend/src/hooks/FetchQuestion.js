@@ -14,7 +14,7 @@ export const useFetchQestion = () => {
         /**  fetch backend data */
         (async () => {
             try {
-                const [{ questions, answers }] = await getServerData(`http://localhost:4000/api/users/questions/${types}`, (data) => data)
+                const [{ questions, answers }] = await getServerData(`https://beat-bounce-and-score-server.onrender.com/api/users/questions/${types}`, (data) => data)
                 if(questions.length > 0){
                     setGetData(prev => ({...prev, isLoading : false}));
                     setGetData(prev => ({...prev, apiData : questions}));

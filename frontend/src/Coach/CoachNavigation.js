@@ -3,6 +3,8 @@
 
 import React from "react";
 import firepadRef from '../server/firebase';
+import { addParticipant } from "../redux/Action/actioncreator";
+import { MDBIcon } from 'mdbreact';
 
 // reactstrap components
 import {
@@ -19,9 +21,10 @@ import {
   Container,UncontrolledTooltip
  
 } from "reactstrap";
+
 import { logout } from "../redux/Action/authAction";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Logo from "../assets/img/logo.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
@@ -30,6 +33,7 @@ import { faPersonChalkboard } from '@fortawesome/free-solid-svg-icons';
 export default function CoachNavigation() {
   const navigate=useNavigate()
   const dispatch=useDispatch()
+  const cu=useSelector((state)=>state.Authreducer.user)
   const urlParams = new URLSearchParams(window.location.search);
 const roomId = urlParams.get("id");
   const [collapseOpen, setCollapseOpen] = React.useState(false);
@@ -41,6 +45,7 @@ const roomId = urlParams.get("id");
       newRoomId = firepadRef.push().key;
       window.history.replaceState(null, "Meet", `?id=${newRoomId}`);
     }
+   
     navigate(`/room?id=${newRoomId}`);
   }
   return (
@@ -95,8 +100,11 @@ const roomId = urlParams.get("id");
         
         <NavItem>
           <NavLink   onClick={() => {  navigate("/quizResults");}} >
-                          <i aria-hidden={true} class="now-ui-icons design_app mr-1"></i>
-                          <p>Quiz Results</p>
+          <MDBIcon icon="book" />
+
+
+
+<p>Quiz Results</p>
           </NavLink>
         </NavItem>
         <NavItem>
@@ -111,12 +119,21 @@ const roomId = urlParams.get("id");
 
         <NavItem>
           <NavLink to="/room"  onClick={handleButtonClick} >
-                          <i aria-hidden={true} class="now-ui-icons design_app mr-1"></i>
+          <MDBIcon icon="fa fa-video" />
                           <p>meet</p>
           </NavLink>
         </NavItem>
       
 
+<NavItem>
+          <NavLink   onClick={() => {
+                              navigate("/sound");
+                             
+                            }}   >
+          <MDBIcon icon="fa fa-music" />
+                          <p>correction</p>
+          </NavLink>
+        </NavItem>
         <UncontrolledDropdown nav>
                         <DropdownToggle
                           aria-haspopup={true}

@@ -1,4 +1,7 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
+import SearchBox from '../components/SearchBox'
+
 
 // reactstrap components
 import {
@@ -41,10 +44,12 @@ export default function UserNaviguation() {
             <UncontrolledTooltip target="#navbar-brand">
               Beat Bounce & Score
             </UncontrolledTooltip>
+          
         <NavbarBrand
           onClick={(e) => e.preventDefault()}
         >
-          <h5>Beat Bounce & Score</h5>
+          
+          <h5>Beat Bounce & Scores</h5>
         </NavbarBrand>
                   <button
                     onClick={() => {
