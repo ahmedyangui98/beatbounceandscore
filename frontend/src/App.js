@@ -55,7 +55,8 @@ import OfferEditScreen from "./screens/OfferEditScreen";
 import QuizPaymentPage from "./User/QuizPaymentPage";
 import QuizPay from "./User/QuizPay";
 import Financialaid from "./User/Financialaid"
-
+import FinancialaidManagement from "./Admin/financialaidManagement";
+import Resultstatus from "./User/Resultstatus";
 
 
 
@@ -84,8 +85,7 @@ function App() {
   let quizpaymentpage;
   let quizpay;
   let financialaid;
-
-
+ let resultstatus;
 
 
 
@@ -106,7 +106,7 @@ function App() {
       quizpaymentpage=<QuizPaymentPage/>
       quizpay=<QuizPay/>
       financialaid=<Financialaid/>
-
+      resultstatus=<Resultstatus/>
 
 
       break;
@@ -176,6 +176,7 @@ function App() {
           path="/results"
           element={<PrivateRoutes Children={results} />}
         />
+        
         <Route
           path="/resultdetail/:type/:id"
           element={<PrivateRoutes Children={resultdetail} />}/>
@@ -191,6 +192,10 @@ function App() {
         <Route
           path="/financialaid"
           element={<PrivateRoutes Children={financialaid} />}
+        />
+         <Route
+          path="/resultstatus"
+          element={<PrivateRoutes Children={resultstatus} />}
         />
  <Route
               path="/offers"
@@ -250,6 +255,7 @@ function App() {
           path="/quizManagment"
           element={<PrivateRoutes Children={<QuizManagment />} />}
         />
+       
         <Route
           path="/quizAdmin"
           element={<PrivateRoutes Children={<QuizAdmin />} />}
@@ -257,6 +263,10 @@ function App() {
         <Route
           path="/quizResults"
           element={<PrivateRoutes Children={<QuizResults />} />}
+        />
+        <Route
+          path="/financialaidmanagement"
+          element={<PrivateRoutes Children={<FinancialaidManagement />} />}
         />
         <Route
           path="/resultdetails/:type/:id"

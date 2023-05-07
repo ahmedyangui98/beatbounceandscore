@@ -100,20 +100,40 @@ export default function UserNaviguation() {
                           <p>Courses</p>
                         </NavLink>
                       </NavItem>
-                      <NavItem>
-                        <NavLink
-                           onClick={() => {
-                            navigate("/financialaid");
-                          }} 
+                      <UncontrolledDropdown nav>
+                        <DropdownToggle
+                          aria-haspopup={true}
+                          caret
+                          color="default"
+                          nav
                         >
-                          <i
-                            aria-hidden={true}
-                            className="now-ui-icons objects_umbrella-13"
-                          ></i>
-                          <p>Financial aid</p>
+                          <i aria-hidden="true" class="now-ui-icons objects_umbrella-13"></i>
+                          <p>FinancialAid</p>
+                        </DropdownToggle>
+                        <DropdownMenu>
+                        <DropdownItem
+                            onClick={() => {
+                              navigate("/financialaid");
 
-                        </NavLink>
-                      </NavItem>
+                            }} 
+                            
+                          >
+                              Apply for financial aid
+                          </DropdownItem>
+
+                          <DropdownItem
+                            onClick={() => {
+                              navigate("/resultstatus");
+                              window.location.reload()
+                            }} 
+                          >
+                              Result
+                          </DropdownItem>
+
+                         
+      
+                        </DropdownMenu>
+              </UncontrolledDropdown>
                       <NavItem>
                         <NavLink
                           onClick={() => {

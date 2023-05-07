@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require('body-parser');
 const connectDB = require("./config/connectDB");
 const userRoutes = require("./routes/user");
 const quizRoutes = require("./routes/quiz");
@@ -33,9 +34,13 @@ app.use("/api/users", userRoutes, quizRoutes, paymentRoutes);
 app.use("/api/", AdminFaceIdRoutes);
 app.use("/api/offers", offerRoutes);
 app.use("/api/upload", uploadRoutes);
+//app.use('/api/financialaid', financialAidRoutes);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use(express.json());
+
 app.use('/api/financialaid', financialAidRoutes);
-
-
 
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 app.listen(process.env.port, () =>

@@ -1,0 +1,17 @@
+.result {
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 18px;
+  }
+  
+  .approved {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .rejected {
+    background-color: #f44336;
+    color: white;
+  }
+  

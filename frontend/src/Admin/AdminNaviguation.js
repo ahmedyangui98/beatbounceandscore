@@ -145,6 +145,12 @@ export default function AdminNaviguation() {
       
                         </DropdownMenu>
               </UncontrolledDropdown>
+              <NavItem>
+          <NavLink   onClick={() => {  navigate("/financialaidManagement");}} >
+                          <i aria-hidden={true} class="now-ui-icons design_app mr-1"></i>
+                          <p>Financialaid</p>
+          </NavLink>
+        </NavItem>
         <NavItem>
           <NavLink
              to="/quizManagment"
