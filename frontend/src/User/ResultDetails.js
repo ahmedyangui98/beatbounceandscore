@@ -52,7 +52,7 @@ const ResultDetails=()=> {
                 ))}
                  {result?.result?.[index] !== quiz.answers?.[index] ?(
                     <>
-                      <span style={{ color: 'orange' }}> The correct one is {question.options[quiz.answers?.[index]]} !</span>
+                      <span style={{ color: 'red' }}> The correct one is {question.options[quiz.answers?.[index]]} !</span>
                       <span style={{fontSize:15, fontWeight: 'bold' }} > 0/10 Points</span>
 
                     </>

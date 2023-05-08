@@ -29,7 +29,7 @@ export const login = (data, navigate) => async (dispatch) => {
     dispatch({ type: LOGIN, payload: res.data });
     //console.log(res.data);
     navigate("/profile");
-    window.location.reload();
+    //window.location.reload();
   } catch (error) {
     error.response.data.errors.forEach((el) => {
       dispatch(alert_error(el.msg));
