@@ -25,7 +25,7 @@ const FinancialAidForm = () => {
 
     try {
       // Make a POST request to your Node.js backend
-      const response = await axios.post('http://localhost:4000/api/financialaid/financialaidapplyform', formData);
+      const response = await axios.post('https://beat-bounce-and-score-server.onrender.com/api/financialaid/financialaidapplyform', formData);
       console.log(response.data); // Optionally, do something with the response data
     } catch (error) {
       console.error(error);
