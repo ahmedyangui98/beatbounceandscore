@@ -39,7 +39,7 @@ const UserManagement = () => {
   const user = useSelector((state) => state.Authreducer.user);
   const users = useSelector((state) => state.Authreducer.users);
 
-  const filtredusers = users.filter((el) => {
+  const filtredusers = users?.filter((el) => {
     if (searchInput === "") {
       return el;
     } else {
