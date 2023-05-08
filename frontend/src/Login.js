@@ -34,15 +34,15 @@ const Login = () => {
 
   const[isActivated,setIsActivated]=useState(false)
   const user = useSelector((state) => state.Authreducer.user);
-  const [firstname, ] = useState(user?.firstname);
-  const [lastname, ] = useState(user?.lastname);
-const[role,]=useState(user?.role)
+  const [firstname, ] = useState(user.firstname);
+  const [lastname, ] = useState(user.lastname);
+const[role,]=useState(user.role)
   const handleClick = (e) => {
 
     e.preventDefault();
     dispatch(login({ email, password }, navigate));
     setIsActivated(true)
-   updateusers(user?._id, { email,password,role,firstname,isActivated,lastname})
+   updateusers(user._id, { email,password,role,firstname,isActivated,lastname})
   
 
  
