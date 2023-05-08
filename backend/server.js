@@ -26,7 +26,7 @@ app.use(express.json({ limit: '50mb' }));
 require("dotenv").config();
 
 app.use(cors({
-  origin: 'http://localhost:3000'
+  origin: 'https://beat-bounce-and-score.onrender.com'
 }));
 app.use(express.static('public'));
 
