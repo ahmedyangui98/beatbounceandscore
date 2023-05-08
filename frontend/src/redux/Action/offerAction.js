@@ -17,7 +17,7 @@ import {
     OFFER_CREATE_REVIEW_REQUEST,
     OFFER_CREATE_REVIEW_SUCCESS,
     OFFER_CREATE_REVIEW_FAIL,   
-    } from '../constants/offerConstants'
+    } from '../offerConstants'
     import axios from 'axios'
 
     export const listOffers = (keyword = '') => async(dispatch) => {
@@ -212,5 +212,3 @@ import {
                   })
                 }
               }
-                    
-                               

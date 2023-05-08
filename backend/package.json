@@ -1,6 +1,5 @@
 {
   "dependencies": {
-<<<<<<< HEAD
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
@@ -10,11 +9,7 @@
     "bootstrap": "^5.2.3",
     "chart.js": "^4.2.1",
     "concurrently": "^7.2.2",
-=======
-    "axios": "^1.4.0",
-    "bcrypt": "^5.0.1",
     "cheerio": "^1.0.0-rc.12",
->>>>>>> 630ff6bf47fd1a015d5c27df280c7aef3b56d854
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
