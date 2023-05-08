@@ -62,11 +62,8 @@
     "fft.js": "^4.0.4",
     "firebase": "^9.17.2",
     "mdb-react-ui-kit": "^6.0.0",
-<<<<<<< HEAD
     "mongoose": "^6.10.1",
-=======
     "mdbreact": "^5.2.0",
->>>>>>> 630ff6bf47fd1a015d5c27df280c7aef3b56d854
     "react-chartjs-2": "^5.2.0",
     "react-confirm-alert": "^3.0.6",
     "react-datetime": "^3.2.0",

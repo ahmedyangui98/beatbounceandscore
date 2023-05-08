@@ -58,15 +58,11 @@ import OfferEditScreen from "./screens/OfferEditScreen";
 import QuizPaymentPage from "./User/QuizPaymentPage";
 import QuizPay from "./User/QuizPay";
 import Financialaid from "./User/Financialaid"
-<<<<<<< HEAD
 import FinancialaidManagement from "./Admin/financialaidManagement";
 import Resultstatus from "./User/Resultstatus";
-=======
 import PaymentDashboard from "./Admin/PaymentDashboard";
 import UserBarChart from "./Admin/UserBarChart";
 import SoundComparison from "./videoroom/Sound";
-
->>>>>>> 630ff6bf47fd1a015d5c27df280c7aef3b56d854
 
 
 
