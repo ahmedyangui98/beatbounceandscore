@@ -79,13 +79,13 @@ const ProfileU = () => {
   /*/////////////////////////////////////////////*/
 
   const navigate = useNavigate();
-  const [firstname, setFirstname] = useState(user.firstname);
-  const [lastname, setLastname] = useState(user.lastname);
-  const [email,] = useState(user.email);
-  const [password,] = useState(user.password);
-  const [birthdate, setBirthdate] = useState(user.birthdate);
-  const [gender,] = useState(user.gender);
-  const [image, setImage] = useState(user.image);
+  const [firstname, setFirstname] = useState(user?.firstname);
+  const [lastname, setLastname] = useState(user?.lastname);
+  const [email,] = useState(user?.email);
+  const [password,] = useState(user?.password);
+  const [birthdate, setBirthdate] = useState(user?.birthdate);
+  const [gender,] = useState(user?.gender);
+  const [image, setImage] = useState(user?.image);
   const [imagee, setImagee] = useState("");
 
 
@@ -99,7 +99,7 @@ const ProfileU = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [id, setId] = useState(user._id);
+  const [id, setId] = useState(user?._id);
 
   const handleChangePassword = (e) => {
     e.preventDefault();
