@@ -75,8 +75,8 @@ function App() {
   const token = localStorage.getItem("token")
   // console.log(localStorage)
 
-  const role = user.role
-  const actif = user.isActivated
+  const role = user?.role
+  const actif = user?.isActivated
 
   let nav;
   let profile;
